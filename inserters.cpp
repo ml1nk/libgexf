@@ -35,83 +35,64 @@
 
 using namespace std;
 
+typedef unsigned int t_id;
+
 //-----------------------------------------
-ostream& operator<<(ostream& os, const set<unsigned long int>& o) {
+ostream& operator<<(ostream& os, const set<t_id>& o) {
 //-----------------------------------------
-set<unsigned long int>::const_iterator it;
-    
-    os << "  " << "set<unsigned long int> [" << endl << "        ";
+set<t_id>::const_iterator it;
 
     for ( it=o.begin() ; it != o.end(); it++ ) {
         os << " " << *it;
     }
 
-    os << endl << "      ]" << endl;
+    return os;
+}
+
+//-----------------------------------------
+ostream& operator<<(ostream& os, const map<t_id,t_id>& o) {
+//-----------------------------------------
+map<t_id,t_id>::const_iterator it;
+
+    for ( it=o.begin() ; it != o.end(); it++ ) {
+        os << it->first << " => " << it->second << endl;
+    }
 
     return os;
 }
 
 //-----------------------------------------
-ostream& operator<<(ostream& os, const map<unsigned long int,unsigned long int>& o) {
+ostream& operator<<(ostream& os, const multimap<t_id,t_id>& o) {
 //-----------------------------------------
-map<unsigned long int,unsigned long int>::const_iterator it;
-
-    os << "  " << "map<unsigned long int,unsigned long int> [" << endl << "        ";
+multimap<t_id,t_id>::const_iterator it;
 
     for ( it=o.begin() ; it != o.end(); it++ ) {
-        os << (*it).first << " => " << (*it).second << endl << "      ";
+        os << it->first << " => " << it->second << endl;
     }
-
-    os << endl << "      ]" << endl;
 
     return os;
 }
 
 //-----------------------------------------
-ostream& operator<<(ostream& os, const multimap<unsigned long int,unsigned long int>& o) {
+ostream& operator<<(ostream& os, const map<t_id,set<t_id> >& o) {
 //-----------------------------------------
-multimap<unsigned long int,unsigned long int>::const_iterator it;
-
-    os << "  " << "multimap<unsigned long int,unsigned long int> [" << endl << "        ";
+map<t_id,set<t_id> >::const_iterator it;
 
     for ( it=o.begin() ; it != o.end(); it++ ) {
-        os << (*it).first << " => " << (*it).second << endl << "          ";
+        os << it->first << " => " << it->second << endl;
     }
-
-    os << endl << "        ]" << endl;
 
     return os;
 }
 
 //-----------------------------------------
-ostream& operator<<(ostream& os, map<unsigned long int,set<unsigned long int> > o) {
+ostream& operator<<(ostream& os, const map<t_id,map<t_id,t_id> >& o) {
 //-----------------------------------------
-map<unsigned long int,set<unsigned long int> >::iterator it;
-
-    os << "  " << "map<unsigned long int,set<unsigned long int> > [" << endl << "        ";
+map<t_id,map<t_id,t_id> >::const_iterator it;
 
     for ( it=o.begin() ; it != o.end(); it++ ) {
-        os << (*it).first << " => " << (*it).second << endl << "\t\t\t";
+        os << it->first << " => " << it->second << endl;
     }
-
-    os << endl << "      ]" << endl;
-
-    return os;
-}
-
-//-----------------------------------------
-ostream& operator<<(ostream& os, map<unsigned long int,map<unsigned long int,unsigned long int> > o) {
-//-----------------------------------------
-map<unsigned long int,map<unsigned long int,unsigned long int> >::iterator it;
-
-    os << "  " << "map<unsigned long int,map<unsigned long int,unsigned long int> > [" << endl << "        ";
-
-    for ( it=o.begin() ; it != o.end(); it++ ) {
-        os << (*it).first << " => " << (*it).second << endl << "\t\t\t";
-        //os << (*it).first << endl << "      ";
-    }
-
-    os << endl << "      ]" << endl;
 
     return os;
 }

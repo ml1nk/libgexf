@@ -1,5 +1,5 @@
 /* 
- * File:   statictopology.h
+ * File:   graph.h
  * Author: sebastien heymann
  *
  * Created on 17 avril 2009, 17:27
@@ -27,41 +27,52 @@
 # THE SOFTWARE.
 */
 
-#ifndef _STATICTOPOLOGY_H
-#define	_STATICTOPOLOGY_H
+#ifndef _GRAPH_H
+#define	_GRAPH_H
 
 #include <set>
 #include <map>
 #include <iostream>
 using namespace std;
 
-class StaticTopology {
+typedef unsigned int t_id;
+
+class Graph {
 public:
-    StaticTopology();
-    StaticTopology(const StaticTopology& orig);
-    virtual ~StaticTopology();
+    Graph();
+    Graph(const Graph& orig);
+    virtual ~Graph();
 
-    void add_node(const unsigned long int id);
-    void remove_node(const unsigned long int id);
-    void add_edge(const unsigned long int id, const unsigned long int source_id, const unsigned long int target_id);
-    void remove_edge(const unsigned long int source_id, const unsigned long int target_id);
-    void remove_in_edges(const unsigned long int target_id);
-    void remove_out_edges(const unsigned long int source_id);
+    void add_node(const t_id id);
+    void add_edge(const t_id id, const t_id source_id, const t_id target_id);
+    void remove_node(const t_id id);
+    void remove_edge(const t_id source_id, const t_id target_id);
+    void remove_in_edges(const t_id target_id);
+    void remove_out_edges(const t_id source_id);
 
-    unsigned long int num_nodes();
-    unsigned long int num_edges();
+    bool contains_node(const t_id id) const;
+    bool contains_edge(const t_id source_id, const t_id target_id) const;
+
+    unsigned int get_node_count() const;
+    unsigned int get_edge_count() const;
+    unsigned int get_degree(const t_id node_id) const;
+    set<t_id> get_neighbors(const t_id node_id) const;
+
+    void clear_edges(const t_id node_id);
+    void clear();
+    void clear_edges();
 private:
-    set<unsigned long int> _nodes;
+    set<t_id> _nodes;
 
     /*
      * map<source_id, map<target_id, edge,id>
      */
-    map<unsigned long int,map<unsigned long int,unsigned long int> > _edges_source_target;
-    
-    map<unsigned long int,set<unsigned long int> > _edges_target_source;
+    map<t_id,map<t_id,t_id> > _edges;
+    map<t_id,set<t_id> > _reverse_edges;
+    set<t_id> _bloom_edges;
 
-    friend ostream& operator<<(ostream& os, const StaticTopology& o);
+    friend ostream& operator<<(ostream& os, const Graph& o);
 };
 
-#endif	/* _STATICTOPOLOGY_H */
+#endif	/* _GRAPH_H */
 

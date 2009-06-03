@@ -28,7 +28,7 @@ OBJECTDIR=build/Debug/${PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/statictopology.o \
+	${OBJECTDIR}/graph.o \
 	${OBJECTDIR}/gexf.o \
 	${OBJECTDIR}/inserters.o
 
@@ -55,10 +55,10 @@ dist/Debug/${PLATFORM}/liblibgexf.a: ${OBJECTFILES}
 	${AR} rv dist/Debug/${PLATFORM}/liblibgexf.a ${OBJECTFILES} 
 	$(RANLIB) dist/Debug/${PLATFORM}/liblibgexf.a
 
-${OBJECTDIR}/statictopology.o: statictopology.cpp 
+${OBJECTDIR}/graph.o: graph.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/statictopology.o statictopology.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/graph.o graph.cpp
 
 ${OBJECTDIR}/gexf.o: gexf.cpp 
 	${MKDIR} -p ${OBJECTDIR}

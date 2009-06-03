@@ -31,7 +31,7 @@
 #define	_GEXF_H
 
 #include <iostream>
-#include "statictopology.h"
+#include "graph.h"
 using namespace std;
 
 class GEXF {
@@ -40,9 +40,10 @@ public:
     GEXF(const GEXF& orig);
     virtual ~GEXF();
 
-    StaticTopology& getStaticTopology();
+    Graph& getGraph();
+
+    Graph _graph;
 private:
-    StaticTopology _static_topology;
     friend ostream& operator<<(ostream& os, const GEXF& o);
 };
 

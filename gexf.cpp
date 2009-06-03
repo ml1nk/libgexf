@@ -29,7 +29,7 @@
 
 #include "gexf.h"
 
-GEXF::GEXF() : _static_topology() {
+GEXF::GEXF() : _graph() {
 }
 
 GEXF::GEXF(const GEXF& orig) {
@@ -39,15 +39,15 @@ GEXF::~GEXF() {
 }
 
 //-----------------------------------------
-StaticTopology& GEXF::getStaticTopology() {
+Graph& GEXF::getGraph() {
 //-----------------------------------------
-    return _static_topology;
+    return _graph;
 }
 
 //-----------------------------------------
 ostream& operator<<(ostream& os, const GEXF& o) {
 //-----------------------------------------
     os << "GEXF [" << endl;
-    os << o._static_topology << "]" << endl << endl;
+    os << o._graph << "]" << endl << endl << endl;
     return os;
 }
