@@ -1,8 +1,7 @@
-/* 
- * File:   graph.cpp
- * Author: sebastien heymann
- * 
- * Created on 17 avril 2009, 17:27
+/*! \file graph.cpp
+    \author sebastien heymann
+    \date 17 avril 2009, 17:27
+    \version 0.1
  */
 
 /*

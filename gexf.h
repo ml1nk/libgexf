@@ -1,8 +1,7 @@
-/* 
- * File:   gexf.h
- * Author: sebastien heymann
- *
- * Created on 17 avril 2009, 17:28
+/*! \file gexf.h
+    \author sebastien heymann
+    \date 17 avril 2009, 17:28
+    \version 0.1
  */
 
 /*
@@ -34,6 +33,16 @@
 #include "graph.h"
 using namespace std;
 
+/*! \class GEXF
+    \brief GEXF class
+
+    GEXF class containing :
+    \li graph topology
+    \li data attributes (currently not available)
+    \li hierarchy (currently not available)
+    \li viz data (currently not available)
+    \li dynamics (currently not available)
+ */
 class GEXF {
 public:
     GEXF();
@@ -42,6 +51,9 @@ public:
 
     Graph& getGraph();
 
+    /*! \var Graph _graph
+	\brief Topology structure
+     */
     Graph _graph;
 private:
     friend ostream& operator<<(ostream& os, const GEXF& o);

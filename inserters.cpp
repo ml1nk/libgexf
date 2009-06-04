@@ -1,10 +1,8 @@
-/**
- * File:   inserters.cpp
- * Author: sebastien heymann
- *
- * Created on 22 avril 2009, 15:57
- *
- * Generic inserters for object dumping
+/*! \file inserters.cpp
+    \author sebastien heymann
+    \date 22 avril 2009, 15:57
+    \version 0.1
+    \brief Generic inserters for object dumping
  */
 
 /*

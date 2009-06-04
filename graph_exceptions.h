@@ -1,8 +1,7 @@
-/* 
- * File:   graph_exceptions.h
- * Author: sebastien
- *
- * Created on 4 juin 2009, 10:36
+/*! \file graph_exceptions.h
+    \author sebastien
+    \date 4 juin 2009, 10:36
+    \version 0.1
  */
 
 #ifndef _GRAPH_EXCEPTIONS_H
@@ -13,6 +12,9 @@
 #include <string>
 using namespace std;
 
+/*! \class ReadLockException
+    \brief Exception occuring on a read-lock.
+ */
 class ReadLockException : public exception {
 public:
     ReadLockException(const string what) throw() { _text = what; };

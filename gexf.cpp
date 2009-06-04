@@ -1,8 +1,6 @@
-/* 
- * File:   gexf.cpp
- * Author: sebastien heymann
- * 
- * Created on 17 avril 2009, 17:28
+/*! \file gexf.cpp
+    \author sebastien heymann
+    \date 17 avril 2009, 17:28
  */
 
 /*

@@ -1,8 +1,7 @@
-/* 
- * File:   graph.h
- * Author: sebastien heymann
- *
- * Created on 17 avril 2009, 17:27
+/*! \file graph.h
+    \author sebastien heymann
+    \date 17 avril 2009, 17:27
+    \version 0.1
  */
 
 /*
@@ -35,8 +34,11 @@
 #include <iostream>
 using namespace std;
 
-typedef unsigned int t_id;
+typedef unsigned int t_id; /*!< Type of all IDs */
 
+/*! \class Graph
+    \brief Topology structure of the graph
+ */
 class Graph {
 public:
     Graph();
@@ -70,22 +72,18 @@ public:
     bool isWriteLock();
     bool isUnlock();
 private:
-    set<t_id> _nodes;
-
-    /*
-     * map<source_id, map<target_id, edge,id>
-     */
-    map<t_id,map<t_id,t_id> > _edges;
-    map<t_id,set<t_id> > _reverse_edges;
-    set<t_id> _bloom_edges;
-
-    /*
-     * 0 = unlocked
-     * 1 = read locked
-     * 2 = write locked
+    set<t_id> _nodes; /*!< Set of all nodes */
+    map<t_id,map<t_id,t_id> > _edges; /*!< map<source_id, map<target_id, edge_id> > */
+    map<t_id,set<t_id> > _reverse_edges; /*!< map<target_id, set<source_id> > */
+    set<t_id> _bloom_edges; /*!< Set of all edge_id used as a (poor) bloom filter */
+    unsigned short int _rlock_count; /*!< Number of read-locks */
+    /*! \var char _lock_flag
+        \brief Flag used for determining the lock type:
+        \li 0 = unlocked
+        \li 1 = read locked
+        \li 2 = write locked
      */
     char _lock_flag;
-    unsigned short int _rlock_count;
 
     friend ostream& operator<<(ostream& os, const Graph& o);
 };
