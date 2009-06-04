@@ -1,0 +1,15 @@
+bin/*
+doc/*
+.project
+.classpath
+.log
+*~
+*.tmp
+.settings
+**/.svn
+**/.svn/*
+netbeans
+*.log
+*.db
+**dyts
+build/*

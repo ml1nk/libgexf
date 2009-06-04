@@ -43,24 +43,32 @@ public:
     Graph(const Graph& orig);
     virtual ~Graph();
 
-    void add_node(const t_id id);
-    void add_edge(const t_id id, const t_id source_id, const t_id target_id);
-    void remove_node(const t_id id);
-    void remove_edge(const t_id source_id, const t_id target_id);
-    void remove_in_edges(const t_id target_id);
-    void remove_out_edges(const t_id source_id);
+    void addNode(const t_id id);
+    void addEdge(const t_id id, const t_id source_id, const t_id target_id);
+    void removeNode(const t_id id);
+    void removeEdge(const t_id source_id, const t_id target_id);
+    void removeInEdges(const t_id target_id);
+    void removeOutEdges(const t_id source_id);
 
-    bool contains_node(const t_id id) const;
-    bool contains_edge(const t_id source_id, const t_id target_id) const;
+    bool containsNode(const t_id id) const;
+    bool containsEdge(const t_id source_id, const t_id target_id) const;
 
-    unsigned int get_node_count() const;
-    unsigned int get_edge_count() const;
-    unsigned int get_degree(const t_id node_id) const;
-    set<t_id> get_neighbors(const t_id node_id) const;
+    unsigned int getNodeCount() const;
+    unsigned int getEdgeCount() const;
+    unsigned int getDegree(const t_id node_id) const;
+    set<t_id> getNeighbors(const t_id node_id) const;
 
-    void clear_edges(const t_id node_id);
+    void clearEdges(const t_id node_id);
     void clear();
-    void clear_edges();
+    void clearEdges();
+    
+    void readLock() throw();
+    void readUnlock();
+    void writeLock() throw();
+    void writeUnlock();
+    bool isReadLock();
+    bool isWriteLock();
+    bool isUnlock();
 private:
     set<t_id> _nodes;
 
@@ -70,6 +78,14 @@ private:
     map<t_id,map<t_id,t_id> > _edges;
     map<t_id,set<t_id> > _reverse_edges;
     set<t_id> _bloom_edges;
+
+    /*
+     * 0 = unlocked
+     * 1 = read locked
+     * 2 = write locked
+     */
+    char _lock_flag;
+    unsigned short int _rlock_count;
 
     friend ostream& operator<<(ostream& os, const Graph& o);
 };

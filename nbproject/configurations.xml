@@ -22,6 +22,7 @@
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>graph_exceptions.h</itemPath>
     <itemPath>inserters.cpp</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
@@ -46,6 +47,9 @@
         <itemTool>1</itemTool>
       </item>
       <item path="graph.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="graph_exceptions.h">
         <itemTool>3</itemTool>
       </item>
       <item path="inserters.cpp">
@@ -81,6 +85,9 @@
         <itemTool>1</itemTool>
       </item>
       <item path="graph.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="graph_exceptions.h">
         <itemTool>3</itemTool>
       </item>
       <item path="inserters.cpp">
