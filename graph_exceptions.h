@@ -10,35 +10,37 @@
 
 #include <exception>
 #include <string>
-using namespace std;
+
+namespace libgexf {
 
 /*! \class ReadLockException
     \brief Exception occuring on a read-lock.
  */
-class ReadLockException : public exception {
+class ReadLockException : public std::exception {
 public:
-    ReadLockException(const string what) throw() { _text = what; };
+    ReadLockException(const std::string what) throw() { _text = what; };
     virtual ~ReadLockException() throw() {};
 
     virtual const char* what() const throw() {
         return (const char *)(_text.c_str());
     }
 private:
-    string _text;
+    std::string _text;
 };
 
 
-class WriteLockException : public exception {
+class WriteLockException : public std::exception {
 public:
-    WriteLockException(const string what) throw() { _text = what; };
+    WriteLockException(const std::string what) throw() { _text = what; };
     virtual ~WriteLockException() throw() {};
     virtual const char* what() const throw() {
         return (const char *)(_text.c_str());
     }
 private:
-    string _text;
+    std::string _text;
 };
 
+}
 
 #endif	/* _GRAPH_EXCEPTIONS_H */
 
