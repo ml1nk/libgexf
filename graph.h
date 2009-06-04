@@ -32,7 +32,8 @@
 #include <set>
 #include <map>
 #include <iostream>
-using namespace std;
+
+namespace libgexf {
 
 typedef unsigned int t_id; /*!< Type of all IDs */
 
@@ -58,7 +59,7 @@ public:
     unsigned int getNodeCount() const;
     unsigned int getEdgeCount() const;
     unsigned int getDegree(const t_id node_id) const;
-    set<t_id> getNeighbors(const t_id node_id) const;
+    std::set<t_id> getNeighbors(const t_id node_id) const;
 
     void clearEdges(const t_id node_id);
     void clear();
@@ -72,10 +73,10 @@ public:
     bool isWriteLock();
     bool isUnlock();
 private:
-    set<t_id> _nodes; /*!< Set of all nodes */
-    map<t_id,map<t_id,t_id> > _edges; /*!< map<source_id, map<target_id, edge_id> > */
-    map<t_id,set<t_id> > _reverse_edges; /*!< map<target_id, set<source_id> > */
-    set<t_id> _bloom_edges; /*!< Set of all edge_id used as a (poor) bloom filter */
+    std::set<t_id> _nodes; /*!< Set of all nodes */
+    std::map<t_id,std::map<t_id,t_id> > _edges; /*!< map<source_id, map<target_id, edge_id> > */
+    std::map<t_id,std::set<t_id> > _reverse_edges; /*!< map<target_id, set<source_id> > */
+    std::set<t_id> _bloom_edges; /*!< Set of all edge_id used as a (poor) bloom filter */
     unsigned short int _rlock_count; /*!< Number of read-locks */
     /*! \var char _lock_flag
         \brief Flag used for determining the lock type:
@@ -85,8 +86,10 @@ private:
      */
     char _lock_flag;
 
-    friend ostream& operator<<(ostream& os, const Graph& o);
+    friend std::ostream& operator<<(std::ostream& os, const Graph& o);
 };
+
+}
 
 #endif	/* _GRAPH_H */
 

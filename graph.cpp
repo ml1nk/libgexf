@@ -36,6 +36,8 @@
 #include <sstream>
 using namespace std;
 
+namespace libgexf {
+
 Graph::Graph() : _nodes(), _edges(), _reverse_edges(), _bloom_edges() {
      _lock_flag = '0';
      _rlock_count = 0;
@@ -374,3 +376,4 @@ ostream& operator<<(ostream& os, const Graph& o) {
     return os;
 }
 
+}

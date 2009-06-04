@@ -31,34 +31,36 @@
 
 #include <iostream>
 #include "graph.h"
-using namespace std;
 
-/*! \class GEXF
-    \brief GEXF class
+namespace libgexf {
 
-    GEXF class containing :
-    \li graph topology
-    \li data attributes (currently not available)
-    \li hierarchy (currently not available)
-    \li viz data (currently not available)
-    \li dynamics (currently not available)
- */
-class GEXF {
-public:
-    GEXF();
-    GEXF(const GEXF& orig);
-    virtual ~GEXF();
+    /*! \class GEXF
+        \brief GEXF class
 
-    Graph& getGraph();
-
-    /*! \var Graph _graph
-	\brief Topology structure
+        GEXF class containing :
+        \li graph topology
+        \li data attributes (currently not available)
+        \li hierarchy (currently not available)
+        \li viz data (currently not available)
+        \li dynamics (currently not available)
      */
-    Graph _graph;
-private:
-    friend ostream& operator<<(ostream& os, const GEXF& o);
-};
+    class GEXF {
+    public:
+        GEXF();
+        GEXF(const GEXF& orig);
+        virtual ~GEXF();
 
+        Graph& getGraph();
+
+        /*! \var Graph _graph
+            \brief Topology structure
+         */
+        Graph _graph;
+    private:
+        friend std::ostream& operator<<(std::ostream& os, const GEXF& o);
+    };
+
+}
 
 #endif	/* _GEXF_H */
 

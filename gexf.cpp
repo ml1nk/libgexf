@@ -27,6 +27,8 @@
 
 #include "gexf.h"
 
+namespace libgexf {
+
 GEXF::GEXF() : _graph() {
 }
 
@@ -43,9 +45,11 @@ Graph& GEXF::getGraph() {
 }
 
 //-----------------------------------------
-ostream& operator<<(ostream& os, const GEXF& o) {
+std::ostream& operator<<(std::ostream& os, const GEXF& o) {
 //-----------------------------------------
-    os << "GEXF [" << endl;
-    os << o._graph << "]" << endl << endl << endl;
+    os << "GEXF [" << std::endl;
+    os << o._graph << "]" << std::endl << std::endl << std::endl;
     return os;
+}
+
 }

@@ -31,14 +31,14 @@
 #include <set>
 #include <map>
 
-using namespace std;
+namespace libgexf {
 
 typedef unsigned int t_id;
 
 //-----------------------------------------
-ostream& operator<<(ostream& os, const set<t_id>& o) {
+std::ostream& operator<<(std::ostream& os, const std::set<t_id>& o) {
 //-----------------------------------------
-set<t_id>::const_iterator it;
+std::set<t_id>::const_iterator it;
 
     for ( it=o.begin() ; it != o.end(); it++ ) {
         os << " " << *it;
@@ -48,49 +48,51 @@ set<t_id>::const_iterator it;
 }
 
 //-----------------------------------------
-ostream& operator<<(ostream& os, const map<t_id,t_id>& o) {
+std::ostream& operator<<(std::ostream& os, const std::map<t_id,t_id>& o) {
 //-----------------------------------------
-map<t_id,t_id>::const_iterator it;
+std::map<t_id,t_id>::const_iterator it;
 
     for ( it=o.begin() ; it != o.end(); it++ ) {
-        os << it->first << " => " << it->second << endl;
+        os << it->first << " => " << it->second << std::endl;
     }
 
     return os;
 }
 
 //-----------------------------------------
-ostream& operator<<(ostream& os, const multimap<t_id,t_id>& o) {
+std::ostream& operator<<(std::ostream& os, const std::multimap<t_id,t_id>& o) {
 //-----------------------------------------
-multimap<t_id,t_id>::const_iterator it;
+std::multimap<t_id,t_id>::const_iterator it;
 
     for ( it=o.begin() ; it != o.end(); it++ ) {
-        os << it->first << " => " << it->second << endl;
+        os << it->first << " => " << it->second << std::endl;
     }
 
     return os;
 }
 
 //-----------------------------------------
-ostream& operator<<(ostream& os, const map<t_id,set<t_id> >& o) {
+std::ostream& operator<<(std::ostream& os, const std::map<t_id,std::set<t_id> >& o) {
 //-----------------------------------------
-map<t_id,set<t_id> >::const_iterator it;
+std::map<t_id,std::set<t_id> >::const_iterator it;
 
     for ( it=o.begin() ; it != o.end(); it++ ) {
-        os << it->first << " => " << it->second << endl;
+        os << it->first << " => " << it->second << std::endl;
     }
 
     return os;
 }
 
 //-----------------------------------------
-ostream& operator<<(ostream& os, const map<t_id,map<t_id,t_id> >& o) {
+std::ostream& operator<<(std::ostream& os, const std::map<t_id,std::map<t_id,t_id> >& o) {
 //-----------------------------------------
-map<t_id,map<t_id,t_id> >::const_iterator it;
+std::map<t_id,std::map<t_id,t_id> >::const_iterator it;
 
     for ( it=o.begin() ; it != o.end(); it++ ) {
-        os << it->first << " => " << it->second << endl;
+        os << it->first << " => " << it->second << std::endl;
     }
 
     return os;
+}
+
 }
