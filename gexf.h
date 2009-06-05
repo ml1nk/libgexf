@@ -47,7 +47,7 @@ namespace libgexf {
     class GEXF {
     public:
         GEXF();
-        GEXF(const GEXF& orig);
+        //GEXF(const GEXF& orig);
         virtual ~GEXF();
 
         Graph& getGraph();

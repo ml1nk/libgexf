@@ -1,5 +1,6 @@
 bin/*
 doc/*
+binding/*
 .project
 .classpath
 .log

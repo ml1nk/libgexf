@@ -32,8 +32,8 @@ namespace libgexf {
 GEXF::GEXF() : _graph() {
 }
 
-GEXF::GEXF(const GEXF& orig) {
-}
+//GEXF::GEXF(const GEXF& orig) {
+//}
 
 GEXF::~GEXF() {
 }

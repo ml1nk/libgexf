@@ -13,32 +13,32 @@
 
 namespace libgexf {
 
-/*! \class ReadLockException
-    \brief Exception occuring on a read-lock.
- */
-class ReadLockException : public std::exception {
-public:
-    ReadLockException(const std::string what) throw() { _text = what; };
-    virtual ~ReadLockException() throw() {};
+    /*! \class ReadLockException
+        \brief Exception occuring on a read-lock.
+     */
+    class ReadLockException : public std::exception {
+    public:
+        ReadLockException(const std::string what) throw() { _text = what; };
+        virtual ~ReadLockException() throw() {};
 
-    virtual const char* what() const throw() {
-        return (const char *)(_text.c_str());
-    }
-private:
-    std::string _text;
-};
+        virtual const char* what() const throw() {
+            return (const char *)(_text.c_str());
+        }
+    private:
+        std::string _text;
+    };
 
 
-class WriteLockException : public std::exception {
-public:
-    WriteLockException(const std::string what) throw() { _text = what; };
-    virtual ~WriteLockException() throw() {};
-    virtual const char* what() const throw() {
-        return (const char *)(_text.c_str());
-    }
-private:
-    std::string _text;
-};
+    class WriteLockException : public std::exception {
+    public:
+        WriteLockException(const std::string what) throw() { _text = what; };
+        virtual ~WriteLockException() throw() {};
+        virtual const char* what() const throw() {
+            return (const char *)(_text.c_str());
+        }
+    private:
+        std::string _text;
+    };
 
 }
 

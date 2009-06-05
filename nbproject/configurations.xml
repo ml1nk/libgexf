@@ -24,6 +24,7 @@
     </logicalFolder>
     <itemPath>graph_exceptions.h</itemPath>
     <itemPath>inserters.cpp</itemPath>
+    <itemPath>libgexf.i</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -54,6 +55,10 @@
       </item>
       <item path="inserters.cpp">
         <itemTool>1</itemTool>
+      </item>
+      <item path="libgexf.i">
+        <itemExcluded>true</itemExcluded>
+        <itemTool>0</itemTool>
       </item>
     </conf>
     <conf name="Release" type="3">
@@ -92,6 +97,10 @@
       </item>
       <item path="inserters.cpp">
         <itemTool>1</itemTool>
+      </item>
+      <item path="libgexf.i">
+        <itemExcluded>true</itemExcluded>
+        <itemTool>0</itemTool>
       </item>
     </conf>
   </confs>
