@@ -38,12 +38,10 @@ using namespace std;
 
 namespace libgexf {
 
-Graph::Graph() : _nodes(), _edges(), _reverse_edges(), _bloom_edges() {
-     _lock_flag = '0';
-     _rlock_count = 0;
+Graph::Graph() : _nodes(), _edges(), _reverse_edges(), _bloom_edges(), _lock_flag('0'), _rlock_count(0) {
 }
 
-Graph::Graph(const Graph& orig) {
+Graph::Graph(const Graph& orig): _nodes(orig._nodes), _edges(orig._edges), _reverse_edges(orig._reverse_edges), _lock_flag(orig._lock_flag), _rlock_count(orig._rlock_count) {
 }
 
 Graph::~Graph() {
@@ -63,27 +61,22 @@ void Graph::addNode(const t_id id) {
 //-----------------------------------------
 void Graph::addEdge(const t_id id, const t_id source_id, const t_id target_id) {
 //-----------------------------------------
-map<t_id,map<t_id,t_id> >::iterator it;
-map<t_id,set<t_id> >::iterator it2;
-
     if(_lock_flag == '1') throw ReadLockException("Write not allowed");
 
     if(_bloom_edges.find(id) != _bloom_edges.end()) {
-        ostringstream ostr;
-        ostr << id;
-        throw invalid_argument("Edge id already in bloom filter: " + ostr.str());
+        throw invalid_argument(MessageExceptionBuilder::buildString("Edge id already in bloom filter", id));
     }
 
     // 2 * O(log-n)
     if( _nodes.find(source_id) == _nodes.end() ) {
-        throw invalid_argument("No source node");
+        throw invalid_argument(MessageExceptionBuilder::buildString("Invalid source node", source_id));
     }
     if( _nodes.find(target_id) == _nodes.end() ) {
-        throw invalid_argument("No target node");
+        throw invalid_argument(MessageExceptionBuilder::buildString("Invalid target node", target_id));
     }
 
     // 2*O(log-n)
-    it = _edges.find(source_id);
+    map<t_id,map<t_id,t_id> >::iterator it = _edges.find(source_id);
     if(it != _edges.end()) {
         pair<t_id,t_id> link = pair<t_id,t_id>(target_id,id);
         ((*it).second).insert(link);
@@ -95,7 +88,7 @@ map<t_id,set<t_id> >::iterator it2;
     }
 
     // 2*O(log-n)
-    it2 = _reverse_edges.find(target_id);
+    map<t_id,set<t_id> >::iterator it2 = _reverse_edges.find(target_id);
     if(it2 != _reverse_edges.end()) {
         ((*it2).second).insert(source_id);
     }
@@ -123,13 +116,11 @@ void Graph::removeNode(const t_id id) {
 //-----------------------------------------
 void Graph::removeEdge(const t_id source_id, const t_id target_id) {
 //-----------------------------------------
-map<t_id,t_id>::const_iterator it;
-
     if(_lock_flag == '1') throw ReadLockException("Write not allowed");
 
     // O(log-n)
     map<t_id,t_id>& links = _edges[source_id];
-    for( it=links.begin() ; it != links.end(); it++ ) {
+    for( map<t_id,t_id>::const_iterator it=links.begin() ; it != links.end(); it++ ) {
         _bloom_edges.erase(it->second);
     }
     links.erase(target_id);
@@ -148,15 +139,12 @@ map<t_id,t_id>::const_iterator it;
 //-----------------------------------------
 void Graph::removeInEdges(const t_id target_id) {
 //-----------------------------------------
-set<t_id>::iterator it;
-map<t_id,t_id>::const_iterator it2;
-
     if(_lock_flag == '1') throw ReadLockException("Write not allowed");
 
     // O(n + 4*log-n)
     set<t_id>& sources = _reverse_edges[target_id];
-    for( it=sources.begin() ; it != sources.end(); it++ ) {
-        for( it2=_edges[*it].begin() ; it2 != _edges[*it].end(); it2++ ) {
+    for( set<t_id>::iterator it=sources.begin() ; it != sources.end(); it++ ) {
+        for( map<t_id,t_id>::const_iterator it2=_edges[*it].begin() ; it2 != _edges[*it].end(); it2++ ) {
             _bloom_edges.erase(it2->second);
         }
         _edges[*it].erase(target_id);
@@ -170,14 +158,11 @@ map<t_id,t_id>::const_iterator it2;
 //-----------------------------------------
 void Graph::removeOutEdges(const t_id source_id) {
 //-----------------------------------------
-map<t_id,t_id>::iterator it;
-map<t_id,t_id>::const_iterator it2;
-
     if(_lock_flag == '1') throw ReadLockException("Write not allowed");
 
     // O(n + 4*log-n)
     map<t_id,t_id>& links = _edges[source_id];
-    for( it=links.begin() ; it != links.end(); it++ ) {
+    for( map<t_id,t_id>::iterator it=links.begin() ; it != links.end(); it++ ) {
         _bloom_edges.erase(it->second);
         _reverse_edges[it->first].erase(source_id);
         if(_reverse_edges[it->first].empty()) {
@@ -216,6 +201,7 @@ unsigned int Graph::getNodeCount() const {
 //-----------------------------------------
     if(_lock_flag == '2') throw WriteLockException("Read not allowed");
 
+    // 0(log-n)
     return _nodes.size();
 }
 
@@ -226,6 +212,7 @@ unsigned int count = 0;
 
     if(_lock_flag == '2') throw WriteLockException("Read not allowed");
 
+    // 0(n)
     for(map<t_id,map<t_id,t_id> >::const_iterator it = _edges.begin() ; it != _edges.end() ; it++) {
         count += (it->second).size();
     }
@@ -258,24 +245,24 @@ unsigned int count = 0;
 //-----------------------------------------
 set<t_id> Graph::getNeighbors(const t_id node_id) const {
 //-----------------------------------------
-set<t_id> s;
+set<t_id> s = set<t_id>();
 
     if(_lock_flag == '2') throw WriteLockException("Read not allowed");
 
+    // 0(n)
     map<t_id,map<t_id,t_id> >::const_iterator it_e = _edges.find(node_id);
     if(it_e != _edges.end()) {
-        // 0(n)
         for(map<t_id,t_id>::const_iterator it = (it_e->second).begin(); it != (it_e->second).end(); it++) {
-            t_id i = it->first;
-            s.insert(i);
+            t_id succ_id = it->first;
+            s.insert(succ_id);
         }
-        // 0(n)
-        map<t_id,set<t_id> >::const_iterator it_re = _reverse_edges.find(node_id);
-        if(it_re != _reverse_edges.end()) {
-            for(set<t_id>::const_iterator it = (it_re->second).begin(); it != (it_re->second).end(); it++) {
-                t_id i = *it;
-                s.insert(i);
-            }
+    }
+    // 0(n)
+    map<t_id,set<t_id> >::const_iterator it_re = _reverse_edges.find(node_id);
+    if(it_re != _reverse_edges.end()) {
+        for(set<t_id>::const_iterator it = (it_re->second).begin(); it != (it_re->second).end(); it++) {
+            t_id pred_id = *it;
+            s.insert(pred_id);
         }
     }
 
@@ -300,7 +287,7 @@ void Graph::clear() {
     _reverse_edges.clear();
     _bloom_edges.clear();
     _nodes.clear();
-     _lock_flag = '0';
+    _lock_flag = '0';
 }
 
 //-----------------------------------------
@@ -334,7 +321,7 @@ void Graph::readUnlock() {
 //-----------------------------------------
 void Graph::writeLock() throw() {
 //-----------------------------------------
-    if(_lock_flag == '0')  _lock_flag = '2';
+    if(_lock_flag == '0') _lock_flag = '2';
     else throw WriteLockException("Can't set a write-lock: another lock exists");
 }
 

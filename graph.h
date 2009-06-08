@@ -32,10 +32,9 @@
 #include <set>
 #include <map>
 #include <iostream>
+#include "typedefs.h"
 
 namespace libgexf {
-
-typedef unsigned int t_id; /*!< Type of all IDs */
 
 /*! \class Graph
     \brief Topology structure of the graph
@@ -72,7 +71,7 @@ public:
     bool isReadLock();
     bool isWriteLock();
     bool isUnlock();
-private:
+protected:
     std::set<t_id> _nodes; /*!< Set of all nodes */
     std::map<t_id,std::map<t_id,t_id> > _edges; /*!< map<source_id, map<target_id, edge_id> > */
     std::map<t_id,std::set<t_id> > _reverse_edges; /*!< map<target_id, set<source_id> > */
@@ -87,6 +86,8 @@ private:
     char _lock_flag;
 
     friend std::ostream& operator<<(std::ostream& os, const Graph& o);
+private:
+    //Graph& operator=(const Graph& orig);
 };
 
 }

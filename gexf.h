@@ -31,6 +31,8 @@
 
 #include <iostream>
 #include "graph.h"
+#include "undirectedgraph.h"
+#include "directedgraph.h"
 
 namespace libgexf {
 
@@ -47,10 +49,11 @@ namespace libgexf {
     class GEXF {
     public:
         GEXF();
-        //GEXF(const GEXF& orig);
+        GEXF(const GEXF& orig);
         virtual ~GEXF();
 
-        Graph& getGraph();
+        UndirectedGraph& getUndirectedGraph();
+        DirectedGraph& getDirectedGraph();
 
         /*! \var Graph _graph
             \brief Topology structure

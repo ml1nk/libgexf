@@ -1,5 +1,5 @@
 /*! \file graph_exceptions.h
-    \author sebastien
+    \author sebastien heymann
     \date 4 juin 2009, 10:36
     \version 0.1
  */
@@ -10,6 +10,8 @@
 
 #include <exception>
 #include <string>
+#include <sstream>
+#include "typedefs.h"
 
 namespace libgexf {
 
@@ -20,7 +22,6 @@ namespace libgexf {
     public:
         ReadLockException(const std::string what) throw() { _text = what; };
         virtual ~ReadLockException() throw() {};
-
         virtual const char* what() const throw() {
             return (const char *)(_text.c_str());
         }
@@ -38,6 +39,20 @@ namespace libgexf {
         }
     private:
         std::string _text;
+    };
+    
+
+    /*! \class MessageExceptionBuilder
+        \brief Facility to create messages about a given node_id
+     */
+    class MessageExceptionBuilder {
+    public:
+        static std::string buildString(std::string message, t_id node_id) {
+            std::ostringstream ostr;
+            ostr << ": " << node_id;
+            return message + ostr.str();
+        }
+        virtual void abstractClass() = 0;
     };
 
 }

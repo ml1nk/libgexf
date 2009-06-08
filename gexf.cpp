@@ -29,19 +29,37 @@
 
 namespace libgexf {
 
-GEXF::GEXF() : _graph() {
+GEXF::GEXF(): _graph() {
 }
 
-//GEXF::GEXF(const GEXF& orig) {
-//}
+GEXF::GEXF(const GEXF& orig) : _graph(orig._graph) {
+}
 
 GEXF::~GEXF() {
 }
 
 //-----------------------------------------
-Graph& GEXF::getGraph() {
+UndirectedGraph& GEXF::getUndirectedGraph() {
 //-----------------------------------------
-    return _graph;
+    // a graph is instanciable if the current one is empty
+    if(_graph.getNodeCount() == 0) {
+        UndirectedGraph* g = new UndirectedGraph();
+        _graph = *g;
+    }
+
+    return (UndirectedGraph&)_graph;
+}
+
+//-----------------------------------------
+DirectedGraph& GEXF::getDirectedGraph() {
+//-----------------------------------------
+    // a graph is instanciable if the current one is empty
+    if(_graph.getNodeCount() == 0) {
+        DirectedGraph* g = new DirectedGraph();
+        _graph = *g;
+    }
+
+    return (DirectedGraph&)_graph;
 }
 
 //-----------------------------------------

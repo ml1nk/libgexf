@@ -4,8 +4,12 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>directedgraph.h</itemPath>
       <itemPath>gexf.h</itemPath>
       <itemPath>graph.h</itemPath>
+      <itemPath>graph_exceptions.h</itemPath>
+      <itemPath>typedefs.h</itemPath>
+      <itemPath>undirectedgraph.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -14,17 +18,17 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>directedgraph.cpp</itemPath>
       <itemPath>gexf.cpp</itemPath>
       <itemPath>graph.cpp</itemPath>
+      <itemPath>inserters.cpp</itemPath>
+      <itemPath>undirectedgraph.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
-    <itemPath>graph_exceptions.h</itemPath>
-    <itemPath>inserters.cpp</itemPath>
-    <itemPath>libgexf.i</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -38,6 +42,12 @@
         <archiverTool>
         </archiverTool>
       </compileType>
+      <item path="directedgraph.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="directedgraph.h">
+        <itemTool>3</itemTool>
+      </item>
       <item path="gexf.cpp">
         <itemTool>1</itemTool>
       </item>
@@ -56,9 +66,14 @@
       <item path="inserters.cpp">
         <itemTool>1</itemTool>
       </item>
-      <item path="libgexf.i">
-        <itemExcluded>true</itemExcluded>
-        <itemTool>0</itemTool>
+      <item path="typedefs.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="undirectedgraph.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="undirectedgraph.h">
+        <itemTool>3</itemTool>
       </item>
     </conf>
     <conf name="Release" type="3">
@@ -80,6 +95,12 @@
         <archiverTool>
         </archiverTool>
       </compileType>
+      <item path="directedgraph.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="directedgraph.h">
+        <itemTool>3</itemTool>
+      </item>
       <item path="gexf.cpp">
         <itemTool>1</itemTool>
       </item>
@@ -98,9 +119,14 @@
       <item path="inserters.cpp">
         <itemTool>1</itemTool>
       </item>
-      <item path="libgexf.i">
-        <itemExcluded>true</itemExcluded>
-        <itemTool>0</itemTool>
+      <item path="typedefs.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="undirectedgraph.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="undirectedgraph.h">
+        <itemTool>3</itemTool>
       </item>
     </conf>
   </confs>

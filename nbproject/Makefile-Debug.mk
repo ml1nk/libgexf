@@ -29,6 +29,8 @@ OBJECTDIR=build/Debug/${PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/graph.o \
+	${OBJECTDIR}/undirectedgraph.o \
+	${OBJECTDIR}/directedgraph.o \
 	${OBJECTDIR}/gexf.o \
 	${OBJECTDIR}/inserters.o
 
@@ -59,6 +61,16 @@ ${OBJECTDIR}/graph.o: graph.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/graph.o graph.cpp
+
+${OBJECTDIR}/undirectedgraph.o: undirectedgraph.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/undirectedgraph.o undirectedgraph.cpp
+
+${OBJECTDIR}/directedgraph.o: directedgraph.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/directedgraph.o directedgraph.cpp
 
 ${OBJECTDIR}/gexf.o: gexf.cpp 
 	${MKDIR} -p ${OBJECTDIR}
