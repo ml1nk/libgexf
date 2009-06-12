@@ -17,9 +17,11 @@ Manual Python binding with swig on Linux:
 
 Automated Python binding with swig on Linux:
    $ cd binding/python
+then
    $ swig -c++ -python -o libgexf_wrap.cpp libgexf.i
    $ python setup.py build
-
+or
+   $ ./build.sh
 
 To use :
    $ python
@@ -38,6 +40,23 @@ to distribute
     $ python setup.py sdist
     
     
+
+
+Manual Perl binding with swig on Linux:
+   $ swig -c++ -perl -o libgexf_wrap.cpp libgexf.i
+   $ gcc -fPIC -c libgexf_wrap.cpp ../../../graph.cpp ../../../gexf.cpp -I/usr/lib/perl/5.10.0/CORE
+   $ g++ -shared libgexf_wrap.o graph.o gexf.o -o _libgexf.so
+
+To use:
+   Add to your shell (.bashrc usually) something like
+        PERL5LIB=${PERL5LIB:+$PERL5LIB:}/home/myname/my/path/Graph-LibGEXF/lib
+        export PERL5LIB
+
+To test:
+   run t/00_compile.t
+
+
+
 
 
 Limitations:
