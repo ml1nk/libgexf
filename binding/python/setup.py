@@ -17,8 +17,9 @@ libgexf_module = Extension(
     # sources C: les .o seront automatiquement généré,
     # et automatiquement linké avec le module
     '../../graph.cpp',
+    '../../directedgraph.cpp',
+    '../../undirectedgraph.cpp',
     '../../gexf.cpp',
-    #'path/to/libgexf/another/source.cpp',
 
     # chemin du wrapper généré automatiquement par SWIG (ce wrapper doit déjà exister donc)
     'libgexf_wrap.cpp',

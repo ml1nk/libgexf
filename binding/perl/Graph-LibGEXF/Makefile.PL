@@ -26,6 +26,8 @@ cc_inc_paths
 
 cc_files
   'graph.o',
+  'directedgraph.o',
+  'undirectedgraph.o',
   'gexf.o',
   'libgexf_wrap.o';
 

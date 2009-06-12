@@ -3,7 +3,7 @@ SWIG USAGE
 
 Manual Python binding with swig on Linux:
    $ swig -c++ -python -o libgexf_wrap.cpp libgexf.i
-   $ gcc -fPIC -c libgexf_wrap.cpp ../../graph.cpp ../../gexf.cpp -I/usr/include/python2.5
+   $ gcc -fPIC -c libgexf_wrap.cpp ../../graph.cpp ../../directedgraph.cpp ../../undirectedgraph.cpp ../../gexf.cpp -I/usr/include/python2.5
    $ g++ -shared libgexf_wrap.o graph.o gexf.o -o _libgexf.so
 
 Automated Python binding with swig on Linux:
