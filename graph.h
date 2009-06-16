@@ -33,6 +33,7 @@
 #include <map>
 #include <iostream>
 #include "typedefs.h"
+#include "graph_exceptions.h"
 
 namespace libgexf {
 
@@ -64,9 +65,9 @@ public:
     void clear();
     void clearEdges();
     
-    void readLock() throw();
+    void readLock() throw(ReadLockException);
     void readUnlock();
-    void writeLock() throw();
+    void writeLock() throw(WriteLockException);
     void writeUnlock();
     bool isReadLock();
     bool isWriteLock();

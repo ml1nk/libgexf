@@ -17,21 +17,57 @@
 %}
 
 %include "std_except.i"
-/*%include "std_set.i"*/
+%include "typemaps.i"
+/*%include "java.swg"*/
 
-%exception {
+/* Exceptions */
+
+
+/*%typemap(javabase) ReadLockException "java.lang.Exception";
+%typemap(javacode) ReadLockException %{
+  public String getMessage() {
+    return what();
+  }
+%}*/
+
+/*%typemap(throws, throws="ReadLockException") ReadLockException {
+  jclass clazz = jenv->FindClass("java/lang/Exception");
+  jenv->ThrowNew(clazz, $1.what().c_str());
+  return $null;
+}*/
+
+
+
+/*%exception {
   try {
     $action
   } catch (const std::exception& e) {
+    jclass excep = jenv->FindClass("java/lang/Exception");
+    jenv->ThrowNew(excep, e.what());
+    return $null;
+  } catch(...) {
+    jclass excep = jenv->FindClass("java/lang/Exception");
+    jenv->ThrowNew(excep, "Unknown error");
+    return $null;
+  }
+}*/
+
+/*%javaexception("java.lang.Exception") Graph::readLock {
+  try {
+     $action
+  } catch (const ReadLockException& e) {
     jclass clazz = jenv->FindClass("java/lang/Exception");
     jenv->ThrowNew(clazz, e.what());
     return $null;
-  } catch(...) {
-    jclass clazz = jenv->FindClass("java/lang/Exception");
-    jenv->ThrowNew(clazz, "Unknown error");
-    return $null;
-  }
-}
+   }
+}*/
+
+%typemap(out) unsigned int &INPUT %{ $result = (jlong)$1; %}
+%typemap(out) unsigned int *INPUT %{ $result = (jlong)*$1; %}
+%typemap(javaout) unsigned int &INPUT { return $jnicall; }
+%typemap(javaout) unsigned int *INPUT { return $jnicall; }
+
+
 
 /* Let's just grab the original header file here */
 %include "../../typedefs.h"
@@ -40,3 +76,5 @@
 %include "../../directedgraph.h"
 %include "../../undirectedgraph.h"
 %include "../../gexf.h"
+
+

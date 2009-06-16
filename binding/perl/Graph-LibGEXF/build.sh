@@ -1,30 +1,32 @@
 #!/bin/bash
+module_version = 0.01
 echo " ---------------------------------"
 echo " |         Perl5 building        |"
 echo " ---------------------------------"
 echo ""
-# clean
-#rm -R build
-#rm MANIFEST
-#rm libgexf_wrap.cpp
-#rm pm_to_blib
-#rm _libgexf.so
-#rm *.o # do not delete
-
 echo "Generating interface files.."
-swig -c++ -perl -o libgexf_wrap.cpp libgexf.i
+swig -c++ -perl -shadow -o libgexf_wrap.cpp libgexf.i
+mv LibGEXF.pm lib/Graph/
+
+# adding module version (dirty way)
+head lib/Graph/LibGEXF.pm -n -1 > lib/Graph/LibGEXF.pm.tmp
+echo "use version;" >> lib/Graph/LibGEXF.pm.tmp
+echo "our \$VERSION = '$module_version';" >> lib/Graph/LibGEXF.pm.tmp
+echo "1;" >> lib/Graph/LibGEXF.pm.tmp
+cat lib/Graph/LibGEXF.pm.tmp pmdoc > lib/Graph/LibGEXF.pm
+rm lib/Graph/LibGEXF.pm.tmp
 
 echo "Compiling.."
-#gcc -fPIC -c libgexf_wrap.cpp ../../../graph.cpp ../../../gexf.cpp -I/usr/lib/perl/5.10.0/CORE
-g++ -c -fpic libgexf_wrap.cpp \
-    ../../../graph.cpp \
-    ../../../directedgraph.cpp \
-    ../../../undirectedgraph.cpp \
-    ../../../gexf.cpp \
-    -D_REENTRANT -D_GNU_SOURCE -DDEBIAN -fno-strict-aliasing -pipe -isystem /usr/local/include -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 \
-    -I/usr/lib/perl/5.10.0/CORE
-g++ -shared libgexf_wrap.o graph.o gexf.o -o _libgexf.so
+perl Makefile.PL
+make
+
+echo "Testing.."
+make test
 
 echo "Cleaning.."
 rm libgexf_wrap.cpp
+rm ../../../*.o
+rm LibGEXF.bs
+rm pm_to_blib
+rm *~
 

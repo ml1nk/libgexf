@@ -11,16 +11,17 @@
 #   MakeMaker Parameters:
 
 #     AUTHOR => q[sebastien heymann <sebastien.heymann@gephi.org>]
+#     DEFINE => q[-o $*$(OBJ_EXT) -c]
 #     DIR => []
 #     DISTNAME => q[Graph-LibGEXF]
 #     INC => q[-I.]
-#     LIBS => q[ -lm]
+#     LIBS => q[ -lm -lstdc++]
 #     NAME => q[Graph::LibGEXF]
 #     NO_META => q[1]
-#     OBJECT => q[graph.o gexf.o libgexf_wrap.o]
+#     OBJECT => q[../../../graph.o ../../../directedgraph.o ../../../undirectedgraph.o ../../../gexf.o libgexf_wrap.o]
 #     PL_FILES => {  }
 #     PREREQ_PM => { Test::More=>q[0], ExtUtils::MakeMaker=>q[6.50] }
-#     VERSION => q[0.01]
+#     VERSION => q[]
 #     dist => { PREOP=>q[$(PERL) -I. "-MModule::Install::Admin" -e "dist_preop(q($(DISTVNAME)))"] }
 #     test => { TESTS=>q[t/*.t xt/*.t] }
 
@@ -61,11 +62,11 @@ DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
 NAME = Graph::LibGEXF
 NAME_SYM = Graph_LibGEXF
-VERSION = 0.01
+VERSION = 
 VERSION_MACRO = VERSION
-VERSION_SYM = 0_01
+VERSION_SYM = 
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 0.01
+XS_VERSION = 
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -154,7 +155,8 @@ PARENT_NAME = Graph
 DLBASE = $(BASEEXT)
 VERSION_FROM = 
 INC = -I.
-OBJECT = graph$(OBJ_EXT) gexf$(OBJ_EXT) libgexf_wrap$(OBJ_EXT)
+DEFINE = -o $*$(OBJ_EXT) -c
+OBJECT = ../../../graph$(OBJ_EXT) ../../../directedgraph$(OBJ_EXT) ../../../undirectedgraph$(OBJ_EXT) ../../../gexf$(OBJ_EXT) libgexf_wrap$(OBJ_EXT)
 LDFROM = $(OBJECT)
 LINKTYPE = dynamic
 BOOTDEP = 
@@ -187,16 +189,10 @@ PERL_ARCHIVE       =
 PERL_ARCHIVE_AFTER = 
 
 
-TO_INST_PM = LibGEXF.pm \
-	lib/Graph/LibGEXF.pm \
-	libgexf.pm
+TO_INST_PM = lib/Graph/LibGEXF.pm
 
 PM_TO_BLIB = lib/Graph/LibGEXF.pm \
-	blib/lib/Graph/LibGEXF.pm \
-	libgexf.pm \
-	$(INST_LIB)/Graph/libgexf.pm \
-	LibGEXF.pm \
-	$(INST_LIB)/Graph/LibGEXF.pm
+	blib/lib/Graph/LibGEXF.pm
 
 
 # --- MakeMaker platform_constants section:
@@ -271,7 +267,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = Graph-LibGEXF
-DISTVNAME = Graph-LibGEXF-0.01
+DISTVNAME = Graph-LibGEXF-
 
 
 # --- MakeMaker macro section:
@@ -293,9 +289,10 @@ MPOLLUTE =
 # Graph::LibGEXF might depend on some other libraries:
 # See ExtUtils::Liblist for details
 #
-EXTRALIBS = 
-LDLOADLIBS = -lm
+EXTRALIBS = -lstdc++
+LDLOADLIBS = -lm -lstdc++
 BSLOADLIBS = 
+LD_RUN_PATH = /usr/lib
 
 
 # --- MakeMaker const_cccmd section:
@@ -313,6 +310,7 @@ PASTHRU = LIBPERL_A="$(LIBPERL_A)"\
 	LINKTYPE="$(LINKTYPE)"\
 	OPTIMIZE="$(OPTIMIZE)"\
 	PREFIX="$(PREFIX)"\
+	PASTHRU_DEFINE="$(PASTHRU_DEFINE)"\
 	PASTHRU_INC="$(PASTHRU_INC)"
 
 
@@ -477,7 +475,7 @@ INST_DYNAMIC_FIX =
 
 $(INST_DYNAMIC): $(OBJECT) $(MYEXTLIB) $(BOOTSTRAP) $(INST_ARCHAUTODIR)$(DFSEP).exists $(EXPORT_LIST) $(PERL_ARCHIVE) $(PERL_ARCHIVE_AFTER) $(INST_DYNAMIC_DEP)
 	$(RM_F) $@
-	$(LD)  $(LDDLFLAGS) $(LDFROM) $(OTHERLDFLAGS) -o $@ $(MYEXTLIB)	\
+	LD_RUN_PATH="$(LD_RUN_PATH)" $(LD)  $(LDDLFLAGS) $(LDFROM) $(OTHERLDFLAGS) -o $@ $(MYEXTLIB)	\
 	  $(PERL_ARCHIVE) $(LDLOADLIBS) $(PERL_ARCHIVE_AFTER) $(EXPORT_LIST)	\
 	  $(INST_DYNAMIC_FIX)
 	$(CHMOD) $(PERM_RWX) $@
@@ -915,7 +913,7 @@ testdb_static :: pure_all $(MAP_TARGET)
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0,01,0,0">' > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0,0,0,0">' > $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <TITLE>$(DISTNAME)</TITLE>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <ABSTRACT></ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>sebastien heymann &lt;sebastien.heymann@gephi.org&gt;</AUTHOR>' >> $(DISTNAME).ppd
@@ -933,9 +931,7 @@ ppd :
 
 pm_to_blib : $(TO_INST_PM)
 	$(NOECHO) $(ABSPERLRUN) -MExtUtils::Install -e 'pm_to_blib({@ARGV}, '\''$(INST_LIB)/auto'\'', '\''$(PM_FILTER)'\'')' -- \
-	  lib/Graph/LibGEXF.pm blib/lib/Graph/LibGEXF.pm \
-	  libgexf.pm $(INST_LIB)/Graph/libgexf.pm \
-	  LibGEXF.pm $(INST_LIB)/Graph/LibGEXF.pm 
+	  lib/Graph/LibGEXF.pm blib/lib/Graph/LibGEXF.pm 
 	$(NOECHO) $(TOUCH) pm_to_blib
 
 

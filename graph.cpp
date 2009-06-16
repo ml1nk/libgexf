@@ -300,7 +300,7 @@ void Graph::clearEdges() {
 }
 
 //-----------------------------------------
-void Graph::readLock() throw() {
+void Graph::readLock() throw(ReadLockException) {
 //-----------------------------------------
     if(_lock_flag != '2') {
         _lock_flag = '1';
@@ -319,7 +319,7 @@ void Graph::readUnlock() {
 }
 
 //-----------------------------------------
-void Graph::writeLock() throw() {
+void Graph::writeLock() throw(WriteLockException) {
 //-----------------------------------------
     if(_lock_flag == '0') _lock_flag = '2';
     else throw WriteLockException("Can't set a write-lock: another lock exists");

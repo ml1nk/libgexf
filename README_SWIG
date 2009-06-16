@@ -9,13 +9,7 @@ Compile it and install it on your computer.
 SWIG USAGE
 
 
-Manual Python binding with swig on Linux:
-   $ cd binding/python
-   $ swig -c++ -python -o libgexf_wrap.cpp libgexf.i
-   $ gcc -fPIC -c libgexf_wrap.cpp ../../graph.cpp ../../gexf.cpp -I/usr/include/python2.5
-   $ g++ -shared libgexf_wrap.o graph.o gexf.o -o _libgexf.so
-
-Automated Python binding with swig on Linux:
+Python binding with swig on Linux:
    $ cd binding/python
 then
    $ swig -c++ -python -o libgexf_wrap.cpp libgexf.i
@@ -42,10 +36,9 @@ to distribute
     
 
 
-Manual Perl binding with swig on Linux:
-   $ swig -c++ -perl -o libgexf_wrap.cpp libgexf.i
-   $ gcc -fPIC -c libgexf_wrap.cpp ../../../graph.cpp ../../../gexf.cpp -I/usr/lib/perl/5.10.0/CORE
-   $ g++ -shared libgexf_wrap.o graph.o gexf.o -o _libgexf.so
+Perl binding with swig on Linux:
+   $ cd binding/perl/
+   $ ./build.sh
 
 To use:
    Add to your shell (.bashrc usually) something like
@@ -58,9 +51,16 @@ To test:
 
 
 
+Java binding with swig on Linux:
+   $ cd binding/java/
+   $ ./build.sh
+
+
+
 
 Limitations:
    * friend functions are ignored
    * new, delete, assignment and conversion operators are ignored...in general, do not overload 
 operators!
    * prefer avoid functions with variable arguments
+   * exception are thrown in Java as RuntimeException...iiirk !

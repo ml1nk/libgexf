@@ -19,8 +19,8 @@
 #include "../../../gexf.h"
 %}
 
+%include "typemaps.i"
 %include "std_except.i"
-/*%include "std_set.i"*/
 
 %exception {
   try {
