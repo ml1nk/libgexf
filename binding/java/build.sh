@@ -27,3 +27,5 @@ echo "Testing.."
 javac runme.java
 java runme #-verbose:jni
 
+echo "Done!"
+

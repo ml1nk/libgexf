@@ -21,7 +21,8 @@
 #     OBJECT => q[../../../graph.o ../../../directedgraph.o ../../../undirectedgraph.o ../../../gexf.o libgexf_wrap.o]
 #     PL_FILES => {  }
 #     PREREQ_PM => { Test::More=>q[0], ExtUtils::MakeMaker=>q[6.50] }
-#     VERSION => q[]
+#     VERSION => q[0.01]
+#     clean => { FILES=>q[META.yml] }
 #     dist => { PREOP=>q[$(PERL) -I. "-MModule::Install::Admin" -e "dist_preop(q($(DISTVNAME)))"] }
 #     test => { TESTS=>q[t/*.t xt/*.t] }
 
@@ -62,11 +63,11 @@ DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
 NAME = Graph::LibGEXF
 NAME_SYM = Graph_LibGEXF
-VERSION = 
+VERSION = 0.01
 VERSION_MACRO = VERSION
-VERSION_SYM = 
+VERSION_SYM = 0_01
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 
+XS_VERSION = 0.01
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -267,7 +268,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = Graph-LibGEXF
-DISTVNAME = Graph-LibGEXF-
+DISTVNAME = Graph-LibGEXF-0.01
 
 
 # --- MakeMaker macro section:
@@ -550,7 +551,7 @@ clean :: clean_subdirs
 	  perl.exe so_locations \
 	  $(BASEEXT).exp 
 	- $(RM_RF) \
-	  blib 
+	  META.yml blib 
 	- $(MV) $(FIRST_MAKEFILE) $(MAKEFILE_OLD) $(DEV_NULL)
 
 
@@ -913,7 +914,7 @@ testdb_static :: pure_all $(MAP_TARGET)
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0,0,0,0">' > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0,01,0,0">' > $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <TITLE>$(DISTNAME)</TITLE>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <ABSTRACT></ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>sebastien heymann &lt;sebastien.heymann@gephi.org&gt;</AUTHOR>' >> $(DISTNAME).ppd

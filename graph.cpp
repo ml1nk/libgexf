@@ -28,7 +28,7 @@
 
 #include "graph.h"
 #include "graph_exceptions.h"
-#include "inserters.cpp"
+#include "inserters.h"
 #include <stdexcept>
 #include <map>
 #include <set>

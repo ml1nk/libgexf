@@ -16,6 +16,7 @@ libgexf_module = Extension(
 
     # sources C: les .o seront automatiquement généré,
     # et automatiquement linké avec le module
+    '../../reader.cpp',
     '../../graph.cpp',
     '../../directedgraph.cpp',
     '../../undirectedgraph.cpp',
@@ -31,6 +32,7 @@ libgexf_module = Extension(
   # ici inutile de donner le format spécifique à gcc ("-lpthread") ou spécifique à visual studio etc..
   # il suffit de mettre "pthread" et le script python va rajouter le "-l" devant si nécessaire
   libraries=[
+     'libxml++'
      #'z', # zlib (compression) (inutile sous ubuntu par exemple, car déjà intégré au packaging de base pour développer)
      #'pthread' # Posix Threads (multithreading posix) (inutile sous linux, car posix fait déjà partie du système)
   ] 

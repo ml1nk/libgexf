@@ -16,6 +16,7 @@ auto_include;
 cc_lib_links
   'm',
   'stdc++', # IMPORTANT: linker to lib STD
+  'libxml++'
   ;
 
 # if object files are not in the same dir as source files

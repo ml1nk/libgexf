@@ -1,5 +1,5 @@
 #!/bin/bash
-module_version = 0.01
+module_version=0.01
 echo " ---------------------------------"
 echo " |         Perl5 building        |"
 echo " ---------------------------------"
@@ -29,4 +29,6 @@ rm ../../../*.o
 rm LibGEXF.bs
 rm pm_to_blib
 rm *~
+
+echo "Done!"
 

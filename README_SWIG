@@ -8,6 +8,9 @@ Compile it and install it on your computer.
 
 SWIG USAGE
 
+Build all:
+    $ binding/build.sh
+
 
 Python binding with swig on Linux:
    $ cd binding/python

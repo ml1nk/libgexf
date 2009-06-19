@@ -95,7 +95,7 @@ class SwigPyIterator(_object):
 SwigPyIterator_swigregister = _libgexf.SwigPyIterator_swigregister
 SwigPyIterator_swigregister(SwigPyIterator)
 
-class ReadLockException(_object):
+class ReadLockException(Exception):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, ReadLockException, name, value)
     __swig_getmethods__ = {}
@@ -111,7 +111,7 @@ class ReadLockException(_object):
 ReadLockException_swigregister = _libgexf.ReadLockException_swigregister
 ReadLockException_swigregister(ReadLockException)
 
-class WriteLockException(_object):
+class WriteLockException(Exception):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, WriteLockException, name, value)
     __swig_getmethods__ = {}

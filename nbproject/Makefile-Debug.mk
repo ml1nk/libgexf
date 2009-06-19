@@ -28,10 +28,11 @@ OBJECTDIR=build/Debug/${PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/graph.o \
-	${OBJECTDIR}/undirectedgraph.o \
 	${OBJECTDIR}/directedgraph.o \
 	${OBJECTDIR}/gexf.o \
+	${OBJECTDIR}/undirectedgraph.o \
+	${OBJECTDIR}/graph.o \
+	${OBJECTDIR}/reader.o \
 	${OBJECTDIR}/inserters.o
 
 # C Compiler Flags
@@ -45,42 +46,47 @@ CXXFLAGS=
 FFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=/usr/lib/libxml++-2.6.so
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	${MAKE}  -f nbproject/Makefile-Debug.mk dist/Debug/${PLATFORM}/liblibgexf.a
+	${MAKE}  -f nbproject/Makefile-Debug.mk dist/Debug/${PLATFORM}/libgexf.so
 
-dist/Debug/${PLATFORM}/liblibgexf.a: ${OBJECTFILES}
+dist/Debug/${PLATFORM}/libgexf.so: /usr/lib/libxml++-2.6.so
+
+dist/Debug/${PLATFORM}/libgexf.so: ${OBJECTFILES}
 	${MKDIR} -p dist/Debug/${PLATFORM}
-	${RM} dist/Debug/${PLATFORM}/liblibgexf.a
-	${AR} rv dist/Debug/${PLATFORM}/liblibgexf.a ${OBJECTFILES} 
-	$(RANLIB) dist/Debug/${PLATFORM}/liblibgexf.a
-
-${OBJECTDIR}/graph.o: graph.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/graph.o graph.cpp
-
-${OBJECTDIR}/undirectedgraph.o: undirectedgraph.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/undirectedgraph.o undirectedgraph.cpp
+	${LINK.cc} -shared -o dist/Debug/${PLATFORM}/libgexf.so -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
 ${OBJECTDIR}/directedgraph.o: directedgraph.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/directedgraph.o directedgraph.cpp
+	$(COMPILE.cc) -g -I/usr/include/libxml++-2.6 -I/usr/include/glibmm-2.4 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/lib/glibmm-2.4/include -I/usr/lib/libxml++-2.6/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/directedgraph.o directedgraph.cpp
 
 ${OBJECTDIR}/gexf.o: gexf.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/gexf.o gexf.cpp
+	$(COMPILE.cc) -g -I/usr/include/libxml++-2.6 -I/usr/include/glibmm-2.4 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/lib/glibmm-2.4/include -I/usr/lib/libxml++-2.6/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/gexf.o gexf.cpp
+
+${OBJECTDIR}/undirectedgraph.o: undirectedgraph.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -I/usr/include/libxml++-2.6 -I/usr/include/glibmm-2.4 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/lib/glibmm-2.4/include -I/usr/lib/libxml++-2.6/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/undirectedgraph.o undirectedgraph.cpp
+
+${OBJECTDIR}/graph.o: graph.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -I/usr/include/libxml++-2.6 -I/usr/include/glibmm-2.4 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/lib/glibmm-2.4/include -I/usr/lib/libxml++-2.6/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/graph.o graph.cpp
+
+${OBJECTDIR}/reader.o: reader.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -I/usr/include/libxml++-2.6 -I/usr/include/glibmm-2.4 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/lib/glibmm-2.4/include -I/usr/lib/libxml++-2.6/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/reader.o reader.cpp
 
 ${OBJECTDIR}/inserters.o: inserters.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/inserters.o inserters.cpp
+	$(COMPILE.cc) -g -I/usr/include/libxml++-2.6 -I/usr/include/glibmm-2.4 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/lib/glibmm-2.4/include -I/usr/lib/libxml++-2.6/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/inserters.o inserters.cpp
 
 # Subprojects
 .build-subprojects:
@@ -88,7 +94,7 @@ ${OBJECTDIR}/inserters.o: inserters.cpp
 # Clean Targets
 .clean-conf:
 	${RM} -r build/Debug
-	${RM} dist/Debug/${PLATFORM}/liblibgexf.a
+	${RM} dist/Debug/${PLATFORM}/libgexf.so
 
 # Subprojects
 .clean-subprojects:

@@ -9,9 +9,9 @@ TOP=`pwd`
 PLATFORM=GNU-Linux-x86
 TMPDIR=build/Debug/${PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/Debug/${PLATFORM}/liblibgexf.a
-OUTPUT_BASENAME=liblibgexf.a
-PACKAGE_TOP_DIR=libgexf/
+OUTPUT_PATH=dist/Debug/${PLATFORM}/libgexf.so
+OUTPUT_BASENAME=libgexf.so
+PACKAGE_TOP_DIR=liblibgexf.so/
 
 # Functions
 function checkReturnCode
@@ -56,15 +56,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf/lib
+makeDirectory ${TMPDIR}/liblibgexf.so/lib
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}lib/${OUTPUT_BASENAME}" 0644
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f dist/Debug/${PLATFORM}/package/libgexf.tar
+rm -f dist/Debug/${PLATFORM}/package/liblibgexf.so.tar
 cd ${TMPDIR}
-tar -vcf ../../../../dist/Debug/${PLATFORM}/package/libgexf.tar *
+tar -vcf ../../../../dist/Debug/${PLATFORM}/package/liblibgexf.so.tar *
 checkReturnCode
 
 # Cleanup

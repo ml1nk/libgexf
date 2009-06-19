@@ -17,3 +17,5 @@ python setup.py build
 echo "Cleaning.."
 ./clean.sh
 
+echo "Done!"
+
