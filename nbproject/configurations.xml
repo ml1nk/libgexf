@@ -4,11 +4,15 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>/home/sebastien/NetBeansProjects/libgexf/data.h</itemPath>
       <itemPath>directedgraph.h</itemPath>
+      <itemPath>exceptions.h</itemPath>
       <itemPath>gexf.h</itemPath>
+      <itemPath>gexfparser.h</itemPath>
       <itemPath>graph.h</itemPath>
-      <itemPath>graph_exceptions.h</itemPath>
       <itemPath>inserters.h</itemPath>
+      <itemPath>libgexf.h</itemPath>
+      <itemPath>/home/sebastien/NetBeansProjects/libgexf/metadata.h</itemPath>
       <itemPath>reader.h</itemPath>
       <itemPath>typedefs.h</itemPath>
       <itemPath>undirectedgraph.h</itemPath>
@@ -20,10 +24,13 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>/home/sebastien/NetBeansProjects/libgexf/data.cpp</itemPath>
       <itemPath>directedgraph.cpp</itemPath>
       <itemPath>gexf.cpp</itemPath>
+      <itemPath>gexfparser.cpp</itemPath>
       <itemPath>graph.cpp</itemPath>
       <itemPath>inserters.cpp</itemPath>
+      <itemPath>/home/sebastien/NetBeansProjects/libgexf/metadata.cpp</itemPath>
       <itemPath>reader.cpp</itemPath>
       <itemPath>undirectedgraph.cpp</itemPath>
     </logicalFolder>
@@ -44,25 +51,35 @@
       <compileType>
         <ccCompilerTool>
           <includeDirectories>
-            <directoryPath>/usr/include/libxml++-2.6</directoryPath>
-            <directoryPath>/usr/include/glibmm-2.4</directoryPath>
-            <directoryPath>/usr/include/glib-2.0</directoryPath>
-            <directoryPath>/usr/lib/glib-2.0/include</directoryPath>
-            <directoryPath>/usr/lib/glibmm-2.4/include</directoryPath>
-            <directoryPath>/usr/lib/libxml++-2.6/include</directoryPath>
+            <directoryPath>/usr/include/libxml2</directoryPath>
           </includeDirectories>
         </ccCompilerTool>
         <linkerTool>
           <output>dist/Debug/${PLATFORM}/libgexf.so</output>
           <linkerLibItems>
-            <linkerLibFileItem>/usr/lib/libxml++-2.6.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/libxml2.so</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/data.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/data.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/metadata.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/metadata.h">
+        <itemTool>3</itemTool>
+      </item>
       <item path="directedgraph.cpp">
         <itemTool>1</itemTool>
       </item>
       <item path="directedgraph.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="exceptions.h">
         <itemTool>3</itemTool>
       </item>
       <item path="gexf.cpp">
@@ -71,19 +88,25 @@
       <item path="gexf.h">
         <itemTool>3</itemTool>
       </item>
+      <item path="gexfparser.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="gexfparser.h">
+        <itemTool>3</itemTool>
+      </item>
       <item path="graph.cpp">
         <itemTool>1</itemTool>
       </item>
       <item path="graph.h">
         <itemTool>3</itemTool>
       </item>
-      <item path="graph_exceptions.h">
-        <itemTool>3</itemTool>
-      </item>
       <item path="inserters.cpp">
         <itemTool>1</itemTool>
       </item>
       <item path="inserters.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="libgexf.h">
         <itemTool>3</itemTool>
       </item>
       <item path="reader.cpp">
@@ -121,10 +144,25 @@
         <archiverTool>
         </archiverTool>
       </compileType>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/data.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/data.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/metadata.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/metadata.h">
+        <itemTool>3</itemTool>
+      </item>
       <item path="directedgraph.cpp">
         <itemTool>1</itemTool>
       </item>
       <item path="directedgraph.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="exceptions.h">
         <itemTool>3</itemTool>
       </item>
       <item path="gexf.cpp">
@@ -133,19 +171,25 @@
       <item path="gexf.h">
         <itemTool>3</itemTool>
       </item>
+      <item path="gexfparser.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="gexfparser.h">
+        <itemTool>3</itemTool>
+      </item>
       <item path="graph.cpp">
         <itemTool>1</itemTool>
       </item>
       <item path="graph.h">
         <itemTool>3</itemTool>
       </item>
-      <item path="graph_exceptions.h">
-        <itemTool>3</itemTool>
-      </item>
       <item path="inserters.cpp">
         <itemTool>1</itemTool>
       </item>
       <item path="inserters.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="libgexf.h">
         <itemTool>3</itemTool>
       </item>
       <item path="reader.cpp">

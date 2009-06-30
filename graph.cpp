@@ -27,7 +27,7 @@
 */
 
 #include "graph.h"
-#include "graph_exceptions.h"
+#include "exceptions.h"
 #include "inserters.h"
 #include <stdexcept>
 #include <map>
@@ -38,16 +38,17 @@ using namespace std;
 
 namespace libgexf {
 
-Graph::Graph() : _nodes(), _edges(), _reverse_edges(), _bloom_edges(), _lock_flag('0'), _rlock_count(0) {
+Graph::Graph() : _nodes(), _edges(), _reverse_edges(), _bloom_edges(), _edges_data(), _lock_flag('0'), _rlock_count(0) {
 }
 
-Graph::Graph(const Graph& orig): _nodes(orig._nodes), _edges(orig._edges), _reverse_edges(orig._reverse_edges), _lock_flag(orig._lock_flag), _rlock_count(orig._rlock_count) {
+Graph::Graph(const Graph& orig): _nodes(orig._nodes), _edges(orig._edges), _reverse_edges(orig._reverse_edges), _edges_data(orig._edges_data), _lock_flag(orig._lock_flag), _rlock_count(orig._rlock_count) {
 }
 
 Graph::~Graph() {
     _edges.clear();
     _reverse_edges.clear();
     _bloom_edges.clear();
+    _edges_data.clear();
     _nodes.clear();
 }
 
@@ -78,6 +79,9 @@ void Graph::addEdge(const t_id id, const t_id source_id, const t_id target_id) {
     // 2*O(log-n)
     map<t_id,map<t_id,t_id> >::iterator it = _edges.find(source_id);
     if(it != _edges.end()) {
+        // TODO si deja un lien source->target, alors incrementer
+        // (creer s'il le faut en initialisant a 2 car 1 est implicite) _data_edges(id).COUNT
+
         pair<t_id,t_id> link = pair<t_id,t_id>(target_id,id);
         ((*it).second).insert(link);
     }
@@ -121,6 +125,7 @@ void Graph::removeEdge(const t_id source_id, const t_id target_id) {
     // O(log-n)
     map<t_id,t_id>& links = _edges[source_id];
     for( map<t_id,t_id>::const_iterator it=links.begin() ; it != links.end(); it++ ) {
+        // TODO memoriser le edge_id
         _bloom_edges.erase(it->second);
     }
     links.erase(target_id);
@@ -134,6 +139,9 @@ void Graph::removeEdge(const t_id source_id, const t_id target_id) {
     if(sources.empty()) {
         _reverse_edges.erase(target_id);
     }
+
+    // TODO supprimer _data_edges.(edge_id)
+    // Note: le SparseGraph decrementera et supprimer si count = 0
 }
 
 //-----------------------------------------
@@ -283,6 +291,7 @@ void Graph::clearEdges(const t_id node_id) {
 void Graph::clear() {
 //-----------------------------------------
     if(_lock_flag == '1') throw ReadLockException("Write not allowed");
+    _edges_data.clear();
     _edges.clear();
     _reverse_edges.clear();
     _bloom_edges.clear();
@@ -294,6 +303,7 @@ void Graph::clear() {
 void Graph::clearEdges() {
 //-----------------------------------------
     if(_lock_flag == '1') throw ReadLockException("Write not allowed");
+    _edges_data.clear();
     _edges.clear();
     _reverse_edges.clear();
     _bloom_edges.clear();
@@ -363,4 +373,4 @@ ostream& operator<<(ostream& os, const Graph& o) {
     return os;
 }
 
-}
+} /* namespace libgexf */

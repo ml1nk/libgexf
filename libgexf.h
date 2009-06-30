@@ -1,6 +1,7 @@
-/*! \file typedefs.h
-    \author sebastien
-    \date 8 juin 2009, 14:22
+/*! \file libgexf.h
+    \author sebastien heymann
+    \date 22 juin 2009, 16:45
+    \version 0.1
  */
 
 /*
@@ -25,20 +26,16 @@
 # THE SOFTWARE.
 */
 
-#ifndef _TYPEDEFS_H
-#define	_TYPEDEFS_H
+#ifndef _LIBGEXF_H
+#define	_LIBGEXF_H
 
-namespace libgexf {
+#include <libgexf/typedefs.h>
+#include <libgexf/graph_exceptions.h>
+#include <libgexf/gexf.h>
+#include <libgexf/graph.h>
+#include <libgexf/directedgraph.h>
+#include <libgexf/undirectedgraph.h>
+#include <libgexf/reader.h>
 
-typedef unsigned int t_id; /*!< Type of all IDs */
-
-enum t_graph { GRAPH_DIRECTED, GRAPH_UNDIRECTED }; /*!<Available graph types */
-
-enum t_edge_property { EDGE_DIRECTED, EDGE_COUNT, EDGE_WEIGHT }; /*!<Available edge properties */
-
-typedef float t_edge_value;
-
-}
-
-#endif	/* _TYPEDEFS_H */
+#endif	/* _LIBGEXF_H */
 

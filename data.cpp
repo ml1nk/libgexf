@@ -1,6 +1,7 @@
-/*! \file gexf.cpp
+/*! \file data.cpp
     \author sebastien heymann
-    \date 17 avril 2009, 17:28
+    \date 30 juin 2009, 13:35
+    \version 0.1
  */
 
 /*
@@ -25,77 +26,61 @@
 # THE SOFTWARE.
 */
 
-#include "gexf.h"
+#include <map>
+
+#include "data.h"
+#include <sstream>
+
+using namespace std;
 
 namespace libgexf {
 
-GEXF::GEXF(): _graph(), _type(GRAPH_UNDIRECTED), _data(), _meta() {
+Data::Data(): _node_labels() {
 }
 
-GEXF::GEXF(const GEXF& orig) : _graph(orig._graph), _type(orig._type), _data(orig._data), _meta(orig._meta) {
+Data::Data(const Data& orig): _node_labels(orig._node_labels) {
 }
 
-GEXF::~GEXF() {
+Data::~Data() {
 }
 
 //-----------------------------------------
-UndirectedGraph& GEXF::getUndirectedGraph() {
+string Data::getLabel(const t_id node_id) const {
 //-----------------------------------------
-    // a graph is instanciable if the current one is empty
-    if(_graph.getNodeCount() == 0) {
-        UndirectedGraph* g = new UndirectedGraph();
-        _graph = *g;
+string label = "";
+    map<t_id,string >::const_iterator it = _node_labels.find(node_id);
+    if(it != _node_labels.end()) {
+        label = it->second;
     }
 
-    return (UndirectedGraph&)_graph;
+    return label;
 }
 
 //-----------------------------------------
-DirectedGraph& GEXF::getDirectedGraph() {
+bool Data::hasLabel(const t_id node_id) const {
 //-----------------------------------------
-    // a graph is instanciable if the current one is empty
-    if(_graph.getNodeCount() == 0) {
-        DirectedGraph* g = new DirectedGraph();
-        _graph = *g;
+    return _node_labels.find(node_id) != _node_labels.end();
+}
+
+//-----------------------------------------
+void Data::setLabel(const t_id node_id, const std::string label) {
+//-----------------------------------------
+    _node_labels[node_id] = label;
+}
+
+
+//-----------------------------------------
+std::ostream& operator<<(std::ostream& os, const Data& o) {
+//-----------------------------------------
+    os << "Data [" << std::endl;
+
+    std::map<t_id,std::string>::const_iterator it;
+
+    for ( it=o._node_labels.begin() ; it != o._node_labels.end(); it++ ) {
+        os << it->first << " => " << it->second << std::endl;
     }
-
-    return (DirectedGraph&)_graph;
-}
-
-//-----------------------------------------
-t_graph GEXF::getGraphType() {
-//-----------------------------------------
-    return _type;
-}
-
-//-----------------------------------------
-void GEXF::setGraphType(t_graph t) {
-//-----------------------------------------
-    _type = t;
-}
-
-//-----------------------------------------
-Data& GEXF::getData() {
-//-----------------------------------------
-    return _data;
-}
-
-//-----------------------------------------
-MetaData& GEXF::getMetaData() {
-//-----------------------------------------
-    return _meta;
-}
-
-
-//-----------------------------------------
-std::ostream& operator<<(std::ostream& os, const GEXF& o) {
-//-----------------------------------------
-    os << "GEXF [" << std::endl;
-    os << o._graph << std::endl;
-    os << o._meta << std::endl;
-    os << o._data << "]" << std::endl;
+    os << "]" << std::endl;
     return os;
 }
-
 
 } /* namespace libgexf */

@@ -1,6 +1,7 @@
-/*! \file typedefs.h
-    \author sebastien
-    \date 8 juin 2009, 14:22
+/*! \file data.h
+    \author sebastien heymann
+    \date 30 juin 2009, 13:35
+    \version 0.1
  */
 
 /*
@@ -25,20 +26,32 @@
 # THE SOFTWARE.
 */
 
-#ifndef _TYPEDEFS_H
-#define	_TYPEDEFS_H
+#ifndef _DATA_H
+#define	_DATA_H
+
+#include "typedefs.h"
+#include <string>
 
 namespace libgexf {
 
-typedef unsigned int t_id; /*!< Type of all IDs */
+class Data {
+public:
+    Data();
+    Data(const Data& orig);
+    virtual ~Data();
 
-enum t_graph { GRAPH_DIRECTED, GRAPH_UNDIRECTED }; /*!<Available graph types */
+    std::string getLabel(const t_id node_id) const;
+    bool hasLabel(const t_id node_id) const;
+    void setLabel(const t_id node_id, const std::string label);
 
-enum t_edge_property { EDGE_DIRECTED, EDGE_COUNT, EDGE_WEIGHT }; /*!<Available edge properties */
+private:
+    std::map<t_id,std::string > _node_labels; /*!< map<node_id, label > */
+   // std::map<t_id,std::map<t_node_data,void*> > _node_data; /*!< map<node_id, map<k, v> > */
+private:
+    friend std::ostream& operator<<(std::ostream& os, const Data& o);
+};
 
-typedef float t_edge_value;
+} /* namespace libgexf */
 
-}
-
-#endif	/* _TYPEDEFS_H */
+#endif	/* _DATA_H */
 

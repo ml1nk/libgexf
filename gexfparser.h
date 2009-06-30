@@ -1,6 +1,6 @@
-/*! \file gexf.h
+/*! \file gexfparser.h
     \author sebastien heymann
-    \date 17 avril 2009, 17:28
+    \date 22 juin 2009, 17:20
     \version 0.1
  */
 
@@ -26,54 +26,49 @@
 # THE SOFTWARE.
 */
 
-#ifndef _GEXF_H
-#define	_GEXF_H
+#ifndef _GEXF_PARSER_H
+#define	_GEXF_PARSER_H
 
-#include <iostream>
-#include "graph.h"
-#include "undirectedgraph.h"
-#include "directedgraph.h"
-#include "data.h"
-#include "metadata.h"
+#include "gexf.h"
+#include <libxml/xmlreader.h>
+#include <string>
 
 namespace libgexf {
 
-    /*! \class GEXF
-        \brief GEXF class, just a container.
+class Reader;
 
-        GEXF class containing :
-        \li graph topology
-        \li data attributes (currently not available)
-        \li hierarchy (currently not available)
-        \li viz data (currently not available)
-        \li dynamics (currently not available)
-     */
-    class GEXF {
-    public:
-        GEXF();
-        GEXF(const GEXF& orig);
-        virtual ~GEXF();
+/*! \class GexfParser
+    \brief
+ */
+class GexfParser {
+public:
+    GexfParser();
+    GexfParser(const GexfParser& orig);
+    virtual ~GexfParser();
 
-        UndirectedGraph& getUndirectedGraph();
-        DirectedGraph& getDirectedGraph();
-        Data& getData();
-        MetaData& getMetaData();
+    void bind(GEXF* gexf);
+    void processNode(xmlTextReaderPtr reader, const xmlChar* name);
+private:
+    void processGEXFNode(xmlTextReaderPtr reader);
+    void processMetaNode(xmlTextReaderPtr reader);
+    void processCreatorNode(xmlTextReaderPtr reader);
+    void processDescriptionNode(xmlTextReaderPtr reader);
+    void processGraphNode(xmlTextReaderPtr reader);
+    void processNodesNode(xmlTextReaderPtr reader);
+    void processNodeNode(xmlTextReaderPtr reader);
+    void processEdgesNode(xmlTextReaderPtr reader);
+    void processEdgeNode(xmlTextReaderPtr reader);
+    
+    bool isProcessableNode(xmlTextReaderPtr reader);
 
-        void setGraphType(t_graph t);
-        t_graph getGraphType();
-
-        /*! \var Graph _graph
-            \brief Topology structure
-         */
-        Graph _graph;
-        t_graph _type;
-        Data _data;
-        MetaData _meta;
-    private:
-        friend std::ostream& operator<<(std::ostream& os, const GEXF& o);
-    };
+    std::string xmlCharToStr(const xmlChar* str);
+    unsigned int xmlCharToUnsignedInt(const xmlChar* str);
+private:
+    GEXF* _gexf;
+    std::string _ancestor;
+};
 
 } /* namespace libgexf */
 
-#endif	/* _GEXF_H */
+#endif	/* _GEXF_PARSER_H */
 

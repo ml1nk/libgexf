@@ -4,164 +4,122 @@
     \version 0.1
  */
 
-#include "reader.h"
+/*
+# Copyright (c) <2009> <Sebastien Heymann>
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+*/
 
-#include <libxml++/libxml++.h>
-#include <libxml++/parsers/textreader.h>
+#include "reader.h"
+#include "exceptions.h"
+
+#include <stdio.h>
 #include <iostream>
+
+
 using namespace std;
 
 namespace libgexf {
 
-Reader::Reader(): _gexf(0) {
+Reader::Reader(): _gexf(0), _parser(), _filepath("") {
 }
 
-Reader::Reader(const Reader& orig) {
+Reader::Reader(const string filepath) {
+    this->init(filepath);
+}
+
+Reader::Reader(const Reader& orig): _gexf(orig._gexf), _filepath(orig._filepath) {
+    this->createParser();
 }
 
 Reader::~Reader() {
+    delete _gexf;
 }
 
 //-----------------------------------------
-void Reader::init(string filename) {
+GEXF Reader::getGEXFCopy() {
 //-----------------------------------------
-    try {
-        xmlpp::TextReader reader(filename);
-        while(reader.read()) {
-            // doing some stuff....reader.get_name()
-            std::cout << "name: " << reader.get_name() << std::endl;
-            if(reader.has_attributes()) {
-                reader.move_to_first_attribute();
-                do {
-                    // doing some stuff....reader.get_name() reader.get_value()
-                    std::cout << "name: " << reader.get_name() << std::endl;
-                    std::cout << "value: " << reader.get_value() << std::endl;
-                } while(reader.move_to_next_attribute());
-                reader.move_to_element();
-            }
-            if(reader.has_value()) {
-                // doing some stuff....reader.get_value()
-                std::cout << "value: " << reader.get_value() << std::endl;
-            }
+    GEXF gexf_copy(*_gexf);
+    return gexf_copy;
+}
+
+//-----------------------------------------
+void Reader::init(const string filepath) {
+//-----------------------------------------
+    _filepath = filepath;
+    _gexf = new GEXF();
+    this->createParser();
+}
+
+//-----------------------------------------
+void Reader::createParser() {
+//-----------------------------------------
+    GexfParser* parser = new GexfParser();
+    _parser = *parser;
+    _parser.bind(_gexf);
+}
+
+//-----------------------------------------
+void Reader::slurp() {
+//-----------------------------------------
+    #ifndef LIBXML_READER_ENABLED
+    throw "LIBXML NOT FOUND";
+    #endif
+
+    /*
+     * this initialize the library and check potential ABI mismatches
+     * between the version it was compiled for and the actual shared
+     * library used.
+     */
+    LIBXML_TEST_VERSION
+
+    streamFile();
+    xmlCleanupParser();
+
+}
+
+//-----------------------------------------
+void Reader::streamFile() {
+//-----------------------------------------
+    xmlTextReaderPtr reader;
+    int ret;
+
+    reader = xmlReaderForFile(_filepath.data(), NULL, 0);
+    if (reader != NULL) {
+        ret = xmlTextReaderRead(reader);
+        const xmlChar *name;
+        while (ret == 1) {
+            name = xmlTextReaderConstName(reader);
+            if (name == NULL)
+                name = BAD_CAST "--";
+
+            _parser.processNode(reader, name);
+            ret = xmlTextReaderRead(reader);
         }
-    } catch(const std::exception& e) {
-        std::cout << "Exception occured while reading the file " << filename << ": " << e.what() << std::endl;
-        throw(e);
+        xmlFreeTextReader(reader);
+        if (ret != 0) {
+            throw "Failed to pars e" + _filepath;
+        }
+    } else {
+        throw "Unable to open " + _filepath;
     }
 }
 
-}
 
-
-/*
-name: gexf
-name: xmlns
-value: http://www.gephi.org/gexf/1.1draft
-name: xmlns:viz
-value: http://www.gephi.org/gexf/1.1draft/viz
-name: xmlns:xsi
-value: http://www.w3.org/2001/XMLSchema-instance
-name: xsi:schemaLocation
-value: http://www.gephi.org/gexf/1.1draft                       http://gephi.org/gexf/1.1draft.xsd
-name: version
-value: 1.1
-name: #text
-value:
-
-name: meta
-name: lastmodifieddate
-value: 2009-03-20
-name: #text
-value:
-
-name: creator
-name: #text
-value: Gephi.org
-name: creator
-name: #text
-value:
-
-name: description
-name: #text
-value: A hello world! file
-name: description
-name: #text
-value:
-
-name: meta
-name: lastmodifieddate
-value: 2009-03-20
-name: #text
-value:
-
-name: graph
-name: mode
-value: static
-name: defaultedgetype
-value: directed
-name: #text
-value:
-
-name: nodes
-name: #text
-value:
-
-name: node
-name: id
-value: 0
-name: label
-value: Hello
-name: #text
-value:
-
-name: node
-name: id
-value: 1
-name: label
-value: Word
-name: #text
-value:
-
-name: nodes
-name: #text
-value:
-
-name: edges
-name: #text
-value:
-
-name: edge
-name: id
-value: 0
-name: source
-value: 0
-name: target
-value: 1
-name: #text
-value:
-
-name: edges
-name: #text
-value:
-
-name: graph
-name: mode
-value: static
-name: defaultedgetype
-value: directed
-name: #text
-value:
-
-name: gexf
-name: xmlns
-value: http://www.gephi.org/gexf/1.1draft
-name: xmlns:viz
-value: http://www.gephi.org/gexf/1.1draft/viz
-name: xmlns:xsi
-value: http://www.w3.org/2001/XMLSchema-instance
-name: xsi:schemaLocation
-value: http://www.gephi.org/gexf/1.1draft                       http://gephi.org/gexf/1.1draft.xsd
-name: version
-value: 1.1
-
-*/
+} /* namespace libgexf */

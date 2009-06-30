@@ -28,11 +28,14 @@ OBJECTDIR=build/Release/${PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/directedgraph.o \
-	${OBJECTDIR}/gexf.o \
 	${OBJECTDIR}/undirectedgraph.o \
+	${OBJECTDIR}/gexf.o \
+	${OBJECTDIR}/directedgraph.o \
 	${OBJECTDIR}/graph.o \
+	${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/metadata.o \
+	${OBJECTDIR}/gexfparser.o \
 	${OBJECTDIR}/reader.o \
+	${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/data.o \
 	${OBJECTDIR}/inserters.o
 
 # C Compiler Flags
@@ -58,30 +61,45 @@ dist/Release/${PLATFORM}/liblibgexf.a: ${OBJECTFILES}
 	${AR} rv dist/Release/${PLATFORM}/liblibgexf.a ${OBJECTFILES} 
 	$(RANLIB) dist/Release/${PLATFORM}/liblibgexf.a
 
-${OBJECTDIR}/directedgraph.o: directedgraph.cpp 
+${OBJECTDIR}/undirectedgraph.o: undirectedgraph.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/directedgraph.o directedgraph.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/undirectedgraph.o undirectedgraph.cpp
 
 ${OBJECTDIR}/gexf.o: gexf.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/gexf.o gexf.cpp
 
-${OBJECTDIR}/undirectedgraph.o: undirectedgraph.cpp 
+${OBJECTDIR}/directedgraph.o: directedgraph.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/undirectedgraph.o undirectedgraph.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/directedgraph.o directedgraph.cpp
 
 ${OBJECTDIR}/graph.o: graph.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/graph.o graph.cpp
 
+${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/metadata.o: /home/sebastien/NetBeansProjects/libgexf/metadata.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/metadata.o /home/sebastien/NetBeansProjects/libgexf/metadata.cpp
+
+${OBJECTDIR}/gexfparser.o: gexfparser.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/gexfparser.o gexfparser.cpp
+
 ${OBJECTDIR}/reader.o: reader.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/reader.o reader.cpp
+
+${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/data.o: /home/sebastien/NetBeansProjects/libgexf/data.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/data.o /home/sebastien/NetBeansProjects/libgexf/data.cpp
 
 ${OBJECTDIR}/inserters.o: inserters.cpp 
 	${MKDIR} -p ${OBJECTDIR}

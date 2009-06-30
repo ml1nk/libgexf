@@ -12,7 +12,7 @@
 #include "perl.h"
 #include "XSUB.h"
 #include "../../../typedefs.h"
-#include "../../../graph_exceptions.h"
+#include "../../../exceptions.h"
 #include "../../../graph.h"
 #include "../../../directedgraph.h"
 #include "../../../undirectedgraph.h"
@@ -36,7 +36,7 @@
 
 /* Let's just grab the original header file here */
 %include "../../../typedefs.h"
-%include "../../../graph_exceptions.h"
+%include "../../../exceptions.h"
 %include "../../../graph.h"
 %include "../../../directedgraph.h"
 %include "../../../undirectedgraph.h"
