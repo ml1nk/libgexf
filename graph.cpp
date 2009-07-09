@@ -181,6 +181,18 @@ void Graph::removeOutEdges(const t_id source_id) {
 }
 
 //-----------------------------------------
+NodeIter* Graph::getNodes() const {
+//-----------------------------------------
+    return new NodeIter(this);
+}
+
+//-----------------------------------------
+EdgeIter* Graph::getEdges() const {
+//-----------------------------------------
+    return new EdgeIter(this);
+}
+
+//-----------------------------------------
 bool Graph::containsNode(const t_id id) const {
 //-----------------------------------------
     if(_lock_flag == '2') throw WriteLockException("Read not allowed");

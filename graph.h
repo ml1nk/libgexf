@@ -34,8 +34,13 @@
 #include <iostream>
 #include "typedefs.h"
 #include "exceptions.h"
+#include "nodeiter.h"
+#include "edgeiter.h"
 
 namespace libgexf {
+
+class NodeIter;
+class EdgeIter;
 
 /*! \class Graph
     \brief Topology structure of the graph
@@ -55,6 +60,9 @@ public:
 
     bool containsNode(const t_id id) const;
     bool containsEdge(const t_id source_id, const t_id target_id) const;
+
+    NodeIter* getNodes() const;
+    EdgeIter* getEdges() const;
 
     unsigned int getNodeCount() const;
     unsigned int getEdgeCount() const;
@@ -88,6 +96,8 @@ protected:
     char _lock_flag;
 
     friend std::ostream& operator<<(std::ostream& os, const Graph& o);
+    friend class NodeIter;
+    friend class EdgeIter;
 private:
     //Graph& operator=(const Graph& orig);
 };

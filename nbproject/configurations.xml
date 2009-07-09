@@ -13,9 +13,11 @@
       <itemPath>inserters.h</itemPath>
       <itemPath>libgexf.h</itemPath>
       <itemPath>/home/sebastien/NetBeansProjects/libgexf/metadata.h</itemPath>
+      <itemPath>/home/sebastien/NetBeansProjects/libgexf/nodeiter.h</itemPath>
       <itemPath>reader.h</itemPath>
       <itemPath>typedefs.h</itemPath>
       <itemPath>undirectedgraph.h</itemPath>
+      <itemPath>/home/sebastien/NetBeansProjects/libgexf/writer.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -31,14 +33,18 @@
       <itemPath>graph.cpp</itemPath>
       <itemPath>inserters.cpp</itemPath>
       <itemPath>/home/sebastien/NetBeansProjects/libgexf/metadata.cpp</itemPath>
+      <itemPath>/home/sebastien/NetBeansProjects/libgexf/nodeiter.cpp</itemPath>
       <itemPath>reader.cpp</itemPath>
       <itemPath>undirectedgraph.cpp</itemPath>
+      <itemPath>/home/sebastien/NetBeansProjects/libgexf/writer.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>/home/sebastien/NetBeansProjects/libgexf/edgeiter.cpp</itemPath>
+    <itemPath>/home/sebastien/NetBeansProjects/libgexf/edgeiter.h</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -67,10 +73,28 @@
       <item path="/home/sebastien/NetBeansProjects/libgexf/data.h">
         <itemTool>3</itemTool>
       </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/edgeiter.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/edgeiter.h">
+        <itemTool>3</itemTool>
+      </item>
       <item path="/home/sebastien/NetBeansProjects/libgexf/metadata.cpp">
         <itemTool>1</itemTool>
       </item>
       <item path="/home/sebastien/NetBeansProjects/libgexf/metadata.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/nodeiter.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/nodeiter.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/writer.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/writer.h">
         <itemTool>3</itemTool>
       </item>
       <item path="directedgraph.cpp">
@@ -150,10 +174,28 @@
       <item path="/home/sebastien/NetBeansProjects/libgexf/data.h">
         <itemTool>3</itemTool>
       </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/edgeiter.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/edgeiter.h">
+        <itemTool>3</itemTool>
+      </item>
       <item path="/home/sebastien/NetBeansProjects/libgexf/metadata.cpp">
         <itemTool>1</itemTool>
       </item>
       <item path="/home/sebastien/NetBeansProjects/libgexf/metadata.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/nodeiter.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/nodeiter.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/writer.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/writer.h">
         <itemTool>3</itemTool>
       </item>
       <item path="directedgraph.cpp">

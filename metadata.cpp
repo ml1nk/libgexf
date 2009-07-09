@@ -55,7 +55,12 @@ MetaData::~MetaData() {
 //-----------------------------------------
 void MetaData::init() {
 //-----------------------------------------
-    _version = _xmlns = _xsi = _schema = _variant = _creator = _description = _keywords = _lastmodifieddate = "";
+    _version = "1.1";
+    _xmlns = "http://www.gephi.org/gexf/1.1draft";
+    _xsi = "http://www.w3.org/2001/XMLSchema-instance";
+    _schema = "http://www.gephi.org/gexf/1.1draft http://gephi.org/gexf/1.1draft.xsd";
+
+    _variant = _creator = _description = _keywords = _lastmodifieddate = "";
 }
 
 //-----------------------------------------

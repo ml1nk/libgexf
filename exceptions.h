@@ -62,7 +62,29 @@ namespace libgexf {
     private:
         std::string _text;
     };
-    
+
+    class FileWriterException : public std::exception {
+    public:
+        FileWriterException(const std::string what) throw() { _text = what; };
+        virtual ~FileWriterException() throw() {};
+        virtual const char* what() const throw() {
+            return (const char *)(_text.c_str());
+        }
+    private:
+        std::string _text;
+    };
+
+    class FileReaderException : public std::exception {
+    public:
+        FileReaderException(const std::string what) throw() { _text = what; };
+        virtual ~FileReaderException() throw() {};
+        virtual const char* what() const throw() {
+            return (const char *)(_text.c_str());
+        }
+    private:
+        std::string _text;
+    };
+
 
     /*! \class MessageExceptionBuilder
         \brief Facility to create messages about a given node_id

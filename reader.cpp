@@ -31,6 +31,7 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <libxml/xmlreader.h>
 
 
 using namespace std;
