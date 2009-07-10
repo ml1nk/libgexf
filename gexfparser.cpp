@@ -27,7 +27,7 @@
 */
 
 #include "gexfparser.h"
-#include "reader.h"
+#include "filereader.h"
 #include <string>
 #include <iostream>
 #include <sstream>
@@ -172,15 +172,29 @@ void GexfParser::processGraphNode(xmlTextReaderPtr reader) {
     int hasAttr = xmlTextReaderHasAttributes(reader);
     if(hasAttr == 1) {
         xmlChar* attr_mode = xmlTextReaderGetAttribute(reader, xmlCharStrdup("mode"));
-        //printf("mode: %s\n", attr_mode);
-        // TODO gere les modes
+        if( attr_mode != NULL && xmlStrEqual(attr_mode, BAD_CAST "static") == 1 ) {
+            // TODO
+        }
+        else if( attr_mode != NULL && xmlStrEqual(attr_mode, BAD_CAST "dynamic") == 1 ) {
+            // TODO
+        }
+        else {
+            cerr << "Unknown mode, static used." << endl;
+        }
 
         xmlChar* attr_defaultedgetype = xmlTextReaderGetAttribute(reader, xmlCharStrdup("defaultedgetype"));
         //printf("defaultedgetype: %s\n", attr_defaultedgetype);
 
-        if( attr_defaultedgetype != NULL && xmlStrEqual(attr_defaultedgetype, xmlCharStrdup("directed")) == 1 ) {
+        if( attr_defaultedgetype != NULL && xmlStrEqual(attr_defaultedgetype, BAD_CAST "directed") == 1 ) {
             _gexf->setGraphType(GRAPH_DIRECTED);
         }
+        else if( attr_defaultedgetype != NULL && xmlStrEqual(attr_defaultedgetype, BAD_CAST "mixed") == 1 ) {
+            _gexf->setGraphType(GRAPH_MIXED);
+        }
+        else {
+            cerr << "Unknown default edge type, undirected used." << endl;
+        }
+
     }
     else if(hasAttr  == -1) {
         throw "An error occured in xmlTextReaderHasAttributes() for Graph node.";
@@ -227,16 +241,29 @@ void GexfParser::processEdgeNode(xmlTextReaderPtr reader) {
         //printf("id: %s\n", attr_id);
 
         xmlChar* attr_source = xmlTextReaderGetAttribute(reader, xmlCharStrdup("source"));
-        //printf("source: %s\n", attr_source);
 
         xmlChar* attr_target = xmlTextReaderGetAttribute(reader, xmlCharStrdup("target"));
-        //printf("target: %s\n", attr_target);
-        
-        if(_gexf->getGraphType() == GRAPH_DIRECTED) {
-            _gexf->getDirectedGraph().addEdge( (t_id)xmlCharToUnsignedInt(attr_id), (t_id)xmlCharToUnsignedInt(attr_source), (t_id)xmlCharToUnsignedInt(attr_target) );
+
+        xmlChar* attr_type = xmlTextReaderGetAttribute(reader, xmlCharStrdup("type"));
+        t_edge_type type = EDGE_UNDIRECTED;
+        if( attr_type != NULL && xmlStrEqual(attr_type, BAD_CAST "directed") == 1 ) {
+            type = EDGE_DIRECTED;
         }
-        else { /*default: undirected*/
-            _gexf->getUndirectedGraph().addEdge( (t_id)xmlCharToUnsignedInt(attr_id), (t_id)xmlCharToUnsignedInt(attr_source), (t_id)xmlCharToUnsignedInt(attr_target) );
+        else if( attr_type != NULL && xmlStrEqual(attr_type, BAD_CAST "double") == 1 ) {
+            type = EDGE_DOUBLE;
+        }
+
+        xmlChar* attr_cardinal = xmlTextReaderGetAttribute(reader, xmlCharStrdup("cardinal"));
+        unsigned int cardinal = 1;
+        if( attr_cardinal && NULL && xmlStrEqual(attr_cardinal, BAD_CAST "1") == 0 ) {
+            cardinal = (t_id)xmlCharToUnsignedInt(attr_cardinal);
+        }
+
+        if(_gexf->getGraphType() == GRAPH_DIRECTED) {
+            _gexf->getDirectedGraph().addEdge( (t_id)xmlCharToUnsignedInt(attr_id), (t_id)xmlCharToUnsignedInt(attr_source), (t_id)xmlCharToUnsignedInt(attr_target), cardinal, type);
+        }
+        else { /*undirected or mixed, use undirected*/
+            _gexf->getUndirectedGraph().addEdge( (t_id)xmlCharToUnsignedInt(attr_id), (t_id)xmlCharToUnsignedInt(attr_source), (t_id)xmlCharToUnsignedInt(attr_target), cardinal, type);
         }
     }
     else if(hasAttr  == -1) {

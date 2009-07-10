@@ -1,6 +1,6 @@
-/*! \file writer.h
-   \author sebastien heymann
-   \date 8 juillet 2009, 17:58
+/*! \file filereader.h
+    \author sebastien heymann
+    \date 19 juin 2009, 12:37
     \version 0.1
  */
 
@@ -26,46 +26,39 @@
 # THE SOFTWARE.
 */
 
-#ifndef _WRITER_H
-#define	_WRITER_H
+#ifndef _FILEREADER_H
+#define	_FILEREADER_H
 
 #include "gexf.h"
-#include <libxml/xmlwriter.h>
-#include <string>
+#include "gexfparser.h"
+
 
 namespace libgexf {
 
-class Writer {
+/*! \class FileReader
+    \brief Topology structure of the graph
+ */
+class FileReader {
 public:
-    Writer();
-    Writer(const std::string filepath, GEXF* gexf);
-    Writer(const Writer& orig);
-    virtual ~Writer();
+    FileReader();
+    FileReader(const std::string filepath);
+    FileReader(const FileReader& orig);
+    virtual ~FileReader();
 
     GEXF getGEXFCopy();
 
-    void init(const std::string filepath, GEXF* gexf);
-    void write();
+    void init(const std::string filepath);
+    //int relaxNGValidate(const std::string schema);
+    void slurp();
 private:
-    void writeGexfNode(xmlTextWriterPtr writer);
-    void writeMetaNode(xmlTextWriterPtr writer);
-    void writeGraphNode(xmlTextWriterPtr writer);
-    void writeNodesNode(xmlTextWriterPtr writer);
-    void writeNodeNode(xmlTextWriterPtr writer, const std::string node_id);
-    void writeEdgesNode(xmlTextWriterPtr writer);
-    void writeEdgeNode(xmlTextWriterPtr writer, const std::string edge_id, const std::string source_id, const std::string target_id);
-
-    xmlChar* convertInput(const char *in, const char *encoding) const;
-    std::string unsignedIntToStr(const unsigned int i);
+    void createParser();
+    void streamFile();
 private:
     GEXF* _gexf;
+    GexfParser _parser;
     std::string _filepath;
-    static const char* _ENCODING;
 };
-const char* Writer::_ENCODING = "UTF-8";
-
 
 } /* namespace libgexf */
 
-#endif	/* _WRITER_H */
-
+#endif	/* _FILEREADER_H */

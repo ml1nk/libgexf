@@ -60,32 +60,81 @@ void Graph::addNode(const t_id id) {
 }
 
 //-----------------------------------------
-void Graph::addEdge(const t_id id, const t_id source_id, const t_id target_id) {
+void Graph::addEdge(const t_id id, const t_id source_id, const t_id target_id, const unsigned int cardinal, const t_edge_type type) {
 //-----------------------------------------
+float card = (float)cardinal;
+float e_type = (float)type;
+
     if(_lock_flag == '1') throw ReadLockException("Write not allowed");
 
     if(_bloom_edges.find(id) != _bloom_edges.end()) {
-        throw invalid_argument(MessageExceptionBuilder::buildString("Edge id already in bloom filter", id));
+        throw invalid_argument(MsgExceptionBuilder::buildString("Edge id already in bloom filter", id));
     }
 
     // 2 * O(log-n)
     if( _nodes.find(source_id) == _nodes.end() ) {
-        throw invalid_argument(MessageExceptionBuilder::buildString("Invalid source node", source_id));
+        throw invalid_argument(MsgExceptionBuilder::buildString("Invalid source node", source_id));
     }
     if( _nodes.find(target_id) == _nodes.end() ) {
-        throw invalid_argument(MessageExceptionBuilder::buildString("Invalid target node", target_id));
+        throw invalid_argument(MsgExceptionBuilder::buildString("Invalid target node", target_id));
     }
 
-    // 2*O(log-n)
+    // 4*O(log-n)
     map<t_id,map<t_id,t_id> >::iterator it = _edges.find(source_id);
     if(it != _edges.end()) {
-        // TODO si deja un lien source->target, alors incrementer
-        // (creer s'il le faut en initialisant a 2 car 1 est implicite) _data_edges(id).COUNT
+        /* the source exists */
+        map<t_id,t_id>::iterator it_target = (it->second).find(target_id);
+        if(it_target != (it->second).end()) {
+            /* an edge already exists between the two nodes */
+            t_id real_edge_id = it_target->second;
 
-        pair<t_id,t_id> link = pair<t_id,t_id>(target_id,id);
-        ((*it).second).insert(link);
+            map<t_id,map<t_edge_property,t_edge_value> >::iterator it_data = _edges_data.find(real_edge_id);
+            if(it_data != _edges_data.end()) {
+                /* at least one property exists */
+                map<t_edge_property,t_edge_value>::iterator it_count_prop = (it_data->second).find(EDGE_COUNT);
+                if(it_count_prop != (it_data->second).end()) {
+                    /* the count property exists, we increment it */
+                    (it_count_prop->second)++;
+                }
+                else {
+                    /* the count property doesn't exists, we create it */
+                    pair<t_edge_property,t_edge_value> edge_count = pair<t_edge_property,t_edge_value>(EDGE_COUNT,card+1.0);
+                    (it_data->second).insert(edge_count);
+                }
+
+                it_count_prop = (it_data->second).find(EDGE_TYPE);
+                if(it_count_prop != (it_data->second).end()) {
+                    /* the type property exists, we change it */
+                    (it_count_prop->second) = e_type;
+                }
+                else {
+                    /* the type property doesn't exists, we create it */
+                    pair<t_edge_property,t_edge_value> edge_count = pair<t_edge_property,t_edge_value>(EDGE_TYPE,e_type);
+                    (it_data->second).insert(edge_count);
+                }
+            }
+            else {
+                /* no property exists, we create the entry and the properties */
+                pair<t_edge_property,t_edge_value> edge_count = pair<t_edge_property,t_edge_value>(EDGE_COUNT,card+1.0);
+                _edges_data[real_edge_id].insert(edge_count);
+
+                pair<t_edge_property,t_edge_value> edge_type = pair<t_edge_property,t_edge_value>(EDGE_TYPE,e_type);
+                (it_data->second).insert(edge_type);
+            }
+        }
+        else {
+            /* no edge exists between the two nodes, we create the link and update the cardinal if needed */
+            pair<t_id,t_id> link = pair<t_id,t_id>(target_id,id);
+            (it->second).insert(link);
+            
+            if(card > 1.0) {
+                pair<t_edge_property,t_edge_value> edge_count = pair<t_edge_property,t_edge_value>(EDGE_COUNT,card);
+                _edges_data[id].insert(edge_count);
+            }
+        }
     }
     else {
+        /* the source doesn't exists */
         map<t_id,t_id> edges;
         edges.insert(pair<t_id,t_id>(target_id,id));
         _edges.insert(pair<t_id,map<t_id,t_id> >(source_id, edges));
@@ -94,9 +143,11 @@ void Graph::addEdge(const t_id id, const t_id source_id, const t_id target_id) {
     // 2*O(log-n)
     map<t_id,set<t_id> >::iterator it2 = _reverse_edges.find(target_id);
     if(it2 != _reverse_edges.end()) {
+        /* the target exists */
         ((*it2).second).insert(source_id);
     }
     else {
+        /* the target doesn't exists */
         set<t_id> edges;
         edges.insert(source_id);
         _reverse_edges.insert(pair<t_id,set<t_id> >(target_id,edges));
@@ -124,10 +175,17 @@ void Graph::removeEdge(const t_id source_id, const t_id target_id) {
 
     // O(log-n)
     map<t_id,t_id>& links = _edges[source_id];
-    for( map<t_id,t_id>::const_iterator it=links.begin() ; it != links.end(); it++ ) {
-        // TODO memoriser le edge_id
-        _bloom_edges.erase(it->second);
+    std::map<t_id,t_id>::iterator it_t = links.find(target_id);
+    if(it_t != links.end()) {
+        t_id edge_id = it_t->second;
+        _bloom_edges.erase(edge_id);
+        _edges_data.erase(edge_id);
     }
+    else {
+        throw logic_error(MsgExceptionBuilder::buildString("Target id not found", target_id));
+    }
+
+    // O(log-n)
     links.erase(target_id);
     if(links.empty()) {
         _edges.erase(source_id);
@@ -139,9 +197,6 @@ void Graph::removeEdge(const t_id source_id, const t_id target_id) {
     if(sources.empty()) {
         _reverse_edges.erase(target_id);
     }
-
-    // TODO supprimer _data_edges.(edge_id)
-    // Note: le SparseGraph decrementera et supprimer si count = 0
 }
 
 //-----------------------------------------
@@ -236,6 +291,12 @@ unsigned int count = 0;
     for(map<t_id,map<t_id,t_id> >::const_iterator it = _edges.begin() ; it != _edges.end() ; it++) {
         count += (it->second).size();
     }
+    // 0(n + log-n)
+    map<t_id,map<t_edge_property,t_edge_value> >::const_iterator it;
+    for ( it=_edges_data.begin() ; it != _edges_data.end(); it++ ) {
+        map<t_edge_property,t_edge_value>::const_iterator it2 = ((*it).second).find(EDGE_COUNT);
+        count += (unsigned int)(*it2).second - 1;
+    }
 
     return count;
 }
@@ -247,10 +308,22 @@ unsigned int count = 0;
 
     if(_lock_flag == '2') throw WriteLockException("Read not allowed");
 
-    // 0(log-n)
+    // 0(2*log-n)
     map<t_id,map<t_id,t_id> >::const_iterator it_e = _edges.find(node_id);
     if(it_e != _edges.end()) {
         count += (it_e->second).size();
+
+        /* add cardinals */
+        map<t_id,t_id>::const_iterator it_t;
+        for ( it_t=(it_e->second).begin() ; it_t != (it_e->second).end(); it_t++ ) {
+            map<t_id,map<t_edge_property,t_edge_value> >::const_iterator it_data = _edges_data.find(it_t->second);
+            if(it_data != _edges_data.end()) {
+                map<t_edge_property,t_edge_value>::const_iterator it_count = (it_data->second).find(EDGE_COUNT);
+                if(it_count != (it_data->second).end()) {
+                    count += (unsigned int)it_count->second - 1;
+                }
+            }
+        }
     }
 
     // 0(log-n)
@@ -382,6 +455,17 @@ ostream& operator<<(ostream& os, const Graph& o) {
     os << o._edges << "]" << endl << endl;
     os << "_reverse_edges [" << endl;
     os << o._reverse_edges << "]" << endl << endl;
+    os << "_edges_data [" << endl;
+    std::map<t_id,std::map<t_edge_property,t_edge_value> >::const_iterator it;
+    for ( it=o._edges_data.begin() ; it != o._edges_data.end(); it++ ) {
+        os << (*it).first << "-> ";
+        std::map<t_edge_property,t_edge_value>::const_iterator it2;
+        for ( it2=((*it).second).begin() ; it2 != ((*it).second).end(); it2++ ) {
+            os << "{" << (*it2).first << "; " << (*it2).second << "}" << endl;
+        }
+    }
+    os << "]" << endl << endl;
+
     return os;
 }
 

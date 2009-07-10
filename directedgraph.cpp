@@ -85,7 +85,7 @@ set<t_id> s = set<t_id>();
         }
     }
     else {
-        throw invalid_argument(MessageExceptionBuilder::buildString("Invalid node", node_id));
+        throw invalid_argument(MsgExceptionBuilder::buildString("Invalid node", node_id));
     }
 
     return s;
@@ -136,10 +136,24 @@ unsigned int count = 0;
 
     if(_lock_flag == '2') throw WriteLockException("Read not allowed");
 
-    // 0(log-n)
+    // 0(2*log-n)
     map<t_id,set<t_id> >::const_iterator it_re = _reverse_edges.find(node_id);
     if(it_re != _reverse_edges.end()) {
         count += (it_re->second).size();
+
+        set<t_id>::const_iterator it_s;
+        for ( it_s=(it_re->second).begin() ; it_s != (it_re->second).end(); it_s++ ) {
+            map<t_id,map<t_id,t_id> >::const_iterator it_e = _edges.find(*it_s);
+            map<t_id,t_id>::const_iterator it_t = (it_e->second).find(node_id);
+            t_id edge_id = it_t->second;
+            map<t_id,map<t_edge_property,t_edge_value> >::const_iterator it_data = _edges_data.find(edge_id);
+            if(it_data != _edges_data.end()) {
+                map<t_edge_property,t_edge_value>::const_iterator it_count = (it_data->second).find(EDGE_COUNT);
+                if(it_count != (it_data->second).end()) {
+                    count += (unsigned int)it_count->second - 1;
+                }
+            }
+        }
     }
 
 
@@ -153,10 +167,22 @@ unsigned int count = 0;
 
     if(_lock_flag == '2') throw WriteLockException("Read not allowed");
 
-    // 0(log-n)
+    // 0(2*log-n)
     map<t_id,map<t_id,t_id> >::const_iterator it_e = _edges.find(node_id);
     if(it_e != _edges.end()) {
         count += (it_e->second).size();
+
+        /* add cardinals */
+        map<t_id,t_id>::const_iterator it_t;
+        for ( it_t=(it_e->second).begin() ; it_t != (it_e->second).end(); it_t++ ) {
+            map<t_id,map<t_edge_property,t_edge_value> >::const_iterator it_data = _edges_data.find(it_t->second);
+            if(it_data != _edges_data.end()) {
+                map<t_edge_property,t_edge_value>::const_iterator it_count = (it_data->second).find(EDGE_COUNT);
+                if(it_count != (it_data->second).end()) {
+                    count += (unsigned int)it_count->second - 1;
+                }
+            }
+        }
     }
 
     return count;

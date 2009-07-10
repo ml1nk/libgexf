@@ -86,10 +86,10 @@ namespace libgexf {
     };
 
 
-    /*! \class MessageExceptionBuilder
+    /*! \class MsgExceptionBuilder
         \brief Facility to create messages about a given node_id
      */
-    class MessageExceptionBuilder {
+    class MsgExceptionBuilder {
     public:
         static std::string buildString(std::string message, t_id node_id) {
             std::ostringstream ostr;

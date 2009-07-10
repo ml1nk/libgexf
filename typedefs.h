@@ -32,9 +32,11 @@ namespace libgexf {
 
 typedef unsigned int t_id; /*!< Type of all IDs */
 
-enum t_graph { GRAPH_DIRECTED, GRAPH_UNDIRECTED }; /*!<Available graph types */
+enum t_graph { GRAPH_DIRECTED, GRAPH_UNDIRECTED, GRAPH_MIXED }; /*!<Available graph types */
 
-enum t_edge_property { EDGE_DIRECTED, EDGE_COUNT, EDGE_WEIGHT }; /*!<Available edge properties */
+enum t_edge_property { EDGE_TYPE, EDGE_COUNT, EDGE_WEIGHT }; /*!<Available edge properties */
+
+enum t_edge_type { EDGE_DIRECTED, EDGE_UNDIRECTED, EDGE_DOUBLE }; /*!<Available edge types */
 
 typedef float t_edge_value;
 

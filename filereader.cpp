@@ -1,4 +1,4 @@
-/*! \file reader.cpp
+/*! \file filereader.cpp
     \author sebastien heymann
     \date 19 juin 2009, 12:37
     \version 0.1
@@ -26,7 +26,7 @@
 # THE SOFTWARE.
 */
 
-#include "reader.h"
+#include "filereader.h"
 #include "exceptions.h"
 
 #include <stdio.h>
@@ -38,30 +38,30 @@ using namespace std;
 
 namespace libgexf {
 
-Reader::Reader(): _gexf(0), _parser(), _filepath("") {
+FileReader::FileReader(): _gexf(0), _parser(), _filepath("") {
 }
 
-Reader::Reader(const string filepath) {
+FileReader::FileReader(const string filepath) {
     this->init(filepath);
 }
 
-Reader::Reader(const Reader& orig): _gexf(orig._gexf), _filepath(orig._filepath) {
+FileReader::FileReader(const FileReader& orig): _gexf(orig._gexf), _filepath(orig._filepath) {
     this->createParser();
 }
 
-Reader::~Reader() {
+FileReader::~FileReader() {
     delete _gexf;
 }
 
 //-----------------------------------------
-GEXF Reader::getGEXFCopy() {
+GEXF FileReader::getGEXFCopy() {
 //-----------------------------------------
     GEXF gexf_copy(*_gexf);
     return gexf_copy;
 }
 
 //-----------------------------------------
-void Reader::init(const string filepath) {
+void FileReader::init(const string filepath) {
 //-----------------------------------------
     _filepath = filepath;
     _gexf = new GEXF();
@@ -69,7 +69,7 @@ void Reader::init(const string filepath) {
 }
 
 //-----------------------------------------
-void Reader::createParser() {
+void FileReader::createParser() {
 //-----------------------------------------
     GexfParser* parser = new GexfParser();
     _parser = *parser;
@@ -77,7 +77,7 @@ void Reader::createParser() {
 }
 
 //-----------------------------------------
-void Reader::slurp() {
+void FileReader::slurp() {
 //-----------------------------------------
     #ifndef LIBXML_READER_ENABLED
     throw "LIBXML NOT FOUND";
@@ -96,7 +96,7 @@ void Reader::slurp() {
 }
 
 //-----------------------------------------
-void Reader::streamFile() {
+void FileReader::streamFile() {
 //-----------------------------------------
     xmlTextReaderPtr reader;
     int ret;

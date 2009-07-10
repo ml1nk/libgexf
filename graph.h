@@ -52,7 +52,7 @@ public:
     virtual ~Graph();
 
     void addNode(const t_id id);
-    void addEdge(const t_id id, const t_id source_id, const t_id target_id);
+    void addEdge(const t_id id, const t_id source_id, const t_id target_id, const unsigned int cardinal=1, const t_edge_type type=EDGE_UNDIRECTED);
     void removeNode(const t_id id);
     void removeEdge(const t_id source_id, const t_id target_id);
     void removeInEdges(const t_id target_id);
