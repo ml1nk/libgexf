@@ -28,6 +28,7 @@ public:
 
     t_id currentSource() const;
     t_id currentTarget() const;
+    float currentProperty(t_edge_property prop) const;  /*!< Return the value or 0 by default */
 private:
     const Graph* _graph;
     std::map<t_id,std::map<t_id,t_id> >::const_iterator _it;

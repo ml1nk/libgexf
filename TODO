@@ -1,7 +1,4 @@
 TODO LIST
 
-   * binding Perl
-   * binding Java
-   * ajout de libxml2
-   * ajout d'un reader/writer de la topologie GEXF
    * ajout des hypergraphes et graphes pondérés
+   * ajout des attributs

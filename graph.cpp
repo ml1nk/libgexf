@@ -38,17 +38,18 @@ using namespace std;
 
 namespace libgexf {
 
-Graph::Graph() : _nodes(), _edges(), _reverse_edges(), _bloom_edges(), _edges_data(), _lock_flag('0'), _rlock_count(0) {
+Graph::Graph() : _nodes(), _edges(), _reverse_edges(), _bloom_edges(), _edges_properties(),  _lock_flag('0'), _rlock_count(0) {
 }
 
-Graph::Graph(const Graph& orig): _nodes(orig._nodes), _edges(orig._edges), _reverse_edges(orig._reverse_edges), _edges_data(orig._edges_data), _lock_flag(orig._lock_flag), _rlock_count(orig._rlock_count) {
+Graph::Graph(const Graph& orig): _nodes(orig._nodes), _edges(orig._edges), _reverse_edges(orig._reverse_edges),
+        _edges_properties(orig._edges_properties), _lock_flag(orig._lock_flag), _rlock_count(orig._rlock_count) {
 }
 
 Graph::~Graph() {
     _edges.clear();
     _reverse_edges.clear();
     _bloom_edges.clear();
-    _edges_data.clear();
+    _edges_properties.clear();
     _nodes.clear();
 }
 
@@ -56,6 +57,7 @@ Graph::~Graph() {
 void Graph::addNode(const t_id id) {
 //-----------------------------------------
     if(_lock_flag == '1') throw ReadLockException("Write not allowed");
+    
     _nodes.insert(id);
 }
 
@@ -88,8 +90,8 @@ float e_type = (float)type;
             /* an edge already exists between the two nodes */
             t_id real_edge_id = it_target->second;
 
-            map<t_id,map<t_edge_property,t_edge_value> >::iterator it_data = _edges_data.find(real_edge_id);
-            if(it_data != _edges_data.end()) {
+            map<t_id,map<t_edge_property,t_edge_value> >::iterator it_data = _edges_properties.find(real_edge_id);
+            if(it_data != _edges_properties.end()) {
                 /* at least one property exists */
                 map<t_edge_property,t_edge_value>::iterator it_count_prop = (it_data->second).find(EDGE_COUNT);
                 if(it_count_prop != (it_data->second).end()) {
@@ -116,7 +118,7 @@ float e_type = (float)type;
             else {
                 /* no property exists, we create the entry and the properties */
                 pair<t_edge_property,t_edge_value> edge_count = pair<t_edge_property,t_edge_value>(EDGE_COUNT,card+1.0);
-                _edges_data[real_edge_id].insert(edge_count);
+                _edges_properties[real_edge_id].insert(edge_count);
 
                 pair<t_edge_property,t_edge_value> edge_type = pair<t_edge_property,t_edge_value>(EDGE_TYPE,e_type);
                 (it_data->second).insert(edge_type);
@@ -129,15 +131,25 @@ float e_type = (float)type;
             
             if(card > 1.0) {
                 pair<t_edge_property,t_edge_value> edge_count = pair<t_edge_property,t_edge_value>(EDGE_COUNT,card);
-                _edges_data[id].insert(edge_count);
+                _edges_properties[id].insert(edge_count);
             }
         }
     }
     else {
-        /* the source doesn't exists */
+        /* the source doesn't exists, so we create the link */
         map<t_id,t_id> edges;
         edges.insert(pair<t_id,t_id>(target_id,id));
         _edges.insert(pair<t_id,map<t_id,t_id> >(source_id, edges));
+
+        /* the cardinal property doesn't exist, we create it */
+        if(card > 1.0) {
+            pair<t_edge_property,t_edge_value> edge_count = pair<t_edge_property,t_edge_value>(EDGE_COUNT,card);
+            _edges_properties[id].insert(edge_count);
+        }
+
+        /* the type property doesn't exists, we create it */
+        pair<t_edge_property,t_edge_value> edge_count = pair<t_edge_property,t_edge_value>(EDGE_TYPE,e_type);
+        _edges_properties[id].insert(edge_count);
     }
 
     // 2*O(log-n)
@@ -179,7 +191,7 @@ void Graph::removeEdge(const t_id source_id, const t_id target_id) {
     if(it_t != links.end()) {
         t_id edge_id = it_t->second;
         _bloom_edges.erase(edge_id);
-        _edges_data.erase(edge_id);
+        _edges_properties.erase(edge_id);
     }
     else {
         throw logic_error(MsgExceptionBuilder::buildString("Target id not found", target_id));
@@ -293,9 +305,24 @@ unsigned int count = 0;
     }
     // 0(n + log-n)
     map<t_id,map<t_edge_property,t_edge_value> >::const_iterator it;
-    for ( it=_edges_data.begin() ; it != _edges_data.end(); it++ ) {
+    for ( it=_edges_properties.begin() ; it != _edges_properties.end(); it++ ) {
         map<t_edge_property,t_edge_value>::const_iterator it2 = ((*it).second).find(EDGE_COUNT);
         count += (unsigned int)(*it2).second - 1;
+    }
+
+    return count;
+}
+
+//-----------------------------------------
+unsigned int Graph::getInternalEdgeCount() const {
+//-----------------------------------------
+unsigned int count = 0;
+
+    if(_lock_flag == '2') throw WriteLockException("Read not allowed");
+
+    // 0(n)
+    for(map<t_id,map<t_id,t_id> >::const_iterator it = _edges.begin() ; it != _edges.end() ; it++) {
+        count += (it->second).size();
     }
 
     return count;
@@ -316,8 +343,8 @@ unsigned int count = 0;
         /* add cardinals */
         map<t_id,t_id>::const_iterator it_t;
         for ( it_t=(it_e->second).begin() ; it_t != (it_e->second).end(); it_t++ ) {
-            map<t_id,map<t_edge_property,t_edge_value> >::const_iterator it_data = _edges_data.find(it_t->second);
-            if(it_data != _edges_data.end()) {
+            map<t_id,map<t_edge_property,t_edge_value> >::const_iterator it_data = _edges_properties.find(it_t->second);
+            if(it_data != _edges_properties.end()) {
                 map<t_edge_property,t_edge_value>::const_iterator it_count = (it_data->second).find(EDGE_COUNT);
                 if(it_count != (it_data->second).end()) {
                     count += (unsigned int)it_count->second - 1;
@@ -376,7 +403,7 @@ void Graph::clearEdges(const t_id node_id) {
 void Graph::clear() {
 //-----------------------------------------
     if(_lock_flag == '1') throw ReadLockException("Write not allowed");
-    _edges_data.clear();
+    _edges_properties.clear();
     _edges.clear();
     _reverse_edges.clear();
     _bloom_edges.clear();
@@ -388,7 +415,7 @@ void Graph::clear() {
 void Graph::clearEdges() {
 //-----------------------------------------
     if(_lock_flag == '1') throw ReadLockException("Write not allowed");
-    _edges_data.clear();
+    _edges_properties.clear();
     _edges.clear();
     _reverse_edges.clear();
     _bloom_edges.clear();
@@ -455,9 +482,9 @@ ostream& operator<<(ostream& os, const Graph& o) {
     os << o._edges << "]" << endl << endl;
     os << "_reverse_edges [" << endl;
     os << o._reverse_edges << "]" << endl << endl;
-    os << "_edges_data [" << endl;
+    os << "_edges_properties [" << endl;
     std::map<t_id,std::map<t_edge_property,t_edge_value> >::const_iterator it;
-    for ( it=o._edges_data.begin() ; it != o._edges_data.end(); it++ ) {
+    for ( it=o._edges_properties.begin() ; it != o._edges_properties.end(); it++ ) {
         os << (*it).first << "-> ";
         std::map<t_edge_property,t_edge_value>::const_iterator it2;
         for ( it2=((*it).second).begin() ; it2 != ((*it).second).end(); it2++ ) {

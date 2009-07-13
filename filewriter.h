@@ -51,12 +51,13 @@ private:
     void writeMetaNode(xmlTextWriterPtr writer);
     void writeGraphNode(xmlTextWriterPtr writer);
     void writeNodesNode(xmlTextWriterPtr writer);
-    void writeNodeNode(xmlTextWriterPtr writer, const std::string node_id);
+    void writeNodeNode(xmlTextWriterPtr writer, const std::string node_id, const std::string label="");
     void writeEdgesNode(xmlTextWriterPtr writer);
     void writeEdgeNode(xmlTextWriterPtr writer, const std::string edge_id, const std::string source_id, const std::string target_id, const std::string cardinal="1", const std::string type="undirected");
 
     xmlChar* convertInput(const char *in, const char *encoding) const;
-    std::string unsignedIntToStr(const unsigned int i);
+    std::string unsignedIntToStr(const unsigned int i) const;
+    std::string edgeTypeToStr(const t_edge_type t) const;
 private:
     GEXF* _gexf;
     std::string _filepath;

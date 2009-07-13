@@ -255,7 +255,7 @@ void GexfParser::processEdgeNode(xmlTextReaderPtr reader) {
 
         xmlChar* attr_cardinal = xmlTextReaderGetAttribute(reader, xmlCharStrdup("cardinal"));
         unsigned int cardinal = 1;
-        if( attr_cardinal && NULL && xmlStrEqual(attr_cardinal, BAD_CAST "1") == 0 ) {
+        if( attr_cardinal != NULL && xmlStrEqual(attr_cardinal, BAD_CAST "1") == 0 ) {
             cardinal = (t_id)xmlCharToUnsignedInt(attr_cardinal);
         }
 

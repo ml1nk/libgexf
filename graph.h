@@ -85,7 +85,7 @@ protected:
     std::map<t_id,std::map<t_id,t_id> > _edges; /*!< map<source_id, map<target_id, edge_id> > */
     std::map<t_id,std::set<t_id> > _reverse_edges; /*!< map<target_id, set<source_id> > */
     std::set<t_id> _bloom_edges; /*!< Set of all edge_id used as a (poor) bloom filter */
-    std::map<t_id,std::map<t_edge_property,t_edge_value> > _edges_data; /*!<Topological properties of edges */
+    std::map<t_id,std::map<t_edge_property,t_edge_value> > _edges_properties; /*!<Topological properties of edges */
     unsigned short int _rlock_count; /*!< Number of read-locks */
     /*! \var char _lock_flag
         \brief Flag used for determining the lock type:
@@ -94,6 +94,8 @@ protected:
         \li 2 = write locked
      */
     char _lock_flag;
+
+    unsigned int getInternalEdgeCount() const; /*!< Used for EdgeIter > */
 
     friend std::ostream& operator<<(std::ostream& os, const Graph& o);
     friend class NodeIter;

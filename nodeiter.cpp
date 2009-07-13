@@ -24,7 +24,7 @@ NodeIter* NodeIter::begin() {
 }
 
 bool NodeIter::hasNext() const {
-    return _cpt != _graph->getNodeCount();
+    return _cpt != _nb_items;
 }
 
 t_id NodeIter::next() {

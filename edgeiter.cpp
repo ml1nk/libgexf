@@ -5,13 +5,16 @@
  * Created on 9 juillet 2009, 17:38
  */
 
+#include <map>
+
+
 #include "edgeiter.h"
 
 using namespace std;
 
 namespace libgexf {
 
-EdgeIter::EdgeIter(const Graph* g): _graph(g), _cpt(0), _nb_items(g->getEdgeCount()) {
+EdgeIter::EdgeIter(const Graph* g): _graph(g), _cpt(0), _nb_items(g->getInternalEdgeCount()) {
     this->begin();
 }
 
@@ -25,7 +28,7 @@ EdgeIter* EdgeIter::begin() {
 }
 
 bool EdgeIter::hasNext() const {
-    return _cpt != _graph->getEdgeCount();
+    return _cpt != _nb_items;
 }
 
 t_id EdgeIter::next() {
@@ -49,6 +52,19 @@ t_id EdgeIter::currentSource() const {
 
 t_id EdgeIter::currentTarget() const {
     return _current_target;
+}
+
+float EdgeIter::currentProperty(t_edge_property prop) const {
+    float r = 0.0;
+    t_id edge_id = _it2->second;
+    map<t_id,std::map<t_edge_property,t_edge_value> >::const_iterator it_properties = _graph->_edges_properties.find(edge_id);
+    if( it_properties != _graph->_edges_properties.end() ) {
+        map<t_edge_property,t_edge_value>::const_iterator it_prop = (it_properties->second).find(prop);
+        if( it_prop != (it_properties->second).end() ) {
+            r = it_prop->second;
+        }
+    }
+    return r;
 }
 
 }

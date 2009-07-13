@@ -9,13 +9,13 @@
         <creator>Gephi.org</creator>
         <description>A hello world! file</description>
     </meta>
-    <graph mode="static" defaultedgetype="directed">
+    <graph mode="static" defaultedgetype="double">
         <nodes>
             <node id="0" label="Hello Bob" />
             <node id="1" label="World" />
         </nodes>
         <edges>
-            <edge id="0" source="0" target="1" type="double" cardinal="5" />
+            <edge id="0" source="0" target="1" type="directed" cardinal="5" />
         </edges>
     </graph>
 </gexf>

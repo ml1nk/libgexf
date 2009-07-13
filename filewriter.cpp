@@ -262,7 +262,8 @@ int rc;
     NodeIter* it = _gexf->getUndirectedGraph().getNodes();
     while(it->hasNext()) {
         t_id node_id = it->next();
-        this->writeNodeNode(FileWriter, this->unsignedIntToStr(node_id));
+        string label = _gexf->getData().getLabel(node_id);
+        this->writeNodeNode(FileWriter, this->unsignedIntToStr(node_id), label);
     }
     delete it;
     
@@ -274,7 +275,7 @@ int rc;
 }
 
 //-----------------------------------------
-void FileWriter::writeNodeNode(xmlTextWriterPtr FileWriter, const std::string node_id) {
+void FileWriter::writeNodeNode(xmlTextWriterPtr FileWriter, const string node_id, const string label) {
 //-----------------------------------------
 int rc;
 
@@ -291,7 +292,7 @@ int rc;
     }
 
     /* Add an attribute with name "label" */
-    rc = xmlTextWriterWriteAttribute(FileWriter, BAD_CAST "label", BAD_CAST "");
+    rc = xmlTextWriterWriteAttribute(FileWriter, BAD_CAST "label", BAD_CAST label.c_str());
     if (rc < 0) {
         throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
     }
@@ -317,13 +318,15 @@ int rc;
     //this->writeEdgeNode(FileWriter);
 
 
-    /* Iterate on each node */
+    /* Iterate on each edge */
     EdgeIter* it = _gexf->getUndirectedGraph().getEdges();
     while(it->hasNext()) {
         t_id edge_id = it->next();
         t_id source_id = it->currentSource();
         t_id target_id = it->currentTarget();
-        this->writeEdgeNode(FileWriter, this->unsignedIntToStr(edge_id), this->unsignedIntToStr(source_id), this->unsignedIntToStr(target_id));
+        unsigned int card = (unsigned int)it->currentProperty(EDGE_COUNT);
+        t_edge_type type = (t_edge_type)it->currentProperty(EDGE_TYPE);
+        this->writeEdgeNode(FileWriter, this->unsignedIntToStr(edge_id), this->unsignedIntToStr(source_id), this->unsignedIntToStr(target_id), this->unsignedIntToStr(card), this->edgeTypeToStr(type));
     }
     delete it;
 
@@ -335,7 +338,7 @@ int rc;
 }
 
 //-----------------------------------------
-void FileWriter::writeEdgeNode(xmlTextWriterPtr FileWriter, const std::string edge_id, const std::string source_id, const std::string target_id, const std::string cardinal, const std::string type) {
+void FileWriter::writeEdgeNode(xmlTextWriterPtr FileWriter, const string edge_id, const string source_id, const string target_id, const string cardinal, const string type) {
 //-----------------------------------------
 int rc;
 
@@ -373,8 +376,10 @@ int rc;
     }
 
     /* Add an attribute with name "type" */
-    if(type.compare("undirected") != 0) {
-        /* undirected is a defaultValue and can be omitted */
+    t_graph t = _gexf->getGraphType();
+    if( (t != GRAPH_DIRECTED && type.compare("undirected") != 0) || /* undirected is the default value and can be omitted */
+        (t == GRAPH_DIRECTED && type.compare("directed") != 0) ) { /* directed can be omitted if it is the default value */
+        
         rc = xmlTextWriterWriteAttribute(FileWriter, BAD_CAST "type", BAD_CAST type.c_str());
         if (rc < 0) {
             throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
@@ -447,11 +452,28 @@ xmlChar* FileWriter::convertInput(const char *in, const char *encoding) const {
 
 
 //-----------------------------------------
-string FileWriter::unsignedIntToStr(const unsigned int i) {
+string FileWriter::unsignedIntToStr(const unsigned int i) const {
 //-----------------------------------------
     stringstream ss;
     ss << i;
     return ss.str();
+}
+
+string FileWriter::edgeTypeToStr(const t_edge_type t) const {
+    // fonction de porc qui ne devrait pas exister
+    switch(t)
+    {
+        case EDGE_DIRECTED:
+            return "directed";
+            break;
+        case EDGE_UNDIRECTED:
+            return "undirected";
+            break;
+        case EDGE_DOUBLE:
+            return "double";
+            break;
+    }
+    return "";
 }
 
 

@@ -146,10 +146,10 @@ unsigned int count = 0;
             map<t_id,map<t_id,t_id> >::const_iterator it_e = _edges.find(*it_s);
             map<t_id,t_id>::const_iterator it_t = (it_e->second).find(node_id);
             t_id edge_id = it_t->second;
-            map<t_id,map<t_edge_property,t_edge_value> >::const_iterator it_data = _edges_data.find(edge_id);
-            if(it_data != _edges_data.end()) {
-                map<t_edge_property,t_edge_value>::const_iterator it_count = (it_data->second).find(EDGE_COUNT);
-                if(it_count != (it_data->second).end()) {
+            map<t_id,map<t_edge_property,t_edge_value> >::const_iterator it_properties = _edges_properties.find(edge_id);
+            if(it_properties != _edges_properties.end()) {
+                map<t_edge_property,t_edge_value>::const_iterator it_count = (it_properties->second).find(EDGE_COUNT);
+                if(it_count != (it_properties->second).end()) {
                     count += (unsigned int)it_count->second - 1;
                 }
             }
@@ -175,10 +175,10 @@ unsigned int count = 0;
         /* add cardinals */
         map<t_id,t_id>::const_iterator it_t;
         for ( it_t=(it_e->second).begin() ; it_t != (it_e->second).end(); it_t++ ) {
-            map<t_id,map<t_edge_property,t_edge_value> >::const_iterator it_data = _edges_data.find(it_t->second);
-            if(it_data != _edges_data.end()) {
-                map<t_edge_property,t_edge_value>::const_iterator it_count = (it_data->second).find(EDGE_COUNT);
-                if(it_count != (it_data->second).end()) {
+            map<t_id,map<t_edge_property,t_edge_value> >::const_iterator it_properties = _edges_properties.find(it_t->second);
+            if(it_properties != _edges_properties.end()) {
+                map<t_edge_property,t_edge_value>::const_iterator it_count = (it_properties->second).find(EDGE_COUNT);
+                if(it_count != (it_properties->second).end()) {
                     count += (unsigned int)it_count->second - 1;
                 }
             }
