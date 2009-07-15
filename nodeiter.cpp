@@ -24,20 +24,12 @@ NodeIter* NodeIter::begin() {
 }
 
 bool NodeIter::hasNext() const {
-    return _cpt != _nb_items;
+    return _nb_items != 0 && _cpt != _nb_items;
 }
 
 t_id NodeIter::next() {
     _cpt++;
     return *_it++;
 }
-
-/*t_id NodeIter::currentItem() {
-    return *_it;
-}
-
-bool NodeIter::eq(NodeIter it) {
-    return *_it == it.currentItem();
-}*/
 
 } /* namespace libgexf */

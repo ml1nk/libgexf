@@ -37,6 +37,7 @@ private:
     unsigned int _nb_items;
     t_id _current_source;
     t_id _current_target;
+    // TODO: optimizing for removing _current_source and _current_target copy
 };
 
 }

@@ -30,9 +30,13 @@
 #define	_DATA_H
 
 #include "typedefs.h"
+#include "attributeiter.h"
 #include <string>
+#include <map>
 
 namespace libgexf {
+
+class AttributeIter;
 
 class Data {
 public:
@@ -44,11 +48,36 @@ public:
     bool hasLabel(const t_id node_id) const;
     void setLabel(const t_id node_id, const std::string label);
 
+    void addNodeAttributeColumn(const t_id id, const std::string title, const t_attr_type type);
+    void addEdgeAttributeColumn(const t_id id, const std::string title, const t_attr_type type);
+
+    AttributeIter* getNodeAttributeColumn() const;
+    AttributeIter* getEdgeAttributeColumn() const;
+
+    std::string getNodeAttribute(const t_id node_id, const t_id attr_id) const;
+    std::string getEdgeAttribute(const t_id edge_id, const t_id attr_id) const;
+
+    std::map<t_id,std::string > getNodeAttributeRow(const t_id node_id) const;
+    std::map<t_id,std::string > getEdgeAttributeRow(const t_id edge_id) const;
+
+    void setNodeValue(const t_id node_id, const t_id attr_id, const std::string value);
+    void setEdgeValue(const t_id node_id, const t_id attr_id, const std::string value);
 private:
     std::map<t_id,std::string > _node_labels; /*!< map<node_id, label > */
-   // std::map<t_id,std::map<t_node_data,void*> > _node_data; /*!< map<node_id, map<k, v> > */
+
+    std::map<t_id,std::string > _node_attributes; /*!< map<attr_id, title > */
+    std::map<t_id,t_attr_type > _node_attributes_types; /*!< map<attr_id, type > */
+    std::map<t_id,std::map<t_id,std::string > > _node_values; /*!< map<node_id, map<attr_id, type > > */
+
+    std::map<t_id,std::string > _edge_attributes; /*!< map<attr_id, title > */
+    std::map<t_id,t_attr_type > _edge_attributes_types; /*!< map<attr_id, type > */
+    std::map<t_id,std::map<t_id,std::string > > _edge_values; /*!< map<edge_id, map<attr_id, type > > */
 private:
+    void init();
     friend std::ostream& operator<<(std::ostream& os, const Data& o);
+    unsigned int countNodeAttributeColumn() const;
+    unsigned int countEdgeAttributeColumn() const;
+    friend class AttributeIter;
 };
 
 } /* namespace libgexf */

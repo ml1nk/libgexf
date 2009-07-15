@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>/home/sebastien/NetBeansProjects/libgexf/attributeiter.h</itemPath>
       <itemPath>/home/sebastien/NetBeansProjects/libgexf/data.h</itemPath>
       <itemPath>directedgraph.h</itemPath>
       <itemPath>/home/sebastien/NetBeansProjects/libgexf/edgeiter.h</itemPath>
@@ -27,6 +28,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>/home/sebastien/NetBeansProjects/libgexf/attributeiter.cpp</itemPath>
       <itemPath>/home/sebastien/NetBeansProjects/libgexf/data.cpp</itemPath>
       <itemPath>directedgraph.cpp</itemPath>
       <itemPath>/home/sebastien/NetBeansProjects/libgexf/edgeiter.cpp</itemPath>
@@ -45,6 +47,8 @@
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>/home/sebastien/NetBeansProjects/libgexf/conv.cpp</itemPath>
+    <itemPath>/home/sebastien/NetBeansProjects/libgexf/conv.h</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -67,6 +71,18 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/attributeiter.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/attributeiter.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/conv.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/conv.h">
+        <itemTool>3</itemTool>
+      </item>
       <item path="/home/sebastien/NetBeansProjects/libgexf/data.cpp">
         <itemTool>1</itemTool>
       </item>
@@ -168,6 +184,18 @@
         <archiverTool>
         </archiverTool>
       </compileType>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/attributeiter.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/attributeiter.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/conv.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/conv.h">
+        <itemTool>3</itemTool>
+      </item>
       <item path="/home/sebastien/NetBeansProjects/libgexf/data.cpp">
         <itemTool>1</itemTool>
       </item>

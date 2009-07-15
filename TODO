@@ -2,3 +2,6 @@ TODO LIST
 
    * ajout des hypergraphes et graphes pondérés
    * ajout des attributs
+
+BUGFIX
+   * lire le contenu des balises text (pour les meta)

@@ -28,7 +28,7 @@ EdgeIter* EdgeIter::begin() {
 }
 
 bool EdgeIter::hasNext() const {
-    return _cpt != _nb_items;
+    return _nb_items != 0 && _cpt != _nb_items;
 }
 
 t_id EdgeIter::next() {

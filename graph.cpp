@@ -93,10 +93,10 @@ float e_type = (float)type;
             map<t_id,map<t_edge_property,t_edge_value> >::iterator it_data = _edges_properties.find(real_edge_id);
             if(it_data != _edges_properties.end()) {
                 /* at least one property exists */
-                map<t_edge_property,t_edge_value>::iterator it_count_prop = (it_data->second).find(EDGE_COUNT);
-                if(it_count_prop != (it_data->second).end()) {
+                map<t_edge_property,t_edge_value>::iterator it_prop = (it_data->second).find(EDGE_COUNT);
+                if(it_prop != (it_data->second).end()) {
                     /* the count property exists, we increment it */
-                    (it_count_prop->second)++;
+                    (it_prop->second)++;
                 }
                 else {
                     /* the count property doesn't exists, we create it */
@@ -104,15 +104,15 @@ float e_type = (float)type;
                     (it_data->second).insert(edge_count);
                 }
 
-                it_count_prop = (it_data->second).find(EDGE_TYPE);
-                if(it_count_prop != (it_data->second).end()) {
+                it_prop = (it_data->second).find(EDGE_TYPE);
+                if(it_prop != (it_data->second).end()) {
                     /* the type property exists, we change it */
-                    (it_count_prop->second) = e_type;
+                    it_prop->second = e_type;
                 }
                 else {
                     /* the type property doesn't exists, we create it */
-                    pair<t_edge_property,t_edge_value> edge_count = pair<t_edge_property,t_edge_value>(EDGE_TYPE,e_type);
-                    (it_data->second).insert(edge_count);
+                    pair<t_edge_property,t_edge_value> edge_type = pair<t_edge_property,t_edge_value>(EDGE_TYPE,e_type);
+                    (it_data->second).insert(edge_type);
                 }
             }
             else {
@@ -121,7 +121,7 @@ float e_type = (float)type;
                 _edges_properties[real_edge_id].insert(edge_count);
 
                 pair<t_edge_property,t_edge_value> edge_type = pair<t_edge_property,t_edge_value>(EDGE_TYPE,e_type);
-                (it_data->second).insert(edge_type);
+                _edges_properties[real_edge_id].insert(edge_type);
             }
         }
         else {
@@ -341,8 +341,7 @@ unsigned int count = 0;
         count += (it_e->second).size();
 
         /* add cardinals */
-        map<t_id,t_id>::const_iterator it_t;
-        for ( it_t=(it_e->second).begin() ; it_t != (it_e->second).end(); it_t++ ) {
+        for ( map<t_id,t_id>::const_iterator it_t=(it_e->second).begin() ; it_t != (it_e->second).end(); it_t++ ) {
             map<t_id,map<t_edge_property,t_edge_value> >::const_iterator it_data = _edges_properties.find(it_t->second);
             if(it_data != _edges_properties.end()) {
                 map<t_edge_property,t_edge_value>::const_iterator it_count = (it_data->second).find(EDGE_COUNT);

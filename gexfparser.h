@@ -30,6 +30,7 @@
 #define	_GEXF_PARSER_H
 
 #include "gexf.h"
+#include "typedefs.h"
 #include <libxml/xmlreader.h>
 #include <string>
 
@@ -53,19 +54,29 @@ private:
     void processMetaNode(xmlTextReaderPtr reader);
     void processCreatorNode(xmlTextReaderPtr reader);
     void processDescriptionNode(xmlTextReaderPtr reader);
+
     void processGraphNode(xmlTextReaderPtr reader);
     void processNodesNode(xmlTextReaderPtr reader);
     void processNodeNode(xmlTextReaderPtr reader);
     void processEdgesNode(xmlTextReaderPtr reader);
     void processEdgeNode(xmlTextReaderPtr reader);
+
+    void processAttributesNode(xmlTextReaderPtr reader);
+    void processAttributeNode(xmlTextReaderPtr reader);
+    void processAttributeDefaultNode(xmlTextReaderPtr reader);
+    void processAttvaluesNode(xmlTextReaderPtr reader);
+    void processAttvalueNode(xmlTextReaderPtr reader);
     
     bool isProcessableNode(xmlTextReaderPtr reader);
-
-    std::string xmlCharToStr(const xmlChar* str);
-    unsigned int xmlCharToUnsignedInt(const xmlChar* str);
+    std::string getStringAttribute(xmlTextReaderPtr reader, const char* name);
+    std::string getStringAttributeNS(xmlTextReaderPtr reader, const char* name, const char* namespaceURI);
+    unsigned int getUnsignedIntAttribute(xmlTextReaderPtr reader, const char* name);
 private:
+    enum ElemType { NODE, EDGE };
     GEXF* _gexf;
-    std::string _ancestor;
+    ElemType _last_node_type;
+    t_id _last_id;
+    std::string _tmp_attributes_class;
 };
 
 } /* namespace libgexf */

@@ -32,10 +32,12 @@ OBJECTFILES= \
 	${OBJECTDIR}/undirectedgraph.o \
 	${OBJECTDIR}/directedgraph.o \
 	${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/edgeiter.o \
+	${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/attributeiter.o \
 	${OBJECTDIR}/graph.o \
 	${OBJECTDIR}/gexfparser.o \
 	${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/data.o \
 	${OBJECTDIR}/inserters.o \
+	${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/conv.o \
 	${OBJECTDIR}/gexf.o \
 	${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/nodeiter.o \
 	${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/filewriter.o \
@@ -84,6 +86,11 @@ ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/edgeiter.o: /home/seba
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/edgeiter.o /home/sebastien/NetBeansProjects/libgexf/edgeiter.cpp
 
+${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/attributeiter.o: /home/sebastien/NetBeansProjects/libgexf/attributeiter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/attributeiter.o /home/sebastien/NetBeansProjects/libgexf/attributeiter.cpp
+
 ${OBJECTDIR}/graph.o: graph.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
@@ -103,6 +110,11 @@ ${OBJECTDIR}/inserters.o: inserters.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/inserters.o inserters.cpp
+
+${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/conv.o: /home/sebastien/NetBeansProjects/libgexf/conv.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/conv.o /home/sebastien/NetBeansProjects/libgexf/conv.cpp
 
 ${OBJECTDIR}/gexf.o: gexf.cpp 
 	${MKDIR} -p ${OBJECTDIR}

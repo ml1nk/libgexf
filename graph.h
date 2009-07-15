@@ -63,11 +63,11 @@ public:
 
     NodeIter* getNodes() const;
     EdgeIter* getEdges() const;
+    std::set<t_id> getNeighbors(const t_id node_id) const;
 
     unsigned int getNodeCount() const;
     unsigned int getEdgeCount() const;
     unsigned int getDegree(const t_id node_id) const;
-    std::set<t_id> getNeighbors(const t_id node_id) const;
 
     void clearEdges(const t_id node_id);
     void clear();

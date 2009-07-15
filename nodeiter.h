@@ -25,8 +25,6 @@ public:
     NodeIter* begin();
     bool hasNext() const;
     t_id next();
-    //t_id currentItem();
-    //bool eq(NodeIter it);
 private:
     const Graph* _graph;
     std::set<t_id>::const_iterator _it;
