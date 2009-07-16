@@ -27,14 +27,13 @@
 # THE SOFTWARE.
 */
 
+#include "typedefs.h"
 #include <iostream>
 #include <set>
 #include <map>
 #include <string>
 
 namespace libgexf {
-
-typedef unsigned int t_id;
 
 //-----------------------------------------
 std::ostream& operator<<(std::ostream& os, const std::set<t_id>& o) {

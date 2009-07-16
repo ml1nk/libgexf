@@ -107,11 +107,10 @@ void FileReader::streamFile() {
         const xmlChar *name;
         while (ret == 1) {
             name = xmlTextReaderConstName(reader);
-            if (name == NULL)
-                name = BAD_CAST "--";
-
-            _parser.processNode(reader, name);
-            ret = xmlTextReaderRead(reader);
+            if (name != NULL) {
+                _parser.processNode(reader, name);
+                ret = xmlTextReaderRead(reader);
+            }
         }
         xmlFreeTextReader(reader);
         if (ret != 0) {

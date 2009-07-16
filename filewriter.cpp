@@ -171,22 +171,30 @@ void FileWriter::writeMetaNode(xmlTextWriterPtr writer) {
 int rc;
 
     /* Do we have to write all these nodes? */
-    bool doCreator = _gexf->getMetaData().getCreator().compare("") != 0;
-    bool doDesc = _gexf->getMetaData().getDescription().compare("") != 0;
-    bool doKw = _gexf->getMetaData().getKeywords().compare("") != 0;
-    bool doMeta = doCreator || doDesc || doKw;
+    bool do_lastmodifieddate = _gexf->getMetaData().getLastModifiedDate().compare("") != 0;
+    bool do_creator = _gexf->getMetaData().getCreator().compare("") != 0;
+    bool do_desc = _gexf->getMetaData().getDescription().compare("") != 0;
+    bool do_kw = _gexf->getMetaData().getKeywords().compare("") != 0;
+    bool do_meta = do_creator || do_desc || do_kw || do_lastmodifieddate;
 
-    if( !doMeta ) return;
+    if( !do_meta ) return;
 
     /* Start an element named "meta" as child of gexf. */
     rc = xmlTextWriterStartElement(writer, BAD_CAST "meta");
     if (rc < 0) {
         throw FileWriterException("Error at xmlTextWriterStartElement");
     }
-    // TODO add lastmodifieddate attribute
+
+    /* Add an attribute with name "lastmodifieddate" */
+    if( do_lastmodifieddate ) {
+        rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "lastmodifieddate", BAD_CAST _gexf->getMetaData().getLastModifiedDate().c_str());
+        if (rc < 0) {
+            throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
+        }
+    }
 
     /* Write a text element named "creator" */
-    if( doCreator ) {
+    if( do_creator ) {
         rc = xmlTextWriterWriteElement(writer, BAD_CAST "creator", BAD_CAST _gexf->getMetaData().getCreator().c_str());
         if (rc < 0) {
             throw FileWriterException("Error at xmlTextWriterWriteElement");
@@ -194,7 +202,7 @@ int rc;
     }
 
     /* Write a text element named "description" */
-    if( doDesc ) {
+    if( do_desc ) {
         rc = xmlTextWriterWriteElement(writer, BAD_CAST "description", BAD_CAST _gexf->getMetaData().getDescription().c_str());
         if (rc < 0) {
             throw FileWriterException("Error at xmlTextWriterWriteElement");
@@ -202,7 +210,7 @@ int rc;
     }
 
     /* Write a text element named "keywords" */
-    if( doKw ) {
+    if( do_kw ) {
         rc = xmlTextWriterWriteElement(writer, BAD_CAST "keywords", BAD_CAST _gexf->getMetaData().getKeywords().c_str());
         if (rc < 0) {
             throw FileWriterException("Error at xmlTextWriterWriteElement");
@@ -277,7 +285,7 @@ int rc;
     while(it->hasNext()) {
         t_id node_id = it->next();
         string label = _gexf->getData().getLabel(node_id);
-        this->writeNodeNode(writer, Conv::unsignedIntToStr(node_id), label);
+        this->writeNodeNode(writer, Conv::idToStr(node_id), label);
     }
     
     /* Close the element named nodes. */
@@ -310,7 +318,7 @@ int rc;
         throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
     }
 
-    if( !_gexf->getData().getNodeAttributeRow((t_id)Conv::strToUnsignedInt(node_id)).empty() )
+    if( !_gexf->getData().getNodeAttributeRow(Conv::strToId(node_id)).empty() )
         this->writeAttvaluesNode(writer, NODE, node_id);
 
     /* Close the element named node. */
@@ -339,7 +347,7 @@ int rc;
         t_id target_id = it->currentTarget();
         unsigned int card = (unsigned int)it->currentProperty(EDGE_COUNT);
         t_edge_type type = (t_edge_type)it->currentProperty(EDGE_TYPE);
-        this->writeEdgeNode(writer, Conv::unsignedIntToStr(edge_id), Conv::unsignedIntToStr(source_id), Conv::unsignedIntToStr(target_id), Conv::unsignedIntToStr(card), Conv::edgeTypeToStr(type));
+        this->writeEdgeNode(writer, Conv::idToStr(edge_id), Conv::idToStr(source_id), Conv::idToStr(target_id), Conv::unsignedIntToStr(card), Conv::edgeTypeToStr(type));
     }
 
     /* Close the element named edges. */
@@ -398,7 +406,7 @@ int rc;
         }
     }
     
-    if( !_gexf->getData().getEdgeAttributeRow((t_id)Conv::strToUnsignedInt(edge_id)).empty() )
+    if( !_gexf->getData().getEdgeAttributeRow(Conv::strToId(edge_id)).empty() )
         this->writeAttvaluesNode(writer, EDGE, edge_id);
 
     /* Close the element named edge. */
@@ -413,6 +421,7 @@ void FileWriter::writeAttributesNode(xmlTextWriterPtr writer, const string eleme
 //-----------------------------------------
 int rc;
 AttributeIter* it;
+string default_value;
 
     if( element_class.compare("node") != 0 && element_class.compare("edge") != 0 ) {
         throw invalid_argument("writeAttributesNode: invalid element_class");
@@ -442,7 +451,14 @@ AttributeIter* it;
         t_id attr_id = it->next();
         string title = it->currentTitle();
         t_attr_type type = it->currentType();
-        this->writeAttributeNode(writer, Conv::unsignedIntToStr(attr_id), title, Conv::attrTypeToStr(type));
+        default_value = "";
+        if(element_class.compare("node") == 0)
+            if( _gexf->getData().hasNodeAttributeDefault(attr_id) )
+                default_value = _gexf->getData().getNodeAttributeDefault(attr_id);
+        else if(element_class.compare("edge") == 0)
+            if( _gexf->getData().hasEdgeAttributeDefault(attr_id) )
+                default_value = _gexf->getData().getEdgeAttributeDefault(attr_id);
+        this->writeAttributeNode(writer, Conv::idToStr(attr_id), title, Conv::attrTypeToStr(type), default_value);
     }
 
     /* Close the element named attributes. */
@@ -453,7 +469,7 @@ AttributeIter* it;
 }
 
 //-----------------------------------------
-void FileWriter::writeAttributeNode(xmlTextWriterPtr writer, const string id, const string title, const string type) {
+void FileWriter::writeAttributeNode(xmlTextWriterPtr writer, const string id, const string title, const string type, const string default_value) {
 //-----------------------------------------
 int rc;
 
@@ -479,6 +495,14 @@ int rc;
     rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "type", BAD_CAST type.c_str());
     if (rc < 0) {
         throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
+    }
+
+    /* Write a text element named "default" */
+    if( !default_value.empty() ) {
+        rc = xmlTextWriterWriteElement(writer, BAD_CAST "default", BAD_CAST default_value.c_str());
+        if (rc < 0) {
+            throw FileWriterException("Error at xmlTextWriterWriteElement");
+        }
     }
 
     /* Close the element named attribute. */
@@ -526,17 +550,16 @@ int rc;
     /* Write each attribute row */
     map<t_id,string > row = map<t_id,string >();
     if( type == NODE ) {
-        row = _gexf->getData().getNodeAttributeRow((t_id)Conv::strToUnsignedInt(id));
+        row = _gexf->getData().getNodeAttributeRow(Conv::strToId(id));
     }
     else if( type == EDGE ) {
-        row = _gexf->getData().getEdgeAttributeRow((t_id)Conv::strToUnsignedInt(id));
+        row = _gexf->getData().getEdgeAttributeRow(Conv::strToId(id));
     }
     if( !row.empty() ) {
         for(map<t_id,string >::const_iterator it = row.begin(); it != row.end(); it++) {
-            this->writeAttvalueNode(writer, Conv::unsignedIntToStr(it->first), it->second);
+            this->writeAttvalueNode(writer, Conv::idToStr(it->first), it->second);
         }
     }
-    
 
     /* Close the element named default. */
     rc = xmlTextWriterEndElement(writer);
@@ -556,8 +579,8 @@ int rc;
         throw FileWriterException("Error at xmlTextWriterStartElement");
     }
 
-    /* Add an attribute with name "id" */
-    rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "id", BAD_CAST attribute_id.c_str());
+    /* Add an attribute with name "for" */
+    rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "for", BAD_CAST attribute_id.c_str());
     if (rc < 0) {
         throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
     }

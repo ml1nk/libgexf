@@ -37,14 +37,14 @@ using namespace std;
 
 namespace libgexf {
 
-GexfParser::GexfParser(): _last_id(), _tmp_attributes_class("") {
+GexfParser::GexfParser(): _last_id(), _last_node_type() {
 }
 
-GexfParser::GexfParser(const GexfParser& orig): _last_id(orig._last_id), _tmp_attributes_class(orig._tmp_attributes_class) {
+GexfParser::GexfParser(const GexfParser& orig): _last_id(orig._last_id), _last_node_type(orig._last_node_type) {
 }
 
 GexfParser::~GexfParser() {
-    // do not delete _gexf, only Reader instance should do !!
+    // do not delete _gexf, only Reader instance should do it!
 }
 
 //-----------------------------------------
@@ -135,12 +135,15 @@ void GexfParser::processGEXFNode(xmlTextReaderPtr reader) {
             cerr << "WARN " << e.what() << endl;
         }
 
+        string version = "";
         try {
-            string version = this->getStringAttribute(reader, "version");
-        _gexf->getMetaData().setVersion( version );
+            version = this->getStringAttribute(reader, "version");
+            //_gexf->getMetaData().setVersion( version );
         } catch (exception &e) {
             cerr << "WARN " << e.what() << endl;
         }
+        if( version.compare("1.1") != 0 )
+            throw FileReaderException("Wrong GEXF version, only 1.1 is currently supported.");
     }
     else if(hasAttr  == -1) {
         throw FileReaderException("An error occured in xmlTextReaderHasAttributes() for GEXF node.");
@@ -164,29 +167,43 @@ void GexfParser::processMetaNode(xmlTextReaderPtr reader) {
 //-----------------------------------------
 void GexfParser::processCreatorNode(xmlTextReaderPtr reader) {
 //-----------------------------------------
-    int hasVal = xmlTextReaderHasValue(reader);
-    if(hasVal == 1) {
-        const xmlChar *value = xmlTextReaderConstValue(reader);
-        if(value != NULL)
-            _gexf->getMetaData().setCreator( Conv::xmlCharToStr(value) );
-    }
-    else if(hasVal  == -1) {
-        throw FileReaderException("An error occured in xmlTextReaderHasValue() for Creator node.");
+    int ret = xmlTextReaderRead(reader);
+    if( ret == 1 ) {
+        /* should be the text node */
+        const xmlChar* name = xmlTextReaderConstName(reader);
+        if ( xmlStrEqual(name, xmlCharStrdup("#text")) == 1 ) {
+            int hasVal = xmlTextReaderHasValue(reader);
+            if(hasVal == 1) {
+                const xmlChar *value = xmlTextReaderConstValue(reader);
+                if(value != NULL)
+                    _gexf->getMetaData().setCreator( Conv::xmlCharToStr(value) );
+            }
+            else if(hasVal  == -1) {
+                throw FileReaderException("An error occured in xmlTextReaderHasValue() for Creator node.");
+            }
+        }
     }
 }
 
 //-----------------------------------------
 void GexfParser::processDescriptionNode(xmlTextReaderPtr reader) {
 //-----------------------------------------
-    int hasVal = xmlTextReaderHasValue(reader);
-    if(hasVal == 1) {
-        const xmlChar *value = xmlTextReaderConstValue(reader);
-        if(value != NULL) {
-            _gexf->getMetaData().setDescription( Conv::xmlCharToStr(value) );
+    int ret = xmlTextReaderRead(reader);
+    if( ret == 1 ) {
+        /* should be the text node */
+        const xmlChar* name = xmlTextReaderConstName(reader);
+        if ( xmlStrEqual(name, xmlCharStrdup("#text")) == 1 ) {
+            int hasVal = xmlTextReaderHasValue(reader);
+            if(hasVal == 1) {
+                const xmlChar *value = xmlTextReaderConstValue(reader);
+                if(value != NULL) {
+                    _gexf->getMetaData().setDescription( Conv::xmlCharToStr(value) );
+                }
+            }
+            else if(hasVal  == -1) {
+                throw FileReaderException("An error occured in xmlTextReaderHasValue() for Description node.");
+            }
         }
-    }
-    else if(hasVal  == -1) {
-        throw FileReaderException("An error occured in xmlTextReaderHasValue() for Description node.");
     }
 }
 
@@ -210,13 +227,17 @@ void GexfParser::processGraphNode(xmlTextReaderPtr reader) {
             // TODO
         }
 
-        string defaultedgetype = this->getStringAttribute(reader, "defaultedgetype");
-        if( defaultedgetype.compare("directed") == 0 ) {
-            _gexf->setGraphType(GRAPH_DIRECTED);
-        } else if( defaultedgetype.compare("mixed") == 0 ) {
-            _gexf->setGraphType(GRAPH_MIXED);
-        }
-        else {
+        try {
+            string defaultedgetype = this->getStringAttribute(reader, "defaultedgetype");
+            if( defaultedgetype.compare("directed") == 0 ) {
+                _gexf->setGraphType(GRAPH_DIRECTED);
+            } else if( defaultedgetype.compare("mixed") == 0 ) {
+                _gexf->setGraphType(GRAPH_MIXED);
+            }
+            else {
+                cerr << "INFO " << "Unknown default edge type, undirected used." << endl;
+            }
+        } catch (exception &e) {
             cerr << "INFO " << "Unknown default edge type, undirected used." << endl;
         }
     }
@@ -236,7 +257,7 @@ void GexfParser::processNodeNode(xmlTextReaderPtr reader) {
 //-----------------------------------------
     int hasAttr = xmlTextReaderHasAttributes(reader);
     if(hasAttr == 1) {
-        t_id node_id = (t_id)this->getUnsignedIntAttribute(reader, "id");
+        t_id node_id = this->getIdAttribute(reader, "id");
         string label= this->getStringAttribute(reader, "label");
 
         _gexf->getUndirectedGraph().addNode( node_id );
@@ -260,9 +281,9 @@ void GexfParser::processEdgeNode(xmlTextReaderPtr reader) {
 //-----------------------------------------
     int hasAttr = xmlTextReaderHasAttributes(reader);
     if(hasAttr == 1) {
-        t_id edge_id = (t_id)this->getUnsignedIntAttribute(reader, "id");
-        t_id source = (t_id)this->getUnsignedIntAttribute(reader, "source");
-        t_id target = (t_id)this->getUnsignedIntAttribute(reader, "target");
+        t_id edge_id = this->getIdAttribute(reader, "id");
+        t_id source = this->getIdAttribute(reader, "source");
+        t_id target = this->getIdAttribute(reader, "target");
         unsigned int cardinal = 1;
         string tmp_type = "undirected";
         try {
@@ -304,8 +325,11 @@ void GexfParser::processAttributesNode(xmlTextReaderPtr reader) {
     int hasAttr = xmlTextReaderHasAttributes(reader);
     if(hasAttr == 1) {
         string attribute_class = this->getStringAttribute(reader, "class");
-        if( attribute_class.compare("node") == 0 || attribute_class.compare("edge") == 0 ) {
-            _tmp_attributes_class = attribute_class;
+        if( attribute_class.compare("node") == 0 ) {
+            _last_node_type = ATTR_NODE;
+        }
+        else if( attribute_class.compare("edge") == 0 ) {
+            _last_node_type = ATTR_EDGE;
         }
         else {
             throw FileReaderException("Attributes node: unknown class");
@@ -321,7 +345,7 @@ void GexfParser::processAttributeNode(xmlTextReaderPtr reader) {
 //-----------------------------------------
     int hasAttr = xmlTextReaderHasAttributes(reader);
     if(hasAttr == 1) {
-        t_id attribute_id = (t_id)this->getUnsignedIntAttribute(reader, "id");
+        t_id attribute_id = this->getIdAttribute(reader, "id");
         string title = this->getStringAttribute(reader, "title");
         string tmp_type = this->getStringAttribute(reader, "type");
         t_attr_type type = STRING; /* internal default value */
@@ -337,12 +361,13 @@ void GexfParser::processAttributeNode(xmlTextReaderPtr reader) {
         else if( tmp_type.compare("list-string") == 0 )
             type = LIST_STRING;
 
-        if(_tmp_attributes_class.compare("node") == 0) {
+        if( _last_node_type == ATTR_NODE ) {
             _gexf->getData().addNodeAttributeColumn(attribute_id, title, type);
         }
-        else if(_tmp_attributes_class.compare("edge") == 0) {
+        else if( _last_node_type == ATTR_EDGE ) {
             _gexf->getData().addEdgeAttributeColumn(attribute_id, title, type);
         }
+        _last_id = attribute_id;
     }
     else if(hasAttr  == -1) {
         throw FileReaderException("An error occured in xmlTextReaderHasAttributes() for Graph node.");
@@ -352,7 +377,28 @@ void GexfParser::processAttributeNode(xmlTextReaderPtr reader) {
 //-----------------------------------------
 void GexfParser::processAttributeDefaultNode(xmlTextReaderPtr reader) {
 //-----------------------------------------
-    // TODO, do nothing for the moment
+    int ret = xmlTextReaderRead(reader);
+    if( ret == 1 ) {
+        /* should be the text node */
+        const xmlChar* name = xmlTextReaderConstName(reader);
+        if ( xmlStrEqual(name, xmlCharStrdup("#text")) == 1 ) {
+            int hasVal = xmlTextReaderHasValue(reader);
+            if(hasVal == 1) {
+                const xmlChar *value = xmlTextReaderConstValue(reader);
+                if(value != NULL) {
+                    if( _last_node_type == ATTR_NODE ) {
+                        _gexf->getData().setNodeAttributeDefault(_last_id, Conv::xmlCharToStr(value));
+                    }
+                    else if( _last_node_type == ATTR_EDGE ) {
+                        _gexf->getData().setEdgeAttributeDefault(_last_id, Conv::xmlCharToStr(value));
+                    }
+                }
+            }
+            else if(hasVal  == -1) {
+                throw FileReaderException("An error occured in xmlTextReaderHasValue() for Default node.");
+            }
+        }
+    }
 }
 
 //-----------------------------------------
@@ -364,7 +410,7 @@ void GexfParser::processAttvaluesNode(xmlTextReaderPtr reader) {
 //-----------------------------------------
 void GexfParser::processAttvalueNode(xmlTextReaderPtr reader) {
 //-----------------------------------------
-    t_id attribute_id = (t_id)this->getUnsignedIntAttribute(reader, "id");
+    t_id attribute_id = this->getIdAttribute(reader, "for");
     string value = this->getStringAttribute(reader, "value");
 
     if( _last_node_type == NODE ) {
@@ -385,6 +431,19 @@ bool GexfParser::isProcessableNode(xmlTextReaderPtr reader) {
 }
 
 //-----------------------------------------
+t_id GexfParser::getIdAttribute(xmlTextReaderPtr reader, const char* name) {
+//-----------------------------------------
+    xmlChar* attr = xmlTextReaderGetAttribute(reader, xmlCharStrdup(name));
+    if( attr != NULL )
+        return Conv::xmlCharToId(attr);
+    else {
+        stringstream ss;
+        ss << "No attribute " << name;
+        throw FileReaderException(ss.str());
+    }
+}
+
+//-----------------------------------------
 string GexfParser::getStringAttribute(xmlTextReaderPtr reader, const char* name) {
 //-----------------------------------------
     xmlChar* attr = xmlTextReaderGetAttribute(reader, xmlCharStrdup(name));
@@ -392,7 +451,7 @@ string GexfParser::getStringAttribute(xmlTextReaderPtr reader, const char* name)
         return Conv::xmlCharToStr(attr);
     else {
         stringstream ss;
-        ss << "An error occured in xmlTextReaderGetAttribute(): no attribute " << name;
+        ss << "No attribute " << name;
         throw FileReaderException(ss.str());
     }
 }
@@ -405,7 +464,7 @@ string GexfParser::getStringAttributeNS(xmlTextReaderPtr reader, const char* nam
         return Conv::xmlCharToStr(attr);
     else {
         stringstream ss;
-        ss << "An error occured in xmlTextReaderGetAttribute(): no attribute " << namespaceURI << ":" << name;
+        ss << "No attribute " << namespaceURI << ":" << name;
         throw FileReaderException(ss.str());
     }
 }
@@ -418,7 +477,7 @@ unsigned int GexfParser::getUnsignedIntAttribute(xmlTextReaderPtr reader, const 
         return Conv::xmlCharToUnsignedInt(attr);
     else {
         stringstream ss;
-        ss << "An error occured in xmlTextReaderGetAttribute(): no attribute " << name;
+        ss << "No attribute " << name;
         throw FileReaderException(ss.str());
     }
 }

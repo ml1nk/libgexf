@@ -30,12 +30,18 @@
 #define	_LIBGEXF_H
 
 #include <libgexf/typedefs.h>
-#include <libgexf/graph_exceptions.h>
+#include <libgexf/exceptions.h>
 #include <libgexf/gexf.h>
 #include <libgexf/graph.h>
+#include <libgexf/metadata.h>
+#include <libgexf/data.h>
+#include <libgexf/nodeiter.h>
+#include <libgexf/edgeiter.h>
 #include <libgexf/directedgraph.h>
 #include <libgexf/undirectedgraph.h>
-#include <libgexf/reader.h>
+#include <libgexf/gexfparser.h>
+#include <libgexf/filereader.h>
+#include <libgexf/filewriter.h>
 
 #endif	/* _LIBGEXF_H */
 

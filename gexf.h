@@ -62,6 +62,9 @@ namespace libgexf {
         void setGraphType(t_graph t);
         t_graph getGraphType();
 
+
+        bool checkIntegrity();
+
         /*! \var Graph _graph
             \brief Topology structure
          */

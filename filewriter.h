@@ -59,7 +59,7 @@ private:
     void writeEdgeNode(xmlTextWriterPtr writer, const std::string edge_id, const std::string source_id, const std::string target_id, const std::string cardinal="1", const std::string type="undirected");
 
     void writeAttributesNode(xmlTextWriterPtr writer, const std::string element_class);
-    void writeAttributeNode(xmlTextWriterPtr writer, const std::string id, const std::string title, const std::string type);
+    void writeAttributeNode(xmlTextWriterPtr writer, const std::string id, const std::string title, const std::string type, const std::string default_value="");
     void writeAttributeDefaultNode(xmlTextWriterPtr writer, const std::string default_value);
     void writeAttvaluesNode(xmlTextWriterPtr writer, const ElemType type, const std::string id);
     void writeAttvalueNode(xmlTextWriterPtr writer, const std::string attribute_id, const std::string value);

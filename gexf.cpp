@@ -86,6 +86,17 @@ MetaData& GEXF::getMetaData() {
     return _meta;
 }
 
+//-----------------------------------------
+bool GEXF::checkIntegrity() {
+//-----------------------------------------
+bool r = true;
+
+    /* check if each attvalue has a value or a defaultvalue */
+    
+
+    return r;
+}
+
 
 //-----------------------------------------
 std::ostream& operator<<(std::ostream& os, const GEXF& o) {

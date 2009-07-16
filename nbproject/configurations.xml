@@ -1,25 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="51">
   <logicalFolder name="root" displayName="root" projectFiles="true">
+    <logicalFolder name="f2" displayName="db" projectFiles="true">
+      <logicalFolder name="f1" displayName="data" projectFiles="true">
+        <itemPath>/home/sebastien/NetBeansProjects/libgexf/attributeiter.cpp</itemPath>
+        <itemPath>/home/sebastien/NetBeansProjects/libgexf/attributeiter.h</itemPath>
+        <itemPath>/home/sebastien/NetBeansProjects/libgexf/data.cpp</itemPath>
+        <itemPath>/home/sebastien/NetBeansProjects/libgexf/data.h</itemPath>
+        <itemPath>/home/sebastien/NetBeansProjects/libgexf/metadata.cpp</itemPath>
+        <itemPath>/home/sebastien/NetBeansProjects/libgexf/metadata.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="topo" projectFiles="true">
+        <itemPath>directedgraph.cpp</itemPath>
+        <itemPath>directedgraph.h</itemPath>
+        <itemPath>/home/sebastien/NetBeansProjects/libgexf/edgeiter.cpp</itemPath>
+        <itemPath>/home/sebastien/NetBeansProjects/libgexf/edgeiter.h</itemPath>
+        <itemPath>graph.cpp</itemPath>
+        <itemPath>graph.h</itemPath>
+        <itemPath>/home/sebastien/NetBeansProjects/libgexf/nodeiter.cpp</itemPath>
+        <itemPath>/home/sebastien/NetBeansProjects/libgexf/nodeiter.h</itemPath>
+        <itemPath>undirectedgraph.cpp</itemPath>
+        <itemPath>undirectedgraph.h</itemPath>
+      </logicalFolder>
+    </logicalFolder>
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>/home/sebastien/NetBeansProjects/libgexf/attributeiter.h</itemPath>
-      <itemPath>/home/sebastien/NetBeansProjects/libgexf/data.h</itemPath>
-      <itemPath>directedgraph.h</itemPath>
-      <itemPath>/home/sebastien/NetBeansProjects/libgexf/edgeiter.h</itemPath>
       <itemPath>exceptions.h</itemPath>
-      <itemPath>filereader.h</itemPath>
-      <itemPath>/home/sebastien/NetBeansProjects/libgexf/filewriter.h</itemPath>
       <itemPath>gexf.h</itemPath>
-      <itemPath>gexfparser.h</itemPath>
-      <itemPath>graph.h</itemPath>
-      <itemPath>inserters.h</itemPath>
       <itemPath>libgexf.h</itemPath>
-      <itemPath>/home/sebastien/NetBeansProjects/libgexf/metadata.h</itemPath>
-      <itemPath>/home/sebastien/NetBeansProjects/libgexf/nodeiter.h</itemPath>
       <itemPath>typedefs.h</itemPath>
-      <itemPath>undirectedgraph.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="f1" displayName="io" projectFiles="true">
+      <logicalFolder name="f1" displayName="input" projectFiles="true">
+        <itemPath>filereader.cpp</itemPath>
+        <itemPath>filereader.h</itemPath>
+        <itemPath>gexfparser.cpp</itemPath>
+        <itemPath>gexfparser.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="output" projectFiles="true">
+        <itemPath>/home/sebastien/NetBeansProjects/libgexf/filewriter.cpp</itemPath>
+        <itemPath>/home/sebastien/NetBeansProjects/libgexf/filewriter.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f3" displayName="utils" projectFiles="true">
+        <itemPath>/home/sebastien/NetBeansProjects/libgexf/conv.cpp</itemPath>
+        <itemPath>/home/sebastien/NetBeansProjects/libgexf/conv.h</itemPath>
+        <itemPath>inserters.cpp</itemPath>
+        <itemPath>inserters.h</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -28,27 +56,13 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>/home/sebastien/NetBeansProjects/libgexf/attributeiter.cpp</itemPath>
-      <itemPath>/home/sebastien/NetBeansProjects/libgexf/data.cpp</itemPath>
-      <itemPath>directedgraph.cpp</itemPath>
-      <itemPath>/home/sebastien/NetBeansProjects/libgexf/edgeiter.cpp</itemPath>
-      <itemPath>filereader.cpp</itemPath>
-      <itemPath>/home/sebastien/NetBeansProjects/libgexf/filewriter.cpp</itemPath>
       <itemPath>gexf.cpp</itemPath>
-      <itemPath>gexfparser.cpp</itemPath>
-      <itemPath>graph.cpp</itemPath>
-      <itemPath>inserters.cpp</itemPath>
-      <itemPath>/home/sebastien/NetBeansProjects/libgexf/metadata.cpp</itemPath>
-      <itemPath>/home/sebastien/NetBeansProjects/libgexf/nodeiter.cpp</itemPath>
-      <itemPath>undirectedgraph.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
-    <itemPath>/home/sebastien/NetBeansProjects/libgexf/conv.cpp</itemPath>
-    <itemPath>/home/sebastien/NetBeansProjects/libgexf/conv.h</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

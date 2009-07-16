@@ -32,7 +32,7 @@
 
 namespace libgexf {
 
-typedef unsigned int t_id; /*!< Type of all IDs */
+typedef std::string t_id; /*!< Type of all IDs */
 
 enum t_graph { GRAPH_DIRECTED, GRAPH_UNDIRECTED, GRAPH_MIXED }; /*!<Available graph types */
 

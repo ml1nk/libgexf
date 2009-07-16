@@ -41,9 +41,10 @@ Data::Data() {
     this->init();
 }
 
-Data::Data(const Data& orig): _node_labels(orig._node_labels), _node_attributes(orig._node_attributes), _edge_attributes(orig._edge_attributes), 
+Data::Data(const Data& orig): _node_labels(orig._node_labels), _node_attributes(orig._node_attributes),
+        _node_default_values(orig._node_default_values), _edge_attributes(orig._edge_attributes),
         _node_attributes_types(orig._node_attributes_types), _edge_attributes_types(orig._edge_attributes_types),
-        _node_values(orig._node_values), _edge_values(orig._edge_values) {
+        _node_values(orig._node_values), _edge_values(orig._edge_values), _edge_default_values(orig._edge_default_values) {
 }
 
 Data::~Data() {
@@ -54,6 +55,7 @@ void Data::init() {
     _node_attributes = _edge_attributes = map<t_id,string >();
     _node_attributes_types = _edge_attributes_types = map<t_id,t_attr_type >();
     _node_values = _edge_values = map<t_id,map<t_id,string > >();
+    _node_default_values = _edge_default_values = map<t_id,string >();
 }
 
 //-----------------------------------------
@@ -92,6 +94,58 @@ void Data::addEdgeAttributeColumn(const t_id id, const string title, const t_att
 //-----------------------------------------
     _edge_attributes.insert(pair<t_id,string>(id,title));
     _edge_attributes_types.insert(pair<t_id,t_attr_type>(id,type));
+}
+
+//-----------------------------------------
+void Data::setNodeAttributeDefault(const t_id attr_id, const string default_value) {
+//-----------------------------------------
+    _node_default_values.insert(pair<t_id,string >(attr_id,default_value));
+}
+
+//-----------------------------------------
+void Data::setEdgeAttributeDefault(const t_id attr_id, const string default_value) {
+//-----------------------------------------
+    _edge_default_values.insert(pair<t_id,string >(attr_id,default_value));
+}
+
+//-----------------------------------------
+string Data::getNodeAttributeDefault(const t_id attr_id) const {
+//-----------------------------------------
+    map<t_id,std::string >::const_iterator it = _node_default_values.find(attr_id);
+    if( it != _node_default_values.end() )
+        return it->second;
+
+    return "";
+}
+
+//-----------------------------------------
+string Data::getEdgeAttributeDefault(const t_id attr_id) const {
+//-----------------------------------------
+    map<t_id,std::string >::const_iterator it = _edge_default_values.find(attr_id);
+    if( it != _edge_default_values.end() )
+        return it->second;
+
+    return "";
+}
+
+//-----------------------------------------
+bool Data::hasNodeAttributeDefault(const t_id attr_id) const {
+//-----------------------------------------
+    map<t_id,std::string >::const_iterator it = _node_default_values.find(attr_id);
+    if( it != _node_default_values.end() )
+        return true;
+
+    return false;
+}
+
+//-----------------------------------------
+bool Data::hasEdgeAttributeDefault(const t_id attr_id) const {
+//-----------------------------------------
+    map<t_id,std::string >::const_iterator it = _edge_default_values.find(attr_id);
+    if( it != _edge_default_values.end() )
+        return true;
+
+    return false;
 }
 
 //-----------------------------------------
@@ -166,7 +220,42 @@ void Data::setNodeValue(const t_id node_id, const t_id attr_id, const string val
 //-----------------------------------------
 void Data::setEdgeValue(const t_id edge_id, const t_id attr_id, const string value) {
 //-----------------------------------------
-    _node_values[edge_id][attr_id] = value;
+    _edge_values[edge_id][attr_id] = value;
+}
+
+//-----------------------------------------
+void Data::clearNodeAttributes(const t_id node_id) {
+//-----------------------------------------
+    _node_values.erase(node_id);
+}
+
+//-----------------------------------------
+void Data::clearEdgeAttributes(const t_id edge_id) {
+//-----------------------------------------
+    _edge_values.erase(edge_id);
+}
+
+//-----------------------------------------
+void Data::clear() {
+//-----------------------------------------
+    _node_labels.clear();
+    _node_attributes.clear();
+    _edge_attributes.clear();
+    _node_attributes_types.clear();
+    _edge_attributes_types.clear();
+    _node_values.clear();
+    _edge_values.clear();
+    _node_default_values.clear();
+    _edge_default_values.clear();
+}
+
+//-----------------------------------------
+void Data::clearEdgesAttributes() {
+//-----------------------------------------
+    _edge_attributes.clear();
+    _edge_attributes_types.clear();
+    _edge_values.clear();
+    _edge_default_values.clear();
 }
 
 //-----------------------------------------

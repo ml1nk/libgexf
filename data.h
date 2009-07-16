@@ -51,6 +51,12 @@ public:
     void addNodeAttributeColumn(const t_id id, const std::string title, const t_attr_type type);
     void addEdgeAttributeColumn(const t_id id, const std::string title, const t_attr_type type);
 
+    void setNodeAttributeDefault(const t_id attr_id, const std::string default_value);
+    void setEdgeAttributeDefault(const t_id attr_id, const std::string default_value);
+
+    void setNodeValue(const t_id node_id, const t_id attr_id, const std::string value);
+    void setEdgeValue(const t_id node_id, const t_id attr_id, const std::string value);
+
     AttributeIter* getNodeAttributeColumn() const;
     AttributeIter* getEdgeAttributeColumn() const;
 
@@ -60,17 +66,27 @@ public:
     std::map<t_id,std::string > getNodeAttributeRow(const t_id node_id) const;
     std::map<t_id,std::string > getEdgeAttributeRow(const t_id edge_id) const;
 
-    void setNodeValue(const t_id node_id, const t_id attr_id, const std::string value);
-    void setEdgeValue(const t_id node_id, const t_id attr_id, const std::string value);
+    std::string getNodeAttributeDefault(const t_id attr_id) const;
+    std::string getEdgeAttributeDefault(const t_id attr_id) const;
+
+    bool hasNodeAttributeDefault(const t_id attr_id) const;
+    bool hasEdgeAttributeDefault(const t_id attr_id) const;
+
+    void clearNodeAttributes(const t_id node_id);
+    void clearEdgeAttributes(const t_id edge_id);
+    void clear();
+    void clearEdgesAttributes();
 private:
     std::map<t_id,std::string > _node_labels; /*!< map<node_id, label > */
 
     std::map<t_id,std::string > _node_attributes; /*!< map<attr_id, title > */
     std::map<t_id,t_attr_type > _node_attributes_types; /*!< map<attr_id, type > */
+    std::map<t_id,std::string > _node_default_values; /*!< map<attr_id, default > */
     std::map<t_id,std::map<t_id,std::string > > _node_values; /*!< map<node_id, map<attr_id, type > > */
 
     std::map<t_id,std::string > _edge_attributes; /*!< map<attr_id, title > */
     std::map<t_id,t_attr_type > _edge_attributes_types; /*!< map<attr_id, type > */
+    std::map<t_id,std::string > _edge_default_values; /*!< map<attr_id, default > */
     std::map<t_id,std::map<t_id,std::string > > _edge_values; /*!< map<edge_id, map<attr_id, type > > */
 private:
     void init();
