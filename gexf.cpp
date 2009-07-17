@@ -3,6 +3,9 @@
     \date 17 avril 2009, 17:28
  */
 
+#include "data.h"
+
+
 /*
 # Copyright (c) <2009> <Sebastien Heymann>
 #
@@ -91,8 +94,43 @@ bool GEXF::checkIntegrity() {
 //-----------------------------------------
 bool r = true;
 
+    /* check if each node has a label */
+    NodeIter* it = _graph.getNodes();
+    while(it->hasNext()) {
+        t_id node_id = it->next();
+        if( !_data.hasLabel(node_id) )
+            std::cerr << "No label for the node " << (std::string)node_id << std::endl;
+    }
+
     /* check if each attvalue has a value or a defaultvalue */
-    
+    AttributeIter* it_attr = _data.getNodeAttributeColumn();
+    while(it_attr->hasNext()) {
+        t_id attr_id = it_attr->next();
+        std::string title = it_attr->currentTitle();
+        bool has_default = _data.hasNodeAttributeDefault(attr_id);
+        NodeIter* it_node = _graph.getNodes();
+        while(it_node->hasNext()) {
+            t_id node_id = it_node->next();
+            if( _data.getNodeAttribute(node_id, attr_id).empty() && !has_default ) {
+                r = false;
+                std::cerr << "A value is required for the attribute " << title << "(id=" << (std::string)attr_id << ") of the node " << (std::string)node_id << std::endl;
+            }
+        }
+    }
+    it_attr = _data.getEdgeAttributeColumn();
+    while(it_attr->hasNext()) {
+        t_id attr_id = it_attr->next();
+        std::string title = it_attr->currentTitle();
+        bool has_default = _data.hasEdgeAttributeDefault(attr_id);
+        EdgeIter* it_edge = _graph.getEdges();
+        while(it_edge->hasNext()) {
+            t_id edge_id = it_edge->next();
+            if( _data.getNodeAttribute(edge_id, attr_id).empty() && !has_default ) {
+                r = false;
+                std::cerr << "A value is required for the attribute " << title << "(id=" << (std::string)attr_id << ") of the edge " << (std::string)edge_id << std::endl;
+            }
+        }
+    }
 
     return r;
 }

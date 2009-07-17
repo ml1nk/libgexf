@@ -84,21 +84,6 @@ namespace libgexf {
     private:
         std::string _text;
     };
-
-
-    /*! \class MsgExceptionBuilder
-        \brief Facility to create messages about a given node_id
-     */
-    class MsgExceptionBuilder {
-    public:
-        static std::string buildString(std::string message, t_id node_id) {
-            std::ostringstream ostr;
-            ostr << ": " << node_id;
-            return message + ostr.str();
-        }
-        virtual void abstractClass() = 0;
-    };
-
 }
 
 #endif	/* _EXCEPTIONS_H */

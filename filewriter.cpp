@@ -452,12 +452,14 @@ string default_value;
         string title = it->currentTitle();
         t_attr_type type = it->currentType();
         default_value = "";
-        if(element_class.compare("node") == 0)
+        if(element_class.compare("node") == 0) {
             if( _gexf->getData().hasNodeAttributeDefault(attr_id) )
                 default_value = _gexf->getData().getNodeAttributeDefault(attr_id);
-        else if(element_class.compare("edge") == 0)
+        }
+        else if(element_class.compare("edge") == 0) {
             if( _gexf->getData().hasEdgeAttributeDefault(attr_id) )
                 default_value = _gexf->getData().getEdgeAttributeDefault(attr_id);
+        }
         this->writeAttributeNode(writer, Conv::idToStr(attr_id), title, Conv::attrTypeToStr(type), default_value);
     }
 

@@ -85,7 +85,7 @@ set<t_id> s = set<t_id>();
         }
     }
     else {
-        throw invalid_argument(MsgExceptionBuilder::buildString("Invalid node", node_id));
+        throw invalid_argument("Invalid node: " + node_id);
     }
 
     return s;

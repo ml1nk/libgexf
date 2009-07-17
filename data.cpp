@@ -171,7 +171,7 @@ string Data::getNodeAttribute(const t_id node_id, const t_id attr_id) const {
         }
     }
     
-    return NULL;
+    return "";
 }
 
 //-----------------------------------------
@@ -185,7 +185,7 @@ string Data::getEdgeAttribute(const t_id edge_id, const t_id attr_id) const {
         }
     }
 
-    return NULL;
+    return "";
 }
 
 //-----------------------------------------

@@ -70,15 +70,16 @@ float e_type = (float)type;
     if(_lock_flag == '1') throw ReadLockException("Write not allowed");
 
     if(_bloom_edges.find(id) != _bloom_edges.end()) {
-        throw invalid_argument(MsgExceptionBuilder::buildString("Edge id already in bloom filter", id));
+        throw invalid_argument("Edge id " + id + " is already in bloom filter.");
     }
 
     // 2 * O(log-n)
     if( _nodes.find(source_id) == _nodes.end() ) {
-        throw invalid_argument(MsgExceptionBuilder::buildString("Invalid source node", source_id));
+        throw invalid_argument("Invalid source node " + source_id + " for the edge "+id);
     }
     if( _nodes.find(target_id) == _nodes.end() ) {
-        throw invalid_argument(MsgExceptionBuilder::buildString("Invalid target node", target_id));
+        
+        throw invalid_argument("Invalid target node " + target_id + " for the edge "+id);
     }
 
     // 4*O(log-n)
@@ -194,7 +195,7 @@ void Graph::removeEdge(const t_id source_id, const t_id target_id) {
         _edges_properties.erase(edge_id);
     }
     else {
-        throw logic_error(MsgExceptionBuilder::buildString("Target id not found", target_id));
+        throw logic_error("Target id not found: " + target_id);
     }
 
     // O(log-n)
