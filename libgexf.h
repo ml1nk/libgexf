@@ -39,7 +39,9 @@
 #include <libgexf/edgeiter.h>
 #include <libgexf/directedgraph.h>
 #include <libgexf/undirectedgraph.h>
+#include <libgexf/abstractparser.h>
 #include <libgexf/gexfparser.h>
+#include <libgexf/legacyparser.h>
 #include <libgexf/filereader.h>
 #include <libgexf/filewriter.h>
 

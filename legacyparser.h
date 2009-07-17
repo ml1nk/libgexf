@@ -1,4 +1,4 @@
-/*! \file gexfparser.h
+/*! \file legacyparser.h
     \author sebastien heymann
     \date 22 juin 2009, 17:20
     \version 0.1
@@ -26,8 +26,8 @@
 # THE SOFTWARE.
 */
 
-#ifndef _GEXF_PARSER_H
-#define	_GEXF_PARSER_H
+#ifndef _LEGACY_PARSER_H
+#define	_LEGACY_PARSER_H
 
 #include "gexf.h"
 #include "typedefs.h"
@@ -39,14 +39,14 @@ namespace libgexf {
 
 class Reader;
 
-/*! \class GexfParser
+/*! \class LegacyParser
     \brief
  */
-class GexfParser: public AbstractParser {
+class LegacyParser: public AbstractParser {
 public:
-    GexfParser();
-    GexfParser(const GexfParser& orig);
-    virtual ~GexfParser();
+    LegacyParser();
+    LegacyParser(const LegacyParser& orig);
+    virtual ~LegacyParser();
 
     void bind(GEXF* gexf);
     void processNode(xmlTextReaderPtr reader, const xmlChar* name);
@@ -82,5 +82,5 @@ private:
 
 } /* namespace libgexf */
 
-#endif	/* _GEXF_PARSER_H */
+#endif	/* _LEGACY_PARSER_H */
 

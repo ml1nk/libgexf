@@ -30,7 +30,7 @@
 #define	_FILEREADER_H
 
 #include "gexf.h"
-#include "gexfparser.h"
+#include "abstractparser.h"
 
 
 namespace libgexf {
@@ -40,14 +40,16 @@ namespace libgexf {
  */
 class FileReader {
 public:
+    enum Version { _1_0, _1_1};
+public:
     FileReader();
-    FileReader(const std::string filepath);
+    FileReader(const std::string filepath, const Version v=_1_1);
     FileReader(const FileReader& orig);
     virtual ~FileReader();
 
     GEXF getGEXFCopy();
 
-    void init(const std::string filepath);
+    void init(const std::string filepath, const Version v=_1_1);
     //int relaxNGValidate(const std::string schema);
     void slurp();
 private:
@@ -55,8 +57,9 @@ private:
     void streamFile();
 private:
     GEXF* _gexf;
-    GexfParser _parser;
+    AbstractParser* _parser;
     std::string _filepath;
+    Version _v;
 };
 
 } /* namespace libgexf */

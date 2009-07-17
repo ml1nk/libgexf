@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/data.o \
 	${OBJECTDIR}/inserters.o \
 	${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/conv.o \
+	${OBJECTDIR}/legacyparser.o \
 	${OBJECTDIR}/gexf.o \
 	${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/nodeiter.o \
 	${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/metadata.o \
@@ -115,6 +116,11 @@ ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/conv.o: /home/sebastie
 	${MKDIR} -p ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf
 	${RM} $@.d
 	$(COMPILE.cc) -g -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/conv.o /home/sebastien/NetBeansProjects/libgexf/conv.cpp
+
+${OBJECTDIR}/legacyparser.o: legacyparser.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/legacyparser.o legacyparser.cpp
 
 ${OBJECTDIR}/gexf.o: gexf.cpp 
 	${MKDIR} -p ${OBJECTDIR}

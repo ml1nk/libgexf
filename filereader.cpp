@@ -27,6 +27,8 @@
 */
 
 #include "filereader.h"
+#include "gexfparser.h"
+#include "legacyparser.h"
 #include "exceptions.h"
 
 #include <stdio.h>
@@ -38,18 +40,19 @@ using namespace std;
 
 namespace libgexf {
 
-FileReader::FileReader(): _gexf(0), _parser(), _filepath("") {
+FileReader::FileReader(): _gexf(0), _parser(), _filepath(""), _v(_1_1) {
 }
 
-FileReader::FileReader(const string filepath) {
-    this->init(filepath);
+FileReader::FileReader(const string filepath, const Version v) {
+    this->init(filepath, v);
 }
 
-FileReader::FileReader(const FileReader& orig): _gexf(orig._gexf), _filepath(orig._filepath) {
+FileReader::FileReader(const FileReader& orig): _gexf(orig._gexf), _filepath(orig._filepath), _v(orig._v) {
     this->createParser();
 }
 
 FileReader::~FileReader() {
+    delete _parser;
     delete _gexf;
 }
 
@@ -61,9 +64,10 @@ GEXF FileReader::getGEXFCopy() {
 }
 
 //-----------------------------------------
-void FileReader::init(const string filepath) {
+void FileReader::init(const string filepath, const Version v) {
 //-----------------------------------------
     _filepath = filepath;
+    _v = v;
     _gexf = new GEXF();
     this->createParser();
 }
@@ -71,9 +75,16 @@ void FileReader::init(const string filepath) {
 //-----------------------------------------
 void FileReader::createParser() {
 //-----------------------------------------
-    GexfParser* parser = new GexfParser();
-    _parser = *parser;
-    _parser.bind(_gexf);
+    if( _v == _1_1 ) {
+        AbstractParser* parser = new GexfParser();
+        _parser = parser;
+        cout << "Parser GEXF 1.1" << endl;
+    } else {
+        AbstractParser* parser = new LegacyParser();
+        _parser = parser;
+        cout << "Parser GEXF 1.0 (legacy)" << endl;
+    }
+    _parser->bind(_gexf);
 }
 
 //-----------------------------------------
@@ -108,13 +119,13 @@ void FileReader::streamFile() {
         while (ret == 1) {
             name = xmlTextReaderConstName(reader);
             if (name != NULL) {
-                _parser.processNode(reader, name);
+                _parser->processNode(reader, name);
                 ret = xmlTextReaderRead(reader);
             }
         }
         xmlFreeTextReader(reader);
         if (ret != 0) {
-            throw "Failed to pars e" + _filepath;
+            throw "Failed to parse " + _filepath;
         }
     } else {
         throw "Unable to open " + _filepath;

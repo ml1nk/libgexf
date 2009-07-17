@@ -25,10 +25,13 @@
     </logicalFolder>
     <logicalFolder name="f1" displayName="io" projectFiles="true">
       <logicalFolder name="f1" displayName="input" projectFiles="true">
+        <itemPath>/home/sebastien/NetBeansProjects/libgexf/abstractparser.h</itemPath>
         <itemPath>filereader.cpp</itemPath>
         <itemPath>filereader.h</itemPath>
         <itemPath>gexfparser.cpp</itemPath>
         <itemPath>gexfparser.h</itemPath>
+        <itemPath>legacyparser.cpp</itemPath>
+        <itemPath>legacyparser.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="output" projectFiles="true">
         <itemPath>/home/sebastien/NetBeansProjects/libgexf/filewriter.cpp</itemPath>
@@ -79,6 +82,9 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/abstractparser.h">
+        <itemTool>3</itemTool>
+      </item>
       <item path="/home/sebastien/NetBeansProjects/libgexf/attributeiter.cpp">
         <itemTool>1</itemTool>
       </item>
@@ -158,6 +164,12 @@
         <itemTool>1</itemTool>
       </item>
       <item path="inserters.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="legacyparser.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="legacyparser.h">
         <itemTool>3</itemTool>
       </item>
       <item path="libgexf.h">
@@ -192,6 +204,9 @@
         <archiverTool>
         </archiverTool>
       </compileType>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/abstractparser.h">
+        <itemTool>3</itemTool>
+      </item>
       <item path="/home/sebastien/NetBeansProjects/libgexf/attributeiter.cpp">
         <itemTool>1</itemTool>
       </item>
@@ -271,6 +286,12 @@
         <itemTool>1</itemTool>
       </item>
       <item path="inserters.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="legacyparser.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="legacyparser.h">
         <itemTool>3</itemTool>
       </item>
       <item path="libgexf.h">
