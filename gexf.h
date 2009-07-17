@@ -54,23 +54,23 @@ namespace libgexf {
         GEXF(const GEXF& orig);
         virtual ~GEXF();
 
-        UndirectedGraph& getUndirectedGraph();
-        DirectedGraph& getDirectedGraph();
-        Data& getData();
-        MetaData& getMetaData();
+        libgexf::UndirectedGraph& getUndirectedGraph();
+        libgexf::DirectedGraph& getDirectedGraph();
+        libgexf::Data& getData();
+        libgexf::MetaData& getMetaData();
 
-        void setGraphType(t_graph t);
-        t_graph getGraphType();
+        void setGraphType(libgexf::t_graph t);
+        libgexf::t_graph getGraphType();
 
         bool checkIntegrity();
 
         /*! \var Graph _graph
             \brief Topology structure
          */
-        Graph _graph;
-        t_graph _type;
-        Data _data;
-        MetaData _meta;
+        libgexf::Graph _graph;
+        libgexf::t_graph _type;
+        libgexf::Data _data;
+        libgexf::MetaData _meta;
     private:
         friend std::ostream& operator<<(std::ostream& os, const GEXF& o);
     };

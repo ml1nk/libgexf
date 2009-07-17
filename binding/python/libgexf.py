@@ -66,6 +66,7 @@ except AttributeError:
     _newclass = 0
 
 
+import collections
 class SwigPyIterator(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, SwigPyIterator, name, value)
@@ -95,6 +96,140 @@ class SwigPyIterator(_object):
 SwigPyIterator_swigregister = _libgexf.SwigPyIterator_swigregister
 SwigPyIterator_swigregister(SwigPyIterator)
 
+class StringMap(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, StringMap, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, StringMap, name)
+    __repr__ = _swig_repr
+    def iterator(self): return _libgexf.StringMap_iterator(self)
+    def __iter__(self): return self.iterator()
+    def __nonzero__(self): return _libgexf.StringMap___nonzero__(self)
+    def __bool__(self): return _libgexf.StringMap___bool__(self)
+    def __len__(self): return _libgexf.StringMap___len__(self)
+    def __getitem__(self, *args): return _libgexf.StringMap___getitem__(self, *args)
+    def __delitem__(self, *args): return _libgexf.StringMap___delitem__(self, *args)
+    def has_key(self, *args): return _libgexf.StringMap_has_key(self, *args)
+    def keys(self): return _libgexf.StringMap_keys(self)
+    def values(self): return _libgexf.StringMap_values(self)
+    def items(self): return _libgexf.StringMap_items(self)
+    def __contains__(self, *args): return _libgexf.StringMap___contains__(self, *args)
+    def key_iterator(self): return _libgexf.StringMap_key_iterator(self)
+    def value_iterator(self): return _libgexf.StringMap_value_iterator(self)
+    def __iter__(self): return self.key_iterator()
+    def iterkeys(self): return self.key_iterator()
+    def itervalues(self): return self.value_iterator()
+    def iteritems(self): return self.iterator()
+    def __setitem__(self, *args): return _libgexf.StringMap___setitem__(self, *args)
+    def __init__(self, *args): 
+        this = _libgexf.new_StringMap(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    def empty(self): return _libgexf.StringMap_empty(self)
+    def size(self): return _libgexf.StringMap_size(self)
+    def clear(self): return _libgexf.StringMap_clear(self)
+    def swap(self, *args): return _libgexf.StringMap_swap(self, *args)
+    def get_allocator(self): return _libgexf.StringMap_get_allocator(self)
+    def begin(self): return _libgexf.StringMap_begin(self)
+    def end(self): return _libgexf.StringMap_end(self)
+    def rbegin(self): return _libgexf.StringMap_rbegin(self)
+    def rend(self): return _libgexf.StringMap_rend(self)
+    def count(self, *args): return _libgexf.StringMap_count(self, *args)
+    def erase(self, *args): return _libgexf.StringMap_erase(self, *args)
+    def find(self, *args): return _libgexf.StringMap_find(self, *args)
+    def lower_bound(self, *args): return _libgexf.StringMap_lower_bound(self, *args)
+    def upper_bound(self, *args): return _libgexf.StringMap_upper_bound(self, *args)
+    __swig_destroy__ = _libgexf.delete_StringMap
+    __del__ = lambda self : None;
+StringMap_swigregister = _libgexf.StringMap_swigregister
+StringMap_swigregister(StringMap)
+
+class StringPair(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, StringPair, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, StringPair, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _libgexf.new_StringPair(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_setmethods__["first"] = _libgexf.StringPair_first_set
+    __swig_getmethods__["first"] = _libgexf.StringPair_first_get
+    if _newclass:first = _swig_property(_libgexf.StringPair_first_get, _libgexf.StringPair_first_set)
+    __swig_setmethods__["second"] = _libgexf.StringPair_second_set
+    __swig_getmethods__["second"] = _libgexf.StringPair_second_get
+    if _newclass:second = _swig_property(_libgexf.StringPair_second_get, _libgexf.StringPair_second_set)
+    def __len__(self): return 2
+    def __repr__(self): return str((self.first, self.second))
+    def __getitem__(self, index): 
+      if not (index % 2): 
+        return self.first
+      else:
+        return self.second
+    def __setitem__(self, index, val):
+      if not (index % 2): 
+        self.first = val
+      else:
+        self.second = val
+    __swig_destroy__ = _libgexf.delete_StringPair
+    __del__ = lambda self : None;
+StringPair_swigregister = _libgexf.StringPair_swigregister
+StringPair_swigregister(StringPair)
+
+class StringSet(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, StringSet, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, StringSet, name)
+    __repr__ = _swig_repr
+    def iterator(self): return _libgexf.StringSet_iterator(self)
+    def __iter__(self): return self.iterator()
+    def __nonzero__(self): return _libgexf.StringSet___nonzero__(self)
+    def __bool__(self): return _libgexf.StringSet___bool__(self)
+    def __len__(self): return _libgexf.StringSet___len__(self)
+    def append(self, *args): return _libgexf.StringSet_append(self, *args)
+    def __contains__(self, *args): return _libgexf.StringSet___contains__(self, *args)
+    def __getitem__(self, *args): return _libgexf.StringSet___getitem__(self, *args)
+    def __init__(self, *args): 
+        this = _libgexf.new_StringSet(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    def empty(self): return _libgexf.StringSet_empty(self)
+    def size(self): return _libgexf.StringSet_size(self)
+    def clear(self): return _libgexf.StringSet_clear(self)
+    def swap(self, *args): return _libgexf.StringSet_swap(self, *args)
+    def count(self, *args): return _libgexf.StringSet_count(self, *args)
+    def begin(self): return _libgexf.StringSet_begin(self)
+    def end(self): return _libgexf.StringSet_end(self)
+    def rbegin(self): return _libgexf.StringSet_rbegin(self)
+    def rend(self): return _libgexf.StringSet_rend(self)
+    def erase(self, *args): return _libgexf.StringSet_erase(self, *args)
+    def find(self, *args): return _libgexf.StringSet_find(self, *args)
+    def lower_bound(self, *args): return _libgexf.StringSet_lower_bound(self, *args)
+    def upper_bound(self, *args): return _libgexf.StringSet_upper_bound(self, *args)
+    def equal_range(self, *args): return _libgexf.StringSet_equal_range(self, *args)
+    def insert(self, *args): return _libgexf.StringSet_insert(self, *args)
+    __swig_destroy__ = _libgexf.delete_StringSet
+    __del__ = lambda self : None;
+StringSet_swigregister = _libgexf.StringSet_swigregister
+StringSet_swigregister(StringSet)
+
+GRAPH_DIRECTED = _libgexf.GRAPH_DIRECTED
+GRAPH_UNDIRECTED = _libgexf.GRAPH_UNDIRECTED
+GRAPH_MIXED = _libgexf.GRAPH_MIXED
+EDGE_TYPE = _libgexf.EDGE_TYPE
+EDGE_COUNT = _libgexf.EDGE_COUNT
+EDGE_WEIGHT = _libgexf.EDGE_WEIGHT
+EDGE_DIRECTED = _libgexf.EDGE_DIRECTED
+EDGE_UNDIRECTED = _libgexf.EDGE_UNDIRECTED
+EDGE_DOUBLE = _libgexf.EDGE_DOUBLE
+INTEGER = _libgexf.INTEGER
+DOUBLE = _libgexf.DOUBLE
+FLOAT = _libgexf.FLOAT
+BOOLEAN = _libgexf.BOOLEAN
+STRING = _libgexf.STRING
+LIST_STRING = _libgexf.LIST_STRING
 class ReadLockException(Exception):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, ReadLockException, name, value)
@@ -127,24 +262,235 @@ class WriteLockException(Exception):
 WriteLockException_swigregister = _libgexf.WriteLockException_swigregister
 WriteLockException_swigregister(WriteLockException)
 
-class MessageExceptionBuilder(_object):
+class FileWriterException(_object):
     __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, MessageExceptionBuilder, name, value)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, FileWriterException, name, value)
     __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, MessageExceptionBuilder, name)
+    __getattr__ = lambda self, name: _swig_getattr(self, FileWriterException, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _libgexf.new_FileWriterException(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _libgexf.delete_FileWriterException
+    __del__ = lambda self : None;
+    def what(self): return _libgexf.FileWriterException_what(self)
+FileWriterException_swigregister = _libgexf.FileWriterException_swigregister
+FileWriterException_swigregister(FileWriterException)
+
+class FileReaderException(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, FileReaderException, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, FileReaderException, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _libgexf.new_FileReaderException(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _libgexf.delete_FileReaderException
+    __del__ = lambda self : None;
+    def what(self): return _libgexf.FileReaderException_what(self)
+FileReaderException_swigregister = _libgexf.FileReaderException_swigregister
+FileReaderException_swigregister(FileReaderException)
+
+class GEXF(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, GEXF, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, GEXF, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _libgexf.new_GEXF(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _libgexf.delete_GEXF
+    __del__ = lambda self : None;
+    def getUndirectedGraph(self): return _libgexf.GEXF_getUndirectedGraph(self)
+    def getDirectedGraph(self): return _libgexf.GEXF_getDirectedGraph(self)
+    def getData(self): return _libgexf.GEXF_getData(self)
+    def getMetaData(self): return _libgexf.GEXF_getMetaData(self)
+    def setGraphType(self, *args): return _libgexf.GEXF_setGraphType(self, *args)
+    def getGraphType(self): return _libgexf.GEXF_getGraphType(self)
+    def checkIntegrity(self): return _libgexf.GEXF_checkIntegrity(self)
+    __swig_setmethods__["_graph"] = _libgexf.GEXF__graph_set
+    __swig_getmethods__["_graph"] = _libgexf.GEXF__graph_get
+    if _newclass:_graph = _swig_property(_libgexf.GEXF__graph_get, _libgexf.GEXF__graph_set)
+    __swig_setmethods__["_type"] = _libgexf.GEXF__type_set
+    __swig_getmethods__["_type"] = _libgexf.GEXF__type_get
+    if _newclass:_type = _swig_property(_libgexf.GEXF__type_get, _libgexf.GEXF__type_set)
+    __swig_setmethods__["_data"] = _libgexf.GEXF__data_set
+    __swig_getmethods__["_data"] = _libgexf.GEXF__data_get
+    if _newclass:_data = _swig_property(_libgexf.GEXF__data_get, _libgexf.GEXF__data_set)
+    __swig_setmethods__["_meta"] = _libgexf.GEXF__meta_set
+    __swig_getmethods__["_meta"] = _libgexf.GEXF__meta_get
+    if _newclass:_meta = _swig_property(_libgexf.GEXF__meta_get, _libgexf.GEXF__meta_set)
+GEXF_swigregister = _libgexf.GEXF_swigregister
+GEXF_swigregister(GEXF)
+
+class FileReader(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, FileReader, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, FileReader, name)
+    __repr__ = _swig_repr
+    _1_0 = _libgexf.FileReader__1_0
+    _1_1 = _libgexf.FileReader__1_1
+    def __init__(self, *args): 
+        this = _libgexf.new_FileReader(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _libgexf.delete_FileReader
+    __del__ = lambda self : None;
+    def getGEXFCopy(self): return _libgexf.FileReader_getGEXFCopy(self)
+    def init(self, *args): return _libgexf.FileReader_init(self, *args)
+    def slurp(self): return _libgexf.FileReader_slurp(self)
+FileReader_swigregister = _libgexf.FileReader_swigregister
+FileReader_swigregister(FileReader)
+
+class AbstractParser(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, AbstractParser, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, AbstractParser, name)
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
-    __swig_getmethods__["buildString"] = lambda x: _libgexf.MessageExceptionBuilder_buildString
-    if _newclass:buildString = staticmethod(_libgexf.MessageExceptionBuilder_buildString)
-    def abstractClass(self): return _libgexf.MessageExceptionBuilder_abstractClass(self)
-    __swig_destroy__ = _libgexf.delete_MessageExceptionBuilder
+    def bind(self, *args): return _libgexf.AbstractParser_bind(self, *args)
+    def processNode(self, *args): return _libgexf.AbstractParser_processNode(self, *args)
+    __swig_destroy__ = _libgexf.delete_AbstractParser
     __del__ = lambda self : None;
-MessageExceptionBuilder_swigregister = _libgexf.MessageExceptionBuilder_swigregister
-MessageExceptionBuilder_swigregister(MessageExceptionBuilder)
+AbstractParser_swigregister = _libgexf.AbstractParser_swigregister
+AbstractParser_swigregister(AbstractParser)
 
-def MessageExceptionBuilder_buildString(*args):
-  return _libgexf.MessageExceptionBuilder_buildString(*args)
-MessageExceptionBuilder_buildString = _libgexf.MessageExceptionBuilder_buildString
+class GexfParser(AbstractParser):
+    __swig_setmethods__ = {}
+    for _s in [AbstractParser]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, GexfParser, name, value)
+    __swig_getmethods__ = {}
+    for _s in [AbstractParser]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, GexfParser, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _libgexf.new_GexfParser(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _libgexf.delete_GexfParser
+    __del__ = lambda self : None;
+    def bind(self, *args): return _libgexf.GexfParser_bind(self, *args)
+    def processNode(self, *args): return _libgexf.GexfParser_processNode(self, *args)
+GexfParser_swigregister = _libgexf.GexfParser_swigregister
+GexfParser_swigregister(GexfParser)
+
+class LegacyParser(AbstractParser):
+    __swig_setmethods__ = {}
+    for _s in [AbstractParser]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, LegacyParser, name, value)
+    __swig_getmethods__ = {}
+    for _s in [AbstractParser]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, LegacyParser, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _libgexf.new_LegacyParser(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _libgexf.delete_LegacyParser
+    __del__ = lambda self : None;
+    def bind(self, *args): return _libgexf.LegacyParser_bind(self, *args)
+    def processNode(self, *args): return _libgexf.LegacyParser_processNode(self, *args)
+LegacyParser_swigregister = _libgexf.LegacyParser_swigregister
+LegacyParser_swigregister(LegacyParser)
+
+class FileWriter(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, FileWriter, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, FileWriter, name)
+    __repr__ = _swig_repr
+    NODE = _libgexf.FileWriter_NODE
+    EDGE = _libgexf.FileWriter_EDGE
+    def __init__(self, *args): 
+        this = _libgexf.new_FileWriter(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _libgexf.delete_FileWriter
+    __del__ = lambda self : None;
+    def getGEXFCopy(self): return _libgexf.FileWriter_getGEXFCopy(self)
+    def init(self, *args): return _libgexf.FileWriter_init(self, *args)
+    def write(self): return _libgexf.FileWriter_write(self)
+FileWriter_swigregister = _libgexf.FileWriter_swigregister
+FileWriter_swigregister(FileWriter)
+
+class Conv(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Conv, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, Conv, name)
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _libgexf.delete_Conv
+    __del__ = lambda self : None;
+    __swig_getmethods__["convertInput"] = lambda x: _libgexf.Conv_convertInput
+    if _newclass:convertInput = staticmethod(_libgexf.Conv_convertInput)
+    __swig_getmethods__["xmlCharToId"] = lambda x: _libgexf.Conv_xmlCharToId
+    if _newclass:xmlCharToId = staticmethod(_libgexf.Conv_xmlCharToId)
+    __swig_getmethods__["strToId"] = lambda x: _libgexf.Conv_strToId
+    if _newclass:strToId = staticmethod(_libgexf.Conv_strToId)
+    __swig_getmethods__["xmlCharToStr"] = lambda x: _libgexf.Conv_xmlCharToStr
+    if _newclass:xmlCharToStr = staticmethod(_libgexf.Conv_xmlCharToStr)
+    __swig_getmethods__["xmlCharToUnsignedInt"] = lambda x: _libgexf.Conv_xmlCharToUnsignedInt
+    if _newclass:xmlCharToUnsignedInt = staticmethod(_libgexf.Conv_xmlCharToUnsignedInt)
+    __swig_getmethods__["idToStr"] = lambda x: _libgexf.Conv_idToStr
+    if _newclass:idToStr = staticmethod(_libgexf.Conv_idToStr)
+    __swig_getmethods__["unsignedIntToStr"] = lambda x: _libgexf.Conv_unsignedIntToStr
+    if _newclass:unsignedIntToStr = staticmethod(_libgexf.Conv_unsignedIntToStr)
+    __swig_getmethods__["strToUnsignedInt"] = lambda x: _libgexf.Conv_strToUnsignedInt
+    if _newclass:strToUnsignedInt = staticmethod(_libgexf.Conv_strToUnsignedInt)
+    __swig_getmethods__["edgeTypeToStr"] = lambda x: _libgexf.Conv_edgeTypeToStr
+    if _newclass:edgeTypeToStr = staticmethod(_libgexf.Conv_edgeTypeToStr)
+    __swig_getmethods__["attrTypeToStr"] = lambda x: _libgexf.Conv_attrTypeToStr
+    if _newclass:attrTypeToStr = staticmethod(_libgexf.Conv_attrTypeToStr)
+Conv_swigregister = _libgexf.Conv_swigregister
+Conv_swigregister(Conv)
+
+def Conv_convertInput(*args):
+  return _libgexf.Conv_convertInput(*args)
+Conv_convertInput = _libgexf.Conv_convertInput
+
+def Conv_xmlCharToId(*args):
+  return _libgexf.Conv_xmlCharToId(*args)
+Conv_xmlCharToId = _libgexf.Conv_xmlCharToId
+
+def Conv_strToId(*args):
+  return _libgexf.Conv_strToId(*args)
+Conv_strToId = _libgexf.Conv_strToId
+
+def Conv_xmlCharToStr(*args):
+  return _libgexf.Conv_xmlCharToStr(*args)
+Conv_xmlCharToStr = _libgexf.Conv_xmlCharToStr
+
+def Conv_xmlCharToUnsignedInt(*args):
+  return _libgexf.Conv_xmlCharToUnsignedInt(*args)
+Conv_xmlCharToUnsignedInt = _libgexf.Conv_xmlCharToUnsignedInt
+
+def Conv_idToStr(*args):
+  return _libgexf.Conv_idToStr(*args)
+Conv_idToStr = _libgexf.Conv_idToStr
+
+def Conv_unsignedIntToStr(*args):
+  return _libgexf.Conv_unsignedIntToStr(*args)
+Conv_unsignedIntToStr = _libgexf.Conv_unsignedIntToStr
+
+def Conv_strToUnsignedInt(*args):
+  return _libgexf.Conv_strToUnsignedInt(*args)
+Conv_strToUnsignedInt = _libgexf.Conv_strToUnsignedInt
+
+def Conv_edgeTypeToStr(*args):
+  return _libgexf.Conv_edgeTypeToStr(*args)
+Conv_edgeTypeToStr = _libgexf.Conv_edgeTypeToStr
+
+def Conv_attrTypeToStr(*args):
+  return _libgexf.Conv_attrTypeToStr(*args)
+Conv_attrTypeToStr = _libgexf.Conv_attrTypeToStr
 
 class Graph(_object):
     __swig_setmethods__ = {}
@@ -166,10 +512,12 @@ class Graph(_object):
     def removeOutEdges(self, *args): return _libgexf.Graph_removeOutEdges(self, *args)
     def containsNode(self, *args): return _libgexf.Graph_containsNode(self, *args)
     def containsEdge(self, *args): return _libgexf.Graph_containsEdge(self, *args)
+    def getNodes(self): return _libgexf.Graph_getNodes(self)
+    def getEdges(self): return _libgexf.Graph_getEdges(self)
+    def getNeighbors(self, *args): return _libgexf.Graph_getNeighbors(self, *args)
     def getNodeCount(self): return _libgexf.Graph_getNodeCount(self)
     def getEdgeCount(self): return _libgexf.Graph_getEdgeCount(self)
     def getDegree(self, *args): return _libgexf.Graph_getDegree(self, *args)
-    def getNeighbors(self, *args): return _libgexf.Graph_getNeighbors(self, *args)
     def clear(self): return _libgexf.Graph_clear(self)
     def clearEdges(self, *args): return _libgexf.Graph_clearEdges(self, *args)
     def readLock(self): return _libgexf.Graph_readLock(self)
@@ -224,25 +572,137 @@ class UndirectedGraph(Graph):
 UndirectedGraph_swigregister = _libgexf.UndirectedGraph_swigregister
 UndirectedGraph_swigregister(UndirectedGraph)
 
-class GEXF(_object):
+class NodeIter(_object):
     __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, GEXF, name, value)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, NodeIter, name, value)
     __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, GEXF, name)
+    __getattr__ = lambda self, name: _swig_getattr(self, NodeIter, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
-        this = _libgexf.new_GEXF(*args)
+        this = _libgexf.new_NodeIter(*args)
         try: self.this.append(this)
         except: self.this = this
-    __swig_destroy__ = _libgexf.delete_GEXF
+    __swig_destroy__ = _libgexf.delete_NodeIter
     __del__ = lambda self : None;
-    def getUndirectedGraph(self): return _libgexf.GEXF_getUndirectedGraph(self)
-    def getDirectedGraph(self): return _libgexf.GEXF_getDirectedGraph(self)
-    __swig_setmethods__["_graph"] = _libgexf.GEXF__graph_set
-    __swig_getmethods__["_graph"] = _libgexf.GEXF__graph_get
-    if _newclass:_graph = _swig_property(_libgexf.GEXF__graph_get, _libgexf.GEXF__graph_set)
-GEXF_swigregister = _libgexf.GEXF_swigregister
-GEXF_swigregister(GEXF)
+    def begin(self): return _libgexf.NodeIter_begin(self)
+    def hasNext(self): return _libgexf.NodeIter_hasNext(self)
+    def next(self): return _libgexf.NodeIter_next(self)
+NodeIter_swigregister = _libgexf.NodeIter_swigregister
+NodeIter_swigregister(NodeIter)
+
+class EdgeIter(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, EdgeIter, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, EdgeIter, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _libgexf.new_EdgeIter(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _libgexf.delete_EdgeIter
+    __del__ = lambda self : None;
+    def begin(self): return _libgexf.EdgeIter_begin(self)
+    def hasNext(self): return _libgexf.EdgeIter_hasNext(self)
+    def next(self): return _libgexf.EdgeIter_next(self)
+    def currentSource(self): return _libgexf.EdgeIter_currentSource(self)
+    def currentTarget(self): return _libgexf.EdgeIter_currentTarget(self)
+    def currentProperty(self, *args): return _libgexf.EdgeIter_currentProperty(self, *args)
+EdgeIter_swigregister = _libgexf.EdgeIter_swigregister
+EdgeIter_swigregister(EdgeIter)
+
+class Data(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Data, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, Data, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _libgexf.new_Data(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _libgexf.delete_Data
+    __del__ = lambda self : None;
+    def getLabel(self, *args): return _libgexf.Data_getLabel(self, *args)
+    def hasLabel(self, *args): return _libgexf.Data_hasLabel(self, *args)
+    def setLabel(self, *args): return _libgexf.Data_setLabel(self, *args)
+    def addNodeAttributeColumn(self, *args): return _libgexf.Data_addNodeAttributeColumn(self, *args)
+    def addEdgeAttributeColumn(self, *args): return _libgexf.Data_addEdgeAttributeColumn(self, *args)
+    def setNodeAttributeDefault(self, *args): return _libgexf.Data_setNodeAttributeDefault(self, *args)
+    def setEdgeAttributeDefault(self, *args): return _libgexf.Data_setEdgeAttributeDefault(self, *args)
+    def setNodeValue(self, *args): return _libgexf.Data_setNodeValue(self, *args)
+    def setEdgeValue(self, *args): return _libgexf.Data_setEdgeValue(self, *args)
+    def getNodeAttributeColumn(self): return _libgexf.Data_getNodeAttributeColumn(self)
+    def getEdgeAttributeColumn(self): return _libgexf.Data_getEdgeAttributeColumn(self)
+    def getNodeAttribute(self, *args): return _libgexf.Data_getNodeAttribute(self, *args)
+    def getEdgeAttribute(self, *args): return _libgexf.Data_getEdgeAttribute(self, *args)
+    def getNodeAttributeRow(self, *args): return _libgexf.Data_getNodeAttributeRow(self, *args)
+    def getEdgeAttributeRow(self, *args): return _libgexf.Data_getEdgeAttributeRow(self, *args)
+    def getNodeAttributeDefault(self, *args): return _libgexf.Data_getNodeAttributeDefault(self, *args)
+    def getEdgeAttributeDefault(self, *args): return _libgexf.Data_getEdgeAttributeDefault(self, *args)
+    def hasNodeAttributeDefault(self, *args): return _libgexf.Data_hasNodeAttributeDefault(self, *args)
+    def hasEdgeAttributeDefault(self, *args): return _libgexf.Data_hasEdgeAttributeDefault(self, *args)
+    def clearNodeAttributes(self, *args): return _libgexf.Data_clearNodeAttributes(self, *args)
+    def clearEdgeAttributes(self, *args): return _libgexf.Data_clearEdgeAttributes(self, *args)
+    def clear(self): return _libgexf.Data_clear(self)
+    def clearEdgesAttributes(self): return _libgexf.Data_clearEdgesAttributes(self)
+Data_swigregister = _libgexf.Data_swigregister
+Data_swigregister(Data)
+
+class MetaData(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MetaData, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, MetaData, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _libgexf.new_MetaData(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _libgexf.delete_MetaData
+    __del__ = lambda self : None;
+    def getVersion(self): return _libgexf.MetaData_getVersion(self)
+    def getXmlns(self): return _libgexf.MetaData_getXmlns(self)
+    def getXsi(self): return _libgexf.MetaData_getXsi(self)
+    def getSchema(self): return _libgexf.MetaData_getSchema(self)
+    def getVariant(self): return _libgexf.MetaData_getVariant(self)
+    def getCreator(self): return _libgexf.MetaData_getCreator(self)
+    def getDescription(self): return _libgexf.MetaData_getDescription(self)
+    def getKeywords(self): return _libgexf.MetaData_getKeywords(self)
+    def getLastModifiedDate(self): return _libgexf.MetaData_getLastModifiedDate(self)
+    def setVersion(self, *args): return _libgexf.MetaData_setVersion(self, *args)
+    def setXmlns(self, *args): return _libgexf.MetaData_setXmlns(self, *args)
+    def setXsi(self, *args): return _libgexf.MetaData_setXsi(self, *args)
+    def setSchema(self, *args): return _libgexf.MetaData_setSchema(self, *args)
+    def setVariant(self, *args): return _libgexf.MetaData_setVariant(self, *args)
+    def setCreator(self, *args): return _libgexf.MetaData_setCreator(self, *args)
+    def setDescription(self, *args): return _libgexf.MetaData_setDescription(self, *args)
+    def setKeywords(self, *args): return _libgexf.MetaData_setKeywords(self, *args)
+    def setLastModifiedDate(self, *args): return _libgexf.MetaData_setLastModifiedDate(self, *args)
+MetaData_swigregister = _libgexf.MetaData_swigregister
+MetaData_swigregister(MetaData)
+
+class AttributeIter(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, AttributeIter, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, AttributeIter, name)
+    __repr__ = _swig_repr
+    NODE = _libgexf.AttributeIter_NODE
+    EDGE = _libgexf.AttributeIter_EDGE
+    def __init__(self, *args): 
+        this = _libgexf.new_AttributeIter(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _libgexf.delete_AttributeIter
+    __del__ = lambda self : None;
+    def begin(self): return _libgexf.AttributeIter_begin(self)
+    def hasNext(self): return _libgexf.AttributeIter_hasNext(self)
+    def next(self): return _libgexf.AttributeIter_next(self)
+    def currentTitle(self): return _libgexf.AttributeIter_currentTitle(self)
+    def currentType(self): return _libgexf.AttributeIter_currentType(self)
+AttributeIter_swigregister = _libgexf.AttributeIter_swigregister
+AttributeIter_swigregister(AttributeIter)
 
 
 

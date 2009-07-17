@@ -68,7 +68,6 @@ private:
     std::string _filepath;
     static const char* _ENCODING;
 };
-const char* FileWriter::_ENCODING = "UTF-8";
 
 
 } /* namespace libgexf */

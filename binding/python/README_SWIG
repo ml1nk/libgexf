@@ -12,7 +12,7 @@ Automated Python binding with swig on Linux:
 
 
 To use :
-   $ python
+   $ ipython
     >>> import libgexf
     >>> from libgexf import *
     >>> g = GEXF()

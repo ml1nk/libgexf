@@ -9,17 +9,38 @@ from distutils.core import Extension, setup
 
 libgexf_module = Extension(
   '_libgexf', # genere un _libgexf.so
-  #include_dirs=['path/to/libgexf/includes/'],
+  include_dirs=['/usr/include/libxml2'],
   sources=[
     
    # 'libgexf.i', # genere un libgexf.py (ne fonctionne que pour les sources C et pas C++)
 
     # sources C: les .o seront automatiquement généré,
     # et automatiquement linké avec le module
-    '../../reader.cpp',
+    
+    #io::input
+    '../../filereader.cpp',
+    '../../gexfparser.cpp',
+    '../../legacyparser.cpp',
+    
+    #io::output
+    '../../filewriter.cpp',
+    
+    #io::utils
+    '../../conv.cpp',
+    
+    #db::topo
     '../../graph.cpp',
     '../../directedgraph.cpp',
     '../../undirectedgraph.cpp',
+    '../../nodeiter.cpp',
+    '../../edgeiter.cpp',
+    
+    #db::data
+    '../../data.cpp',
+    '../../metadata.cpp',
+    '../../attributeiter.cpp',
+    
+    #main
     '../../gexf.cpp',
 
     # chemin du wrapper généré automatiquement par SWIG (ce wrapper doit déjà exister donc)
@@ -27,12 +48,13 @@ libgexf_module = Extension(
   ],
 
   # eventuellement, les librairies à "linker"
-  # par exemple si on a besoin de libxml, c'est ici qu'on le spécifie au compilateur
+  # par exemple si on a besoin de libxml2, c'est ici qu'on le spécifie au compilateur
   # attention aux habitués de gcc et de la compilation en ligne de commande:
   # ici inutile de donner le format spécifique à gcc ("-lpthread") ou spécifique à visual studio etc..
   # il suffit de mettre "pthread" et le script python va rajouter le "-l" devant si nécessaire
   libraries=[
-     'libxml++'
+     'stdc++',
+     'xml2' #see xml2-config --libs to get the linker flags
      #'z', # zlib (compression) (inutile sous ubuntu par exemple, car déjà intégré au packaging de base pour développer)
      #'pthread' # Posix Threads (multithreading posix) (inutile sous linux, car posix fait déjà partie du système)
   ] 

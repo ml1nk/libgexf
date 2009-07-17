@@ -42,6 +42,8 @@ using namespace std;
 
 namespace libgexf {
 
+const char* FileWriter::_ENCODING = "UTF-8";
+
 FileWriter::FileWriter(): _gexf(0), _filepath("") {
 }
 
