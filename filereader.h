@@ -47,7 +47,7 @@ public:
     FileReader(const FileReader& orig);
     virtual ~FileReader();
 
-    GEXF getGEXFCopy();
+    libgexf::GEXF getGEXFCopy();
 
     void init(const std::string filepath, const Version v=_1_1);
     //int relaxNGValidate(const std::string schema);

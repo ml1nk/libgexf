@@ -39,6 +39,7 @@ libgexf_module = Extension(
     '../../data.cpp',
     '../../metadata.cpp',
     '../../attributeiter.cpp',
+    '../../attvalueiter.cpp',
     
     #main
     '../../gexf.cpp',

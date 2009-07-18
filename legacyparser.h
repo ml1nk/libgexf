@@ -48,7 +48,7 @@ public:
     LegacyParser(const LegacyParser& orig);
     virtual ~LegacyParser();
 
-    void bind(GEXF* gexf);
+    void bind(libgexf::GEXF* gexf);
     void processNode(xmlTextReaderPtr reader, const xmlChar* name);
 private:
     void processGEXFNode(xmlTextReaderPtr reader);
@@ -69,7 +69,7 @@ private:
     void processAttvalueNode(xmlTextReaderPtr reader);
     
     bool isProcessableNode(xmlTextReaderPtr reader);
-    t_id getIdAttribute(xmlTextReaderPtr reader, const char* name);
+    libgexf::t_id getIdAttribute(xmlTextReaderPtr reader, const char* name);
     std::string getStringAttribute(xmlTextReaderPtr reader, const char* name);
     std::string getStringAttributeNS(xmlTextReaderPtr reader, const char* name, const char* namespaceURI);
     unsigned int getUnsignedIntAttribute(xmlTextReaderPtr reader, const char* name);

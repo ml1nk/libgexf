@@ -31,12 +31,14 @@
 
 #include "typedefs.h"
 #include "attributeiter.h"
+#include "attvalueiter.h"
 #include <string>
 #include <map>
 
 namespace libgexf {
 
 class AttributeIter;
+class AttValueIter;
 
 class Data {
 public:
@@ -44,36 +46,36 @@ public:
     Data(const Data& orig);
     virtual ~Data();
 
-    std::string getLabel(const t_id node_id) const;
-    bool hasLabel(const t_id node_id) const;
-    void setLabel(const t_id node_id, const std::string label);
+    std::string getLabel(const libgexf::t_id node_id) const;
+    bool hasLabel(const libgexf::t_id node_id) const;
+    void setLabel(const libgexf::t_id node_id, const std::string label);
 
-    void addNodeAttributeColumn(const t_id id, const std::string title, const t_attr_type type);
-    void addEdgeAttributeColumn(const t_id id, const std::string title, const t_attr_type type);
+    void addNodeAttributeColumn(const libgexf::t_id id, const std::string title, const libgexf::t_attr_type type);
+    void addEdgeAttributeColumn(const libgexf::t_id id, const std::string title, const libgexf::t_attr_type type);
 
-    void setNodeAttributeDefault(const t_id attr_id, const std::string default_value);
-    void setEdgeAttributeDefault(const t_id attr_id, const std::string default_value);
+    void setNodeAttributeDefault(const libgexf::t_id attr_id, const std::string default_value);
+    void setEdgeAttributeDefault(const libgexf::t_id attr_id, const std::string default_value);
 
-    void setNodeValue(const t_id node_id, const t_id attr_id, const std::string value);
-    void setEdgeValue(const t_id node_id, const t_id attr_id, const std::string value);
+    void setNodeValue(const libgexf::t_id node_id, const libgexf::t_id attr_id, const std::string value);
+    void setEdgeValue(const libgexf::t_id node_id, const libgexf::t_id attr_id, const std::string value);
 
-    AttributeIter* getNodeAttributeColumn() const;
-    AttributeIter* getEdgeAttributeColumn() const;
+    libgexf::AttributeIter* getNodeAttributeColumn() const;
+    libgexf::AttributeIter* getEdgeAttributeColumn() const;
 
-    std::string getNodeAttribute(const t_id node_id, const t_id attr_id) const;
-    std::string getEdgeAttribute(const t_id edge_id, const t_id attr_id) const;
+    std::string getNodeAttribute(const libgexf::t_id node_id, const libgexf::t_id attr_id) const;
+    std::string getEdgeAttribute(const libgexf::t_id edge_id, const libgexf::t_id attr_id) const;
 
-    std::map<t_id,std::string > getNodeAttributeRow(const t_id node_id) const;
-    std::map<t_id,std::string > getEdgeAttributeRow(const t_id edge_id) const;
+    libgexf::AttValueIter* getNodeAttributeRow(const libgexf::t_id node_id) const;
+    libgexf::AttValueIter* getEdgeAttributeRow(const libgexf::t_id edge_id) const;
 
-    std::string getNodeAttributeDefault(const t_id attr_id) const;
-    std::string getEdgeAttributeDefault(const t_id attr_id) const;
+    std::string getNodeAttributeDefault(const libgexf::t_id attr_id) const;
+    std::string getEdgeAttributeDefault(const libgexf::t_id attr_id) const;
 
-    bool hasNodeAttributeDefault(const t_id attr_id) const;
-    bool hasEdgeAttributeDefault(const t_id attr_id) const;
+    bool hasNodeAttributeDefault(const libgexf::t_id attr_id) const;
+    bool hasEdgeAttributeDefault(const libgexf::t_id attr_id) const;
 
-    void clearNodeAttributes(const t_id node_id);
-    void clearEdgeAttributes(const t_id edge_id);
+    void clearNodeAttributes(const libgexf::t_id node_id);
+    void clearEdgeAttributes(const libgexf::t_id edge_id);
     void clear();
     void clearEdgesAttributes();
 private:
@@ -94,6 +96,7 @@ private:
     unsigned int countNodeAttributeColumn() const;
     unsigned int countEdgeAttributeColumn() const;
     friend class AttributeIter;
+    friend class AttValueIter;
 };
 
 } /* namespace libgexf */

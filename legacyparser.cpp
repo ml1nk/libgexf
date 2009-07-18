@@ -37,10 +37,10 @@ using namespace std;
 
 namespace libgexf {
 
-LegacyParser::LegacyParser(): _last_id(), _last_node_type() {
+LegacyParser::LegacyParser(): _last_node_type(), _last_id() {
 }
 
-LegacyParser::LegacyParser(const LegacyParser& orig): _last_id(orig._last_id), _last_node_type(orig._last_node_type) {
+LegacyParser::LegacyParser(const LegacyParser& orig): _last_node_type(orig._last_node_type), _last_id(orig._last_id) {
 }
 
 LegacyParser::~LegacyParser() {

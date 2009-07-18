@@ -118,6 +118,8 @@ void FileWriter::write() {
     /* Close file and free memory buffers */
     xmlFreeTextWriter(writer);
     xmlCleanupParser();
+
+    cout << "INFO file written." << endl;
 }
 
 //-----------------------------------------
@@ -320,8 +322,10 @@ int rc;
         throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
     }
 
-    if( !_gexf->getData().getNodeAttributeRow(Conv::strToId(node_id)).empty() )
+    AttValueIter* row = _gexf->getData().getNodeAttributeRow(Conv::strToId(node_id));
+    if( row != NULL && row->hasNext() ) {
         this->writeAttvaluesNode(writer, NODE, node_id);
+    }
 
     /* Close the element named node. */
     rc = xmlTextWriterEndElement(writer);
@@ -407,9 +411,11 @@ int rc;
             throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
         }
     }
-    
-    if( !_gexf->getData().getEdgeAttributeRow(Conv::strToId(edge_id)).empty() )
+
+    AttValueIter* row = _gexf->getData().getEdgeAttributeRow(Conv::strToId(edge_id));
+    if( row != NULL && row->hasNext() ) {
         this->writeAttvaluesNode(writer, EDGE, edge_id);
+    }
 
     /* Close the element named edge. */
     rc = xmlTextWriterEndElement(writer);
@@ -422,8 +428,8 @@ int rc;
 void FileWriter::writeAttributesNode(xmlTextWriterPtr writer, const string element_class) {
 //-----------------------------------------
 int rc;
-AttributeIter* it;
-string default_value;
+AttributeIter* it = 0;
+string default_value = "";
 
     if( element_class.compare("node") != 0 && element_class.compare("edge") != 0 ) {
         throw invalid_argument("writeAttributesNode: invalid element_class");
@@ -552,7 +558,22 @@ int rc;
     }
 
     /* Write each attribute row */
-    map<t_id,string > row = map<t_id,string >();
+    AttValueIter* row = 0;
+    if( type == NODE ) {
+        row = _gexf->getData().getNodeAttributeRow(Conv::strToId(id));
+    }
+    else if( type == EDGE ) {
+        row = _gexf->getData().getEdgeAttributeRow(Conv::strToId(id));
+    }
+    if(row != NULL) {
+        while(row->hasNext()) {
+            t_id attr_id = row->next();
+            string v = row->currentValue();
+            this->writeAttvalueNode(writer, Conv::idToStr(attr_id), v);
+        }
+    }
+    
+    /*map<t_id,string > row = map<t_id,string >();
     if( type == NODE ) {
         row = _gexf->getData().getNodeAttributeRow(Conv::strToId(id));
     }
@@ -563,7 +584,7 @@ int rc;
         for(map<t_id,string >::const_iterator it = row.begin(); it != row.end(); it++) {
             this->writeAttvalueNode(writer, Conv::idToStr(it->first), it->second);
         }
-    }
+    }*/
 
     /* Close the element named default. */
     rc = xmlTextWriterEndElement(writer);

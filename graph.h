@@ -51,31 +51,31 @@ public:
     Graph(const Graph& orig);
     virtual ~Graph();
 
-    void addNode(const t_id id);
-    void addEdge(const t_id id, const t_id source_id, const t_id target_id, const unsigned int cardinal=1, const t_edge_type type=EDGE_UNDIRECTED);
-    void removeNode(const t_id id);
-    void removeEdge(const t_id source_id, const t_id target_id);
-    void removeInEdges(const t_id target_id);
-    void removeOutEdges(const t_id source_id);
+    void addNode(const libgexf::t_id id);
+    void addEdge(const libgexf::t_id id, const libgexf::t_id source_id, const libgexf::t_id target_id, const unsigned int cardinal=1, const libgexf::t_edge_type type=EDGE_UNDIRECTED);
+    void removeNode(const libgexf::t_id id);
+    void removeEdge(const libgexf::t_id source_id, const libgexf::t_id target_id);
+    void removeInEdges(const libgexf::t_id target_id);
+    void removeOutEdges(const libgexf::t_id source_id);
 
-    bool containsNode(const t_id id) const;
-    bool containsEdge(const t_id source_id, const t_id target_id) const;
+    bool containsNode(const libgexf::t_id id) const;
+    bool containsEdge(const libgexf::t_id source_id, const libgexf::t_id target_id) const;
 
-    NodeIter* getNodes() const;
-    EdgeIter* getEdges() const;
-    std::set<t_id> getNeighbors(const t_id node_id) const;
+    libgexf::NodeIter* getNodes() const;
+    libgexf::EdgeIter* getEdges() const;
+    std::set<libgexf::t_id> getNeighbors(const libgexf::t_id node_id) const;
 
     unsigned int getNodeCount() const;
     unsigned int getEdgeCount() const;
-    unsigned int getDegree(const t_id node_id) const;
+    unsigned int getDegree(const libgexf::t_id node_id) const;
 
-    void clearEdges(const t_id node_id);
+    void clearEdges(const libgexf::t_id node_id);
     void clear();
     void clearEdges();
     
-    void readLock() throw(ReadLockException);
+    void readLock() throw(libgexf::ReadLockException);
     void readUnlock();
-    void writeLock() throw(WriteLockException);
+    void writeLock() throw(libgexf::WriteLockException);
     void writeUnlock();
     bool isReadLock();
     bool isWriteLock();

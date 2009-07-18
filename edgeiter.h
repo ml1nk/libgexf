@@ -40,16 +40,16 @@ class Graph;
 
 class EdgeIter {
 public:
-    EdgeIter(const Graph* g);
+    EdgeIter(const libgexf::Graph* g);
     virtual ~EdgeIter();
 
     EdgeIter* begin();
     bool hasNext() const;
-    t_id next();  /*!< Return an edge_id */
+    libgexf::t_id next();  /*!< Return an edge_id */
 
-    t_id currentSource() const;
-    t_id currentTarget() const;
-    float currentProperty(t_edge_property prop) const;  /*!< Return the value or 0 by default */
+    libgexf::t_id currentSource() const;
+    libgexf::t_id currentTarget() const;
+    float currentProperty(libgexf::t_edge_property prop) const;  /*!< Return the value or 0 by default */
 private:
     const Graph* _graph;
     std::map<t_id,std::map<t_id,t_id> >::const_iterator _it;

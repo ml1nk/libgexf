@@ -96,87 +96,6 @@ class SwigPyIterator(_object):
 SwigPyIterator_swigregister = _libgexf.SwigPyIterator_swigregister
 SwigPyIterator_swigregister(SwigPyIterator)
 
-class StringMap(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, StringMap, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, StringMap, name)
-    __repr__ = _swig_repr
-    def iterator(self): return _libgexf.StringMap_iterator(self)
-    def __iter__(self): return self.iterator()
-    def __nonzero__(self): return _libgexf.StringMap___nonzero__(self)
-    def __bool__(self): return _libgexf.StringMap___bool__(self)
-    def __len__(self): return _libgexf.StringMap___len__(self)
-    def __getitem__(self, *args): return _libgexf.StringMap___getitem__(self, *args)
-    def __delitem__(self, *args): return _libgexf.StringMap___delitem__(self, *args)
-    def has_key(self, *args): return _libgexf.StringMap_has_key(self, *args)
-    def keys(self): return _libgexf.StringMap_keys(self)
-    def values(self): return _libgexf.StringMap_values(self)
-    def items(self): return _libgexf.StringMap_items(self)
-    def __contains__(self, *args): return _libgexf.StringMap___contains__(self, *args)
-    def key_iterator(self): return _libgexf.StringMap_key_iterator(self)
-    def value_iterator(self): return _libgexf.StringMap_value_iterator(self)
-    def __iter__(self): return self.key_iterator()
-    def iterkeys(self): return self.key_iterator()
-    def itervalues(self): return self.value_iterator()
-    def iteritems(self): return self.iterator()
-    def __setitem__(self, *args): return _libgexf.StringMap___setitem__(self, *args)
-    def __init__(self, *args): 
-        this = _libgexf.new_StringMap(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    def empty(self): return _libgexf.StringMap_empty(self)
-    def size(self): return _libgexf.StringMap_size(self)
-    def clear(self): return _libgexf.StringMap_clear(self)
-    def swap(self, *args): return _libgexf.StringMap_swap(self, *args)
-    def get_allocator(self): return _libgexf.StringMap_get_allocator(self)
-    def begin(self): return _libgexf.StringMap_begin(self)
-    def end(self): return _libgexf.StringMap_end(self)
-    def rbegin(self): return _libgexf.StringMap_rbegin(self)
-    def rend(self): return _libgexf.StringMap_rend(self)
-    def count(self, *args): return _libgexf.StringMap_count(self, *args)
-    def erase(self, *args): return _libgexf.StringMap_erase(self, *args)
-    def find(self, *args): return _libgexf.StringMap_find(self, *args)
-    def lower_bound(self, *args): return _libgexf.StringMap_lower_bound(self, *args)
-    def upper_bound(self, *args): return _libgexf.StringMap_upper_bound(self, *args)
-    __swig_destroy__ = _libgexf.delete_StringMap
-    __del__ = lambda self : None;
-StringMap_swigregister = _libgexf.StringMap_swigregister
-StringMap_swigregister(StringMap)
-
-class StringPair(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, StringPair, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, StringPair, name)
-    __repr__ = _swig_repr
-    def __init__(self, *args): 
-        this = _libgexf.new_StringPair(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_setmethods__["first"] = _libgexf.StringPair_first_set
-    __swig_getmethods__["first"] = _libgexf.StringPair_first_get
-    if _newclass:first = _swig_property(_libgexf.StringPair_first_get, _libgexf.StringPair_first_set)
-    __swig_setmethods__["second"] = _libgexf.StringPair_second_set
-    __swig_getmethods__["second"] = _libgexf.StringPair_second_get
-    if _newclass:second = _swig_property(_libgexf.StringPair_second_get, _libgexf.StringPair_second_set)
-    def __len__(self): return 2
-    def __repr__(self): return str((self.first, self.second))
-    def __getitem__(self, index): 
-      if not (index % 2): 
-        return self.first
-      else:
-        return self.second
-    def __setitem__(self, index, val):
-      if not (index % 2): 
-        self.first = val
-      else:
-        self.second = val
-    __swig_destroy__ = _libgexf.delete_StringPair
-    __del__ = lambda self : None;
-StringPair_swigregister = _libgexf.StringPair_swigregister
-StringPair_swigregister(StringPair)
-
 class StringSet(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, StringSet, name, value)
@@ -429,8 +348,6 @@ class Conv(_object):
     __repr__ = _swig_repr
     __swig_destroy__ = _libgexf.delete_Conv
     __del__ = lambda self : None;
-    __swig_getmethods__["convertInput"] = lambda x: _libgexf.Conv_convertInput
-    if _newclass:convertInput = staticmethod(_libgexf.Conv_convertInput)
     __swig_getmethods__["xmlCharToId"] = lambda x: _libgexf.Conv_xmlCharToId
     if _newclass:xmlCharToId = staticmethod(_libgexf.Conv_xmlCharToId)
     __swig_getmethods__["strToId"] = lambda x: _libgexf.Conv_strToId
@@ -451,10 +368,6 @@ class Conv(_object):
     if _newclass:attrTypeToStr = staticmethod(_libgexf.Conv_attrTypeToStr)
 Conv_swigregister = _libgexf.Conv_swigregister
 Conv_swigregister(Conv)
-
-def Conv_convertInput(*args):
-  return _libgexf.Conv_convertInput(*args)
-Conv_convertInput = _libgexf.Conv_convertInput
 
 def Conv_xmlCharToId(*args):
   return _libgexf.Conv_xmlCharToId(*args)
@@ -703,6 +616,28 @@ class AttributeIter(_object):
     def currentType(self): return _libgexf.AttributeIter_currentType(self)
 AttributeIter_swigregister = _libgexf.AttributeIter_swigregister
 AttributeIter_swigregister(AttributeIter)
+
+class AttValueIter(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, AttValueIter, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, AttValueIter, name)
+    __repr__ = _swig_repr
+    NODE = _libgexf.AttValueIter_NODE
+    EDGE = _libgexf.AttValueIter_EDGE
+    def __init__(self, *args): 
+        this = _libgexf.new_AttValueIter(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _libgexf.delete_AttValueIter
+    __del__ = lambda self : None;
+    def begin(self): return _libgexf.AttValueIter_begin(self)
+    def hasNext(self): return _libgexf.AttValueIter_hasNext(self)
+    def next(self): return _libgexf.AttValueIter_next(self)
+    def currentValue(self): return _libgexf.AttValueIter_currentValue(self)
+    def currentName(self): return _libgexf.AttValueIter_currentName(self)
+AttValueIter_swigregister = _libgexf.AttValueIter_swigregister
+AttValueIter_swigregister(AttValueIter)
 
 
 

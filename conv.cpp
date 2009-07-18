@@ -86,7 +86,7 @@ unsigned int Conv::xmlCharToUnsignedInt(const xmlChar* str) {
  * Returns the converted UTF-8 string, or NULL in case of error.
  */
 //-----------------------------------------
-xmlChar* Conv::convertInput(const char *in, const char *encoding) {
+/*xmlChar* Conv::convertInput(const char *in, const char *encoding) {
 //-----------------------------------------
     xmlChar *out;
     int ret;
@@ -123,14 +123,14 @@ xmlChar* Conv::convertInput(const char *in, const char *encoding) {
             out = 0;
         } else {
             out = (unsigned char *) xmlRealloc(out, out_size + 1);
-            out[out_size] = 0;  /*null terminating out */
+            out[out_size] = 0;  // null terminating out //
         }
     } else {
         cerr << "convertInput: no mem" << endl;
     }
 
     return out;
-}
+}*/
 
 //-----------------------------------------
 string Conv::idToStr(const t_id id) {

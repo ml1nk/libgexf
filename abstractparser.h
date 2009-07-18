@@ -15,7 +15,7 @@ namespace libgexf {
 
 class AbstractParser {
 public:
-    virtual void bind(GEXF* gexf) = 0;
+    virtual void bind(libgexf::GEXF* gexf) = 0;
     virtual void processNode(xmlTextReaderPtr reader, const xmlChar* name) = 0;
 private:
 

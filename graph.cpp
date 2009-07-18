@@ -28,21 +28,21 @@
 
 #include "graph.h"
 #include "exceptions.h"
-#include "inserters.h"
 #include <stdexcept>
 #include <map>
 #include <set>
 #include <string>
 #include <sstream>
+#include <iostream>
 using namespace std;
 
 namespace libgexf {
 
-Graph::Graph() : _nodes(), _edges(), _reverse_edges(), _bloom_edges(), _edges_properties(),  _lock_flag('0'), _rlock_count(0) {
+Graph::Graph() : _nodes(), _edges(), _reverse_edges(), _bloom_edges(), _edges_properties(), _rlock_count(0), _lock_flag('0') {
 }
 
 Graph::Graph(const Graph& orig): _nodes(orig._nodes), _edges(orig._edges), _reverse_edges(orig._reverse_edges),
-        _edges_properties(orig._edges_properties), _lock_flag(orig._lock_flag), _rlock_count(orig._rlock_count) {
+        _edges_properties(orig._edges_properties), _rlock_count(orig._rlock_count), _lock_flag(orig._lock_flag) {
 }
 
 Graph::~Graph() {
@@ -477,11 +477,28 @@ ostream& operator<<(ostream& os, const Graph& o) {
 //-----------------------------------------
     os << "Graph [" << endl;
     os << "_nodes [" << endl;
-    os << o._nodes << "]" << endl << endl;
+    for ( set<t_id>::const_iterator it = o._nodes.begin() ; it != o._nodes.end(); it++ ) {
+        os << " " << *it;
+    }
+    os << endl << "]" << endl;
     os << "_edges [" << endl;
-    os << o._edges << "]" << endl << endl;
+    for ( map<t_id,map<t_id,t_id> >::const_iterator it=o._edges.begin() ; it != o._edges.end(); it++ ) {
+        os << it->first << " => ";
+        for ( map<t_id,t_id>::const_iterator its = it->second.begin() ; its != it->second.end(); its++ ) {
+            os << its->first << " => " << its->second << std::endl;
+        }
+        os << std::endl;
+    }
+    os << endl << "]" << endl;
     os << "_reverse_edges [" << endl;
-    os << o._reverse_edges << "]" << endl << endl;
+    for ( map<t_id,set<t_id> >::const_iterator it=o._reverse_edges.begin() ; it != o._reverse_edges.end(); it++ ) {
+        os << it->first << " => ";
+        for ( set<t_id>::const_iterator its = it->second.begin() ; its != it->second.end(); its++ ) {
+            os << " " << *its;
+        }
+        os << std::endl;
+    }
+    os << endl << "]" << endl;
     os << "_edges_properties [" << endl;
     std::map<t_id,std::map<t_edge_property,t_edge_value> >::const_iterator it;
     for ( it=o._edges_properties.begin() ; it != o._edges_properties.end(); it++ ) {
@@ -491,6 +508,7 @@ ostream& operator<<(ostream& os, const Graph& o) {
             os << "{" << (*it2).first << "; " << (*it2).second << "}" << endl;
         }
     }
+    os << endl << "]" << endl;
     os << "]" << endl << endl;
 
     return os;

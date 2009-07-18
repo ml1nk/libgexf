@@ -42,9 +42,10 @@ Data::Data() {
 }
 
 Data::Data(const Data& orig): _node_labels(orig._node_labels), _node_attributes(orig._node_attributes),
-        _node_default_values(orig._node_default_values), _edge_attributes(orig._edge_attributes),
-        _node_attributes_types(orig._node_attributes_types), _edge_attributes_types(orig._edge_attributes_types),
-        _node_values(orig._node_values), _edge_values(orig._edge_values), _edge_default_values(orig._edge_default_values) {
+        _node_attributes_types(orig._node_attributes_types), _node_default_values(orig._node_default_values),
+        _node_values(orig._node_values), _edge_attributes(orig._edge_attributes),
+        _edge_attributes_types(orig._edge_attributes_types), _edge_default_values(orig._edge_default_values),
+        _edge_values(orig._edge_values) {
 }
 
 Data::~Data() {
@@ -189,25 +190,27 @@ string Data::getEdgeAttribute(const t_id edge_id, const t_id attr_id) const {
 }
 
 //-----------------------------------------
-map<t_id,string > Data::getNodeAttributeRow(const t_id node_id) const {
+AttValueIter* Data::getNodeAttributeRow(const t_id node_id) const {
 //-----------------------------------------
-    map<t_id,map<t_id,string > >::const_iterator it = _node_values.find(node_id);
-    if( it != _node_values.end() ) {
-        return it->second;
+    try {
+        return new AttValueIter(this, node_id, AttValueIter::NODE);
+    } catch(exception& e) {
+        /* case when all attributes has default values and no value is set for this node.
+         do nothing */
     }
-
-    return map<t_id,string >();
+    return NULL;
 }
 
 //-----------------------------------------
-map<t_id,string > Data::getEdgeAttributeRow(const t_id edge_id) const {
+AttValueIter* Data::getEdgeAttributeRow(const t_id edge_id) const {
 //-----------------------------------------
-    map<t_id,map<t_id,string > >::const_iterator it = _edge_values.find(edge_id);
-    if( it != _edge_values.end() ) {
-        return it->second;
+    try {
+        return new AttValueIter(this, edge_id, AttValueIter::EDGE);
+    } catch(exception& e) {
+        /* case when all attributes has default values and no value is set for this edge.
+         do nothing */
     }
-
-    return map<t_id,string >();
+    return NULL;
 }
 
 

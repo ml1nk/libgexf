@@ -31,6 +31,7 @@
 #include "../../data.h"
 #include "../../metadata.h"
 #include "../../attributeiter.h"
+#include "../../attvalueiter.h"
 %}
 
 
@@ -39,8 +40,6 @@
 %include exception.i
 %include std_string.i
 %include std_set.i
-%include std_pair.i
-%include std_map.i
 
 %exception {
   try {
@@ -53,11 +52,8 @@
 }
 
 namespace std {
-  %template(StringMap) map<std::string,std::string>;
-  %template(StringPair) pair<std::string,std::string>;
   %template(StringSet) std::set<std::string>;
 }
-/*%template() std::pair<swig::SwigPtr_PyObject, swig::SwigPtr_PyObject>;*/
 
 /* Let's just grab the original header file here */
 /* main */
@@ -83,5 +79,6 @@ namespace std {
 %include "../../data.h"
 %include "../../metadata.h"
 %include "../../attributeiter.h"
+%include "../../attvalueiter.h"
 
 

@@ -1,7 +1,8 @@
-/*! \file attributeiter.cpp
-    \author: sebastien heymann
-    \date 15 juillet 2009, 14:27
-    \version
+/* 
+ * File:   attvalueiter.cpp
+ * Author: sebastien
+ * 
+ * Created on 17 juillet 2009, 22:35
  */
 
 /*
@@ -26,64 +27,72 @@
 # THE SOFTWARE.
 */
 
-#include "attributeiter.h"
+#include "attvalueiter.h"
+#include <stdexcept>
 
 using namespace std;
 
 namespace libgexf {
 
-AttributeIter::AttributeIter(const Data* d, const AttributeIter::Type t): _data(d), _t(t), _cpt(0), _nb_items(0) {
+AttValueIter::AttValueIter(const Data* d, const libgexf::t_id id, const AttValueIter::Type t): _data(d), _t(t), _id(id), _it_row(), _it(), _cpt(0), _nb_items(0) {
     this->begin();
 }
 
-AttributeIter::~AttributeIter() {
+AttValueIter::~AttValueIter() {
 }
 
-AttributeIter* AttributeIter::begin() {
+AttValueIter* AttValueIter::begin() {
     if( _t == NODE ) {
-        _it = _data->_node_attributes.begin();
-        _nb_items = _data->countNodeAttributeColumn();
+        _it_row= _data->_node_values.find(_id);
+        if( _it_row == _data->_node_values.end() ) {
+            throw logic_error("Undefined reference to the node data "+_id);
+        }
+        _it = _it_row->second.begin();
+        _nb_items = _it_row->second.size();
     }
     else if( _t == EDGE ) {
-        _it = _data->_edge_attributes.begin();
-        _nb_items = _data->countEdgeAttributeColumn();
+        _it_row = _data->_edge_values.find(_id);
+        if( _it_row == _data->_edge_values.end() ) {
+            throw logic_error("Undefined reference to the edge data "+_id);
+        }
+        _it = _it_row->second.begin();
+        _nb_items = _it_row->second.size();
     }
     return this;
 }
 
-bool AttributeIter::hasNext() const {
+bool AttValueIter::hasNext() const {
     return _nb_items != 0 && _cpt != _nb_items;
 }
 
-t_id AttributeIter::next() {
-    if( _cpt != 0 && (
-        (_t == NODE && _it != _data->_node_attributes.end()) ||
-        (_t == EDGE && _it != _data->_edge_attributes.end()) ) ) {
+t_id AttValueIter::next() {
+    if( _cpt != 0 && _it != _it_row->second.end() ) {
         _it++;
     }
     _cpt++;
     return _it->first;
 }
 
-string AttributeIter::currentTitle() const {
+string AttValueIter::currentValue() const {
     return _it->second;
 }
 
-t_attr_type AttributeIter::currentType() const {
+string AttValueIter::currentName() const {
+map<t_id,string >::const_iterator it;
     if( _t == NODE ) {
-        std::map<t_id,t_attr_type >::const_iterator it2 = _data->_node_attributes_types.find(_it->first);
-        if( it2 != _data->_node_attributes_types.end() ) {
-            return it2->second;
+        it = _data->_node_attributes.find(_it->first);
+        if( it != _data->_node_attributes.end() ) {
+            return it->second;
         }
     }
     else if( _t == EDGE ) {
-        std::map<t_id,t_attr_type >::const_iterator it2 = _data->_edge_attributes_types.find(_it->first);
-        if( it2 != _data->_edge_attributes_types.end() ) {
-            return it2->second;
+        it = _data->_edge_attributes.find(_it->first);
+        if( it != _data->_edge_attributes.end() ) {
+            return it->second;
         }
     }
-
-    return STRING;
+    return "";
 }
+
 
 }

@@ -40,12 +40,12 @@ class Graph;
 
 class NodeIter {
 public:
-    NodeIter(const Graph* g);
+    NodeIter(const libgexf::Graph* g);
     virtual ~NodeIter();
 
     NodeIter* begin();
     bool hasNext() const;
-    t_id next();
+    libgexf::t_id next();
 private:
     const Graph* _graph;
     std::set<t_id>::const_iterator _it;

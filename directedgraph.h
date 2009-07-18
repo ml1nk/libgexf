@@ -39,16 +39,16 @@ public:
     DirectedGraph(const DirectedGraph& orig);
     virtual ~DirectedGraph();
 
-    std::set<t_id> getInEdges(const t_id node_id) const;
-    std::set<t_id> getOutEdges(const t_id node_id) const;
-    std::set<t_id> getSuccessors(const t_id node_id) const;
-    std::set<t_id> getPredecessors(const t_id node_id) const;
+    std::set<libgexf::t_id> getInEdges(const libgexf::t_id node_id) const;
+    std::set<libgexf::t_id> getOutEdges(const libgexf::t_id node_id) const;
+    std::set<libgexf::t_id> getSuccessors(const libgexf::t_id node_id) const;
+    std::set<libgexf::t_id> getPredecessors(const libgexf::t_id node_id) const;
 
-    unsigned int getInDegree(const t_id node_id) const;
-    unsigned int getOutDegree(const t_id node_id) const;
+    unsigned int getInDegree(const libgexf::t_id node_id) const;
+    unsigned int getOutDegree(const libgexf::t_id node_id) const;
 
-    bool isSuccessor(const t_id node_id, const t_id successor_id) const;
-    bool isPredecessor(const t_id node_id, const t_id predecessor_id) const;
+    bool isSuccessor(const libgexf::t_id node_id, const libgexf::t_id successor_id) const;
+    bool isPredecessor(const libgexf::t_id node_id, const libgexf::t_id predecessor_id) const;
 private:
     DirectedGraph& operator=(const DirectedGraph& orig);
 };

@@ -78,11 +78,11 @@ void FileReader::createParser() {
     if( _v == _1_1 ) {
         AbstractParser* parser = new GexfParser();
         _parser = parser;
-        cout << "Parser GEXF 1.1" << endl;
+        cout << "INFO Parser GEXF 1.1" << endl;
     } else {
         AbstractParser* parser = new LegacyParser();
         _parser = parser;
-        cout << "Parser GEXF 1.0 (legacy)" << endl;
+        cout << "INFO Parser GEXF 1.0 (legacy)" << endl;
     }
     _parser->bind(_gexf);
 }

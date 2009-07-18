@@ -44,9 +44,9 @@ public:
     FileWriter(const FileWriter& orig);
     virtual ~FileWriter();
 
-    GEXF getGEXFCopy();
+    libgexf::GEXF getGEXFCopy();
 
-    void init(const std::string filepath, GEXF* gexf);
+    void init(const std::string filepath, libgexf::GEXF* gexf);
     void write();
 private:
     void writeGexfNode(xmlTextWriterPtr writer);

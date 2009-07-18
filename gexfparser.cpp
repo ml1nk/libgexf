@@ -37,10 +37,10 @@ using namespace std;
 
 namespace libgexf {
 
-GexfParser::GexfParser(): _last_id(), _last_node_type() {
+GexfParser::GexfParser(): _last_node_type(), _last_id() {
 }
 
-GexfParser::GexfParser(const GexfParser& orig): _last_id(orig._last_id), _last_node_type(orig._last_node_type) {
+GexfParser::GexfParser(const GexfParser& orig): _last_node_type(orig._last_node_type), _last_id(orig._last_id) {
 }
 
 GexfParser::~GexfParser() {

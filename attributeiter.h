@@ -44,15 +44,15 @@ public:
     enum Type { NODE, EDGE };
 
 public:
-    AttributeIter(const Data* d, AttributeIter::Type t);
+    AttributeIter(const Data* d, const AttributeIter::Type t);
     virtual ~AttributeIter();
 
     AttributeIter* begin();
     bool hasNext() const;
-    t_id next();
+    libgexf::t_id next();
 
     std::string currentTitle() const;
-    t_attr_type currentType() const;
+    libgexf::t_attr_type currentType() const;
 private:
     const Data* _data;
     Type _t;

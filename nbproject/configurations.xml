@@ -5,6 +5,8 @@
       <logicalFolder name="f1" displayName="data" projectFiles="true">
         <itemPath>/home/sebastien/NetBeansProjects/libgexf/attributeiter.cpp</itemPath>
         <itemPath>/home/sebastien/NetBeansProjects/libgexf/attributeiter.h</itemPath>
+        <itemPath>/home/sebastien/NetBeansProjects/libgexf/attvalueiter.cpp</itemPath>
+        <itemPath>/home/sebastien/NetBeansProjects/libgexf/attvalueiter.h</itemPath>
         <itemPath>/home/sebastien/NetBeansProjects/libgexf/data.cpp</itemPath>
         <itemPath>/home/sebastien/NetBeansProjects/libgexf/data.h</itemPath>
         <itemPath>/home/sebastien/NetBeansProjects/libgexf/metadata.cpp</itemPath>
@@ -40,8 +42,6 @@
       <logicalFolder name="f3" displayName="utils" projectFiles="true">
         <itemPath>/home/sebastien/NetBeansProjects/libgexf/conv.cpp</itemPath>
         <itemPath>/home/sebastien/NetBeansProjects/libgexf/conv.h</itemPath>
-        <itemPath>inserters.cpp</itemPath>
-        <itemPath>inserters.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="f3" displayName="main" projectFiles="true">
@@ -91,6 +91,12 @@
       <item path="/home/sebastien/NetBeansProjects/libgexf/attributeiter.h">
         <itemTool>3</itemTool>
       </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/attvalueiter.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/attvalueiter.h">
+        <itemTool>3</itemTool>
+      </item>
       <item path="/home/sebastien/NetBeansProjects/libgexf/conv.cpp">
         <itemTool>1</itemTool>
       </item>
@@ -158,12 +164,6 @@
         <itemTool>1</itemTool>
       </item>
       <item path="graph.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="inserters.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="inserters.h">
         <itemTool>3</itemTool>
       </item>
       <item path="legacyparser.cpp">
@@ -213,6 +213,12 @@
       <item path="/home/sebastien/NetBeansProjects/libgexf/attributeiter.h">
         <itemTool>3</itemTool>
       </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/attvalueiter.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/attvalueiter.h">
+        <itemTool>3</itemTool>
+      </item>
       <item path="/home/sebastien/NetBeansProjects/libgexf/conv.cpp">
         <itemTool>1</itemTool>
       </item>
@@ -280,12 +286,6 @@
         <itemTool>1</itemTool>
       </item>
       <item path="graph.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="inserters.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="inserters.h">
         <itemTool>3</itemTool>
       </item>
       <item path="legacyparser.cpp">

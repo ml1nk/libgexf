@@ -11,7 +11,7 @@
     <attributes class="node">
       <attribute id="0" title="url" type="string"/>
       <attribute id="1" title="indegree" type="float"/>
-      <attribute id="2" title="frog" type="boolean">
+      <attribute id="plop" title="frog" type="boolean">
         <default>true</default>
       </attribute>
     </attributes>
@@ -21,38 +21,38 @@
       </attribute>
     </attributes>
     <nodes>
-      <node id="0" label="Gephi">
+      <node id="n0" label="Gephi">
         <attvalues>
           <attvalue for="0" value="http://gephi.org"/>
           <attvalue for="1" value="1"/>
         </attvalues>
       </node>
-      <node id="1" label="Webatlas">
+      <node id="n1" label="Webatlas">
         <attvalues>
           <attvalue for="0" value="http://webatlas.fr"/>
           <attvalue for="1" value="2"/>
         </attvalues>
       </node>
-      <node id="2" label="RTGI">
+      <node id="n2" label="RTGI">
         <attvalues>
           <attvalue for="0" value="http://rtgi.fr"/>
           <attvalue for="1" value="1"/>
         </attvalues>
       </node>
-      <node id="3" label="BarabasiLab">
+      <node id="n3" label="BarabasiLab">
         <attvalues>
           <attvalue for="0" value="http://barabasilab.com"/>
           <attvalue for="1" value="1"/>
-          <attvalue for="2" value="false"/>
+          <attvalue for="plop" value="false"/>
         </attvalues>
       </node>
     </nodes>
     <edges>
-      <edge id="0" source="0" target="1" type="double"/>
-      <edge id="1" source="0" target="2"/>
-      <edge id="2" source="1" target="0"/>
-      <edge id="3" source="2" target="1"/>
-      <edge id="4" source="0" target="3"/>
+      <edge id="0" source="n0" target="n1" type="double"/>
+      <edge id="1" source="n0" target="n2"/>
+      <edge id="2" source="n1" target="n0"/>
+      <edge id="3" source="n2" target="n1"/>
+      <edge id="4" source="n0" target="n3"/>
     </edges>
   </graph>
 </gexf>

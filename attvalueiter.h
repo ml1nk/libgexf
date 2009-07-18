@@ -1,8 +1,8 @@
 /* 
- * File:   inserters.h
+ * File:   attvalueiter.h
  * Author: sebastien
  *
- * Created on 19 juin 2009, 16:19
+ * Created on 17 juillet 2009, 22:35
  */
 
 /*
@@ -27,24 +27,43 @@
 # THE SOFTWARE.
 */
 
-#ifndef _INSERTERS_H
-#define	_INSERTERS_H
+#ifndef _ATTVALUEITER_H
+#define	_ATTVALUEITER_H
 
 #include "typedefs.h"
+#include "data.h"
+
+#include <map>
+#include <string>
 
 namespace libgexf {
 
-extern std::ostream& operator<<(std::ostream& os, const std::set<t_id>& o);
+class Data;
 
-extern std::ostream& operator<<(std::ostream& os, const std::map<t_id,t_id>& o);
+class AttValueIter {
+public:
+    enum Type { NODE, EDGE };
+public:
+    AttValueIter(const Data* d, const libgexf::t_id id, const AttValueIter::Type t);
+    virtual ~AttValueIter();
 
-extern std::ostream& operator<<(std::ostream& os, const std::multimap<t_id,t_id>& o);
+    AttValueIter* begin();
+    bool hasNext() const;
+    libgexf::t_id next();
 
-extern std::ostream& operator<<(std::ostream& os, const std::map<t_id,std::set<t_id> >& o);
-
-extern std::ostream& operator<<(std::ostream& os, const std::map<t_id,std::map<t_id,t_id> >& o);
+    std::string currentValue() const;
+    std::string currentName() const;
+private:
+    const Data* _data;
+    Type _t;
+    t_id _id;
+    std::map<t_id,std::map<t_id,std::string > >::const_iterator _it_row;
+    std::map<t_id,std::string >::const_iterator _it;
+    unsigned int _cpt;
+    unsigned int _nb_items;
+};
 
 }
 
-#endif	/* _INSERTERS_H */
+#endif	/* _ATTVALUEITER_H */
 

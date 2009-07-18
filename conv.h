@@ -41,16 +41,16 @@ public:
     Conv(const Conv& orig);
     virtual ~Conv();
 
-    static xmlChar* convertInput(const char *in, const char *encoding);
-    static t_id xmlCharToId(const xmlChar* str);
-    static t_id strToId(const std::string str);
+    /*static xmlChar* convertInput(const char *in, const char *encoding);*/
+    static libgexf::t_id xmlCharToId(const xmlChar* str);
+    static libgexf::t_id strToId(const std::string str);
     static std::string xmlCharToStr(const xmlChar* str);
     static unsigned int xmlCharToUnsignedInt(const xmlChar* str);
-    static std::string idToStr(const t_id id);
+    static std::string idToStr(const libgexf::t_id id);
     static std::string unsignedIntToStr(const unsigned int i);
     static unsigned int strToUnsignedInt(const std::string str);
-    static std::string edgeTypeToStr(const t_edge_type t);
-    static std::string attrTypeToStr(const t_attr_type t);
+    static std::string edgeTypeToStr(const libgexf::t_edge_type t);
+    static std::string attrTypeToStr(const libgexf::t_attr_type t);
 private:
     virtual void f() = 0;
 };
