@@ -105,15 +105,17 @@ float e_type = (float)type;
                     (it_data->second).insert(edge_count);
                 }
 
-                it_prop = (it_data->second).find(EDGE_TYPE);
-                if(it_prop != (it_data->second).end()) {
-                    /* the type property exists, we change it */
-                    it_prop->second = e_type;
-                }
-                else {
-                    /* the type property doesn't exists, we create it */
-                    pair<t_edge_property,t_edge_value> edge_type = pair<t_edge_property,t_edge_value>(EDGE_TYPE,e_type);
-                    (it_data->second).insert(edge_type);
+                if( type != EDGE_UNDEF ) {
+                    it_prop = (it_data->second).find(EDGE_TYPE);
+                    if(it_prop != (it_data->second).end()) {
+                        /* the type property exists, we change it */
+                        it_prop->second = e_type;
+                    }
+                    else {
+                        /* the type property doesn't exists, we create it */
+                        pair<t_edge_property,t_edge_value> edge_type = pair<t_edge_property,t_edge_value>(EDGE_TYPE,e_type);
+                        (it_data->second).insert(edge_type);
+                    }
                 }
             }
             else {
@@ -121,8 +123,10 @@ float e_type = (float)type;
                 pair<t_edge_property,t_edge_value> edge_count = pair<t_edge_property,t_edge_value>(EDGE_COUNT,card+1.0);
                 _edges_properties[real_edge_id].insert(edge_count);
 
-                pair<t_edge_property,t_edge_value> edge_type = pair<t_edge_property,t_edge_value>(EDGE_TYPE,e_type);
-                _edges_properties[real_edge_id].insert(edge_type);
+                if( type != EDGE_UNDEF ) {
+                    pair<t_edge_property,t_edge_value> edge_type = pair<t_edge_property,t_edge_value>(EDGE_TYPE,e_type);
+                    _edges_properties[real_edge_id].insert(edge_type);
+                }
             }
         }
         else {
@@ -148,9 +152,11 @@ float e_type = (float)type;
             _edges_properties[id].insert(edge_count);
         }
 
-        /* the type property doesn't exists, we create it */
-        pair<t_edge_property,t_edge_value> edge_count = pair<t_edge_property,t_edge_value>(EDGE_TYPE,e_type);
-        _edges_properties[id].insert(edge_count);
+        if( type != EDGE_UNDEF ) {
+            /* the type property doesn't exists, we create it */
+            pair<t_edge_property,t_edge_value> edge_count = pair<t_edge_property,t_edge_value>(EDGE_TYPE,e_type);
+            _edges_properties[id].insert(edge_count);
+        }
     }
 
     // 2*O(log-n)
@@ -210,42 +216,6 @@ void Graph::removeEdge(const t_id source_id, const t_id target_id) {
     if(sources.empty()) {
         _reverse_edges.erase(target_id);
     }
-}
-
-//-----------------------------------------
-void Graph::removeInEdges(const t_id target_id) {
-//-----------------------------------------
-    if(_lock_flag == '1') throw ReadLockException("Write not allowed");
-
-    // O(n + 4*log-n)
-    set<t_id>& sources = _reverse_edges[target_id];
-    for( set<t_id>::iterator it=sources.begin() ; it != sources.end(); it++ ) {
-        for( map<t_id,t_id>::const_iterator it2=_edges[*it].begin() ; it2 != _edges[*it].end(); it2++ ) {
-            _bloom_edges.erase(it2->second);
-        }
-        _edges[*it].erase(target_id);
-        if(_edges[*it].empty()) {
-            _edges.erase(*it);
-        }
-    }
-    _reverse_edges.erase(target_id);
-}
-
-//-----------------------------------------
-void Graph::removeOutEdges(const t_id source_id) {
-//-----------------------------------------
-    if(_lock_flag == '1') throw ReadLockException("Write not allowed");
-
-    // O(n + 4*log-n)
-    map<t_id,t_id>& links = _edges[source_id];
-    for( map<t_id,t_id>::iterator it=links.begin() ; it != links.end(); it++ ) {
-        _bloom_edges.erase(it->second);
-        _reverse_edges[it->first].erase(source_id);
-        if(_reverse_edges[it->first].empty()) {
-            _reverse_edges.erase(it->first);
-        }
-    }
-    _edges.erase(source_id);
 }
 
 //-----------------------------------------
@@ -394,9 +364,31 @@ void Graph::clearEdges(const t_id node_id) {
 //-----------------------------------------
     if(_lock_flag == '1') throw ReadLockException("Write not allowed");
 
-    // 0(2n)
-    this->removeInEdges(node_id);
-    this->removeOutEdges(node_id);
+    /* removeInEdges */
+    // O(n + 4*log-n)
+    set<t_id>& sources = _reverse_edges[node_id];
+    for( set<t_id>::iterator it=sources.begin() ; it != sources.end(); it++ ) {
+        for( map<t_id,t_id>::const_iterator it2=_edges[*it].begin() ; it2 != _edges[*it].end(); it2++ ) {
+            _bloom_edges.erase(it2->second);
+        }
+        _edges[*it].erase(node_id);
+        if(_edges[*it].empty()) {
+            _edges.erase(*it);
+        }
+    }
+    _reverse_edges.erase(node_id);
+
+    /* removeOutEdges */
+    // O(n + 4*log-n)
+    map<t_id,t_id>& links = _edges[node_id];
+    for( map<t_id,t_id>::iterator it=links.begin() ; it != links.end(); it++ ) {
+        _bloom_edges.erase(it->second);
+        _reverse_edges[it->first].erase(node_id);
+        if(_reverse_edges[it->first].empty()) {
+            _reverse_edges.erase(it->first);
+        }
+    }
+    _edges.erase(node_id);
 }
 
 //-----------------------------------------

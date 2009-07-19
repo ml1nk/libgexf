@@ -45,6 +45,42 @@ DirectedGraph::~DirectedGraph() {
 }
 
 //-----------------------------------------
+void DirectedGraph::removeInEdges(const t_id target_id) {
+//-----------------------------------------
+    if(_lock_flag == '1') throw ReadLockException("Write not allowed");
+
+    // O(n + 4*log-n)
+    set<t_id>& sources = _reverse_edges[target_id];
+    for( set<t_id>::iterator it=sources.begin() ; it != sources.end(); it++ ) {
+        for( map<t_id,t_id>::const_iterator it2=_edges[*it].begin() ; it2 != _edges[*it].end(); it2++ ) {
+            _bloom_edges.erase(it2->second);
+        }
+        _edges[*it].erase(target_id);
+        if(_edges[*it].empty()) {
+            _edges.erase(*it);
+        }
+    }
+    _reverse_edges.erase(target_id);
+}
+
+//-----------------------------------------
+void DirectedGraph::removeOutEdges(const t_id source_id) {
+//-----------------------------------------
+    if(_lock_flag == '1') throw ReadLockException("Write not allowed");
+
+    // O(n + 4*log-n)
+    map<t_id,t_id>& links = _edges[source_id];
+    for( map<t_id,t_id>::iterator it=links.begin() ; it != links.end(); it++ ) {
+        _bloom_edges.erase(it->second);
+        _reverse_edges[it->first].erase(source_id);
+        if(_reverse_edges[it->first].empty()) {
+            _reverse_edges.erase(it->first);
+        }
+    }
+    _edges.erase(source_id);
+}
+
+//-----------------------------------------
 std::set<t_id> DirectedGraph::getInEdges(const t_id node_id) const {
 //-----------------------------------------
 set<t_id> s = set<t_id>();

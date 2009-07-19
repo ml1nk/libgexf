@@ -402,13 +402,15 @@ int rc;
     }
 
     /* Add an attribute with name "type" */
-    t_graph t = _gexf->getGraphType();
-    if( (t != GRAPH_DIRECTED && type.compare("undirected") != 0) || /* undirected is the default value and can be omitted */
-        (t == GRAPH_DIRECTED && type.compare("directed") != 0) ) { /* directed can be omitted if it is the default value */
-        
-        rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "type", BAD_CAST type.c_str());
-        if (rc < 0) {
-            throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
+    if( type.compare("undef") != 0 ) {
+        t_graph t = _gexf->getGraphType();
+        if( (t != GRAPH_DIRECTED && type.compare("undirected") != 0) || /* undirected is the default value and can be omitted */
+            (t == GRAPH_DIRECTED && type.compare("directed") != 0) ) { /* directed can be omitted if it is the default value */
+
+            rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "type", BAD_CAST type.c_str());
+            if (rc < 0) {
+                throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
+            }
         }
     }
 

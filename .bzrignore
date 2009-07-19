@@ -1,6 +1,8 @@
 bin/*
 doc/*
 build/*
+blib/*
+t/*
 .project
 .classpath
 .log
@@ -21,4 +23,6 @@ netbeans
 *.o
 *.bs
 *.old
+*.class
+*.jar
 

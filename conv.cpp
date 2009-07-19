@@ -162,6 +162,9 @@ string Conv::edgeTypeToStr(const t_edge_type t) {
     // fonction de porc qui ne devrait pas exister
     switch(t)
     {
+        case EDGE_UNDEF:
+            return "undef";
+            break;
         case EDGE_DIRECTED:
             return "directed";
             break;
@@ -172,7 +175,7 @@ string Conv::edgeTypeToStr(const t_edge_type t) {
             return "double";
             break;
     }
-    return "";
+    return "undef";
 }
 
 //-----------------------------------------

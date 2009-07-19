@@ -52,11 +52,9 @@ public:
     virtual ~Graph();
 
     void addNode(const libgexf::t_id id);
-    void addEdge(const libgexf::t_id id, const libgexf::t_id source_id, const libgexf::t_id target_id, const unsigned int cardinal=1, const libgexf::t_edge_type type=EDGE_UNDIRECTED);
+    void addEdge(const libgexf::t_id id, const libgexf::t_id source_id, const libgexf::t_id target_id, const unsigned int cardinal=1, const libgexf::t_edge_type type=EDGE_UNDEF);
     void removeNode(const libgexf::t_id id);
     void removeEdge(const libgexf::t_id source_id, const libgexf::t_id target_id);
-    void removeInEdges(const libgexf::t_id target_id);
-    void removeOutEdges(const libgexf::t_id source_id);
 
     bool containsNode(const libgexf::t_id id) const;
     bool containsEdge(const libgexf::t_id source_id, const libgexf::t_id target_id) const;

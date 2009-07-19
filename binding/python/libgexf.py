@@ -140,6 +140,7 @@ GRAPH_MIXED = _libgexf.GRAPH_MIXED
 EDGE_TYPE = _libgexf.EDGE_TYPE
 EDGE_COUNT = _libgexf.EDGE_COUNT
 EDGE_WEIGHT = _libgexf.EDGE_WEIGHT
+EDGE_UNDEF = _libgexf.EDGE_UNDEF
 EDGE_DIRECTED = _libgexf.EDGE_DIRECTED
 EDGE_UNDIRECTED = _libgexf.EDGE_UNDIRECTED
 EDGE_DOUBLE = _libgexf.EDGE_DOUBLE
@@ -421,8 +422,6 @@ class Graph(_object):
     def addEdge(self, *args): return _libgexf.Graph_addEdge(self, *args)
     def removeNode(self, *args): return _libgexf.Graph_removeNode(self, *args)
     def removeEdge(self, *args): return _libgexf.Graph_removeEdge(self, *args)
-    def removeInEdges(self, *args): return _libgexf.Graph_removeInEdges(self, *args)
-    def removeOutEdges(self, *args): return _libgexf.Graph_removeOutEdges(self, *args)
     def containsNode(self, *args): return _libgexf.Graph_containsNode(self, *args)
     def containsEdge(self, *args): return _libgexf.Graph_containsEdge(self, *args)
     def getNodes(self): return _libgexf.Graph_getNodes(self)
@@ -457,6 +456,8 @@ class DirectedGraph(Graph):
         except: self.this = this
     __swig_destroy__ = _libgexf.delete_DirectedGraph
     __del__ = lambda self : None;
+    def removeInEdges(self, *args): return _libgexf.DirectedGraph_removeInEdges(self, *args)
+    def removeOutEdges(self, *args): return _libgexf.DirectedGraph_removeOutEdges(self, *args)
     def getInEdges(self, *args): return _libgexf.DirectedGraph_getInEdges(self, *args)
     def getOutEdges(self, *args): return _libgexf.DirectedGraph_getOutEdges(self, *args)
     def getSuccessors(self, *args): return _libgexf.DirectedGraph_getSuccessors(self, *args)

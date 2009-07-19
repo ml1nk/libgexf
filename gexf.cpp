@@ -32,7 +32,7 @@
 
 namespace libgexf {
 
-GEXF::GEXF(): _graph(), _type(GRAPH_UNDIRECTED), _data(), _meta() {
+GEXF::GEXF(): _graph(), _type(GRAPH_MIXED), _data(), _meta() {
 }
 
 GEXF::GEXF(const GEXF& orig) : _graph(orig._graph), _type(orig._type), _data(orig._data), _meta(orig._meta) {
@@ -48,6 +48,7 @@ UndirectedGraph& GEXF::getUndirectedGraph() {
     if(_graph.getNodeCount() == 0) {
         UndirectedGraph* g = new UndirectedGraph();
         _graph = *g;
+        _type = GRAPH_UNDIRECTED;
     }
 
     return (UndirectedGraph&)_graph;
@@ -60,6 +61,7 @@ DirectedGraph& GEXF::getDirectedGraph() {
     if(_graph.getNodeCount() == 0) {
         DirectedGraph* g = new DirectedGraph();
         _graph = *g;
+        _type = GRAPH_DIRECTED;
     }
 
     return (DirectedGraph&)_graph;

@@ -39,6 +39,9 @@ public:
     DirectedGraph(const DirectedGraph& orig);
     virtual ~DirectedGraph();
 
+    void removeInEdges(const libgexf::t_id target_id);
+    void removeOutEdges(const libgexf::t_id source_id);
+
     std::set<libgexf::t_id> getInEdges(const libgexf::t_id node_id) const;
     std::set<libgexf::t_id> getOutEdges(const libgexf::t_id node_id) const;
     std::set<libgexf::t_id> getSuccessors(const libgexf::t_id node_id) const;

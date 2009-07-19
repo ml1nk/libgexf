@@ -1,7 +1,12 @@
 TODO LIST
 
-   * ajout des hypergraphes et graphes pondérés
-   * ajout des attributs
+Major:
 
-BUGFIX
-   * lire le contenu des balises text (pour les meta)
+   * hypergraphs and weighted graphs support
+   * hyperarchical graphs support
+   * list-string content and value checking
+   * RelaxNG validator
+
+Minor:
+   * Iterators for every set<> returned by methods for Java binding compatibility
+   * Logger class for info(), warn() and err() messages
