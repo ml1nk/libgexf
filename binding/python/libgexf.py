@@ -248,6 +248,21 @@ class GEXF(_object):
 GEXF_swigregister = _libgexf.GEXF_swigregister
 GEXF_swigregister(GEXF)
 
+class AbstractIter(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, AbstractIter, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, AbstractIter, name)
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+    def begin(self): return _libgexf.AbstractIter_begin(self)
+    def hasNext(self): return _libgexf.AbstractIter_hasNext(self)
+    def next(self): return _libgexf.AbstractIter_next(self)
+    __swig_destroy__ = _libgexf.delete_AbstractIter
+    __del__ = lambda self : None;
+AbstractIter_swigregister = _libgexf.AbstractIter_swigregister
+AbstractIter_swigregister(AbstractIter)
+
 class FileReader(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, FileReader, name, value)
@@ -486,10 +501,12 @@ class UndirectedGraph(Graph):
 UndirectedGraph_swigregister = _libgexf.UndirectedGraph_swigregister
 UndirectedGraph_swigregister(UndirectedGraph)
 
-class NodeIter(_object):
+class NodeIter(AbstractIter):
     __swig_setmethods__ = {}
+    for _s in [AbstractIter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, NodeIter, name, value)
     __swig_getmethods__ = {}
+    for _s in [AbstractIter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
     __getattr__ = lambda self, name: _swig_getattr(self, NodeIter, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
@@ -504,10 +521,12 @@ class NodeIter(_object):
 NodeIter_swigregister = _libgexf.NodeIter_swigregister
 NodeIter_swigregister(NodeIter)
 
-class EdgeIter(_object):
+class EdgeIter(AbstractIter):
     __swig_setmethods__ = {}
+    for _s in [AbstractIter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, EdgeIter, name, value)
     __swig_getmethods__ = {}
+    for _s in [AbstractIter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
     __getattr__ = lambda self, name: _swig_getattr(self, EdgeIter, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
@@ -596,10 +615,12 @@ class MetaData(_object):
 MetaData_swigregister = _libgexf.MetaData_swigregister
 MetaData_swigregister(MetaData)
 
-class AttributeIter(_object):
+class AttributeIter(AbstractIter):
     __swig_setmethods__ = {}
+    for _s in [AbstractIter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, AttributeIter, name, value)
     __swig_getmethods__ = {}
+    for _s in [AbstractIter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
     __getattr__ = lambda self, name: _swig_getattr(self, AttributeIter, name)
     __repr__ = _swig_repr
     NODE = _libgexf.AttributeIter_NODE
@@ -618,10 +639,12 @@ class AttributeIter(_object):
 AttributeIter_swigregister = _libgexf.AttributeIter_swigregister
 AttributeIter_swigregister(AttributeIter)
 
-class AttValueIter(_object):
+class AttValueIter(AbstractIter):
     __swig_setmethods__ = {}
+    for _s in [AbstractIter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, AttValueIter, name, value)
     __swig_getmethods__ = {}
+    for _s in [AbstractIter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
     __getattr__ = lambda self, name: _swig_getattr(self, AttValueIter, name)
     __repr__ = _swig_repr
     NODE = _libgexf.AttValueIter_NODE

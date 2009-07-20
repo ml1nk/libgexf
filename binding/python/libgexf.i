@@ -12,6 +12,7 @@
 #include "../../typedefs.h"
 #include "../../exceptions.h"
 #include "../../gexf.h"
+#include "../../abstractiter.h"
 /* io::input */
 #include "../../filereader.h"
 #include "../../abstractparser.h"
@@ -60,6 +61,7 @@ namespace std {
 %include "../../typedefs.h"
 %include "../../exceptions.h"
 %include "../../gexf.h"
+%include "../../abstractiter.h"
 /* io::input */
 %include "../../filereader.h"
 %include "../../abstractparser.h"

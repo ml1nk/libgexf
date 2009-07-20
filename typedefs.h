@@ -34,15 +34,27 @@ namespace libgexf {
 
 typedef std::string t_id; /*!< Type of all IDs */
 
-enum t_graph { GRAPH_DIRECTED, GRAPH_UNDIRECTED, GRAPH_MIXED }; /*!<Available graph types */
+/*! \var enum t_graph
+ *  \brief Available graph types
+ */
+enum t_graph { GRAPH_DIRECTED, GRAPH_UNDIRECTED, GRAPH_MIXED };
 
-enum t_edge_property { EDGE_TYPE, EDGE_COUNT, EDGE_WEIGHT }; /*!<Available edge properties */
+/*! \var enum t_edge_property
+ *  \brief Available edge topological properties
+ */
+enum t_edge_property { EDGE_TYPE, EDGE_COUNT, EDGE_WEIGHT };
 
-enum t_edge_type { EDGE_UNDEF, EDGE_DIRECTED, EDGE_UNDIRECTED, EDGE_DOUBLE }; /*!<Available edge types */
+/*! \var enum t_edge_type
+ *  \brief Available edge types
+ */
+enum t_edge_type { EDGE_UNDEF, EDGE_DIRECTED, EDGE_UNDIRECTED, EDGE_DOUBLE };
 
-enum t_attr_type { INTEGER, DOUBLE, FLOAT, BOOLEAN, STRING, LIST_STRING }; /*!<Available types of attributes */
+/*! \var enum t_attr_type
+ *  \brief Available types of attributes
+ */
+enum t_attr_type { INTEGER, DOUBLE, FLOAT, BOOLEAN, STRING, LIST_STRING };
 
-typedef float t_edge_value;
+typedef float t_edge_value; /*!< Value of edge topological properties */
 
 }
 

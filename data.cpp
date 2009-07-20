@@ -84,27 +84,27 @@ void Data::setLabel(const t_id node_id, const std::string label) {
 }
 
 //-----------------------------------------
-void Data::addNodeAttributeColumn(const t_id id, const string title, const t_attr_type type) {
+void Data::addNodeAttributeColumn(const t_id id, const std::string title, const t_attr_type type) {
 //-----------------------------------------
     _node_attributes.insert(pair<t_id,string>(id,title));
     _node_attributes_types.insert(pair<t_id,t_attr_type>(id,type));
 }
 
 //-----------------------------------------
-void Data::addEdgeAttributeColumn(const t_id id, const string title, const t_attr_type type) {
+void Data::addEdgeAttributeColumn(const t_id id, const std::string title, const t_attr_type type) {
 //-----------------------------------------
     _edge_attributes.insert(pair<t_id,string>(id,title));
     _edge_attributes_types.insert(pair<t_id,t_attr_type>(id,type));
 }
 
 //-----------------------------------------
-void Data::setNodeAttributeDefault(const t_id attr_id, const string default_value) {
+void Data::setNodeAttributeDefault(const t_id attr_id, const std::string default_value) {
 //-----------------------------------------
     _node_default_values.insert(pair<t_id,string >(attr_id,default_value));
 }
 
 //-----------------------------------------
-void Data::setEdgeAttributeDefault(const t_id attr_id, const string default_value) {
+void Data::setEdgeAttributeDefault(const t_id attr_id, const std::string default_value) {
 //-----------------------------------------
     _edge_default_values.insert(pair<t_id,string >(attr_id,default_value));
 }
@@ -215,13 +215,13 @@ AttValueIter* Data::getEdgeAttributeRow(const t_id edge_id) const {
 
 
 //-----------------------------------------
-void Data::setNodeValue(const t_id node_id, const t_id attr_id, const string value) {
+void Data::setNodeValue(const t_id node_id, const t_id attr_id, const std::string value) {
 //-----------------------------------------
     _node_values[node_id][attr_id] = value;
 }
 
 //-----------------------------------------
-void Data::setEdgeValue(const t_id edge_id, const t_id attr_id, const string value) {
+void Data::setEdgeValue(const t_id edge_id, const t_id attr_id, const std::string value) {
 //-----------------------------------------
     _edge_values[edge_id][attr_id] = value;
 }

@@ -40,43 +40,208 @@ namespace libgexf {
 class AttributeIter;
 class AttValueIter;
 
+/*! \class Data
+    \brief Associated data and attributes on nodes and edges.
+ */
 class Data {
 public:
     Data();
+
+    /*!
+     *  \brief Copy constructor
+     */
     Data(const Data& orig);
+    
     virtual ~Data();
 
+
+    /*!
+     *  \brief Get node label
+     *
+     *  \param node_id : node ID
+     */
     std::string getLabel(const libgexf::t_id node_id) const;
+
+    /*!
+     *  \brief Check if the node label exists
+     *
+     *  \param node_id : node ID
+     */
     bool hasLabel(const libgexf::t_id node_id) const;
+
+    /*!
+     *  \brief Set node label
+     *
+     *  \param node_id : node ID
+     *  \param label : node label
+     */
     void setLabel(const libgexf::t_id node_id, const std::string label);
 
+
+    /*!
+     *  \brief Add a node attribute column
+     *
+     *  \param id : attribute ID
+     *  \param title : name of the node attribute
+     *  \param type : type of attribute (integer, double, float, boolean, string or list-string)
+     */
     void addNodeAttributeColumn(const libgexf::t_id id, const std::string title, const libgexf::t_attr_type type);
+
+    /*!
+     *  \brief Add an edge attribute column
+     *
+     *  \param id : attribute ID
+     *  \param title : name of the edge attribute
+     *  \param type : type of attribute (integer, double, float, boolean, string or list-string)
+     */
     void addEdgeAttributeColumn(const libgexf::t_id id, const std::string title, const libgexf::t_attr_type type);
 
+
+    /*!
+     *  \brief Set the default value of a node attribute
+     *
+     *  \param attr_id : attribute ID
+     *  \param default_value : default value
+     */
     void setNodeAttributeDefault(const libgexf::t_id attr_id, const std::string default_value);
+
+    /*!
+     *  \brief Set the default value of an edge attribute
+     *
+     *  \param attr_id : attribute ID
+     *  \param default_value : default value
+     */
     void setEdgeAttributeDefault(const libgexf::t_id attr_id, const std::string default_value);
 
-    void setNodeValue(const libgexf::t_id node_id, const libgexf::t_id attr_id, const std::string value);
-    void setEdgeValue(const libgexf::t_id node_id, const libgexf::t_id attr_id, const std::string value);
 
+    /*!
+     *  \brief Set the node value of an attribute
+     *
+     *  \param node_id : node ID
+     *  \param attr_id : attribute ID
+     *  \param value : node value
+     */
+    void setNodeValue(const libgexf::t_id node_id, const libgexf::t_id attr_id, const std::string value);
+    
+    /*!
+     *  \brief Set the edge value of an attribute
+     *
+     *  \param edge_id : edge ID
+     *  \param attr_id : attribute ID
+     *  \param value : edge value
+     */
+    void setEdgeValue(const libgexf::t_id edge_id, const libgexf::t_id attr_id, const std::string value);
+
+
+    /*!
+     *  \brief Get an iterator on the node attribute column
+     *
+     *  \return Attribute iterator instance
+     */
     libgexf::AttributeIter* getNodeAttributeColumn() const;
+
+    /*!
+     *  \brief Get an iterator on the edge attribute column
+     *
+     *  \return Attribute iterator instance
+     */
     libgexf::AttributeIter* getEdgeAttributeColumn() const;
 
+
+    /*!
+     *  \brief Get the node attribute value
+     *
+     *  \param node_id : node ID
+     *  \param attr_id : attribute ID
+     *  \return node attribute value
+     */
     std::string getNodeAttribute(const libgexf::t_id node_id, const libgexf::t_id attr_id) const;
+
+    /*!
+     *  \brief Get the edge attribute value
+     *
+     *  \param edge_id : edge ID
+     *  \param attr_id : attribute ID
+     *  \return edge attribute value
+     */
     std::string getEdgeAttribute(const libgexf::t_id edge_id, const libgexf::t_id attr_id) const;
 
+
+    /*!
+     *  \brief Get an iterator on the node attribute row
+     *
+     *  \param node_id : node ID
+     *  \return iterator instance on attribute values
+     */
     libgexf::AttValueIter* getNodeAttributeRow(const libgexf::t_id node_id) const;
+
+    /*!
+     *  \brief Get an iterator on the edge attribute row
+     *
+     *  \param edge_id : edge ID
+     *  \return iterator instance on attribute values
+     */
     libgexf::AttValueIter* getEdgeAttributeRow(const libgexf::t_id edge_id) const;
 
+
+    /*!
+     *  \brief Get the default value of a node attribute
+     *
+     *  \param attr_id : attribute ID
+     *  \return default value
+     */
     std::string getNodeAttributeDefault(const libgexf::t_id attr_id) const;
+
+    /*!
+     *  \brief Get the default value of an edge attribute
+     *
+     *  \param attr_id : attribute ID
+     *  \return default value
+     */
     std::string getEdgeAttributeDefault(const libgexf::t_id attr_id) const;
 
+
+    /*!
+     *  \brief Check if a node attribute has a default value
+     *
+     *  \param attr_id : attribute ID
+     *  \return true if the default value exists, false otherwise
+     */
     bool hasNodeAttributeDefault(const libgexf::t_id attr_id) const;
+
+    /*!
+     *  \brief Check if an edge attribute has a default value
+     *
+     *  \param attr_id : attribute ID
+     *  \return true if the default value exists, false otherwise
+     */
     bool hasEdgeAttributeDefault(const libgexf::t_id attr_id) const;
 
+
+    /*!
+     *  \brief Delete all attribute values for a node
+     *
+     *  \param node_id : node ID
+     */
     void clearNodeAttributes(const libgexf::t_id node_id);
+
+    /*!
+     *  \brief Delete all attribute values for an edge
+     *
+     *  \param edge_id : edge ID
+     */
     void clearEdgeAttributes(const libgexf::t_id edge_id);
+
+    /*!
+     *  \brief Clear all attributes (columns an rows)
+     *
+     */
     void clear();
+
+    /*!
+     *  \brief Clear edge attributes (columns an rows)
+     *
+     */
     void clearEdgesAttributes();
 private:
     std::map<t_id,std::string > _node_labels; /*!< map<node_id, label > */
@@ -95,8 +260,8 @@ private:
     friend std::ostream& operator<<(std::ostream& os, const Data& o);
     unsigned int countNodeAttributeColumn() const;
     unsigned int countEdgeAttributeColumn() const;
-    friend class AttributeIter;
-    friend class AttValueIter;
+    friend class AttributeIter; /*!< AttributeIter */
+    friend class AttValueIter; /*!< AttValueIter */
 };
 
 } /* namespace libgexf */

@@ -41,6 +41,8 @@ NodeIter::~NodeIter() {
 
 NodeIter* NodeIter::begin() {
     _it = _graph->_nodes.begin();
+    _cpt = 0;
+    _nb_items = _graph->getNodeCount();
     return this;
 }
 

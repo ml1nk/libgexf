@@ -33,24 +33,104 @@
 
 namespace libgexf {
 
+/*! \class DirectedGraph
+    \brief Interpretation of the topology structure as a directed graph.
+ */
 class DirectedGraph: public Graph {
 public:
     DirectedGraph();
+
+    /*!
+     *  \brief Copy constructor
+     */
     DirectedGraph(const DirectedGraph& orig);
+    
     virtual ~DirectedGraph();
 
+    /*!
+     *  \brief Remove incoming edges from a node
+     *
+     *  \param target_id : node ID
+     */
     void removeInEdges(const libgexf::t_id target_id);
+
+    /*!
+     *  \brief Remove outgoing edges from a node
+     *
+     *  \param source_id : node ID
+     */
     void removeOutEdges(const libgexf::t_id source_id);
 
+    /*!
+     *  \brief Get incoming edges from a node
+     *
+     *  \param node_id : node ID
+     *  \return Set of IDs of incoming edges
+     */
     std::set<libgexf::t_id> getInEdges(const libgexf::t_id node_id) const;
+
+    /*!
+     *  \brief Get outgoing edges from a node
+     *
+     *  \param node_id : node ID
+     *  \return Set of IDs of outgoing edges
+     */
     std::set<libgexf::t_id> getOutEdges(const libgexf::t_id node_id) const;
+
+    /*!
+     *  \brief Get node successors
+     *
+     *  \param node_id : node ID
+     *  \return Set of node IDs
+     */
     std::set<libgexf::t_id> getSuccessors(const libgexf::t_id node_id) const;
+
+    /*!
+     *  \brief Get node predecessors
+     *
+     *  \param node_id : node ID
+     *  \return Set of node IDs
+     */
     std::set<libgexf::t_id> getPredecessors(const libgexf::t_id node_id) const;
 
+
+    /*!
+     *  \brief Get indegree value
+     *
+     *  \param node_id : node ID
+     *  \return indegree value
+     */
     unsigned int getInDegree(const libgexf::t_id node_id) const;
+
+    /*!
+     *  \brief Get outdegree value
+     *
+     *  \param node_id : node ID
+     *  \return outdegree value
+     */
     unsigned int getOutDegree(const libgexf::t_id node_id) const;
 
+
+    /*!
+     *  \brief Test a possible successor
+     *
+     *  Check if the successor_id is a successor of the node node_id.
+     *
+     *  \param node_id : node ID
+     *  \param successor_id : node ID of the tested successor
+     *  \return true if successor_id is a successor of node_id
+     */
     bool isSuccessor(const libgexf::t_id node_id, const libgexf::t_id successor_id) const;
+
+    /*!
+     *  \brief Test a possible predecessor
+     *
+     *  Check if the predecessor_id is a predecessor of the node node_id.
+     *
+     *  \param node_id : node ID
+     *  \param predecessor_id : node ID of the tested predecessor
+     *  \return true if predecessor_id is a predecessor of node_id
+     */
     bool isPredecessor(const libgexf::t_id node_id, const libgexf::t_id predecessor_id) const;
 private:
     DirectedGraph& operator=(const DirectedGraph& orig);

@@ -53,12 +53,6 @@ void GexfParser::bind(GEXF* gexf) {
     _gexf = gexf;
 }
 
-/**
- * processNode:
- * @reader: the xmlReader
- *
- * Call the right processing method
- */
 //-----------------------------------------
 void GexfParser::processNode(xmlTextReaderPtr reader, const xmlChar* name) {
 //-----------------------------------------
@@ -121,14 +115,14 @@ void GexfParser::processGEXFNode(xmlTextReaderPtr reader) {
         }
 
         try {
-            string xsi = this->getStringAttributeNS(reader, "xsi", "xmlns");
+            string xsi = this->getStringAttribute(reader, "xmlns:xsi");
             _gexf->getMetaData().setXsi( xsi );
         } catch (exception &e) {
             cerr << "WARN " << e.what() << endl;
         }
 
         try {
-            string schemaLocation = this->getStringAttributeNS(reader, "schemaLocation", "xsi");
+            string schemaLocation = this->getStringAttribute(reader, "xsi:schemaLocation");
             _gexf->getMetaData().setXsi( schemaLocation );
         } catch (exception &e) {
             cerr << "WARN " << e.what() << endl;
@@ -456,7 +450,7 @@ string GexfParser::getStringAttribute(xmlTextReaderPtr reader, const char* name)
 }
 
 //-----------------------------------------
-string GexfParser::getStringAttributeNS(xmlTextReaderPtr reader, const char* name, const char* namespaceURI) {
+string GexfParser::getStringAttributeNs(xmlTextReaderPtr reader, const char* name, const char* namespaceURI) {
 //-----------------------------------------
     xmlChar* attr = xmlTextReaderGetAttributeNs(reader, xmlCharStrdup(name), xmlCharStrdup(namespaceURI));
     if( attr != NULL )

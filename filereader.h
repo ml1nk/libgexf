@@ -36,22 +36,55 @@
 namespace libgexf {
 
 /*! \class FileReader
-    \brief Topology structure of the graph
+    \brief Read a GEXF file.
  */
 class FileReader {
 public:
+    /*! \var enum Version
+     *  \brief Possible version number of the GEXF format
+     */
     enum Version { _1_0, _1_1};
 public:
     FileReader();
+
+    /*!
+     *  \brief Constructor with init
+     *
+     *  \param filepath : Path to the written file
+     *  \param v : version number of the GEXF format
+     */
     FileReader(const std::string filepath, const Version v=_1_1);
+
+    /*!
+     *  \brief Copy constructor
+     */
     FileReader(const FileReader& orig);
+
     virtual ~FileReader();
 
+
+    /*!
+     *  \brief Get a duplicated instance of the internal GEXF data
+     *
+     *  \return GEXF instance
+     */
     libgexf::GEXF getGEXFCopy();
 
+    /*!
+     *  \brief Initialize the file reader
+     *
+     *  \param filepath : Path to the GEXF file
+     *  \param v : version number of the GEXF format
+     */
     void init(const std::string filepath, const Version v=_1_1);
-    //int relaxNGValidate(const std::string schema);
+
+    /*!
+     *  \brief Read the given file in one pass
+     *
+     */
     void slurp();
+
+    //int relaxNGValidate(const std::string schema);
 private:
     void createParser();
     void streamFile();

@@ -40,12 +40,17 @@ namespace libgexf {
 class Reader;
 
 /*! \class LegacyParser
-    \brief
+    \brief Parse an old GEXF file (1.0).
  */
 class LegacyParser: public AbstractParser {
 public:
     LegacyParser();
+
+    /*!
+     *  \brief Copy constructor
+     */
     LegacyParser(const LegacyParser& orig);
+    
     virtual ~LegacyParser();
 
     void bind(libgexf::GEXF* gexf);

@@ -31,6 +31,7 @@
 
 #include "typedefs.h"
 #include "graph.h"
+#include "abstractiter.h"
 
 #include <map>
 
@@ -38,18 +39,53 @@ namespace libgexf {
 
 class Graph;
 
-class EdgeIter {
+/*! \class EdgeIter
+    \brief Iterator on edges.
+ */
+class EdgeIter: public AbstractIter {
 public:
+    /*!
+     *  \brief Constructor
+     *
+     *  \param g : Reference to the Graph object
+     */
     EdgeIter(const libgexf::Graph* g);
     virtual ~EdgeIter();
 
     EdgeIter* begin();
     bool hasNext() const;
-    libgexf::t_id next();  /*!< Return an edge_id */
 
+    /*!
+     *  \brief Iterate
+     *
+     *  Get next element in collection.
+     *
+     *  \return The edge ID.
+     */
+    libgexf::t_id next();
+
+    /*!
+     *  \brief Get source node
+     *
+     *  \return The node id of the source
+     */
     libgexf::t_id currentSource() const;
+
+    /*!
+     *  \brief Get target node
+     *
+     *  \return The node id of the target
+     */
     libgexf::t_id currentTarget() const;
-    float currentProperty(libgexf::t_edge_property prop) const;  /*!< Return the value or 0 by default */
+
+    /*!
+     *  \brief Get topological property value
+     *
+     *  \param prop : Topological edge property name
+     *
+     *  \return Property value or 0.0 by default
+     */
+    float currentProperty(libgexf::t_edge_property prop) const;
 private:
     const Graph* _graph;
     std::map<t_id,std::map<t_id,t_id> >::const_iterator _it;

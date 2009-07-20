@@ -1,6 +1,6 @@
-/*! \file writer.h
-   \author sebastien heymann
-   \date 8 juillet 2009, 17:58
+/*! \file filewriter.h
+    \author sebastien heymann
+    \date 8 juillet 2009, 17:58
     \version 0.1
  */
 
@@ -35,18 +35,53 @@
 
 namespace libgexf {
 
+/*! \class FileWriter
+    \brief Write a GEXF file.
+ */
 class FileWriter {
 public:
+    /*! \var enum ElemType
+     *  \brief Possible type of element
+     */
     enum ElemType { NODE, EDGE };
 public:
     FileWriter();
+
+    /*!
+     *  \brief Constructor with init
+     *
+     *  \param filepath : Path to the written file
+     *  \param gexf : reference to a GEXF object
+     */
     FileWriter(const std::string filepath, GEXF* gexf);
+
+    /*!
+     *  \brief Copy constructor
+     */
     FileWriter(const FileWriter& orig);
+    
     virtual ~FileWriter();
 
+
+    /*!
+     *  \brief Get a duplicated instance of the internal GEXF data
+     *
+     *  \return GEXF instance
+     */
     libgexf::GEXF getGEXFCopy();
 
+    /*!
+     *  \brief Initialize the file writer
+     *
+     *  \param filepath : Path to the GEXF file
+     *  \param gexf : reference to a GEXF object
+     */
     void init(const std::string filepath, libgexf::GEXF* gexf);
+
+    /*!
+     *  \brief Write the file
+     *
+     */
     void write();
 private:
     void writeGexfNode(xmlTextWriterPtr writer);

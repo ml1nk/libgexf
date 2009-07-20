@@ -1,6 +1,6 @@
-/*! \file FileWriter.cpp
-   \author sebastien heymann
-   \date 8 juillet 2009, 17:58
+/*! \file filewriter.cpp
+    \author sebastien heymann
+    \date 8 juillet 2009, 17:58
     \version 0.1
  */
 
@@ -47,7 +47,7 @@ const char* FileWriter::_ENCODING = "UTF-8";
 FileWriter::FileWriter(): _gexf(0), _filepath("") {
 }
 
-FileWriter::FileWriter(const string filepath, GEXF* gexf): _gexf(gexf),_filepath(filepath) {
+FileWriter::FileWriter(const std::string filepath, GEXF* gexf): _gexf(gexf),_filepath(filepath) {
 
 }
 
@@ -66,7 +66,7 @@ GEXF FileWriter::getGEXFCopy() {
 }
 
 //-----------------------------------------
-void FileWriter::init(const string filepath, GEXF* gexf) {
+void FileWriter::init(const std::string filepath, GEXF* gexf) {
 //-----------------------------------------
     _filepath = filepath;
     _gexf = gexf;
@@ -79,6 +79,8 @@ void FileWriter::write() {
     #ifndef LIBXML_READER_ENABLED
     throw FileWriterException( "LIBXML NOT FOUND" );
     #endif
+
+    cout << "INFO Start writing the file.." << endl;
 
     /*
      * this initialize the library and check potential ABI mismatches
@@ -119,7 +121,7 @@ void FileWriter::write() {
     xmlFreeTextWriter(writer);
     xmlCleanupParser();
 
-    cout << "INFO file written." << endl;
+    cout << "INFO File written." << endl;
 }
 
 //-----------------------------------------
@@ -364,7 +366,7 @@ int rc;
 }
 
 //-----------------------------------------
-void FileWriter::writeEdgeNode(xmlTextWriterPtr writer, const string edge_id, const string source_id, const string target_id, const string cardinal, const string type) {
+void FileWriter::writeEdgeNode(xmlTextWriterPtr writer, const std::string edge_id, const std::string source_id, const std::string target_id, const std::string cardinal, const std::string type) {
 //-----------------------------------------
 int rc;
 
@@ -427,7 +429,7 @@ int rc;
 }
 
 //-----------------------------------------
-void FileWriter::writeAttributesNode(xmlTextWriterPtr writer, const string element_class) {
+void FileWriter::writeAttributesNode(xmlTextWriterPtr writer, const std::string element_class) {
 //-----------------------------------------
 int rc;
 AttributeIter* it = 0;
@@ -481,7 +483,7 @@ string default_value = "";
 }
 
 //-----------------------------------------
-void FileWriter::writeAttributeNode(xmlTextWriterPtr writer, const string id, const string title, const string type, const string default_value) {
+void FileWriter::writeAttributeNode(xmlTextWriterPtr writer, const std::string id, const std::string title, const std::string type, const std::string default_value) {
 //-----------------------------------------
 int rc;
 
@@ -525,7 +527,7 @@ int rc;
 }
 
 //-----------------------------------------
-void FileWriter::writeAttributeDefaultNode(xmlTextWriterPtr writer, const string default_value) {
+void FileWriter::writeAttributeDefaultNode(xmlTextWriterPtr writer, const std::string default_value) {
 //-----------------------------------------
 int rc;
 
@@ -596,7 +598,7 @@ int rc;
 }
 
 //-----------------------------------------
-void FileWriter::writeAttvalueNode(xmlTextWriterPtr writer, const string attribute_id, const string value) {
+void FileWriter::writeAttvalueNode(xmlTextWriterPtr writer, const std::string attribute_id, const std::string value) {
 //-----------------------------------------
 int rc;
 

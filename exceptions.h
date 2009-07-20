@@ -1,4 +1,4 @@
-/*! \file graph_exceptions.h
+/*! \file exceptions.h
     \author sebastien heymann
     \date 4 juin 2009, 10:36
     \version 0.1
@@ -51,7 +51,9 @@ namespace libgexf {
         std::string _text;
     };
 
-
+    /*! \class WriteLockException
+        \brief Exception occuring on a write-lock.
+     */
     class WriteLockException : public std::exception {
     public:
         WriteLockException(const std::string what) throw() { _text = what; };
@@ -63,6 +65,9 @@ namespace libgexf {
         std::string _text;
     };
 
+    /*! \class FileWriterException
+        \brief Exception occuring when writing a file
+     */
     class FileWriterException : public std::exception {
     public:
         FileWriterException(const std::string what) throw() { _text = what; };
@@ -74,6 +79,9 @@ namespace libgexf {
         std::string _text;
     };
 
+    /*! \class FileReaderException
+        \brief Exception occuring when reading a file
+     */
     class FileReaderException : public std::exception {
     public:
         FileReaderException(const std::string what) throw() { _text = what; };

@@ -1,8 +1,7 @@
-/* 
- * File:   attvalueiter.h
- * Author: sebastien
- *
- * Created on 17 juillet 2009, 22:35
+/*! \file attvalueiter.h
+    \author sebastien heymann
+    \date 17 juillet 2009, 22:35
+    \version 0.1
  */
 
 /*
@@ -32,6 +31,7 @@
 
 #include "typedefs.h"
 #include "data.h"
+#include "abstractiter.h"
 
 #include <map>
 #include <string>
@@ -40,18 +40,51 @@ namespace libgexf {
 
 class Data;
 
-class AttValueIter {
+/*! \class AttValueIter
+    \brief Iterator on attribute values.
+ */
+class AttValueIter: public AbstractIter {
 public:
+    /*! \var enum Type
+     *  \brief Possible type of element
+     */
     enum Type { NODE, EDGE };
+    
 public:
+    /*!
+     *  \brief Constructor
+     *
+     *  \param d : Reference to the Data object
+     *  \param id : Node or edge ID
+     *  \param t : NODE or EDGE
+     */
     AttValueIter(const Data* d, const libgexf::t_id id, const AttValueIter::Type t);
     virtual ~AttValueIter();
 
     AttValueIter* begin();
     bool hasNext() const;
+
+    /*!
+     *  \brief Iterate
+     *
+     *  Get next element in collection.
+     *
+     *  \return The attribute ID.
+     */
     libgexf::t_id next();
 
+    /*!
+     *  \brief Get value
+     *
+     *  \return The attribute value of the node/edge
+     */
     std::string currentValue() const;
+
+    /*!
+     *  \brief Get attribute name
+     *
+     *  \return The attribute name
+     */
     std::string currentName() const;
 private:
     const Data* _data;

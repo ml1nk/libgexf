@@ -43,7 +43,7 @@ namespace libgexf {
 FileReader::FileReader(): _gexf(0), _parser(), _filepath(""), _v(_1_1) {
 }
 
-FileReader::FileReader(const string filepath, const Version v) {
+FileReader::FileReader(const std::string filepath, const Version v) {
     this->init(filepath, v);
 }
 
@@ -64,7 +64,7 @@ GEXF FileReader::getGEXFCopy() {
 }
 
 //-----------------------------------------
-void FileReader::init(const string filepath, const Version v) {
+void FileReader::init(const std::string filepath, const Version v) {
 //-----------------------------------------
     _filepath = filepath;
     _v = v;
@@ -103,7 +103,7 @@ void FileReader::slurp() {
 
     streamFile();
     xmlCleanupParser();
-
+    cout << "INFO File parsed." << endl;
 }
 
 //-----------------------------------------

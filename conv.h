@@ -35,13 +35,15 @@
 
 namespace libgexf {
 
+/*! \class Conv
+    \brief Utility class for transforming data.
+ */
 class Conv {
 public:
     Conv();
     Conv(const Conv& orig);
     virtual ~Conv();
 
-    /*static xmlChar* convertInput(const char *in, const char *encoding);*/
     static libgexf::t_id xmlCharToId(const xmlChar* str);
     static libgexf::t_id strToId(const std::string str);
     static std::string xmlCharToStr(const xmlChar* str);

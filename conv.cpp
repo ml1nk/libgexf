@@ -61,7 +61,7 @@ string Conv::xmlCharToStr(const xmlChar* str) {
 }
 
 //-----------------------------------------
-t_id Conv::strToId(const string str) {
+t_id Conv::strToId(const std::string str) {
 //-----------------------------------------
     return (t_id)str;
 }
@@ -75,62 +75,6 @@ unsigned int Conv::xmlCharToUnsignedInt(const xmlChar* str) {
 
     return i;
 }
-
-/**
- * convertInput:
- * @in: string in a given encoding
- * @encoding: the encoding used
- *
- * Converts @in into UTF-8 for processing with libxml2 APIs
- *
- * Returns the converted UTF-8 string, or NULL in case of error.
- */
-//-----------------------------------------
-/*xmlChar* Conv::convertInput(const char *in, const char *encoding) {
-//-----------------------------------------
-    xmlChar *out;
-    int ret;
-    int size;
-    int out_size;
-    int temp;
-    xmlCharEncodingHandlerPtr handler;
-
-    if (in == 0)
-        return 0;
-
-    handler = xmlFindCharEncodingHandler(encoding);
-
-    if (!handler) {
-        cerr << "convertInput: no encoding handler found for '%s'" << endl << encoding ? encoding : "";
-        return 0;
-    }
-
-    size = (int) strlen(in) + 1;
-    out_size = size * 2 - 1;
-    out = (unsigned char *) xmlMalloc((size_t) out_size);
-
-    if (out != 0) {
-        temp = size - 1;
-        ret = handler->input(out, &out_size, (const xmlChar *) in, &temp);
-        if ((ret < 0) || (temp - size + 1)) {
-            if (ret < 0) {
-                cerr << "convertInput: conversion wasn't successful." << endl;
-            } else {
-                cerr << "convertInput: conversion wasn't successful. converted: %i octets." << endl << temp << endl;
-            }
-
-            xmlFree(out);
-            out = 0;
-        } else {
-            out = (unsigned char *) xmlRealloc(out, out_size + 1);
-            out[out_size] = 0;  // null terminating out //
-        }
-    } else {
-        cerr << "convertInput: no mem" << endl;
-    }
-
-    return out;
-}*/
 
 //-----------------------------------------
 string Conv::idToStr(const t_id id) {
@@ -147,7 +91,7 @@ string Conv::unsignedIntToStr(const unsigned int i) {
 }
 
 //-----------------------------------------
-unsigned int Conv::strToUnsignedInt(const string str) {
+unsigned int Conv::strToUnsignedInt(const std::string str) {
 //-----------------------------------------
     stringstream ss(str.c_str());
     unsigned int i;

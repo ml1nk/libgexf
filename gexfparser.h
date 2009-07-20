@@ -40,12 +40,17 @@ namespace libgexf {
 class Reader;
 
 /*! \class GexfParser
-    \brief
+    \brief Parse a GEXF file.
  */
 class GexfParser: public AbstractParser {
 public:
     GexfParser();
+
+    /*!
+     *  \brief Copy constructor
+     */
     GexfParser(const GexfParser& orig);
+    
     virtual ~GexfParser();
 
     void bind(libgexf::GEXF* gexf);
@@ -71,7 +76,7 @@ private:
     bool isProcessableNode(xmlTextReaderPtr reader);
     libgexf::t_id getIdAttribute(xmlTextReaderPtr reader, const char* name);
     std::string getStringAttribute(xmlTextReaderPtr reader, const char* name);
-    std::string getStringAttributeNS(xmlTextReaderPtr reader, const char* name, const char* namespaceURI);
+    std::string getStringAttributeNs(xmlTextReaderPtr reader, const char* name, const char* namespaceURI);
     unsigned int getUnsignedIntAttribute(xmlTextReaderPtr reader, const char* name);
 private:
     enum ElemType { NODE, EDGE, ATTR_NODE, ATTR_EDGE };

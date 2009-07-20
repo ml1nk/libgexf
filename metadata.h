@@ -33,30 +33,110 @@
 
 namespace libgexf {
 
+/*! \class MetaData
+    \brief Associated meta data and attributes on the graph.
+ */
 class MetaData {
 public:
     MetaData();
+
+    /*!
+     *  \brief Copy constructor
+     */
     MetaData(const MetaData& orig);
+    
     virtual ~MetaData();
 
+    /*!
+     *  \brief Get the GEXF version
+     */
     std::string getVersion() const;
+
+    /*!
+     *  \brief Get the XMLNS
+     */
     std::string getXmlns() const;
+
+    /*!
+     *  \brief Get the XMLNS:XSI
+     */
     std::string getXsi() const;
+
+    /*!
+     *  \brief Get the XML schema
+     */
     std::string getSchema() const;
+
+    /*!
+     *  \brief Get the variant
+     */
     std::string getVariant() const;
+
+    /*!
+     *  \brief Get the creator
+     */
     std::string getCreator() const;
+
+    /*!
+     *  \brief Get the description
+     */
     std::string getDescription() const;
+
+    /*!
+     *  \brief Get the keywords
+     */
     std::string getKeywords() const;
+
+    /*!
+     *  \brief Get the last modified date
+     */
     std::string getLastModifiedDate() const;
 
+
+    
+    /*!
+     *  \brief Set the GEXF version
+     */
     void setVersion(const std::string version);
+
+    /*!
+     *  \brief Set the XMLNS
+     */
     void setXmlns(const std::string xmlns);
+
+    /*!
+     *  \brief Set the XMLNS:XSI
+     */
     void setXsi(const std::string xsi);
+
+    /*!
+     *  \brief Set the XML schema
+     */
     void setSchema(const std::string schema);
+
+    /*!
+     *  \brief Set the variant
+     */
     void setVariant(const std::string variant);
+
+    /*!
+     *  \brief Set the creator
+     */
     void setCreator(const std::string creator);
+
+    /*!
+     *  \brief Set the description
+     */
     void setDescription(const std::string description);
+
+    /*!
+     *  \brief Set the keywords
+     */
     void setKeywords(const std::string keywords);
+
+    /*!
+     *  \brief Set the last modified date
+     */
     void setLastModifiedDate(const std::string lastmodifieddate);
 private:
     void init();

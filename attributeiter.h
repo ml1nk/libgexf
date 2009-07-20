@@ -31,6 +31,7 @@
 
 #include "typedefs.h"
 #include "data.h"
+#include "abstractiter.h"
 
 #include <map>
 #include <string>
@@ -39,19 +40,50 @@ namespace libgexf {
 
 class Data;
 
-class AttributeIter {
+/*! \class AttributeIter
+    \brief Iterator on attributes.
+ */
+class AttributeIter: public AbstractIter {
 public:
+    /*! \var enum Type
+     *  \brief Possible type of element
+     */
     enum Type { NODE, EDGE };
 
 public:
+    /*!
+     *  \brief Constructor
+     *
+     *  \param d : Reference to the Data object
+     *  \param t : NODE or EDGE
+     */
     AttributeIter(const Data* d, const AttributeIter::Type t);
     virtual ~AttributeIter();
 
     AttributeIter* begin();
     bool hasNext() const;
+
+    /*!
+     *  \brief Iterate
+     *
+     *  Get next element in collection.
+     *
+     *  \return The attribute ID.
+     */
     libgexf::t_id next();
 
+    /*!
+     *  \brief Get title
+     *
+     *  \return The attribute title
+     */
     std::string currentTitle() const;
+
+    /*!
+     *  \brief Get type
+     *
+     *  \return The attribute type
+     */
     libgexf::t_attr_type currentType() const;
 private:
     const Data* _data;

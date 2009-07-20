@@ -41,9 +41,8 @@ namespace libgexf {
     /*! \class GEXF
         \brief GEXF class, just a container.
 
-        GEXF class containing :
         \li graph topology
-        \li data attributes (currently not available)
+        \li data attributes
         \li hierarchy (currently not available)
         \li viz data (currently not available)
         \li dynamics (currently not available)
@@ -51,26 +50,71 @@ namespace libgexf {
     class GEXF {
     public:
         GEXF();
+
+        /*!
+         *  \brief Copy constructor
+         */
         GEXF(const GEXF& orig);
+        
         virtual ~GEXF();
 
+
+        /*!
+         *  \brief Get an undirected graph instance
+         *
+         *  \return Undirected graph
+         */
         libgexf::UndirectedGraph& getUndirectedGraph();
+
+        /*!
+         *  \brief Get a directed graph instance
+         *
+         *  \return Directed graph
+         */
         libgexf::DirectedGraph& getDirectedGraph();
+
+        /*!
+         *  \brief Get associated data instance
+         *
+         *  \return graph data
+         */
         libgexf::Data& getData();
+
+        /*!
+         *  \brief Get associated meta data instance
+         *
+         *  \return graph meta data
+         */
         libgexf::MetaData& getMetaData();
 
+
+        /*!
+         *  \brief Change the type of graph
+         *
+         *  \param t : Type of graph (directed, undirected or mixed)
+         */
         void setGraphType(libgexf::t_graph t);
+
+        /*!
+         *  \brief Get the type of graph
+         *
+         *  \return Type of graph (directed, undirected or mixed)
+         */
         libgexf::t_graph getGraphType();
 
+
+        /*!
+         *  \brief Check the data correctness
+         *
+         *  \li verify if each node has a label
+         *  \li verify if each attvalue has a value or a defaultvalue
+         */
         bool checkIntegrity();
 
-        /*! \var Graph _graph
-            \brief Topology structure
-         */
-        libgexf::Graph _graph;
-        libgexf::t_graph _type;
-        libgexf::Data _data;
-        libgexf::MetaData _meta;
+        libgexf::Graph _graph;  /*!< Topology structure */
+        libgexf::t_graph _type;  /*!< Default edge type */
+        libgexf::Data _data;  /*!< Associated data and attributes on nodes and edges */
+        libgexf::MetaData _meta;  /*!< Associated meta data */
     private:
         friend std::ostream& operator<<(std::ostream& os, const GEXF& o);
     };

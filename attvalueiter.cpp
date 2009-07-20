@@ -1,8 +1,7 @@
-/* 
- * File:   attvalueiter.cpp
- * Author: sebastien
- * 
- * Created on 17 juillet 2009, 22:35
+/*! \file attvalueiter.cpp
+    \author sebastien heymann
+    \date 17 juillet 2009, 22:35
+    \version 0.1
  */
 
 /*
@@ -58,6 +57,7 @@ AttValueIter* AttValueIter::begin() {
         _it = _it_row->second.begin();
         _nb_items = _it_row->second.size();
     }
+    _cpt = 0;
     return this;
 }
 

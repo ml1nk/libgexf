@@ -24,6 +24,7 @@
         <itemPath>undirectedgraph.cpp</itemPath>
         <itemPath>undirectedgraph.h</itemPath>
       </logicalFolder>
+      <itemPath>/home/sebastien/NetBeansProjects/libgexf/abstractiter.h</itemPath>
     </logicalFolder>
     <logicalFolder name="f1" displayName="io" projectFiles="true">
       <logicalFolder name="f1" displayName="input" projectFiles="true">
@@ -82,6 +83,9 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/abstractiter.h">
+        <itemTool>3</itemTool>
+      </item>
       <item path="/home/sebastien/NetBeansProjects/libgexf/abstractparser.h">
         <itemTool>3</itemTool>
       </item>
@@ -204,6 +208,9 @@
         <archiverTool>
         </archiverTool>
       </compileType>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/abstractiter.h">
+        <itemTool>3</itemTool>
+      </item>
       <item path="/home/sebastien/NetBeansProjects/libgexf/abstractparser.h">
         <itemTool>3</itemTool>
       </item>

@@ -1,6 +1,6 @@
-/*! \file abstractparser.h
+/*! \file abstractiter.h
     \author sebastien heymann
-    \date 17 juillet 2009, 15:02
+    \date 20 juillet 2009, 11:44
     \version 0.1
  */
 
@@ -26,40 +26,45 @@
 # THE SOFTWARE.
 */
 
-#ifndef _ABSTRACTPARSER_H
-#define	_ABSTRACTPARSER_H
-
-#include "gexf.h"
-#include <libxml/xmlreader.h>
+#ifndef _ABSTRACTITER_H
+#define	_ABSTRACTITER_H
 
 namespace libgexf {
 
-/*! \class AbstractParser
-    \brief Parser Interface
+/*! \class AbstractIter
+    \brief Iterator Interface
  */
-class AbstractParser {
+class AbstractIter {
 public:
     /*!
-     *  \brief Bind itself to a GEXF instance
+     *  \brief Init
      *
-     *  \param gexf : Reference to a GEXF object
+     *  Initialize (or re-initialize) the iterator.
+     *
+     *  \return an instance of the iterator
      */
-    virtual void bind(libgexf::GEXF* gexf) = 0;
+    virtual AbstractIter* begin() = 0;
 
     /*!
-     *  \brief Start a process on an XML element
+     *  \brief Test next element in collection.
      *
-     *  Call the right processing method.
+     *  Verify if another element exists.
      *
-     *  \param reader : Reference to the libxml TextReader instance
-     *  \param name : Name of the XML element to process
+     *  \return true if another element exists, false otherwise.
      */
-    virtual void processNode(xmlTextReaderPtr reader, const xmlChar* name) = 0;
-private:
+    virtual bool hasNext() const = 0;
 
+    /*!
+     *  \brief Iterate
+     *
+     *  Get next element in collection.
+     *
+     *  \return The element ID.
+     */
+    virtual libgexf::t_id next() = 0;
 };
 
 }
 
-#endif	/* _ABSTRACTPARSER_H */
+#endif	/* _ABSTRACTITER_H */
 

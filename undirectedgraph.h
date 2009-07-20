@@ -33,10 +33,18 @@
 
 namespace libgexf {
 
+/*! \class UndirectedGraph
+    \brief Interpretation of the topology structure as a undirected graph.
+ */
 class UndirectedGraph: public Graph {
 public:
     UndirectedGraph();
+
+    /*!
+     *  \brief Copy constructor
+     */
     UndirectedGraph(const UndirectedGraph& orig);
+    
     virtual ~UndirectedGraph();
 private:
     UndirectedGraph& operator=(const UndirectedGraph& orig);

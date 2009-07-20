@@ -53,12 +53,6 @@ void LegacyParser::bind(GEXF* gexf) {
     _gexf = gexf;
 }
 
-/**
- * processNode:
- * @reader: the xmlReader
- *
- * Call the right processing method
- */
 //-----------------------------------------
 void LegacyParser::processNode(xmlTextReaderPtr reader, const xmlChar* name) {
 //-----------------------------------------

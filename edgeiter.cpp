@@ -45,6 +45,8 @@ EdgeIter::~EdgeIter() {
 EdgeIter* EdgeIter::begin() {
     _it = _graph->_edges.begin();
     _it2 = _it->second.begin();
+    _cpt = 0;
+    _nb_items = _graph->getInternalEdgeCount();
     return this;
 }
 

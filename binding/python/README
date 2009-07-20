@@ -16,7 +16,8 @@ Manual Python binding with swig on Linux:
 Automated Python binding with swig on Linux:
    $ swig -c++ -python -o libgexf_wrap.cpp libgexf.i
    $ python setup.py build
-
+or directly (if libgexf_wrap.cpp is provided)
+   $ python setup.py build
 
 
 INSTALLATION

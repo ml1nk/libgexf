@@ -31,6 +31,7 @@
 
 #include "typedefs.h"
 #include "graph.h"
+#include "abstractiter.h"
 
 #include <set>
 
@@ -38,13 +39,29 @@ namespace libgexf {
 
 class Graph;
 
-class NodeIter {
+/*! \class NodeIter
+    \brief Iterator on nodes.
+ */
+class NodeIter: public AbstractIter {
 public:
+    /*!
+     *  \brief Constructor
+     *
+     *  \param g : Reference to the Graph object
+     */
     NodeIter(const libgexf::Graph* g);
     virtual ~NodeIter();
 
     NodeIter* begin();
     bool hasNext() const;
+
+    /*!
+     *  \brief Iterate
+     *
+     *  Get next element in collection.
+     *
+     *  \return The node ID.
+     */
     libgexf::t_id next();
 private:
     const Graph* _graph;

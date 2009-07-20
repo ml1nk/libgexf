@@ -48,6 +48,7 @@ AttributeIter* AttributeIter::begin() {
         _it = _data->_edge_attributes.begin();
         _nb_items = _data->countEdgeAttributeColumn();
     }
+    _cpt = 0;
     return this;
 }
 
