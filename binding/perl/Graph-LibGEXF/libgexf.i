@@ -11,16 +11,37 @@
 #include "EXTERN.h"
 #include "perl.h"
 #include "XSUB.h"
-#include "../../../typedefs.h"
-#include "../../../exceptions.h"
-#include "../../../graph.h"
-#include "../../../directedgraph.h"
-#include "../../../undirectedgraph.h"
-#include "../../../gexf.h"
+/* main */
+#include "../../typedefs.h"
+#include "../../exceptions.h"
+#include "../../gexf.h"
+#include "../../abstractiter.h"
+/* io::input */
+#include "../../filereader.h"
+#include "../../abstractparser.h"
+#include "../../gexfparser.h"
+#include "../../legacyparser.h"
+/* io::output */
+#include "../../filewriter.h"
+/* io::utils */
+#include "../../conv.h"
+/* db::topo */
+#include "../../graph.h"
+#include "../../directedgraph.h"
+#include "../../undirectedgraph.h"
+#include "../../nodeiter.h"
+#include "../../edgeiter.h"
+/* db::data */
+#include "../../data.h"
+#include "../../metadata.h"
+#include "../../attributeiter.h"
+#include "../../attvalueiter.h"
 %}
 
-%include "typemaps.i"
-%include "std_except.i"
+%include typemaps.i
+%include stl.i
+%include exception.i
+%include std_except.i
 
 %exception {
   try {
@@ -35,10 +56,29 @@
 
 
 /* Let's just grab the original header file here */
-%include "../../../typedefs.h"
-%include "../../../exceptions.h"
-%include "../../../graph.h"
-%include "../../../directedgraph.h"
-%include "../../../undirectedgraph.h"
-%include "../../../gexf.h"
+/* main */
+%include "../../typedefs.h"
+%include "../../exceptions.h"
+%include "../../gexf.h"
+%include "../../abstractiter.h"
+/* io::input */
+%include "../../filereader.h"
+%include "../../abstractparser.h"
+%include "../../gexfparser.h"
+%include "../../legacyparser.h"
+/* io::output */
+%include "../../filewriter.h"
+/* io::utils */
+%include "../../conv.h"
+/* db::topo */
+%include "../../graph.h"
+%include "../../directedgraph.h"
+%include "../../undirectedgraph.h"
+%include "../../nodeiter.h"
+%include "../../edgeiter.h"
+/* db::data */
+%include "../../data.h"
+%include "../../metadata.h"
+%include "../../attributeiter.h"
+%include "../../attvalueiter.h"
 

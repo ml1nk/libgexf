@@ -18,7 +18,7 @@
         </environment>
       </runprofile>
     </conf>
-    <conf name="Release" type="3">
+    <conf name="Release" type="2">
       <gdbdebugger version="2">
         <gdb_command>gdb</gdb_command>
         <array_repeat_threshold>10</array_repeat_threshold>

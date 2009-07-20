@@ -16,7 +16,7 @@ auto_include;
 cc_lib_links
   'm',
   'stdc++', # IMPORTANT: linker to lib STD
-  'libxml++'
+  'xml2'
   ;
 
 # if object files are not in the same dir as source files
@@ -27,11 +27,35 @@ cc_inc_paths
   '.';
 
 cc_files
-  '../../../graph.o',
-  '../../../directedgraph.o',
-  '../../../undirectedgraph.o',
-  '../../../gexf.o',
-  'libgexf_wrap.o';
+    #io::input
+    '../../../filereader.o',
+    '../../../gexfparser.o',
+    '../../../legacyparser.o',
+    
+    #io::output
+    '../../../filewriter.o',
+    
+    #io::utils
+    '../../../conv.o',
+    
+    #db::topo
+    '../../../graph.o',
+    '../../../directedgraph.o',
+    '../../../undirectedgraph.o',
+    '../../../nodeiter.o',
+    '../../../edgeiter.o',
+    
+    #db::data
+    '../../../data.o',
+    '../../../metadata.o',
+    '../../../attributeiter.o',
+    '../../../attvalueiter.o',
+    
+    #main
+    '../../../gexf.o',
+
+    # chemin du wrapper généré automatiquement par SWIG (ce wrapper doit déjà exister donc)
+    'libgexf_wrap.o';
 
 can_cc or die 'This module requires C++ compiler.';
 

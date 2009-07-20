@@ -75,6 +75,7 @@
           <includeDirectories>
             <directoryPath>/usr/include/libxml2</directoryPath>
           </includeDirectories>
+          <warningLevel>2</warningLevel>
         </ccCompilerTool>
         <linkerTool>
           <output>dist/Debug/${PLATFORM}/libgexf.so</output>
@@ -189,7 +190,7 @@
         <itemTool>3</itemTool>
       </item>
     </conf>
-    <conf name="Release" type="3">
+    <conf name="Release" type="2">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
         <compilerSet>GNU|GNU</compilerSet>
@@ -201,12 +202,18 @@
         </cCompilerTool>
         <ccCompilerTool>
           <developmentMode>5</developmentMode>
+          <includeDirectories>
+            <directoryPath>/usr/include/libxml2</directoryPath>
+          </includeDirectories>
         </ccCompilerTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
         </fortranCompilerTool>
-        <archiverTool>
-        </archiverTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibFileItem>/usr/lib/libxml2.so</linkerLibFileItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
       <item path="/home/sebastien/NetBeansProjects/libgexf/abstractiter.h">
         <itemTool>3</itemTool>
