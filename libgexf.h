@@ -35,13 +35,12 @@
 #include <libgexf/graph.h>
 #include <libgexf/metadata.h>
 #include <libgexf/data.h>
+#include <libgexf/abstractiter.h>
 #include <libgexf/nodeiter.h>
 #include <libgexf/edgeiter.h>
 #include <libgexf/directedgraph.h>
 #include <libgexf/undirectedgraph.h>
 #include <libgexf/abstractparser.h>
-#include <libgexf/gexfparser.h>
-#include <libgexf/legacyparser.h>
 #include <libgexf/filereader.h>
 #include <libgexf/filewriter.h>
 

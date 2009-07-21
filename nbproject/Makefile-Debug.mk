@@ -55,13 +55,11 @@ CXXFLAGS=
 FFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=/usr/lib/libxml2.so
+LDLIBSOPTIONS=-lxml2
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	${MAKE}  -f nbproject/Makefile-Debug.mk dist/Debug/${PLATFORM}/libgexf.so
-
-dist/Debug/${PLATFORM}/libgexf.so: /usr/lib/libxml2.so
 
 dist/Debug/${PLATFORM}/libgexf.so: ${OBJECTFILES}
 	${MKDIR} -p dist/Debug/${PLATFORM}

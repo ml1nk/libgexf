@@ -1,0 +1,5 @@
+libgexf (0.1.0) unstable; urgency=low
+  * libgexf Debian maintainer and upstream author are identical.
+    Therefore see also normal changelog file for Debian changes.
+    
+ -- maintainer heymann <sebastien.heymann@gephi.org>  Tue, 21 Jul 2009 01:49:32 +0200

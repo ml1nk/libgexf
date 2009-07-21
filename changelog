@@ -1,0 +1,17 @@
+LibGEXF
+
+version 0.1.0 (07/20/2009):
+    Features:
+    * static graph
+    * basic topology
+    * full data attributes
+    * read GEXF 1.0 and 1.1
+    * write GEXF 1.1.
+    * data integrity checking
+    * Python binding compatible
+
+    Tested config:
+    * GNU-Linux-x32 Ubuntu 8.10 + Python 2.5
+    * GNU-Linux-x32 Ubuntu 9.04 + Python 2.6
+    * GNU-Linux-x64 Ubuntu 9.04 + Python 2.5
+

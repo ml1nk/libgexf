@@ -80,10 +80,701 @@
         <linkerTool>
           <output>dist/Debug/${PLATFORM}/libgexf.so</output>
           <linkerLibItems>
-            <linkerLibFileItem>/usr/lib/libxml2.so</linkerLibFileItem>
+            <linkerLibLibItem>xml2</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <packaging>
+        <packType>Tar</packType>
+        <output>dist/Debug/${PLATFORM}/package/libgexf-src.0.1.0.tar</output>
+        <additionalOptions>-v</additionalOptions>
+        <packFileList>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/build.sh"
+                            from="binding/build.sh"
+                            perm="755"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/build.sh"
+                            from="binding/perl/Graph-LibGEXF/build.sh"
+                            perm="755"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/inc/Module/Install/Win32.pm"
+                            from="binding/perl/Graph-LibGEXF/inc/Module/Install/Win32.pm"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/inc/Module/Install/AuthorTests.pm"
+                            from="binding/perl/Graph-LibGEXF/inc/Module/Install/AuthorTests.pm"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/inc/Module/Install/Compiler.pm"
+                            from="binding/perl/Graph-LibGEXF/inc/Module/Install/Compiler.pm"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/inc/Module/Install/WriteAll.pm"
+                            from="binding/perl/Graph-LibGEXF/inc/Module/Install/WriteAll.pm"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/inc/Module/Install/Fetch.pm"
+                            from="binding/perl/Graph-LibGEXF/inc/Module/Install/Fetch.pm"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/inc/Module/Install/Can.pm"
+                            from="binding/perl/Graph-LibGEXF/inc/Module/Install/Can.pm"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/inc/Module/Install/Include.pm"
+                            from="binding/perl/Graph-LibGEXF/inc/Module/Install/Include.pm"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/inc/Module/Install/Makefile.pm"
+                            from="binding/perl/Graph-LibGEXF/inc/Module/Install/Makefile.pm"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/inc/Module/Install/Base.pm"
+                            from="binding/perl/Graph-LibGEXF/inc/Module/Install/Base.pm"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/inc/Module/Install/Metadata.pm"
+                            from="binding/perl/Graph-LibGEXF/inc/Module/Install/Metadata.pm"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/inc/Module/Install.pm"
+                            from="binding/perl/Graph-LibGEXF/inc/Module/Install.pm"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/inc/Test/More.pm"
+                            from="binding/perl/Graph-LibGEXF/inc/Test/More.pm"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/pmdoc"
+                            from="binding/perl/Graph-LibGEXF/pmdoc"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/README"
+                            from="binding/perl/Graph-LibGEXF/README"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/Changes"
+                            from="binding/perl/Graph-LibGEXF/Changes"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/xt/91_pod.t"
+                            from="binding/perl/Graph-LibGEXF/xt/91_pod.t"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/xt/90_perlcritic.t"
+                            from="binding/perl/Graph-LibGEXF/xt/90_perlcritic.t"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/xt/perlcriticrc"
+                            from="binding/perl/Graph-LibGEXF/xt/perlcriticrc"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/MANIFEST.SKIP"
+                            from="binding/perl/Graph-LibGEXF/MANIFEST.SKIP"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/libgexf.i"
+                            from="binding/perl/Graph-LibGEXF/libgexf.i"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/Makefile.PL"
+                            from="binding/perl/Graph-LibGEXF/Makefile.PL"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/Makefile.old"
+                            from="binding/perl/Graph-LibGEXF/Makefile.old"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/libgexf_wrap.o"
+                            from="binding/perl/Graph-LibGEXF/libgexf_wrap.o"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/t/00_compile.t"
+                            from="binding/perl/Graph-LibGEXF/t/00_compile.t"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/Makefile"
+                            from="binding/perl/Graph-LibGEXF/Makefile"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/lib/Graph/LibGEXF.pm"
+                            from="binding/perl/Graph-LibGEXF/lib/Graph/LibGEXF.pm"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/perl/Graph-LibGEXF/META.yml"
+                            from="binding/perl/Graph-LibGEXF/META.yml"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/java/build.sh"
+                            from="binding/java/build.sh"
+                            perm="755"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/java/libgexf_wrap.cpp"
+                            from="binding/java/libgexf_wrap.cpp"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/java/test.sh"
+                            from="binding/java/test.sh"
+                            perm="755"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/java/Manifest.txt"
+                            from="binding/java/Manifest.txt"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/java/runme.java"
+                            from="binding/java/runme.java"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/java/org/gephi/libgexf/SWIGTYPE_p_std__setT_unsigned_int_t.java"
+                            from="binding/java/org/gephi/libgexf/SWIGTYPE_p_std__setT_unsigned_int_t.java"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/java/org/gephi/libgexf/libgexfJNI.java"
+                            from="binding/java/org/gephi/libgexf/libgexfJNI.java"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/java/org/gephi/libgexf/GEXF.java"
+                            from="binding/java/org/gephi/libgexf/GEXF.java"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/java/org/gephi/libgexf/UndirectedGraph.java"
+                            from="binding/java/org/gephi/libgexf/UndirectedGraph.java"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/java/org/gephi/libgexf/MessageExceptionBuilder.java"
+                            from="binding/java/org/gephi/libgexf/MessageExceptionBuilder.java"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/java/org/gephi/libgexf/Graph.java"
+                            from="binding/java/org/gephi/libgexf/Graph.java"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/java/org/gephi/libgexf/SWIGTYPE_p_std__string.java"
+                            from="binding/java/org/gephi/libgexf/SWIGTYPE_p_std__string.java"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/java/org/gephi/libgexf/DirectedGraph.java"
+                            from="binding/java/org/gephi/libgexf/DirectedGraph.java"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/java/org/gephi/libgexf/WriteLockException.java"
+                            from="binding/java/org/gephi/libgexf/WriteLockException.java"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/java/org/gephi/libgexf/ReadLockException.java"
+                            from="binding/java/org/gephi/libgexf/ReadLockException.java"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/java/org/gephi/libgexf/libgexf.java"
+                            from="binding/java/org/gephi/libgexf/libgexf.java"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/java/libgexf.i"
+                            from="binding/java/libgexf.i"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/java/libgexf.jar"
+                            from="binding/java/libgexf.jar"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/python/build.sh"
+                            from="binding/python/build.sh"
+                            perm="755"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/python/test.py"
+                            from="binding/python/test.py"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/python/README"
+                            from="binding/python/README"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/python/libgexf_wrap.cpp"
+                            from="binding/python/libgexf_wrap.cpp"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/python/libgexf.pyc"
+                            from="binding/python/libgexf.pyc"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/python/libgexf.i"
+                            from="binding/python/libgexf.i"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/python/setup.py"
+                            from="binding/python/setup.py"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/python/clean.sh"
+                            from="binding/python/clean.sh"
+                            perm="755"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}binding/python/libgexf.py"
+                            from="binding/python/libgexf.py"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}abstractiter.h"
+                            from="abstractiter.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}abstractparser.h"
+                            from="abstractparser.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}attributeiter.cpp"
+                            from="attributeiter.cpp"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}attributeiter.h"
+                            from="attributeiter.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}attvalueiter.cpp"
+                            from="attvalueiter.cpp"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}attvalueiter.h"
+                            from="attvalueiter.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}changelog.Debian.gz"
+                            from="changelog.Debian.gz"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}changelog.gz"
+                            from="changelog.gz"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}conv.cpp"
+                            from="conv.cpp"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}conv.h"
+                            from="conv.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}copyright"
+                            from="copyright"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}data.cpp"
+                            from="data.cpp"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}data.h"
+                            from="data.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}directedgraph.cpp"
+                            from="directedgraph.cpp"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}directedgraph.h"
+                            from="directedgraph.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}doxygen.conf"
+                            from="doxygen.conf"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}edgeiter.cpp"
+                            from="edgeiter.cpp"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}edgeiter.h"
+                            from="edgeiter.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}exceptions.h"
+                            from="exceptions.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}filereader.cpp"
+                            from="filereader.cpp"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}filereader.h"
+                            from="filereader.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}filewriter.cpp"
+                            from="filewriter.cpp"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}filewriter.h"
+                            from="filewriter.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}gexf.cpp"
+                            from="gexf.cpp"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}gexf.h"
+                            from="gexf.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}gexfparser.cpp"
+                            from="gexfparser.cpp"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}gexfparser.h"
+                            from="gexfparser.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}graph.cpp"
+                            from="graph.cpp"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}graph.h"
+                            from="graph.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}legacyparser.cpp"
+                            from="legacyparser.cpp"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}legacyparser.h"
+                            from="legacyparser.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}libgexf.h"
+                            from="libgexf.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}Makefile"
+                            from="Makefile"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}metadata.cpp"
+                            from="metadata.cpp"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}metadata.h"
+                            from="metadata.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}nodeiter.cpp"
+                            from="nodeiter.cpp"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}nodeiter.h"
+                            from="nodeiter.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}README"
+                            from="README"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}README_SWIG"
+                            from="README_SWIG"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}TODO"
+                            from="TODO"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}typedefs.h"
+                            from="typedefs.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}undirectedgraph.cpp"
+                            from="undirectedgraph.cpp"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}undirectedgraph.h"
+                            from="undirectedgraph.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}refman.pdf"
+                            from="doc/latex/refman.pdf"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}nbproject/Package-Debug.bash"
+                            from="nbproject/Package-Debug.bash"
+                            perm="755"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}nbproject/project.xml"
+                            from="nbproject/project.xml"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}nbproject/Package-Release-deb.bash"
+                            from="nbproject/Package-Release-deb.bash"
+                            perm="755"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}nbproject/Makefile-Release.mk"
+                            from="nbproject/Makefile-Release.mk"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}nbproject/project.properties"
+                            from="nbproject/project.properties"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}nbproject/configurations.xml"
+                            from="nbproject/configurations.xml"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}nbproject/Makefile-Release-deb.mk"
+                            from="nbproject/Makefile-Release-deb.mk"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}nbproject/Makefile-Debug.mk"
+                            from="nbproject/Makefile-Debug.mk"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}nbproject/Makefile-impl.mk"
+                            from="nbproject/Makefile-impl.mk"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}nbproject/private/private.xml"
+                            from="nbproject/private/private.xml"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}nbproject/private/configurations.xml"
+                            from="nbproject/private/configurations.xml"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}nbproject/private/private.properties"
+                            from="nbproject/private/private.properties"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}nbproject/Package-Release.bash"
+                            from="nbproject/Package-Release.bash"
+                            perm="755"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}.dep.inc"
+                            from=".dep.inc"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+        </packFileList>
+      </packaging>
       <item path="/home/sebastien/NetBeansProjects/libgexf/abstractiter.h">
         <itemTool>3</itemTool>
       </item>
@@ -210,11 +901,472 @@
           <developmentMode>5</developmentMode>
         </fortranCompilerTool>
         <linkerTool>
+          <output>dist/Release/${PLATFORM}/libgexf.so</output>
           <linkerLibItems>
-            <linkerLibFileItem>/usr/lib/libxml2.so</linkerLibFileItem>
+            <linkerLibLibItem>xml2</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <packaging>
+        <packType>Tar</packType>
+        <output>dist/Release/${PLATFORM}/package/libgexf.so.0.1.0.tar</output>
+        <additionalOptions>-v</additionalOptions>
+        <packFileList>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}lib/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/abstractiter.h"
+                            from="abstractiter.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/abstractparser.h"
+                            from="abstractparser.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/attributeiter.h"
+                            from="attributeiter.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/attvalueiter.h"
+                            from="attvalueiter.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/changelog.gz"
+                            from="changelog.gz"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/conv.h"
+                            from="conv.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/data.h"
+                            from="data.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/directedgraph.h"
+                            from="directedgraph.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/edgeiter.h"
+                            from="edgeiter.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/exceptions.h"
+                            from="exceptions.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/filereader.h"
+                            from="filereader.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/filewriter.h"
+                            from="filewriter.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/gexf.h"
+                            from="gexf.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/gexfparser.h"
+                            from="gexfparser.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/graph.h"
+                            from="graph.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/legacyparser.h"
+                            from="legacyparser.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/libgexf.h"
+                            from="libgexf.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/metadata.h"
+                            from="metadata.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/nodeiter.h"
+                            from="nodeiter.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/README"
+                            from="README"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/TODO"
+                            from="TODO"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/typedefs.h"
+                            from="typedefs.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/undirectedgraph.h"
+                            from="undirectedgraph.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/simple.gexf"
+                            from="t/simple.gexf"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}src/attributes.gexf"
+                            from="t/attributes.gexf"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+        </packFileList>
+      </packaging>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/abstractiter.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/abstractparser.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/attributeiter.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/attributeiter.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/attvalueiter.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/attvalueiter.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/conv.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/conv.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/data.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/data.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/edgeiter.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/edgeiter.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/filewriter.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/filewriter.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/metadata.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/metadata.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/nodeiter.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/sebastien/NetBeansProjects/libgexf/nodeiter.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="directedgraph.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="directedgraph.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="exceptions.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="filereader.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="filereader.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="gexf.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="gexf.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="gexfparser.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="gexfparser.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="graph.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="graph.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="legacyparser.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="legacyparser.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="libgexf.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="typedefs.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="undirectedgraph.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="undirectedgraph.h">
+        <itemTool>3</itemTool>
+      </item>
+    </conf>
+    <conf name="Release-deb" type="2">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>GNU|GNU</compilerSet>
+        <platform>2</platform>
+      </toolsSet>
+      <compileType>
+        <cCompilerTool>
+          <developmentMode>5</developmentMode>
+        </cCompilerTool>
+        <ccCompilerTool>
+          <developmentMode>5</developmentMode>
+          <includeDirectories>
+            <directoryPath>/usr/include/libxml2</directoryPath>
+          </includeDirectories>
+        </ccCompilerTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <linkerTool>
+          <output>dist/Release/${PLATFORM}/libgexf.so</output>
+          <linkerLibItems>
+            <linkerLibLibItem>xml2</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <packaging>
+        <packType>Debian</packType>
+        <output>dist/Release/${PLATFORM}/package/libgexf-0.1.0.linux-i386.deb</output>
+        <commandlineTool>dpkg-deb</commandlineTool>
+        <packFileList>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}lib/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/abstractiter.h"
+                            from="abstractiter.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/abstractparser.h"
+                            from="abstractparser.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/attributeiter.h"
+                            from="attributeiter.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/attvalueiter.h"
+                            from="attvalueiter.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/data.h"
+                            from="data.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/directedgraph.h"
+                            from="directedgraph.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/edgeiter.h"
+                            from="edgeiter.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/exceptions.h"
+                            from="exceptions.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/filereader.h"
+                            from="filereader.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/filewriter.h"
+                            from="filewriter.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/gexf.h"
+                            from="gexf.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/graph.h"
+                            from="graph.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/libgexf.h"
+                            from="libgexf.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/metadata.h"
+                            from="metadata.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/nodeiter.h"
+                            from="nodeiter.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/typedefs.h"
+                            from="typedefs.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/undirectedgraph.h"
+                            from="undirectedgraph.h"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}share/doc/libgexf/changelog.gz"
+                            from="changelog.gz"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}share/doc/libgexf/changelog.Debian.gz"
+                            from="changelog.Debian.gz"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}share/doc/libgexf/README"
+                            from="README"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}share/doc/libgexf/copyright"
+                            from="copyright"
+                            perm="644"
+                            owner="root"
+                            group="sys"/>
+        </packFileList>
+        <packInfoList>
+          <packInfoListElem name="Package" value="libgexf" mandatory="true"/>
+          <packInfoListElem name="Version" value="0.1.0" mandatory="true"/>
+          <packInfoListElem name="Architecture" value="i386" mandatory="false"/>
+          <packInfoListElem name="Section" value="libdevel" mandatory="false"/>
+          <packInfoListElem name="Priority" value="extra" mandatory="false"/>
+          <packInfoListElem name="Depends" value="libxml2, libc6" mandatory="false"/>
+          <packInfoListElem name="Maintainer"
+                            value="sebastien heymann &lt;sebastien.heymann@gephi.org>"
+                            mandatory="false"/>
+          <packInfoListElem name="Description"
+                            value="Release 0.1 alpha1 of libgexf."
+                            mandatory="false"/>
+          <packInfoListElem name="Package" value="libgexf" mandatory="true"/>
+          <packInfoListElem name="Version" value="0.1" mandatory="true"/>
+          <packInfoListElem name="Architecture" value="i386" mandatory="false"/>
+          <packInfoListElem name="Section" value="libdevel" mandatory="false"/>
+          <packInfoListElem name="Priority" value="optional" mandatory="false"/>
+          <packInfoListElem name="Depends" value="xml2, libc6" mandatory="false"/>
+          <packInfoListElem name="Maintainer"
+                            value="sebastien heymann &lt;sebastien.heymann@gephi.org>"
+                            mandatory="false"/>
+          <packInfoListElem name="Description"
+                            value="Release 0.1 alpha1 of libgexf."
+                            mandatory="false"/>
+        </packInfoList>
+      </packaging>
       <item path="/home/sebastien/NetBeansProjects/libgexf/abstractiter.h">
         <itemTool>3</itemTool>
       </item>

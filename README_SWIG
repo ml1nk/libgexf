@@ -15,7 +15,6 @@ Build all:
 Python binding with swig on Linux:
    $ cd binding/python
 then
-   $ swig -c++ -python -o libgexf_wrap.cpp libgexf.i
    $ python setup.py build
 or
    $ ./build.sh

@@ -24,7 +24,7 @@ PLATFORM=GNU-Linux-x86
 include Makefile
 
 # Object Directory
-OBJECTDIR=build/Release/${PLATFORM}
+OBJECTDIR=build/Release-deb/${PLATFORM}
 
 # Object Files
 OBJECTFILES= \
@@ -59,7 +59,7 @@ LDLIBSOPTIONS=-lxml2
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	${MAKE}  -f nbproject/Makefile-Release.mk dist/Release/${PLATFORM}/libgexf.so
+	${MAKE}  -f nbproject/Makefile-Release-deb.mk dist/Release/${PLATFORM}/libgexf.so
 
 dist/Release/${PLATFORM}/libgexf.so: ${OBJECTFILES}
 	${MKDIR} -p dist/Release/${PLATFORM}
@@ -145,7 +145,7 @@ ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/metadata.o: /home/seba
 
 # Clean Targets
 .clean-conf:
-	${RM} -r build/Release
+	${RM} -r build/Release-deb
 	${RM} dist/Release/${PLATFORM}/libgexf.so
 
 # Subprojects

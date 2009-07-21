@@ -5,7 +5,8 @@
 setup.py file for Libgexf
 """
 
-from distutils.core import Extension, setup
+from setuptools import Extension, setup
+#from distutils.core import Extension, setup
 
 libgexf_module = Extension(
   '_libgexf', # genere un _libgexf.so
@@ -65,7 +66,7 @@ setup (
        name='libgexf', # important, c'est le vrai nom du module, qui sera utilisé quand on fera un "import libgexf;" par exemple
 
        # metadonnees diverses
-       version='0.1', 
+       version='0.1.0', 
        author="Sebastien Heymann",
        author_email="sebastien.heymann@gephi.org",
        url="http://gephi.org",
