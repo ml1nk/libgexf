@@ -29,20 +29,20 @@ OBJECTDIR=build/Release/${PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/filereader.o \
-	${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/attvalueiter.o \
+	${OBJECTDIR}/attvalueiter.o \
 	${OBJECTDIR}/directedgraph.o \
 	${OBJECTDIR}/undirectedgraph.o \
-	${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/edgeiter.o \
-	${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/attributeiter.o \
+	${OBJECTDIR}/edgeiter.o \
+	${OBJECTDIR}/attributeiter.o \
 	${OBJECTDIR}/graph.o \
 	${OBJECTDIR}/gexfparser.o \
-	${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/data.o \
-	${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/conv.o \
+	${OBJECTDIR}/data.o \
+	${OBJECTDIR}/conv.o \
 	${OBJECTDIR}/gexf.o \
 	${OBJECTDIR}/legacyparser.o \
-	${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/nodeiter.o \
-	${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/filewriter.o \
-	${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/metadata.o
+	${OBJECTDIR}/nodeiter.o \
+	${OBJECTDIR}/filewriter.o \
+	${OBJECTDIR}/metadata.o
 
 # C Compiler Flags
 CFLAGS=
@@ -65,80 +65,80 @@ dist/Release/${PLATFORM}/libgexf.so: ${OBJECTFILES}
 	${MKDIR} -p dist/Release/${PLATFORM}
 	${LINK.cc} -shared -o dist/Release/${PLATFORM}/libgexf.so -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/filereader.o: filereader.cpp 
+${OBJECTDIR}/filereader.o: src/filereader.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/filereader.o filereader.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/filereader.o src/filereader.cpp
 
-${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/attvalueiter.o: /home/sebastien/NetBeansProjects/libgexf/attvalueiter.cpp 
+${OBJECTDIR}/attvalueiter.o: src/attvalueiter.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/attvalueiter.o /home/sebastien/NetBeansProjects/libgexf/attvalueiter.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/attvalueiter.o src/attvalueiter.cpp
 
-${OBJECTDIR}/directedgraph.o: directedgraph.cpp 
+${OBJECTDIR}/directedgraph.o: src/directedgraph.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/directedgraph.o directedgraph.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/directedgraph.o src/directedgraph.cpp
 
-${OBJECTDIR}/undirectedgraph.o: undirectedgraph.cpp 
+${OBJECTDIR}/undirectedgraph.o: src/undirectedgraph.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/undirectedgraph.o undirectedgraph.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/undirectedgraph.o src/undirectedgraph.cpp
 
-${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/edgeiter.o: /home/sebastien/NetBeansProjects/libgexf/edgeiter.cpp 
+${OBJECTDIR}/edgeiter.o: src/edgeiter.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/edgeiter.o /home/sebastien/NetBeansProjects/libgexf/edgeiter.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/edgeiter.o src/edgeiter.cpp
 
-${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/attributeiter.o: /home/sebastien/NetBeansProjects/libgexf/attributeiter.cpp 
+${OBJECTDIR}/attributeiter.o: src/attributeiter.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/attributeiter.o /home/sebastien/NetBeansProjects/libgexf/attributeiter.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/attributeiter.o src/attributeiter.cpp
 
-${OBJECTDIR}/graph.o: graph.cpp 
+${OBJECTDIR}/graph.o: src/graph.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/graph.o graph.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/graph.o src/graph.cpp
 
-${OBJECTDIR}/gexfparser.o: gexfparser.cpp 
+${OBJECTDIR}/gexfparser.o: src/gexfparser.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/gexfparser.o gexfparser.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/gexfparser.o src/gexfparser.cpp
 
-${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/data.o: /home/sebastien/NetBeansProjects/libgexf/data.cpp 
+${OBJECTDIR}/data.o: src/data.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/data.o /home/sebastien/NetBeansProjects/libgexf/data.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/data.o src/data.cpp
 
-${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/conv.o: /home/sebastien/NetBeansProjects/libgexf/conv.cpp 
+${OBJECTDIR}/conv.o: src/conv.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/conv.o /home/sebastien/NetBeansProjects/libgexf/conv.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/conv.o src/conv.cpp
 
-${OBJECTDIR}/gexf.o: gexf.cpp 
+${OBJECTDIR}/gexf.o: src/gexf.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/gexf.o gexf.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/gexf.o src/gexf.cpp
 
-${OBJECTDIR}/legacyparser.o: legacyparser.cpp 
+${OBJECTDIR}/legacyparser.o: src/legacyparser.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/legacyparser.o legacyparser.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/legacyparser.o src/legacyparser.cpp
 
-${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/nodeiter.o: /home/sebastien/NetBeansProjects/libgexf/nodeiter.cpp 
+${OBJECTDIR}/nodeiter.o: src/nodeiter.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/nodeiter.o /home/sebastien/NetBeansProjects/libgexf/nodeiter.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/nodeiter.o src/nodeiter.cpp
 
-${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/filewriter.o: /home/sebastien/NetBeansProjects/libgexf/filewriter.cpp 
+${OBJECTDIR}/filewriter.o: src/filewriter.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/filewriter.o /home/sebastien/NetBeansProjects/libgexf/filewriter.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/filewriter.o src/filewriter.cpp
 
-${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/metadata.o: /home/sebastien/NetBeansProjects/libgexf/metadata.cpp 
+${OBJECTDIR}/metadata.o: src/metadata.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf/metadata.o /home/sebastien/NetBeansProjects/libgexf/metadata.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/metadata.o src/metadata.cpp
 
 # Subprojects
 .build-subprojects:

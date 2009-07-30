@@ -2,7 +2,7 @@ TODO LIST
 
 Major:
 
-   * hypergraphs and weighted graphs support
+   * hypergraphs
    * hyperarchical graphs support
    * list-string content and value checking
    * RelaxNG validator
