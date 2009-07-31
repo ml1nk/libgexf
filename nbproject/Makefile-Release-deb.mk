@@ -16,33 +16,38 @@ CC=gcc
 CCC=g++
 CXX=g++
 FC=
+AS=
 
 # Macros
-PLATFORM=GNU-Linux-x86
+CND_PLATFORM=GNU-Linux-x86
+CND_CONF=Release-deb
+CND_DISTDIR=dist
 
 # Include project Makefile
 include Makefile
 
 # Object Directory
-OBJECTDIR=build/Release-deb/${PLATFORM}
+OBJECTDIR=build/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/filereader.o \
-	${OBJECTDIR}/attvalueiter.o \
-	${OBJECTDIR}/directedgraph.o \
-	${OBJECTDIR}/undirectedgraph.o \
-	${OBJECTDIR}/edgeiter.o \
-	${OBJECTDIR}/attributeiter.o \
-	${OBJECTDIR}/graph.o \
-	${OBJECTDIR}/gexfparser.o \
-	${OBJECTDIR}/data.o \
-	${OBJECTDIR}/conv.o \
-	${OBJECTDIR}/gexf.o \
-	${OBJECTDIR}/legacyparser.o \
-	${OBJECTDIR}/nodeiter.o \
-	${OBJECTDIR}/filewriter.o \
-	${OBJECTDIR}/metadata.o
+	${OBJECTDIR}/src/gexf.o \
+	${OBJECTDIR}/src/filereader.o \
+	${OBJECTDIR}/src/legacyparser.o \
+	${OBJECTDIR}/src/gexfparser.o \
+	${OBJECTDIR}/src/undirectedgraph.o \
+	${OBJECTDIR}/src/filewriter.o \
+	${OBJECTDIR}/src/data.o \
+	${OBJECTDIR}/src/rngvalidator.o \
+	${OBJECTDIR}/src/graph.o \
+	${OBJECTDIR}/src/edgeiter.o \
+	${OBJECTDIR}/src/conv.o \
+	${OBJECTDIR}/src/nodeiter.o \
+	${OBJECTDIR}/src/schemavalidator.o \
+	${OBJECTDIR}/src/attributeiter.o \
+	${OBJECTDIR}/src/metadata.o \
+	${OBJECTDIR}/src/attvalueiter.o \
+	${OBJECTDIR}/src/directedgraph.o
 
 # C Compiler Flags
 CFLAGS=
@@ -54,91 +59,104 @@ CXXFLAGS=
 # Fortran Compiler Flags
 FFLAGS=
 
+# Assembler Flags
+ASFLAGS=
+
 # Link Libraries and Options
 LDLIBSOPTIONS=-lxml2
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	${MAKE}  -f nbproject/Makefile-Release-deb.mk dist/Release/${PLATFORM}/libgexf.so
+	${MAKE}  -f nbproject/Makefile-Release-deb.mk dist/Release/GNU-Linux-x86/libgexf.so
 
-dist/Release/${PLATFORM}/libgexf.so: ${OBJECTFILES}
-	${MKDIR} -p dist/Release/${PLATFORM}
+dist/Release/GNU-Linux-x86/libgexf.so: ${OBJECTFILES}
+	${MKDIR} -p dist/Release/GNU-Linux-x86
 	${LINK.cc} -shared -o dist/Release/${PLATFORM}/libgexf.so -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/filereader.o: src/filereader.cpp 
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/gexf.o: nbproject/Makefile-${CND_CONF}.mk src/gexf.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/filereader.o src/filereader.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gexf.o src/gexf.cpp
 
-${OBJECTDIR}/attvalueiter.o: src/attvalueiter.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf
+${OBJECTDIR}/src/filereader.o: nbproject/Makefile-${CND_CONF}.mk src/filereader.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/attvalueiter.o src/attvalueiter.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/filereader.o src/filereader.cpp
 
-${OBJECTDIR}/directedgraph.o: src/directedgraph.cpp 
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/legacyparser.o: nbproject/Makefile-${CND_CONF}.mk src/legacyparser.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/directedgraph.o src/directedgraph.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/legacyparser.o src/legacyparser.cpp
 
-${OBJECTDIR}/undirectedgraph.o: src/undirectedgraph.cpp 
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/gexfparser.o: nbproject/Makefile-${CND_CONF}.mk src/gexfparser.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/undirectedgraph.o src/undirectedgraph.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gexfparser.o src/gexfparser.cpp
 
-${OBJECTDIR}/edgeiter.o: src/edgeiter.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf
+${OBJECTDIR}/src/undirectedgraph.o: nbproject/Makefile-${CND_CONF}.mk src/undirectedgraph.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/edgeiter.o src/edgeiter.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/undirectedgraph.o src/undirectedgraph.cpp
 
-${OBJECTDIR}/attributeiter.o: src/attributeiter.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf
+${OBJECTDIR}/src/filewriter.o: nbproject/Makefile-${CND_CONF}.mk src/filewriter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/attributeiter.o src/attributeiter.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/filewriter.o src/filewriter.cpp
 
-${OBJECTDIR}/graph.o: src/graph.cpp 
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/data.o: nbproject/Makefile-${CND_CONF}.mk src/data.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/graph.o src/graph.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/data.o src/data.cpp
 
-${OBJECTDIR}/gexfparser.o: src/gexfparser.cpp 
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/rngvalidator.o: nbproject/Makefile-${CND_CONF}.mk src/rngvalidator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/gexfparser.o src/gexfparser.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/rngvalidator.o src/rngvalidator.cpp
 
-${OBJECTDIR}/data.o: src/data.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf
+${OBJECTDIR}/src/graph.o: nbproject/Makefile-${CND_CONF}.mk src/graph.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/data.o src/data.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/graph.o src/graph.cpp
 
-${OBJECTDIR}/conv.o: src/conv.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf
+${OBJECTDIR}/src/edgeiter.o: nbproject/Makefile-${CND_CONF}.mk src/edgeiter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/conv.o src/conv.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/edgeiter.o src/edgeiter.cpp
 
-${OBJECTDIR}/gexf.o: src/gexf.cpp 
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/conv.o: nbproject/Makefile-${CND_CONF}.mk src/conv.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/gexf.o src/gexf.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/conv.o src/conv.cpp
 
-${OBJECTDIR}/legacyparser.o: src/legacyparser.cpp 
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/nodeiter.o: nbproject/Makefile-${CND_CONF}.mk src/nodeiter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/legacyparser.o src/legacyparser.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/nodeiter.o src/nodeiter.cpp
 
-${OBJECTDIR}/nodeiter.o: src/nodeiter.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf
+${OBJECTDIR}/src/schemavalidator.o: nbproject/Makefile-${CND_CONF}.mk src/schemavalidator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/nodeiter.o src/nodeiter.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/schemavalidator.o src/schemavalidator.cpp
 
-${OBJECTDIR}/filewriter.o: src/filewriter.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf
+${OBJECTDIR}/src/attributeiter.o: nbproject/Makefile-${CND_CONF}.mk src/attributeiter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/filewriter.o src/filewriter.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/attributeiter.o src/attributeiter.cpp
 
-${OBJECTDIR}/metadata.o: src/metadata.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/home/sebastien/NetBeansProjects/libgexf
+${OBJECTDIR}/src/metadata.o: nbproject/Makefile-${CND_CONF}.mk src/metadata.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/metadata.o src/metadata.cpp
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/metadata.o src/metadata.cpp
+
+${OBJECTDIR}/src/attvalueiter.o: nbproject/Makefile-${CND_CONF}.mk src/attvalueiter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/attvalueiter.o src/attvalueiter.cpp
+
+${OBJECTDIR}/src/directedgraph.o: nbproject/Makefile-${CND_CONF}.mk src/directedgraph.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/directedgraph.o src/directedgraph.cpp
 
 # Subprojects
 .build-subprojects:
@@ -146,7 +164,7 @@ ${OBJECTDIR}/metadata.o: src/metadata.cpp
 # Clean Targets
 .clean-conf:
 	${RM} -r build/Release-deb
-	${RM} dist/Release/${PLATFORM}/libgexf.so
+	${RM} dist/Release/GNU-Linux-x86/libgexf.so
 
 # Subprojects
 .clean-subprojects:

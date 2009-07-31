@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.gephi.org/gexf/1.1draft/viz" xmlns:gexf="http://www.gephi.org/gexf/1.1draft" xmlns:viz="http://www.gephi.org/gexf/1.1draft/viz">
+  <xs:import namespace="http://www.gephi.org/gexf/1.1draft" schemaLocation="1.1draft.xsd"/>
+  <!--
+    Viz elements are bound in the main gexf definition
+    start = VIZ
+    VIZ = element viz { empty }
+  -->
+  <xs:element name="color">
+    <xs:complexType>
+      <xs:attributeGroup ref="viz:R"/>
+      <xs:attributeGroup ref="viz:G"/>
+      <xs:attributeGroup ref="viz:B"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="position">
+    <xs:complexType>
+      <xs:attributeGroup ref="viz:X"/>
+      <xs:attributeGroup ref="viz:Y"/>
+      <xs:attributeGroup ref="viz:Z"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="size">
+    <xs:complexType>
+      <xs:attributeGroup ref="viz:sizeValue"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="R">
+    <xs:attribute name="r" use="required" type="viz:colorChannelValue"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="G">
+    <xs:attribute name="g" use="required" type="viz:colorChannelValue"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="B">
+    <xs:attribute name="b" use="required" type="viz:colorChannelValue"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="X">
+    <xs:attribute name="x" use="required" type="viz:spacePointValue"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="Y">
+    <xs:attribute name="y" use="required" type="viz:spacePointValue"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="Z">
+    <xs:attribute name="z" use="required" type="viz:spacePointValue"/>
+  </xs:attributeGroup>
+  <xs:simpleType name="colorChannelValue">
+    <xs:annotation>
+      <xs:documentation>Datatypes</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:maxInclusive value="255"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attributeGroup name="sizeValue">
+    <xs:attribute name="value" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:float">
+          <xs:minInclusive value="0.0"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:simpleType name="spacePointValue">
+    <xs:restriction base="xs:float"/>
+  </xs:simpleType>
+</xs:schema>

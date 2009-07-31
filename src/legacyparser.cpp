@@ -94,7 +94,6 @@ void LegacyParser::processNode(xmlTextReaderPtr reader, const xmlChar* name) {
     else if( xmlStrEqual(name, xmlCharStrdup("attvalue")) == 1 ) {
         processAttvalueNode(reader);
     }
-    // TODO: other xml nodes
 }
 
 //-----------------------------------------
@@ -187,12 +186,12 @@ void LegacyParser::processGraphNode(xmlTextReaderPtr reader) {
         } catch(exception &e) {
             cerr << "INFO " << "Unknown mode, static used." << endl;
         }
-        if( mode.compare("dynamic") == 0 ) {
-            // TODO
+        /*if( mode.compare("dynamic") == 0 ) {
+            // dynamic mode will never be implemented for GEXF 1.0
         }
-        else { /* static used by default */
-            // TODO
-        }
+        else { // static used by default
+            // nothing to do
+        }*/
 
         try {
             string defaultedgetype = this->getStringAttribute(reader, "defaultedgetype");

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="51">
+<configurationDescriptor version="62">
   <logicalFolder name="root" displayName="root" projectFiles="true">
     <logicalFolder name="f2" displayName="db" projectFiles="true">
       <logicalFolder name="f1" displayName="data" projectFiles="true">
@@ -35,6 +35,10 @@
         <itemPath>src/gexfparser.h</itemPath>
         <itemPath>src/legacyparser.cpp</itemPath>
         <itemPath>src/legacyparser.h</itemPath>
+        <itemPath>src/rngvalidator.cpp</itemPath>
+        <itemPath>src/rngvalidator.h</itemPath>
+        <itemPath>src/schemavalidator.cpp</itemPath>
+        <itemPath>src/schemavalidator.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="output" projectFiles="true">
         <itemPath>src/filewriter.cpp</itemPath>
@@ -71,12 +75,12 @@
         <platform>2</platform>
       </toolsSet>
       <compileType>
-        <ccCompilerTool>
-          <includeDirectories>
-            <directoryPath>/usr/include/libxml2</directoryPath>
-          </includeDirectories>
+        <ccTool>
+          <incDir>
+            <pElem>/usr/include/libxml2</pElem>
+          </incDir>
           <warningLevel>2</warningLevel>
-        </ccCompilerTool>
+        </ccTool>
         <linkerTool>
           <output>dist/Debug/${PLATFORM}/libgexf.so</output>
           <linkerLibItems>
@@ -775,111 +779,6 @@
                             group="sys"/>
         </packFileList>
       </packaging>
-      <item path="src/abstractiter.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/abstractparser.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/attributeiter.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/attributeiter.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/attvalueiter.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/attvalueiter.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/conv.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/conv.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/data.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/data.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/edgeiter.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/edgeiter.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/filewriter.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/filewriter.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/metadata.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/metadata.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/nodeiter.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/nodeiter.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/directedgraph.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/directedgraph.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/exceptions.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/filereader.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/filereader.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/gexf.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/gexf.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/gexfparser.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/gexfparser.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/graph.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/graph.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/legacyparser.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/legacyparser.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/libgexf.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/typedefs.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/undirectedgraph.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/undirectedgraph.h">
-        <itemTool>3</itemTool>
-      </item>
     </conf>
     <conf name="Release" type="2">
       <toolsSet>
@@ -888,15 +787,15 @@
         <platform>2</platform>
       </toolsSet>
       <compileType>
-        <cCompilerTool>
+        <cTool>
           <developmentMode>5</developmentMode>
-        </cCompilerTool>
-        <ccCompilerTool>
+        </cTool>
+        <ccTool>
           <developmentMode>5</developmentMode>
-          <includeDirectories>
-            <directoryPath>/usr/include/libxml2</directoryPath>
-          </includeDirectories>
-        </ccCompilerTool>
+          <incDir>
+            <pElem>/usr/include/libxml2</pElem>
+          </incDir>
+        </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
         </fortranCompilerTool>
@@ -943,8 +842,8 @@
                             owner="root"
                             group="sys"/>
           <packFileListElem type="File"
-                            to="${PACKAGE_TOP_DIR}src/changelog.gz"
-                            from="src/changelog.gz"
+                            to="${PACKAGE_TOP_DIR}changelog.gz"
+                            from="changelog.gz"
                             perm="644"
                             owner="root"
                             group="sys"/>
@@ -1070,111 +969,6 @@
                             group="sys"/>
         </packFileList>
       </packaging>
-      <item path="src/abstractiter.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/abstractparser.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/attributeiter.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/attributeiter.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/attvalueiter.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/attvalueiter.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/conv.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/conv.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/data.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/data.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/edgeiter.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/edgeiter.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/filewriter.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/filewriter.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/metadata.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/metadata.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/nodeiter.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/nodeiter.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/directedgraph.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/directedgraph.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/exceptions.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/filereader.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/filereader.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/gexf.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/gexf.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/gexfparser.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/gexfparser.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/graph.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/graph.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/legacyparser.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/legacyparser.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/libgexf.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/typedefs.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/undirectedgraph.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/undirectedgraph.h">
-        <itemTool>3</itemTool>
-      </item>
     </conf>
     <conf name="Release-deb" type="2">
       <toolsSet>
@@ -1183,15 +977,15 @@
         <platform>2</platform>
       </toolsSet>
       <compileType>
-        <cCompilerTool>
+        <cTool>
           <developmentMode>5</developmentMode>
-        </cCompilerTool>
-        <ccCompilerTool>
+        </cTool>
+        <ccTool>
           <developmentMode>5</developmentMode>
-          <includeDirectories>
-            <directoryPath>/usr/include/libxml2</directoryPath>
-          </includeDirectories>
-        </ccCompilerTool>
+          <incDir>
+            <pElem>/usr/include/libxml2</pElem>
+          </incDir>
+        </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
         </fortranCompilerTool>
@@ -1355,111 +1149,6 @@
                             mandatory="false"/>
         </packInfoList>
       </packaging>
-      <item path="src/abstractiter.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/abstractparser.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/attributeiter.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/attributeiter.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/attvalueiter.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/attvalueiter.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/conv.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/conv.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/data.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/data.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/edgeiter.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/edgeiter.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/filewriter.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/filewriter.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/metadata.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/metadata.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/nodeiter.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/nodeiter.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/directedgraph.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/directedgraph.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/exceptions.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/filereader.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/filereader.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/gexf.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/gexf.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/gexfparser.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/gexfparser.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/graph.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/graph.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/legacyparser.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/legacyparser.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/libgexf.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/typedefs.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="src/undirectedgraph.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="src/undirectedgraph.h">
-        <itemTool>3</itemTool>
-      </item>
     </conf>
   </confs>
 </configurationDescriptor>

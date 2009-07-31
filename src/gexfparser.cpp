@@ -4,9 +4,6 @@
     \version 0.1
  */
 
-#include "data.h"
-
-
 /*
 # Copyright (c) <2009> <Sebastien Heymann>
 #
@@ -32,6 +29,7 @@
 #include "gexfparser.h"
 #include "filereader.h"
 #include "conv.h"
+#include "data.h"
 #include <string>
 using namespace std;
 
@@ -214,10 +212,10 @@ void GexfParser::processGraphNode(xmlTextReaderPtr reader) {
             cerr << "INFO " << "Unknown mode, static used." << endl;
         }
         if( mode.compare("dynamic") == 0 ) {
-            // TODO
+            // TODO implement dynamic mode
         }
         else { /* static used by default */
-            // TODO
+            // TODO activate the static mode
         }
 
         try {

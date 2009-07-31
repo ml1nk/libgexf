@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.gephi.org/gexf/1.1draft" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:viz="http://www.gephi.org/gexf/1.1draft/viz" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <include href="viz.rng"/>
+  <start>
+    <a:documentation>TODO
+Pb cardinalite dynamique
+Continuous vs discrete time ? discrete car intevalles de temps (et non les diff)
+Ajout d'un attribut définissant type date ou int, date par défaut</a:documentation>
+    <a:documentation>Grammar root</a:documentation>
+    <ref name="GEXF"/>
+  </start>
+  <define name="Version">
+    <attribute name="version">
+      <value type="string" datatypeLibrary="">1.1</value>
+    </attribute>
+  </define>
+  <define name="GEXF">
+    <a:documentation>Tree</a:documentation>
+    <element name="gexf">
+      <optional>
+        <ref name="Meta"/>
+      </optional>
+      <ref name="Graph"/>
+      <ref name="Version"/>
+      <optional>
+        <ref name="Variant"/>
+      </optional>
+    </element>
+  </define>
+  <define name="Meta">
+    <element name="meta">
+      <optional>
+        <ref name="Creator"/>
+      </optional>
+      <optional>
+        <ref name="Keywords"/>
+      </optional>
+      <optional>
+        <ref name="Description"/>
+      </optional>
+      <optional>
+        <ref name="LastModifiedDate"/>
+      </optional>
+    </element>
+  </define>
+  <define name="Graph">
+    <element name="graph">
+      <zeroOrMore>
+        <ref name="Attributes"/>
+      </zeroOrMore>
+      <ref name="Nodes"/>
+      <ref name="Edges"/>
+      <optional>
+        <ref name="Mode"/>
+      </optional>
+      <optional>
+        <ref name="DefaultEdgeType"/>
+      </optional>
+      <optional>
+        <ref name="DateFrom"/>
+      </optional>
+      <optional>
+        <ref name="DateTo"/>
+      </optional>
+    </element>
+  </define>
+  <define name="Attributes">
+    <element name="attributes">
+      <zeroOrMore>
+        <ref name="Attribute"/>
+      </zeroOrMore>
+      <ref name="Class"/>
+      <optional>
+        <ref name="Mode"/>
+      </optional>
+      <optional>
+        <ref name="DateFrom"/>
+      </optional>
+      <optional>
+        <ref name="DateTo"/>
+      </optional>
+    </element>
+  </define>
+  <define name="Nodes">
+    <element name="nodes">
+      <zeroOrMore>
+        <ref name="Node"/>
+      </zeroOrMore>
+      <optional>
+        <ref name="Edges"/>
+      </optional>
+      <optional>
+        <ref name="Count"/>
+      </optional>
+    </element>
+  </define>
+  <define name="Edges">
+    <element name="edges">
+      <zeroOrMore>
+        <ref name="Edge"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Attribute">
+    <element name="attribute">
+      <ref name="ID"/>
+      <ref name="Title"/>
+      <ref name="TypeAttr"/>
+      <optional>
+        <ref name="Default"/>
+      </optional>
+    </element>
+  </define>
+  <define name="Node">
+    <element name="node">
+      <optional>
+        <ref name="Attvalues"/>
+      </optional>
+      <optional>
+        <ref name="Nodes"/>
+      </optional>
+      <ref name="ID"/>
+      <optional>
+        <ref name="PID"/>
+      </optional>
+      <ref name="Label"/>
+      <optional>
+        <ref name="DateFrom"/>
+      </optional>
+      <optional>
+        <ref name="DateTo"/>
+      </optional>
+      <optional>
+        <ref name="VizColor"/>
+      </optional>
+      <optional>
+        <ref name="VizPosition"/>
+      </optional>
+      <optional>
+        <ref name="VizSize"/>
+      </optional>
+    </element>
+  </define>
+  <define name="Edge">
+    <element name="edge">
+      <optional>
+        <ref name="Attvalues"/>
+      </optional>
+      <ref name="ID"/>
+      <ref name="Source"/>
+      <ref name="Target"/>
+      <optional>
+        <ref name="Cardinal"/>
+      </optional>
+      <optional>
+        <ref name="EdgeType"/>
+      </optional>
+      <optional>
+        <ref name="DateFrom"/>
+      </optional>
+      <optional>
+        <ref name="DateTo"/>
+      </optional>
+    </element>
+  </define>
+  <define name="Attvalues">
+    <element name="attvalues">
+      <zeroOrMore>
+        <ref name="Attvalue"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Attvalue">
+    <element name="attvalue">
+      <ref name="FOR"/>
+      <ref name="Value"/>
+      <optional>
+        <ref name="DateFrom"/>
+      </optional>
+      <optional>
+        <ref name="DateTo"/>
+      </optional>
+    </element>
+  </define>
+  <define name="Creator">
+    <a:documentation>Element leafs</a:documentation>
+    <element name="creator">
+      <text/>
+    </element>
+  </define>
+  <define name="Default">
+    <element name="default">
+      <text/>
+    </element>
+  </define>
+  <define name="Description">
+    <element name="description">
+      <text/>
+    </element>
+  </define>
+  <define name="Keywords">
+    <element name="keywords">
+      <text/>
+    </element>
+  </define>
+  <define name="Count">
+    <a:documentation>Attribute leafs</a:documentation>
+    <attribute name="count">
+      <data type="nonNegativeInteger"/>
+    </attribute>
+  </define>
+  <define name="FOR">
+    <attribute name="for">
+      <data type="string"/>
+    </attribute>
+  </define>
+  <define name="ID">
+    <attribute name="id">
+      <data type="string"/>
+    </attribute>
+  </define>
+  <define name="PID">
+    <attribute name="pid">
+      <data type="string"/>
+    </attribute>
+  </define>
+  <define name="Source">
+    <attribute name="source">
+      <data type="string"/>
+    </attribute>
+  </define>
+  <!-- ref on ID -->
+  <define name="Target">
+    <attribute name="target">
+      <data type="string"/>
+    </attribute>
+  </define>
+  <!-- ref on ID -->
+  <define name="Title">
+    <attribute name="title">
+      <data type="string"/>
+    </attribute>
+  </define>
+  <define name="Value">
+    <attribute name="value">
+      <data type="string"/>
+    </attribute>
+  </define>
+  <define name="Cardinal">
+    <attribute name="cardinal" a:defaultValue="1">
+      <data type="positiveInteger"/>
+    </attribute>
+  </define>
+  <define name="Class">
+    <attribute name="class">
+      <choice>
+        <value type="string" datatypeLibrary="">node</value>
+        <value type="string" datatypeLibrary="">edge</value>
+      </choice>
+    </attribute>
+  </define>
+  <define name="DateFrom">
+    <attribute name="datefrom">
+      <data type="date"/>
+    </attribute>
+  </define>
+  <define name="DateTo">
+    <attribute name="dateto">
+      <data type="date"/>
+    </attribute>
+  </define>
+  <define name="DefaultEdgeType">
+    <attribute name="defaultedgetype" a:defaultValue="undirected">
+      <choice>
+        <value type="string" datatypeLibrary="">directed</value>
+        <value type="string" datatypeLibrary="">undirected</value>
+        <value type="string" datatypeLibrary="">double</value>
+      </choice>
+    </attribute>
+  </define>
+  <define name="EdgeType">
+    <attribute name="type" a:defaultValue="undirected">
+      <choice>
+        <value type="string" datatypeLibrary="">directed</value>
+        <value type="string" datatypeLibrary="">undirected</value>
+        <value type="string" datatypeLibrary="">double</value>
+      </choice>
+    </attribute>
+  </define>
+  <define name="Label">
+    <attribute name="label">
+      <data type="token"/>
+    </attribute>
+  </define>
+  <define name="LastModifiedDate">
+    <attribute name="lastmodifieddate">
+      <data type="date"/>
+    </attribute>
+  </define>
+  <define name="Mode">
+    <attribute name="mode" a:defaultValue="static">
+      <choice>
+        <value type="string" datatypeLibrary="">static</value>
+        <value type="string" datatypeLibrary="">dynamic</value>
+      </choice>
+    </attribute>
+  </define>
+  <define name="TypeAttr">
+    <attribute name="type">
+      <choice>
+        <value type="string" datatypeLibrary="">integer</value>
+        <value type="string" datatypeLibrary="">double</value>
+        <value type="string" datatypeLibrary="">float</value>
+        <value type="string" datatypeLibrary="">boolean</value>
+        <value type="string" datatypeLibrary="">liststring</value>
+        <value type="string" datatypeLibrary="">string</value>
+        <value type="string" datatypeLibrary="">url</value>
+      </choice>
+    </attribute>
+  </define>
+  <define name="Variant">
+    <attribute name="variant">
+      <data type="string"/>
+    </attribute>
+  </define>
+</grammar>
