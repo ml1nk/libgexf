@@ -62,96 +62,96 @@ makeDirectory ${TMPDIR}/libgexf.so.0.1.0/lib
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}lib/${OUTPUT_BASENAME}" 0644
 
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf.so.0.1.0/src
-copyFileToTmpDir "src/abstractiter.h" "${TMPDIR}/${PACKAGE_TOP_DIR}src/abstractiter.h" 0644
+makeDirectory ${TMPDIR}/libgexf.so.0.1.0/libgexf
+copyFileToTmpDir "libgexf/abstractiter.h" "${TMPDIR}/${PACKAGE_TOP_DIR}libgexf/abstractiter.h" 0644
 
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf.so.0.1.0/src
-copyFileToTmpDir "src/abstractparser.h" "${TMPDIR}/${PACKAGE_TOP_DIR}src/abstractparser.h" 0644
+makeDirectory ${TMPDIR}/libgexf.so.0.1.0/libgexf
+copyFileToTmpDir "libgexf/abstractparser.h" "${TMPDIR}/${PACKAGE_TOP_DIR}libgexf/abstractparser.h" 0644
 
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf.so.0.1.0/src
-copyFileToTmpDir "src/attributeiter.h" "${TMPDIR}/${PACKAGE_TOP_DIR}src/attributeiter.h" 0644
+makeDirectory ${TMPDIR}/libgexf.so.0.1.0/libgexf
+copyFileToTmpDir "libgexf/attributeiter.h" "${TMPDIR}/${PACKAGE_TOP_DIR}libgexf/attributeiter.h" 0644
 
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf.so.0.1.0/src
-copyFileToTmpDir "src/attvalueiter.h" "${TMPDIR}/${PACKAGE_TOP_DIR}src/attvalueiter.h" 0644
+makeDirectory ${TMPDIR}/libgexf.so.0.1.0/libgexf
+copyFileToTmpDir "libgexf/attvalueiter.h" "${TMPDIR}/${PACKAGE_TOP_DIR}libgexf/attvalueiter.h" 0644
 
 cd "${TOP}"
 makeDirectory ${TMPDIR}/libgexf.so.0.1.0
 copyFileToTmpDir "changelog.gz" "${TMPDIR}/${PACKAGE_TOP_DIR}changelog.gz" 0644
 
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf.so.0.1.0/src
-copyFileToTmpDir "src/conv.h" "${TMPDIR}/${PACKAGE_TOP_DIR}src/conv.h" 0644
+makeDirectory ${TMPDIR}/libgexf.so.0.1.0/libgexf
+copyFileToTmpDir "libgexf/conv.h" "${TMPDIR}/${PACKAGE_TOP_DIR}libgexf/conv.h" 0644
 
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf.so.0.1.0/src
-copyFileToTmpDir "src/data.h" "${TMPDIR}/${PACKAGE_TOP_DIR}src/data.h" 0644
+makeDirectory ${TMPDIR}/libgexf.so.0.1.0/libgexf
+copyFileToTmpDir "libgexf/data.h" "${TMPDIR}/${PACKAGE_TOP_DIR}libgexf/data.h" 0644
 
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf.so.0.1.0/src
-copyFileToTmpDir "src/directedgraph.h" "${TMPDIR}/${PACKAGE_TOP_DIR}src/directedgraph.h" 0644
+makeDirectory ${TMPDIR}/libgexf.so.0.1.0/libgexf
+copyFileToTmpDir "libgexf/directedgraph.h" "${TMPDIR}/${PACKAGE_TOP_DIR}libgexf/directedgraph.h" 0644
 
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf.so.0.1.0/src
-copyFileToTmpDir "src/edgeiter.h" "${TMPDIR}/${PACKAGE_TOP_DIR}src/edgeiter.h" 0644
+makeDirectory ${TMPDIR}/libgexf.so.0.1.0/libgexf
+copyFileToTmpDir "libgexf/edgeiter.h" "${TMPDIR}/${PACKAGE_TOP_DIR}libgexf/edgeiter.h" 0644
 
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf.so.0.1.0/src
-copyFileToTmpDir "src/exceptions.h" "${TMPDIR}/${PACKAGE_TOP_DIR}src/exceptions.h" 0644
+makeDirectory ${TMPDIR}/libgexf.so.0.1.0/libgexf
+copyFileToTmpDir "libgexf/exceptions.h" "${TMPDIR}/${PACKAGE_TOP_DIR}libgexf/exceptions.h" 0644
 
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf.so.0.1.0/src
-copyFileToTmpDir "src/filereader.h" "${TMPDIR}/${PACKAGE_TOP_DIR}src/filereader.h" 0644
+makeDirectory ${TMPDIR}/libgexf.so.0.1.0/libgexf
+copyFileToTmpDir "libgexf/filereader.h" "${TMPDIR}/${PACKAGE_TOP_DIR}libgexf/filereader.h" 0644
 
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf.so.0.1.0/src
-copyFileToTmpDir "src/filewriter.h" "${TMPDIR}/${PACKAGE_TOP_DIR}src/filewriter.h" 0644
+makeDirectory ${TMPDIR}/libgexf.so.0.1.0/libgexf
+copyFileToTmpDir "libgexf/filewriter.h" "${TMPDIR}/${PACKAGE_TOP_DIR}libgexf/filewriter.h" 0644
 
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf.so.0.1.0/src
-copyFileToTmpDir "src/gexf.h" "${TMPDIR}/${PACKAGE_TOP_DIR}src/gexf.h" 0644
+makeDirectory ${TMPDIR}/libgexf.so.0.1.0/libgexf
+copyFileToTmpDir "libgexf/gexf.h" "${TMPDIR}/${PACKAGE_TOP_DIR}libgexf/gexf.h" 0644
 
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf.so.0.1.0/src
-copyFileToTmpDir "src/gexfparser.h" "${TMPDIR}/${PACKAGE_TOP_DIR}src/gexfparser.h" 0644
+makeDirectory ${TMPDIR}/libgexf.so.0.1.0/libgexf
+copyFileToTmpDir "libgexf/gexfparser.h" "${TMPDIR}/${PACKAGE_TOP_DIR}libgexf/gexfparser.h" 0644
 
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf.so.0.1.0/src
-copyFileToTmpDir "src/graph.h" "${TMPDIR}/${PACKAGE_TOP_DIR}src/graph.h" 0644
+makeDirectory ${TMPDIR}/libgexf.so.0.1.0/libgexf
+copyFileToTmpDir "libgexf/graph.h" "${TMPDIR}/${PACKAGE_TOP_DIR}libgexf/graph.h" 0644
 
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf.so.0.1.0/src
-copyFileToTmpDir "src/legacyparser.h" "${TMPDIR}/${PACKAGE_TOP_DIR}src/legacyparser.h" 0644
+makeDirectory ${TMPDIR}/libgexf.so.0.1.0/libgexf
+copyFileToTmpDir "libgexf/legacyparser.h" "${TMPDIR}/${PACKAGE_TOP_DIR}libgexf/legacyparser.h" 0644
 
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf.so.0.1.0/src
-copyFileToTmpDir "src/libgexf.h" "${TMPDIR}/${PACKAGE_TOP_DIR}src/libgexf.h" 0644
+makeDirectory ${TMPDIR}/libgexf.so.0.1.0/libgexf
+copyFileToTmpDir "libgexf/libgexf.h" "${TMPDIR}/${PACKAGE_TOP_DIR}libgexf/libgexf.h" 0644
 
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf.so.0.1.0/src
-copyFileToTmpDir "src/metadata.h" "${TMPDIR}/${PACKAGE_TOP_DIR}src/metadata.h" 0644
+makeDirectory ${TMPDIR}/libgexf.so.0.1.0/libgexf
+copyFileToTmpDir "libgexf/metadata.h" "${TMPDIR}/${PACKAGE_TOP_DIR}libgexf/metadata.h" 0644
 
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf.so.0.1.0/src
-copyFileToTmpDir "src/nodeiter.h" "${TMPDIR}/${PACKAGE_TOP_DIR}src/nodeiter.h" 0644
+makeDirectory ${TMPDIR}/libgexf.so.0.1.0/libgexf
+copyFileToTmpDir "libgexf/nodeiter.h" "${TMPDIR}/${PACKAGE_TOP_DIR}libgexf/nodeiter.h" 0644
 
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf.so.0.1.0/src
-copyFileToTmpDir "README" "${TMPDIR}/${PACKAGE_TOP_DIR}src/README" 0644
+makeDirectory ${TMPDIR}/libgexf.so.0.1.0/libgexf
+copyFileToTmpDir "README" "${TMPDIR}/${PACKAGE_TOP_DIR}libgexf/README" 0644
 
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf.so.0.1.0/src
-copyFileToTmpDir "TODO" "${TMPDIR}/${PACKAGE_TOP_DIR}src/TODO" 0644
+makeDirectory ${TMPDIR}/libgexf.so.0.1.0/libgexf
+copyFileToTmpDir "TODO" "${TMPDIR}/${PACKAGE_TOP_DIR}libgexf/TODO" 0644
 
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf.so.0.1.0/src
-copyFileToTmpDir "src/typedefs.h" "${TMPDIR}/${PACKAGE_TOP_DIR}src/typedefs.h" 0644
+makeDirectory ${TMPDIR}/libgexf.so.0.1.0/libgexf
+copyFileToTmpDir "libgexf/typedefs.h" "${TMPDIR}/${PACKAGE_TOP_DIR}libgexf/typedefs.h" 0644
 
 cd "${TOP}"
-makeDirectory ${TMPDIR}/libgexf.so.0.1.0/src
-copyFileToTmpDir "src/undirectedgraph.h" "${TMPDIR}/${PACKAGE_TOP_DIR}src/undirectedgraph.h" 0644
+makeDirectory ${TMPDIR}/libgexf.so.0.1.0/libgexf
+copyFileToTmpDir "libgexf/undirectedgraph.h" "${TMPDIR}/${PACKAGE_TOP_DIR}libgexf/undirectedgraph.h" 0644
 
 cd "${TOP}"
 makeDirectory ${TMPDIR}/libgexf.so.0.1.0/t

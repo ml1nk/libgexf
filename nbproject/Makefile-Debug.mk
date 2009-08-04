@@ -24,30 +24,30 @@ CND_CONF=Debug
 CND_DISTDIR=dist
 
 # Include project Makefile
-include Makefile
+include nbproject/Makefile
 
 # Object Directory
 OBJECTDIR=build/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/gexf.o \
-	${OBJECTDIR}/src/filereader.o \
-	${OBJECTDIR}/src/legacyparser.o \
-	${OBJECTDIR}/src/gexfparser.o \
-	${OBJECTDIR}/src/undirectedgraph.o \
-	${OBJECTDIR}/src/filewriter.o \
-	${OBJECTDIR}/src/data.o \
-	${OBJECTDIR}/src/rngvalidator.o \
-	${OBJECTDIR}/src/graph.o \
-	${OBJECTDIR}/src/edgeiter.o \
-	${OBJECTDIR}/src/conv.o \
-	${OBJECTDIR}/src/nodeiter.o \
-	${OBJECTDIR}/src/schemavalidator.o \
-	${OBJECTDIR}/src/attributeiter.o \
-	${OBJECTDIR}/src/metadata.o \
-	${OBJECTDIR}/src/attvalueiter.o \
-	${OBJECTDIR}/src/directedgraph.o
+	${OBJECTDIR}/libgexf/rngvalidator.o \
+	${OBJECTDIR}/libgexf/gexf.o \
+	${OBJECTDIR}/libgexf/nodeiter.o \
+	${OBJECTDIR}/libgexf/filereader.o \
+	${OBJECTDIR}/libgexf/attvalueiter.o \
+	${OBJECTDIR}/libgexf/attributeiter.o \
+	${OBJECTDIR}/libgexf/filewriter.o \
+	${OBJECTDIR}/libgexf/schemavalidator.o \
+	${OBJECTDIR}/libgexf/metadata.o \
+	${OBJECTDIR}/libgexf/data.o \
+	${OBJECTDIR}/libgexf/gexfparser.o \
+	${OBJECTDIR}/libgexf/conv.o \
+	${OBJECTDIR}/libgexf/edgeiter.o \
+	${OBJECTDIR}/libgexf/undirectedgraph.o \
+	${OBJECTDIR}/libgexf/directedgraph.o \
+	${OBJECTDIR}/libgexf/legacyparser.o \
+	${OBJECTDIR}/libgexf/graph.o
 
 # C Compiler Flags
 CFLAGS=
@@ -73,90 +73,90 @@ dist/Debug/GNU-Linux-x86/libgexf.so: ${OBJECTFILES}
 	${MKDIR} -p dist/Debug/GNU-Linux-x86
 	${LINK.cc} -shared -o dist/Debug/${PLATFORM}/libgexf.so -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/src/gexf.o: nbproject/Makefile-${CND_CONF}.mk src/gexf.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/libgexf/rngvalidator.o: nbproject/Makefile-${CND_CONF}.mk libgexf/rngvalidator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gexf.o src/gexf.cpp
+	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/rngvalidator.o libgexf/rngvalidator.cpp
 
-${OBJECTDIR}/src/filereader.o: nbproject/Makefile-${CND_CONF}.mk src/filereader.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/libgexf/gexf.o: nbproject/Makefile-${CND_CONF}.mk libgexf/gexf.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/filereader.o src/filereader.cpp
+	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/gexf.o libgexf/gexf.cpp
 
-${OBJECTDIR}/src/legacyparser.o: nbproject/Makefile-${CND_CONF}.mk src/legacyparser.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/libgexf/nodeiter.o: nbproject/Makefile-${CND_CONF}.mk libgexf/nodeiter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/legacyparser.o src/legacyparser.cpp
+	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/nodeiter.o libgexf/nodeiter.cpp
 
-${OBJECTDIR}/src/gexfparser.o: nbproject/Makefile-${CND_CONF}.mk src/gexfparser.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/libgexf/filereader.o: nbproject/Makefile-${CND_CONF}.mk libgexf/filereader.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/gexfparser.o src/gexfparser.cpp
+	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/filereader.o libgexf/filereader.cpp
 
-${OBJECTDIR}/src/undirectedgraph.o: nbproject/Makefile-${CND_CONF}.mk src/undirectedgraph.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/libgexf/attvalueiter.o: nbproject/Makefile-${CND_CONF}.mk libgexf/attvalueiter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/undirectedgraph.o src/undirectedgraph.cpp
+	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/attvalueiter.o libgexf/attvalueiter.cpp
 
-${OBJECTDIR}/src/filewriter.o: nbproject/Makefile-${CND_CONF}.mk src/filewriter.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/libgexf/attributeiter.o: nbproject/Makefile-${CND_CONF}.mk libgexf/attributeiter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/filewriter.o src/filewriter.cpp
+	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/attributeiter.o libgexf/attributeiter.cpp
 
-${OBJECTDIR}/src/data.o: nbproject/Makefile-${CND_CONF}.mk src/data.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/libgexf/filewriter.o: nbproject/Makefile-${CND_CONF}.mk libgexf/filewriter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/data.o src/data.cpp
+	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/filewriter.o libgexf/filewriter.cpp
 
-${OBJECTDIR}/src/rngvalidator.o: nbproject/Makefile-${CND_CONF}.mk src/rngvalidator.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/libgexf/schemavalidator.o: nbproject/Makefile-${CND_CONF}.mk libgexf/schemavalidator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/rngvalidator.o src/rngvalidator.cpp
+	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/schemavalidator.o libgexf/schemavalidator.cpp
 
-${OBJECTDIR}/src/graph.o: nbproject/Makefile-${CND_CONF}.mk src/graph.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/libgexf/metadata.o: nbproject/Makefile-${CND_CONF}.mk libgexf/metadata.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/graph.o src/graph.cpp
+	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/metadata.o libgexf/metadata.cpp
 
-${OBJECTDIR}/src/edgeiter.o: nbproject/Makefile-${CND_CONF}.mk src/edgeiter.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/libgexf/data.o: nbproject/Makefile-${CND_CONF}.mk libgexf/data.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/edgeiter.o src/edgeiter.cpp
+	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/data.o libgexf/data.cpp
 
-${OBJECTDIR}/src/conv.o: nbproject/Makefile-${CND_CONF}.mk src/conv.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/libgexf/gexfparser.o: nbproject/Makefile-${CND_CONF}.mk libgexf/gexfparser.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/conv.o src/conv.cpp
+	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/gexfparser.o libgexf/gexfparser.cpp
 
-${OBJECTDIR}/src/nodeiter.o: nbproject/Makefile-${CND_CONF}.mk src/nodeiter.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/libgexf/conv.o: nbproject/Makefile-${CND_CONF}.mk libgexf/conv.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/nodeiter.o src/nodeiter.cpp
+	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/conv.o libgexf/conv.cpp
 
-${OBJECTDIR}/src/schemavalidator.o: nbproject/Makefile-${CND_CONF}.mk src/schemavalidator.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/libgexf/edgeiter.o: nbproject/Makefile-${CND_CONF}.mk libgexf/edgeiter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/schemavalidator.o src/schemavalidator.cpp
+	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/edgeiter.o libgexf/edgeiter.cpp
 
-${OBJECTDIR}/src/attributeiter.o: nbproject/Makefile-${CND_CONF}.mk src/attributeiter.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/libgexf/undirectedgraph.o: nbproject/Makefile-${CND_CONF}.mk libgexf/undirectedgraph.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/attributeiter.o src/attributeiter.cpp
+	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/undirectedgraph.o libgexf/undirectedgraph.cpp
 
-${OBJECTDIR}/src/metadata.o: nbproject/Makefile-${CND_CONF}.mk src/metadata.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/libgexf/directedgraph.o: nbproject/Makefile-${CND_CONF}.mk libgexf/directedgraph.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/metadata.o src/metadata.cpp
+	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/directedgraph.o libgexf/directedgraph.cpp
 
-${OBJECTDIR}/src/attvalueiter.o: nbproject/Makefile-${CND_CONF}.mk src/attvalueiter.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/libgexf/legacyparser.o: nbproject/Makefile-${CND_CONF}.mk libgexf/legacyparser.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/attvalueiter.o src/attvalueiter.cpp
+	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/legacyparser.o libgexf/legacyparser.cpp
 
-${OBJECTDIR}/src/directedgraph.o: nbproject/Makefile-${CND_CONF}.mk src/directedgraph.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/libgexf/graph.o: nbproject/Makefile-${CND_CONF}.mk libgexf/graph.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libgexf
 	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/directedgraph.o src/directedgraph.cpp
+	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/graph.o libgexf/graph.cpp
 
 # Subprojects
 .build-subprojects:
