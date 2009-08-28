@@ -62,13 +62,11 @@ void Data::init() {
 //-----------------------------------------
 string Data::getLabel(const t_id node_id) const {
 //-----------------------------------------
-string label = "";
     map<t_id,string >::const_iterator it = _node_labels.find(node_id);
     if(it != _node_labels.end()) {
-        label = it->second;
+        return it->second;
     }
-
-    return label;
+    return "";
 }
 
 //-----------------------------------------
@@ -113,9 +111,9 @@ void Data::setEdgeAttributeDefault(const t_id attr_id, const std::string default
 string Data::getNodeAttributeDefault(const t_id attr_id) const {
 //-----------------------------------------
     map<t_id,std::string >::const_iterator it = _node_default_values.find(attr_id);
-    if( it != _node_default_values.end() )
+    if( it != _node_default_values.end() ) {
         return it->second;
-
+    }
     return "";
 }
 
@@ -123,9 +121,9 @@ string Data::getNodeAttributeDefault(const t_id attr_id) const {
 string Data::getEdgeAttributeDefault(const t_id attr_id) const {
 //-----------------------------------------
     map<t_id,std::string >::const_iterator it = _edge_default_values.find(attr_id);
-    if( it != _edge_default_values.end() )
+    if( it != _edge_default_values.end() ) {
         return it->second;
-
+    }
     return "";
 }
 
@@ -133,9 +131,9 @@ string Data::getEdgeAttributeDefault(const t_id attr_id) const {
 bool Data::hasNodeAttributeDefault(const t_id attr_id) const {
 //-----------------------------------------
     map<t_id,std::string >::const_iterator it = _node_default_values.find(attr_id);
-    if( it != _node_default_values.end() )
+    if( it != _node_default_values.end() ) {
         return true;
-
+    }
     return false;
 }
 
@@ -143,9 +141,9 @@ bool Data::hasNodeAttributeDefault(const t_id attr_id) const {
 bool Data::hasEdgeAttributeDefault(const t_id attr_id) const {
 //-----------------------------------------
     map<t_id,std::string >::const_iterator it = _edge_default_values.find(attr_id);
-    if( it != _edge_default_values.end() )
+    if( it != _edge_default_values.end() ) {
         return true;
-
+    }
     return false;
 }
 
@@ -171,7 +169,6 @@ string Data::getNodeAttribute(const t_id node_id, const t_id attr_id) const {
             return it2->second;
         }
     }
-    
     return "";
 }
 
@@ -185,7 +182,6 @@ string Data::getEdgeAttribute(const t_id edge_id, const t_id attr_id) const {
             return it2->second;
         }
     }
-
     return "";
 }
 

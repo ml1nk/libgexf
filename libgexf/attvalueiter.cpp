@@ -67,9 +67,9 @@ bool AttValueIter::hasNext() const {
 
 t_id AttValueIter::next() {
     if( _cpt != 0 && _it != _it_row->second.end() ) {
-        _it++;
+        ++_it;
     }
-    _cpt++;
+    ++_cpt;
     return _it->first;
 }
 
@@ -78,15 +78,14 @@ string AttValueIter::currentValue() const {
 }
 
 string AttValueIter::currentName() const {
-map<t_id,string >::const_iterator it;
     if( _t == NODE ) {
-        it = _data->_node_attributes.find(_it->first);
+        map<t_id,string >::const_iterator it = _data->_node_attributes.find(_it->first);
         if( it != _data->_node_attributes.end() ) {
             return it->second;
         }
     }
     else if( _t == EDGE ) {
-        it = _data->_edge_attributes.find(_it->first);
+        map<t_id,string >::const_iterator it = _data->_edge_attributes.find(_it->first);
         if( it != _data->_edge_attributes.end() ) {
             return it->second;
         }

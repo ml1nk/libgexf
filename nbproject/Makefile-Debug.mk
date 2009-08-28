@@ -71,7 +71,7 @@ LDLIBSOPTIONS=-lxml2
 
 dist/Debug/GNU-Linux-x86/libgexf.so: ${OBJECTFILES}
 	${MKDIR} -p dist/Debug/GNU-Linux-x86
-	${LINK.cc} -shared -o dist/Debug/${PLATFORM}/libgexf.so -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
+	${LINK.cc} -shared -o dist/Debug/GNU-Linux-x86/libgexf.so -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
 ${OBJECTDIR}/libgexf/rngvalidator.o: nbproject/Makefile-${CND_CONF}.mk libgexf/rngvalidator.cpp 
 	${MKDIR} -p ${OBJECTDIR}/libgexf

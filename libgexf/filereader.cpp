@@ -59,8 +59,7 @@ FileReader::~FileReader() {
 //-----------------------------------------
 GEXF FileReader::getGEXFCopy() {
 //-----------------------------------------
-    GEXF gexf_copy(*_gexf);
-    return gexf_copy;
+    return GEXF(*_gexf);
 }
 
 //-----------------------------------------
@@ -109,12 +108,9 @@ void FileReader::slurp() {
 //-----------------------------------------
 void FileReader::streamFile() {
 //-----------------------------------------
-    xmlTextReaderPtr reader;
-    int ret;
-
-    reader = xmlReaderForFile(_filepath.data(), NULL, 0);
+    xmlTextReaderPtr reader = xmlReaderForFile(_filepath.data(), NULL, 0);
     if (reader != NULL) {
-        ret = xmlTextReaderRead(reader);
+        int ret = xmlTextReaderRead(reader);
         const xmlChar *name;
         while (ret == 1) {
             name = xmlTextReaderConstName(reader);

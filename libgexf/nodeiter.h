@@ -49,7 +49,7 @@ public:
      *
      *  \param g : Reference to the Graph object
      */
-    NodeIter(const libgexf::Graph* g);
+    explicit NodeIter(const libgexf::Graph* g);
     virtual ~NodeIter();
 
     NodeIter* begin();

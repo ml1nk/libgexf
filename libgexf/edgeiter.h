@@ -49,7 +49,7 @@ public:
      *
      *  \param g : Reference to the Graph object
      */
-    EdgeIter(const libgexf::Graph* g);
+    explicit EdgeIter(const libgexf::Graph* g);
     virtual ~EdgeIter();
 
     EdgeIter* begin();

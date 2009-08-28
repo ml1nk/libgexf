@@ -51,7 +51,7 @@ bool NodeIter::hasNext() const {
 }
 
 t_id NodeIter::next() {
-    _cpt++;
+    ++_cpt;
     return *_it++;
 }
 

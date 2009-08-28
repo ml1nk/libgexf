@@ -82,7 +82,7 @@
           <warningLevel>2</warningLevel>
         </ccTool>
         <linkerTool>
-          <output>dist/Debug/${PLATFORM}/libgexf.so</output>
+          <output>dist/Debug/GNU-Linux-x86/libgexf.so</output>
           <linkerLibItems>
             <linkerLibLibItem>xml2</linkerLibLibItem>
           </linkerLibItems>
@@ -90,7 +90,7 @@
       </compileType>
       <packaging>
         <packType>Tar</packType>
-        <output>dist/Debug/${PLATFORM}/package/libgexf-src.0.1.0.tar</output>
+        <output>dist/Debug/GNU-Linux-x86/package/libgexf-src.0.1.0.tar</output>
         <additionalOptions>-v</additionalOptions>
         <packFileList>
           <packFileListElem type="File"

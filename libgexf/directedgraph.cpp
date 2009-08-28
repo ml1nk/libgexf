@@ -51,8 +51,8 @@ void DirectedGraph::removeInEdges(const t_id target_id) {
 
     // O(n + 4*log-n)
     set<t_id>& sources = _reverse_edges[target_id];
-    for( set<t_id>::iterator it=sources.begin() ; it != sources.end(); it++ ) {
-        for( map<t_id,t_id>::const_iterator it2=_edges[*it].begin() ; it2 != _edges[*it].end(); it2++ ) {
+    for( set<t_id>::iterator it=sources.begin() ; it != sources.end(); ++it ) {
+        for( map<t_id,t_id>::const_iterator it2=_edges[*it].begin() ; it2 != _edges[*it].end(); ++it2 ) {
             _bloom_edges.erase(it2->second);
         }
         _edges[*it].erase(target_id);
@@ -70,7 +70,7 @@ void DirectedGraph::removeOutEdges(const t_id source_id) {
 
     // O(n + 4*log-n)
     map<t_id,t_id>& links = _edges[source_id];
-    for( map<t_id,t_id>::iterator it=links.begin() ; it != links.end(); it++ ) {
+    for( map<t_id,t_id>::iterator it=links.begin() ; it != links.end(); ++it ) {
         _bloom_edges.erase(it->second);
         _reverse_edges[it->first].erase(source_id);
         if(_reverse_edges[it->first].empty()) {
@@ -90,11 +90,11 @@ set<t_id> s = set<t_id>();
     // 0(2n)
     map<t_id,set<t_id> >::const_iterator it_re = _reverse_edges.find(node_id);
     if(it_re != _reverse_edges.end()) {
-        for(set<t_id>::const_iterator it = (it_re->second).begin(); it != (it_re->second).end(); it++) {
+        for(set<t_id>::const_iterator it = (it_re->second).begin(); it != (it_re->second).end(); ++it) {
             t_id source_id = *it;
             map<t_id,map<t_id,t_id> >::const_iterator it_e = _edges.find(source_id);
             if(it_e != _edges.end()) {
-                for(map<t_id,t_id>::const_iterator it2 = (it_e->second).begin(); it2 != (it_e->second).end(); it2++) {
+                for(map<t_id,t_id>::const_iterator it2 = (it_e->second).begin(); it2 != (it_e->second).end(); ++it2) {
                     t_id edge_id = it2->second;
                     s.insert(edge_id);
                 }
@@ -115,13 +115,10 @@ set<t_id> s = set<t_id>();
     // 0(2n)
     map<t_id,map<t_id,t_id> >::const_iterator it_e = _edges.find(node_id);
     if(it_e != _edges.end()) {
-        for(map<t_id,t_id>::const_iterator it2 = (it_e->second).begin(); it2 != (it_e->second).end(); it2++) {
+        for(map<t_id,t_id>::const_iterator it2 = (it_e->second).begin(); it2 != (it_e->second).end(); ++it2) {
             t_id edge_id = it2->second;
             s.insert(edge_id);
         }
-    }
-    else {
-        throw invalid_argument("Invalid node: " + node_id);
     }
 
     return s;
@@ -137,7 +134,7 @@ set<t_id> s = set<t_id>();
     map<t_id,map<t_id,t_id> >::const_iterator it_e = _edges.find(node_id);
     if(it_e != _edges.end()) {
         // 0(n)
-        for(map<t_id,t_id>::const_iterator it = (it_e->second).begin(); it != (it_e->second).end(); it++) {
+        for(map<t_id,t_id>::const_iterator it = (it_e->second).begin(); it != (it_e->second).end(); ++it) {
             t_id succ_id = it->first;
             s.insert(succ_id);
         }
@@ -156,7 +153,7 @@ set<t_id> s = set<t_id>();
     // 0(n)
     map<t_id,set<t_id> >::const_iterator it_re = _reverse_edges.find(node_id);
     if(it_re != _reverse_edges.end()) {
-        for(set<t_id>::const_iterator it = (it_re->second).begin(); it != (it_re->second).end(); it++) {
+        for(set<t_id>::const_iterator it = (it_re->second).begin(); it != (it_re->second).end(); ++it) {
             t_id pred_id = *it;
             s.insert(pred_id);
         }
@@ -178,7 +175,7 @@ unsigned int count = 0;
         count += (it_re->second).size();
 
         set<t_id>::const_iterator it_s;
-        for ( it_s=(it_re->second).begin() ; it_s != (it_re->second).end(); it_s++ ) {
+        for ( it_s=(it_re->second).begin() ; it_s != (it_re->second).end(); ++it_s ) {
             map<t_id,map<t_id,t_id> >::const_iterator it_e = _edges.find(*it_s);
             map<t_id,t_id>::const_iterator it_t = (it_e->second).find(node_id);
             t_id edge_id = it_t->second;
@@ -210,7 +207,7 @@ unsigned int count = 0;
 
         /* add cardinals */
         map<t_id,t_id>::const_iterator it_t;
-        for ( it_t=(it_e->second).begin() ; it_t != (it_e->second).end(); it_t++ ) {
+        for ( it_t=(it_e->second).begin() ; it_t != (it_e->second).end(); ++it_t ) {
             map<t_id,map<t_edge_property,t_edge_value> >::const_iterator it_properties = _edges_properties.find(it_t->second);
             if(it_properties != _edges_properties.end()) {
                 map<t_edge_property,t_edge_value>::const_iterator it_count = (it_properties->second).find(EDGE_COUNT);

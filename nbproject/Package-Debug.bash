@@ -11,7 +11,7 @@ CND_CONF=Debug
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/Debug/${PLATFORM}/libgexf.so
+OUTPUT_PATH=dist/Debug/GNU-Linux-x86/libgexf.so
 OUTPUT_BASENAME=libgexf.so
 PACKAGE_TOP_DIR=libgexf-src.0.1.0/
 
@@ -52,7 +52,7 @@ function copyFileToTmpDir
 
 # Setup
 cd "${TOP}"
-mkdir -p dist/Debug/${PLATFORM}/package
+mkdir -p dist/Debug/GNU-Linux-x86/package
 rm -rf ${TMPDIR}
 mkdir -p ${TMPDIR}
 
@@ -516,9 +516,9 @@ copyFileToTmpDir ".dep.inc" "${TMPDIR}/${PACKAGE_TOP_DIR}.dep.inc" 0644
 
 # Generate tar file
 cd "${TOP}"
-rm -f dist/Debug/${PLATFORM}/package/libgexf-src.0.1.0.tar
+rm -f dist/Debug/GNU-Linux-x86/package/libgexf-src.0.1.0.tar
 cd ${TMPDIR}
-tar -vcf ../../../../dist/Debug/${PLATFORM}/package/libgexf-src.0.1.0.tar *
+tar -vcf ../../../../dist/Debug/GNU-Linux-x86/package/libgexf-src.0.1.0.tar *
 checkReturnCode
 
 # Cleanup

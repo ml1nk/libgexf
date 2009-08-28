@@ -60,9 +60,9 @@ t_id AttributeIter::next() {
     if( _cpt != 0 && (
         (_t == NODE && _it != _data->_node_attributes.end()) ||
         (_t == EDGE && _it != _data->_edge_attributes.end()) ) ) {
-        _it++;
+        ++_it;
     }
-    _cpt++;
+    ++_cpt;
     return _it->first;
 }
 

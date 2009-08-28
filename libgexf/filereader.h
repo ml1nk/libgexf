@@ -53,7 +53,7 @@ public:
      *  \param filepath : Path to the written file
      *  \param v : version number of the GEXF format
      */
-    FileReader(const std::string filepath, const Version v=_1_1);
+    explicit FileReader(const std::string filepath, const Version v=_1_1);
 
     /*!
      *  \brief Copy constructor

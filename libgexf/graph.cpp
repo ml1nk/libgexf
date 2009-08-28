@@ -97,7 +97,7 @@ float e_type = (float)type;
                 map<t_edge_property,t_edge_value>::iterator it_prop = (it_data->second).find(EDGE_COUNT);
                 if(it_prop != (it_data->second).end()) {
                     /* the count property exists, we increment it */
-                    (it_prop->second)++;
+                    ++(it_prop->second);
                 }
                 else {
                     /* the count property doesn't exists, we create it */
@@ -271,14 +271,16 @@ unsigned int count = 0;
     if(_lock_flag == '2') throw WriteLockException("Read not allowed");
 
     // 0(n)
-    for(map<t_id,map<t_id,t_id> >::const_iterator it = _edges.begin() ; it != _edges.end() ; it++) {
+    for(map<t_id,map<t_id,t_id> >::const_iterator it = _edges.begin() ; it != _edges.end() ; ++it) {
         count += (it->second).size();
     }
     // 0(n + log-n)
     map<t_id,map<t_edge_property,t_edge_value> >::const_iterator it;
-    for ( it=_edges_properties.begin() ; it != _edges_properties.end(); it++ ) {
+    for ( it=_edges_properties.begin() ; it != _edges_properties.end(); ++it ) {
         map<t_edge_property,t_edge_value>::const_iterator it2 = ((*it).second).find(EDGE_COUNT);
-        count += (unsigned int)(*it2).second - 1;
+        if(it2 != ((*it).second).end()) {
+            count += (unsigned int)(*it2).second - 1;
+        }
     }
 
     return count;
@@ -292,7 +294,7 @@ unsigned int count = 0;
     if(_lock_flag == '2') throw WriteLockException("Read not allowed");
 
     // 0(n)
-    for(map<t_id,map<t_id,t_id> >::const_iterator it = _edges.begin() ; it != _edges.end() ; it++) {
+    for(map<t_id,map<t_id,t_id> >::const_iterator it = _edges.begin() ; it != _edges.end() ; ++it) {
         count += (it->second).size();
     }
 
@@ -312,7 +314,7 @@ unsigned int count = 0;
         count += (it_e->second).size();
 
         /* add cardinals */
-        for ( map<t_id,t_id>::const_iterator it_t=(it_e->second).begin() ; it_t != (it_e->second).end(); it_t++ ) {
+        for ( map<t_id,t_id>::const_iterator it_t=(it_e->second).begin() ; it_t != (it_e->second).end(); ++it_t ) {
             map<t_id,map<t_edge_property,t_edge_value> >::const_iterator it_data = _edges_properties.find(it_t->second);
             if(it_data != _edges_properties.end()) {
                 map<t_edge_property,t_edge_value>::const_iterator it_count = (it_data->second).find(EDGE_COUNT);
@@ -342,7 +344,7 @@ set<t_id> s = set<t_id>();
     // 0(n)
     map<t_id,map<t_id,t_id> >::const_iterator it_e = _edges.find(node_id);
     if(it_e != _edges.end()) {
-        for(map<t_id,t_id>::const_iterator it = (it_e->second).begin(); it != (it_e->second).end(); it++) {
+        for(map<t_id,t_id>::const_iterator it = (it_e->second).begin(); it != (it_e->second).end(); ++it) {
             t_id succ_id = it->first;
             s.insert(succ_id);
         }
@@ -350,7 +352,7 @@ set<t_id> s = set<t_id>();
     // 0(n)
     map<t_id,set<t_id> >::const_iterator it_re = _reverse_edges.find(node_id);
     if(it_re != _reverse_edges.end()) {
-        for(set<t_id>::const_iterator it = (it_re->second).begin(); it != (it_re->second).end(); it++) {
+        for(set<t_id>::const_iterator it = (it_re->second).begin(); it != (it_re->second).end(); ++it) {
             t_id pred_id = *it;
             s.insert(pred_id);
         }
@@ -367,8 +369,8 @@ void Graph::clearEdges(const t_id node_id) {
     /* removeInEdges */
     // O(n + 4*log-n)
     set<t_id>& sources = _reverse_edges[node_id];
-    for( set<t_id>::iterator it=sources.begin() ; it != sources.end(); it++ ) {
-        for( map<t_id,t_id>::const_iterator it2=_edges[*it].begin() ; it2 != _edges[*it].end(); it2++ ) {
+    for( set<t_id>::iterator it=sources.begin() ; it != sources.end(); ++it ) {
+        for( map<t_id,t_id>::const_iterator it2=_edges[*it].begin() ; it2 != _edges[*it].end(); ++it2 ) {
             _bloom_edges.erase(it2->second);
         }
         _edges[*it].erase(node_id);
@@ -381,7 +383,7 @@ void Graph::clearEdges(const t_id node_id) {
     /* removeOutEdges */
     // O(n + 4*log-n)
     map<t_id,t_id>& links = _edges[node_id];
-    for( map<t_id,t_id>::iterator it=links.begin() ; it != links.end(); it++ ) {
+    for( map<t_id,t_id>::iterator it=links.begin() ; it != links.end(); ++it ) {
         _bloom_edges.erase(it->second);
         _reverse_edges[it->first].erase(node_id);
         if(_reverse_edges[it->first].empty()) {
@@ -469,23 +471,23 @@ ostream& operator<<(ostream& os, const Graph& o) {
 //-----------------------------------------
     os << "Graph [" << endl;
     os << "_nodes [" << endl;
-    for ( set<t_id>::const_iterator it = o._nodes.begin() ; it != o._nodes.end(); it++ ) {
+    for ( set<t_id>::const_iterator it = o._nodes.begin() ; it != o._nodes.end(); ++it ) {
         os << " " << *it;
     }
     os << endl << "]" << endl;
     os << "_edges [" << endl;
-    for ( map<t_id,map<t_id,t_id> >::const_iterator it=o._edges.begin() ; it != o._edges.end(); it++ ) {
+    for ( map<t_id,map<t_id,t_id> >::const_iterator it=o._edges.begin() ; it != o._edges.end(); ++it ) {
         os << it->first << " => ";
-        for ( map<t_id,t_id>::const_iterator its = it->second.begin() ; its != it->second.end(); its++ ) {
+        for ( map<t_id,t_id>::const_iterator its = it->second.begin() ; its != it->second.end(); ++its ) {
             os << its->first << " => " << its->second << std::endl;
         }
         os << std::endl;
     }
     os << endl << "]" << endl;
     os << "_reverse_edges [" << endl;
-    for ( map<t_id,set<t_id> >::const_iterator it=o._reverse_edges.begin() ; it != o._reverse_edges.end(); it++ ) {
+    for ( map<t_id,set<t_id> >::const_iterator it=o._reverse_edges.begin() ; it != o._reverse_edges.end(); ++it ) {
         os << it->first << " => ";
-        for ( set<t_id>::const_iterator its = it->second.begin() ; its != it->second.end(); its++ ) {
+        for ( set<t_id>::const_iterator its = it->second.begin() ; its != it->second.end(); ++its ) {
             os << " " << *its;
         }
         os << std::endl;
@@ -493,10 +495,10 @@ ostream& operator<<(ostream& os, const Graph& o) {
     os << endl << "]" << endl;
     os << "_edges_properties [" << endl;
     std::map<t_id,std::map<t_edge_property,t_edge_value> >::const_iterator it;
-    for ( it=o._edges_properties.begin() ; it != o._edges_properties.end(); it++ ) {
+    for ( it=o._edges_properties.begin() ; it != o._edges_properties.end(); ++it ) {
         os << (*it).first << "-> ";
         std::map<t_edge_property,t_edge_value>::const_iterator it2;
-        for ( it2=((*it).second).begin() ; it2 != ((*it).second).end(); it2++ ) {
+        for ( it2=((*it).second).begin() ; it2 != ((*it).second).end(); ++it2 ) {
             os << "{" << (*it2).first << "; " << (*it2).second << "}" << endl;
         }
     }
