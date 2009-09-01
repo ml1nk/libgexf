@@ -79,13 +79,13 @@ string AttValueIter::currentValue() const {
 
 string AttValueIter::currentName() const {
     if( _t == NODE ) {
-        map<t_id,string >::const_iterator it = _data->_node_attributes.find(_it->first);
+        map<const t_id,string >::const_iterator it = _data->_node_attributes.find(_it->first);
         if( it != _data->_node_attributes.end() ) {
             return it->second;
         }
     }
     else if( _t == EDGE ) {
-        map<t_id,string >::const_iterator it = _data->_edge_attributes.find(_it->first);
+        map<const t_id,string >::const_iterator it = _data->_edge_attributes.find(_it->first);
         if( it != _data->_edge_attributes.end() ) {
             return it->second;
         }

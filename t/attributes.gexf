@@ -14,6 +14,13 @@
       <attribute id="plop" title="frog" type="boolean">
         <default>true</default>
       </attribute>
+      <attribute id="2" title="int test" type="integer">
+        <default>1</default>
+      </attribute>
+      <attribute id="3" title="abcd" type="liststring">
+        <default>a</default>
+        <options>a|b|c|d</options>
+      </attribute>
     </attributes>
     <attributes class="edge">
         <attribute id="0" title="test" type="boolean">
@@ -25,12 +32,14 @@
         <attvalues>
           <attvalue for="0" value="http://gephi.org"/>
           <attvalue for="1" value="1"/>
+          <attvalue for="2" value="5"/>
         </attvalues>
       </node>
       <node id="n1" label="Webatlas">
         <attvalues>
           <attvalue for="0" value="http://webatlas.fr"/>
           <attvalue for="1" value="2"/>
+          <attvalue for="3" value="c"/>
         </attvalues>
       </node>
       <node id="n2" label="RTGI">
@@ -42,7 +51,7 @@
       <node id="n3" label="BarabasiLab">
         <attvalues>
           <attvalue for="0" value="http://barabasilab.com"/>
-          <attvalue for="1" value="1"/>
+          <attvalue for="1" value="1.484681358644615158861"/>
           <attvalue for="plop" value="false"/>
         </attvalues>
       </node>

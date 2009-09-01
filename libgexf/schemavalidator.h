@@ -28,10 +28,10 @@ public:
      *
      *  \return true if valid, false otherwise
      */
-    static bool run(const std::string xml_file_pathname, const std::string xml_schema_file_pathname);
+    static bool run(const std::string& xml_file_pathname, const std::string& xml_schema_file_pathname);
 private:
-    static void schemaErrorCallback(void*, const char* msg, xmlParserSeverities severity, xmlTextReaderLocatorPtr locator);
-    static void schemaWarningCallback(void* callbackData, const char* msg, xmlParserSeverities severity, xmlTextReaderLocatorPtr locator);
+    static void schemaErrorCallback(void*, const char* const msg, xmlParserSeverities severity, xmlTextReaderLocatorPtr locator);
+    static void schemaWarningCallback(void* callbackData, const char* const msg, xmlParserSeverities severity, xmlTextReaderLocatorPtr locator);
     virtual void iAmAbstract() = 0;
 };
 

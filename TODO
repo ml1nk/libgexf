@@ -4,8 +4,8 @@ Major:
 
    * hypergraphs
    * hyperarchical graphs support
-   * list-string content and value checking
-   * RelaxNG validator
+   * list-string storage optimization (values replaced by corresponding idx)
+   * architecture: create a MemoryValidator class (extract the data checking methods from Gexf class)
 
 Minor:
    * Iterators for every set<> returned by methods for Java binding compatibility

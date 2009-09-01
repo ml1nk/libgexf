@@ -91,12 +91,10 @@ set<t_id> s = set<t_id>();
     map<t_id,set<t_id> >::const_iterator it_re = _reverse_edges.find(node_id);
     if(it_re != _reverse_edges.end()) {
         for(set<t_id>::const_iterator it = (it_re->second).begin(); it != (it_re->second).end(); ++it) {
-            t_id source_id = *it;
-            map<t_id,map<t_id,t_id> >::const_iterator it_e = _edges.find(source_id);
+            map<t_id,map<t_id,t_id> >::const_iterator it_e = _edges.find(*it); // source_id = source_id
             if(it_e != _edges.end()) {
                 for(map<t_id,t_id>::const_iterator it2 = (it_e->second).begin(); it2 != (it_e->second).end(); ++it2) {
-                    t_id edge_id = it2->second;
-                    s.insert(edge_id);
+                    s.insert(it2->second); // edge_id
                 }
             }
         }
@@ -116,8 +114,7 @@ set<t_id> s = set<t_id>();
     map<t_id,map<t_id,t_id> >::const_iterator it_e = _edges.find(node_id);
     if(it_e != _edges.end()) {
         for(map<t_id,t_id>::const_iterator it2 = (it_e->second).begin(); it2 != (it_e->second).end(); ++it2) {
-            t_id edge_id = it2->second;
-            s.insert(edge_id);
+            s.insert(it2->second); // edge_id
         }
     }
 
@@ -135,8 +132,7 @@ set<t_id> s = set<t_id>();
     if(it_e != _edges.end()) {
         // 0(n)
         for(map<t_id,t_id>::const_iterator it = (it_e->second).begin(); it != (it_e->second).end(); ++it) {
-            t_id succ_id = it->first;
-            s.insert(succ_id);
+            s.insert(it->first); // succ_id
         }
     }
 
@@ -154,8 +150,7 @@ set<t_id> s = set<t_id>();
     map<t_id,set<t_id> >::const_iterator it_re = _reverse_edges.find(node_id);
     if(it_re != _reverse_edges.end()) {
         for(set<t_id>::const_iterator it = (it_re->second).begin(); it != (it_re->second).end(); ++it) {
-            t_id pred_id = *it;
-            s.insert(pred_id);
+            s.insert(*it); // pred_id
         }
     }
 
@@ -178,8 +173,7 @@ unsigned int count = 0;
         for ( it_s=(it_re->second).begin() ; it_s != (it_re->second).end(); ++it_s ) {
             map<t_id,map<t_id,t_id> >::const_iterator it_e = _edges.find(*it_s);
             map<t_id,t_id>::const_iterator it_t = (it_e->second).find(node_id);
-            t_id edge_id = it_t->second;
-            map<t_id,map<t_edge_property,t_edge_value> >::const_iterator it_properties = _edges_properties.find(edge_id);
+            map<t_id,map<t_edge_property,t_edge_value> >::const_iterator it_properties = _edges_properties.find(it_t->second); // it_t->second = edge_id
             if(it_properties != _edges_properties.end()) {
                 map<t_edge_property,t_edge_value>::const_iterator it_count = (it_properties->second).find(EDGE_COUNT);
                 if(it_count != (it_properties->second).end()) {
@@ -224,33 +218,29 @@ unsigned int count = 0;
 //-----------------------------------------
 bool DirectedGraph::isSuccessor(const t_id node_id, const t_id successor_id) const {
 //-----------------------------------------
-bool is = false;
-
     if(_lock_flag == '2') throw WriteLockException("Read not allowed");
 
     // 0(log-n)
     map<t_id,map<t_id,t_id> >::const_iterator it_e = _edges.find(node_id);
     if(it_e != _edges.end()) {
-        is = ( (it_e->second).find(successor_id) != (it_e->second).end() );
+        return ( (it_e->second).find(successor_id) != (it_e->second).end() );
     }
 
-return is;
+    return false;
 }
 
 //-----------------------------------------
 bool DirectedGraph::isPredecessor(const t_id node_id, const t_id predecessor_id) const {
 //-----------------------------------------
-bool is = false;
-
     if(_lock_flag == '2') throw WriteLockException("Read not allowed");
 
     // 0(log-n)
     map<t_id,set<t_id> >::const_iterator it_re = _reverse_edges.find(node_id);
     if(it_re != _reverse_edges.end()) {
-        is = ( (it_re->second).find(predecessor_id) != (it_re->second).end() );
+        return ( (it_re->second).find(predecessor_id) != (it_re->second).end() );
     }
 
-return is;
+    return false;
 }
 
 

@@ -3,9 +3,6 @@
     \date 17 avril 2009, 17:28
  */
 
-#include "data.h"
-
-
 /*
 # Copyright (c) <2009> <Sebastien Heymann>
 #
@@ -29,6 +26,11 @@
 */
 
 #include "gexf.h"
+#include "data.h"
+#include "conv.h"
+
+#include <cstdio>
+#include <string>
 
 namespace libgexf {
 
@@ -94,42 +96,70 @@ MetaData& GEXF::getMetaData() {
 //-----------------------------------------
 bool GEXF::checkIntegrity() {
 //-----------------------------------------
+    return ( checkNodeLabels() && checkAttValues() );
+}
+
+//-----------------------------------------
+bool GEXF::checkNodeLabels() const {
+//-----------------------------------------
 bool r = true;
 
     /* check if each node has a label */
     NodeIter* it = _graph.getNodes();
     while(it->hasNext()) {
-        t_id node_id = it->next();
+        const t_id node_id = it->next();
         if( !_data.hasLabel(node_id) )
             std::cerr << "No label for the node " << (std::string)node_id << std::endl;
     }
 
-    /* check if each attvalue has a value or a defaultvalue */
+    return r;
+}
+
+//-----------------------------------------
+bool GEXF::checkAttValues() const {
+//-----------------------------------------
+bool r = true;
+
+    /* check if each attvalue has a value or a defaultvalue, and the type of each value */
     AttributeIter* it_attr = _data.getNodeAttributeColumn();
     while(it_attr->hasNext()) {
-        t_id attr_id = it_attr->next();
-        std::string title = it_attr->currentTitle();
-        bool has_default = _data.hasNodeAttributeDefault(attr_id);
+        const t_id attr_id = it_attr->next();
+        const std::string title = it_attr->currentTitle();
+        const t_attr_type type = it_attr->currentType();
+        const bool has_default = _data.hasNodeAttributeDefault(attr_id);
         NodeIter* it_node = _graph.getNodes();
         while(it_node->hasNext()) {
-            t_id node_id = it_node->next();
-            if( _data.getNodeAttribute(node_id, attr_id).empty() && !has_default ) {
-                r = false;
-                std::cerr << "A value is required for the attribute " << title << "(id=" << (std::string)attr_id << ") of the node " << (std::string)node_id << std::endl;
+            const t_id node_id = it_node->next();
+            const std::string value = _data.getNodeAttribute(node_id, attr_id);
+            if( value.empty() ) {
+                if( !has_default ) {
+                    r = false;
+                    std::cerr << "A value is required for the attribute " << title << "(id=" << (std::string)attr_id << ") of the node " << (std::string)node_id << std::endl;
+                }
+            }
+            else {
+                r = r && checkAttValueType(value, type, node_id, attr_id, true);
             }
         }
     }
     it_attr = _data.getEdgeAttributeColumn();
     while(it_attr->hasNext()) {
-        t_id attr_id = it_attr->next();
-        std::string title = it_attr->currentTitle();
-        bool has_default = _data.hasEdgeAttributeDefault(attr_id);
+        const t_id attr_id = it_attr->next();
+        const std::string title = it_attr->currentTitle();
+        const t_attr_type type = it_attr->currentType();
+        const bool has_default = _data.hasEdgeAttributeDefault(attr_id);
         EdgeIter* it_edge = _graph.getEdges();
         while(it_edge->hasNext()) {
-            t_id edge_id = it_edge->next();
-            if( _data.getNodeAttribute(edge_id, attr_id).empty() && !has_default ) {
-                r = false;
-                std::cerr << "A value is required for the attribute " << title << "(id=" << (std::string)attr_id << ") of the edge " << (std::string)edge_id << std::endl;
+            const t_id edge_id = it_edge->next();
+            const std::string value = _data.getNodeAttribute(edge_id, attr_id);
+            if( value.empty() ) {
+                if( !has_default ) {
+                    r = false;
+                    std::cerr << "A value is required for the attribute " << title << "(id=" << (std::string)attr_id << ") of the edge " << (std::string)edge_id << std::endl;
+                }
+            }
+            else {
+                r = r && checkAttValueType(value, type, edge_id, attr_id, false);
             }
         }
     }
@@ -137,6 +167,59 @@ bool r = true;
     return r;
 }
 
+//-----------------------------------------
+bool GEXF::checkAttValueType(const std::string& value, const libgexf::t_attr_type type, const t_id elem_id, const t_id attr_id, const bool isNode) const {
+//-----------------------------------------
+bool r = false;
+
+    switch(type) {
+        case INTEGER:
+            r = Conv::isInteger(value);
+            if( !r ) {
+                const std::string elem = (isNode) ? "node" : "edge";
+                std::cerr << "Attribute type error for the " << elem << " \"" << elem_id << "\": \"" << value << "\" should be an integer" << std::endl;
+            }
+            break;
+        case DOUBLE:
+            r = Conv::isDouble(value);
+            if( !r ) {
+                const std::string elem = (isNode) ? "node" : "edge";
+                std::cerr << "Attribute type error for the " << elem << " \"" << elem_id << "\": \"" << value << "\" should be a double" << std::endl;
+            }
+            break;
+        case FLOAT:
+            r = Conv::isFloat(value);
+            if( !r ) {
+                const std::string elem = (isNode) ? "node" : "edge";
+                std::cerr << "Attribute type error for the " << elem << " \"" << elem_id << "\": \"" << value << "\" should be a float" << std::endl;
+            }
+            break;
+        case BOOLEAN:
+            r = Conv::isBoolean(value);
+            if( !r ) {
+                const std::string elem = (isNode) ? "node" : "edge";
+                std::cerr << "Attribute type error for the " << elem << " \"" << elem_id << "\": \"" << value << "\" should be a boolean (true|false)" << std::endl;
+            }
+            break;
+        case LIST_STRING:
+            if( isNode ) {
+                r = _data.isNodeAttributeOption(attr_id, value);
+            }
+            else {
+                r = _data.isEdgeAttributeOption(attr_id, value);
+            }
+            if( !r ) {
+                const std::string elem = (isNode) ? "node" : "edge";
+                std::cerr << "Attribute type error for the " << elem << " \"" << elem_id << "\": \"" << value << "\" does not exist in option \"" << attr_id << "\"" << std::endl;
+            }
+            break;
+        default: // =STRING
+            r = true;
+            break;
+    }
+
+    return r;
+}
 
 //-----------------------------------------
 std::ostream& operator<<(std::ostream& os, const GEXF& o) {

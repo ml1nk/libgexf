@@ -49,20 +49,20 @@ public:
      * 
      *  \return true if valid, false otherwise
      */
-    static bool run(std::string xml_file_pathname, std::string rng_file_pathname);
+    static bool run(const std::string& xml_file_pathname, const std::string& rng_file_pathname);
 private:
     // Don't know what this handles, can't get it to fire.
-    static void readerErr(void *arg, const char *msg, xmlParserSeverities severity, xmlTextReaderLocatorPtr locator);
+    static void readerErr(void* arg, const char* const msg, xmlParserSeverities severity, xmlTextReaderLocatorPtr locator);
 
     // handles well-formedness errors in instance document
     // and handles validity errors in instance doc
-    static void structErr(void *userData, xmlErrorPtr error);
+    static void structErr(void* userData, xmlErrorPtr error);
 
     // handles warnings encountered while parsing RNG schema
-    static void rngWarn(void *ctx, const char *msg, xmlParserSeverities severity, xmlTextReaderLocatorPtr locator);
+    static void rngWarn(void* ctx, const char* const msg, xmlParserSeverities severity, xmlTextReaderLocatorPtr locator);
 
     // handles errors encountered while parsing RNG schema
-    static void rngErr(void *ctx, const char *msg, xmlParserSeverities severity, xmlTextReaderLocatorPtr locator);
+    static void rngErr(void* ctx, const char* const msg, xmlParserSeverities severity, xmlTextReaderLocatorPtr locator);
     
     virtual void iAmAbstract() = 0;
 };

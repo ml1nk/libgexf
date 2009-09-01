@@ -42,7 +42,7 @@ namespace libgexf {
      */
     class ReadLockException : public std::exception {
     public:
-        ReadLockException(const std::string what) throw() { _text = what; };
+        ReadLockException(const std::string& what) throw() { _text = what; };
         virtual ~ReadLockException() throw() {};
         virtual const char* what() const throw() {
             return (const char *)(_text.c_str());
@@ -56,7 +56,7 @@ namespace libgexf {
      */
     class WriteLockException : public std::exception {
     public:
-        WriteLockException(const std::string what) throw() { _text = what; };
+        WriteLockException(const std::string& what) throw() { _text = what; };
         virtual ~WriteLockException() throw() {};
         virtual const char* what() const throw() {
             return (const char *)(_text.c_str());
@@ -70,7 +70,7 @@ namespace libgexf {
      */
     class FileWriterException : public std::exception {
     public:
-        FileWriterException(const std::string what) throw() { _text = what; };
+        FileWriterException(const std::string& what) throw() { _text = what; };
         virtual ~FileWriterException() throw() {};
         virtual const char* what() const throw() {
             return (const char *)(_text.c_str());
@@ -84,7 +84,7 @@ namespace libgexf {
      */
     class FileReaderException : public std::exception {
     public:
-        FileReaderException(const std::string what) throw() { _text = what; };
+        FileReaderException(const std::string& what) throw() { _text = what; };
         virtual ~FileReaderException() throw() {};
         virtual const char* what() const throw() {
             return (const char *)(_text.c_str());

@@ -31,6 +31,7 @@
 
 #include "typedefs.h"
 #include <string>
+#include <set>
 #include <libxml/xmlstring.h>
 
 namespace libgexf {
@@ -45,14 +46,20 @@ public:
     virtual ~Conv();
 
     static libgexf::t_id xmlCharToId(const xmlChar* str);
-    static libgexf::t_id strToId(const std::string str);
+    static libgexf::t_id strToId(const std::string& str);
     static std::string xmlCharToStr(const xmlChar* str);
     static unsigned int xmlCharToUnsignedInt(const xmlChar* str);
     static std::string idToStr(const libgexf::t_id id);
     static std::string unsignedIntToStr(const unsigned int i);
-    static unsigned int strToUnsignedInt(const std::string str);
+    static unsigned int strToUnsignedInt(const std::string& str);
     static std::string edgeTypeToStr(const libgexf::t_edge_type t);
     static std::string attrTypeToStr(const libgexf::t_attr_type t);
+    static bool isBoolean(const std::string& str);
+    static bool isDouble(const std::string& str);
+    static bool isInteger(const std::string& str);
+    static bool isFloat(const std::string& str);
+    static std::set<std::string> tokenizer(const std::string& delimiter, const std::string& str);
+    static std::set<std::string> unokenizer(const std::string& delimiter, const std::string& str);
 private:
     virtual void f() = 0;
 };

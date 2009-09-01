@@ -96,6 +96,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="gexf:default"/>
+        <xs:element minOccurs="0" ref="gexf:options"/>
       </xs:sequence>
       <xs:attributeGroup ref="gexf:ID"/>
       <xs:attributeGroup ref="gexf:Title"/>
@@ -126,6 +127,7 @@
       <xs:attributeGroup ref="gexf:ID"/>
       <xs:attributeGroup ref="gexf:Source"/>
       <xs:attributeGroup ref="gexf:Target"/>
+      <xs:attribute name="label" type="xs:token"/>
       <xs:attribute name="cardinal" type="xs:positiveInteger"/>
       <xs:attribute name="type">
         <xs:simpleType>
@@ -159,6 +161,7 @@
   <xs:element name="default" type="xs:string"/>
   <xs:element name="description" type="xs:string"/>
   <xs:element name="keywords" type="xs:string"/>
+  <xs:element name="options" type="xs:string"/>
   <xs:attributeGroup name="Count">
     <xs:annotation>
       <xs:documentation>Attribute leafs</xs:documentation>

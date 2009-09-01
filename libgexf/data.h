@@ -34,6 +34,7 @@
 #include "attvalueiter.h"
 #include <string>
 #include <map>
+#include <set>
 
 namespace libgexf {
 
@@ -75,7 +76,7 @@ public:
      *  \param node_id : node ID
      *  \param label : node label
      */
-    void setLabel(const libgexf::t_id node_id, const std::string label);
+    void setLabel(const libgexf::t_id node_id, const std::string& label);
 
 
     /*!
@@ -85,7 +86,7 @@ public:
      *  \param title : name of the node attribute
      *  \param type : type of attribute (integer, double, float, boolean, string or list-string)
      */
-    void addNodeAttributeColumn(const libgexf::t_id id, const std::string title, const libgexf::t_attr_type type);
+    void addNodeAttributeColumn(const libgexf::t_id id, const std::string& title, const libgexf::t_attr_type type);
 
     /*!
      *  \brief Add an edge attribute column
@@ -94,7 +95,7 @@ public:
      *  \param title : name of the edge attribute
      *  \param type : type of attribute (integer, double, float, boolean, string or list-string)
      */
-    void addEdgeAttributeColumn(const libgexf::t_id id, const std::string title, const libgexf::t_attr_type type);
+    void addEdgeAttributeColumn(const libgexf::t_id id, const std::string& title, const libgexf::t_attr_type type);
 
 
     /*!
@@ -103,7 +104,7 @@ public:
      *  \param attr_id : attribute ID
      *  \param default_value : default value
      */
-    void setNodeAttributeDefault(const libgexf::t_id attr_id, const std::string default_value);
+    void setNodeAttributeDefault(const libgexf::t_id attr_id, const std::string& default_value);
 
     /*!
      *  \brief Set the default value of an edge attribute
@@ -111,7 +112,24 @@ public:
      *  \param attr_id : attribute ID
      *  \param default_value : default value
      */
-    void setEdgeAttributeDefault(const libgexf::t_id attr_id, const std::string default_value);
+    void setEdgeAttributeDefault(const libgexf::t_id attr_id, const std::string& default_value);
+
+
+    /*!
+     *  \brief Set the options of a node attribute
+     *
+     *  \param attr_id : attribute ID
+     *  \param options : options
+     */
+    void setNodeAttributeOptions(const libgexf::t_id attr_id, const std::string& options);
+
+    /*!
+     *  \brief Set the options of an edge attribute
+     *
+     *  \param attr_id : attribute ID
+     *  \param options : options
+     */
+    void setEdgeAttributeOptions(const libgexf::t_id attr_id, const std::string& options);
 
 
     /*!
@@ -121,7 +139,7 @@ public:
      *  \param attr_id : attribute ID
      *  \param value : node value
      */
-    void setNodeValue(const libgexf::t_id node_id, const libgexf::t_id attr_id, const std::string value);
+    void setNodeValue(const libgexf::t_id node_id, const libgexf::t_id attr_id, const std::string& value);
     
     /*!
      *  \brief Set the edge value of an attribute
@@ -130,7 +148,7 @@ public:
      *  \param attr_id : attribute ID
      *  \param value : edge value
      */
-    void setEdgeValue(const libgexf::t_id edge_id, const libgexf::t_id attr_id, const std::string value);
+    void setEdgeValue(const libgexf::t_id edge_id, const libgexf::t_id attr_id, const std::string& value);
 
 
     /*!
@@ -192,6 +210,23 @@ public:
      */
     std::string getNodeAttributeDefault(const libgexf::t_id attr_id) const;
 
+    
+    /*!
+     *  \brief Get the options of an edge attribute
+     *
+     *  \param attr_id : attribute ID
+     *  \return options
+     */
+    std::string getEdgeAttributeOptions(const libgexf::t_id attr_id) const;
+
+    /*!
+     *  \brief Get the options of a node attribute
+     *
+     *  \param attr_id : attribute ID
+     *  \return options
+     */
+    std::string getNodeAttributeOptions(const libgexf::t_id attr_id) const;
+
     /*!
      *  \brief Get the default value of an edge attribute
      *
@@ -200,7 +235,7 @@ public:
      */
     std::string getEdgeAttributeDefault(const libgexf::t_id attr_id) const;
 
-
+    
     /*!
      *  \brief Check if a node attribute has a default value
      *
@@ -217,6 +252,39 @@ public:
      */
     bool hasEdgeAttributeDefault(const libgexf::t_id attr_id) const;
 
+
+    /*!
+     *  \brief Check if a node attribute has options
+     *
+     *  \param attr_id : attribute ID
+     *  \return true if options exists, false otherwise
+     */
+    bool hasNodeAttributeOptions(const libgexf::t_id attr_id) const;
+
+    /*!
+     *  \brief Check if an edge attribute has options
+     *
+     *  \param attr_id : attribute ID
+     *  \return true if options exists, false otherwise
+     */
+    bool hasEdgeAttributeOptions(const libgexf::t_id attr_id) const;
+
+
+    /*!
+     *  \brief Check if an option is available for the given node attribute
+     *
+     *  \param attr_id : attribute ID
+     *  \return true if the option is available, false otherwise
+     */
+    bool isNodeAttributeOption(const libgexf::t_id attr_id, const std::string& option) const;
+
+    /*!
+     *  \brief Check if an option is available for the given edge attribute
+     *
+     *  \param attr_id : attribute ID
+     *  \return true if the option is available, false otherwise
+     */
+    bool isEdgeAttributeOption(const libgexf::t_id attr_id, const std::string& option) const;
 
     /*!
      *  \brief Delete all attribute values for a node
@@ -245,16 +313,20 @@ public:
     void clearEdgesAttributes();
 private:
     std::map<t_id,std::string > _node_labels; /*!< map<node_id, label > */
-
+    // TODO edge labels
     std::map<t_id,std::string > _node_attributes; /*!< map<attr_id, title > */
     std::map<t_id,t_attr_type > _node_attributes_types; /*!< map<attr_id, type > */
     std::map<t_id,std::string > _node_default_values; /*!< map<attr_id, default > */
-    std::map<t_id,std::map<t_id,std::string > > _node_values; /*!< map<node_id, map<attr_id, type > > */
+    std::map<t_id,std::map<std::string,unsigned short int > > _node_options; /*!< map<attr_id, option[] > */
+    std::map<t_id,std::string > _node_verbatim_options; /*!< gexf strings */
+    std::map<t_id,std::map<t_id,std::string > > _node_values; /*!< map<node_id, map<attr_id, value > > */
 
     std::map<t_id,std::string > _edge_attributes; /*!< map<attr_id, title > */
     std::map<t_id,t_attr_type > _edge_attributes_types; /*!< map<attr_id, type > */
     std::map<t_id,std::string > _edge_default_values; /*!< map<attr_id, default > */
-    std::map<t_id,std::map<t_id,std::string > > _edge_values; /*!< map<edge_id, map<attr_id, type > > */
+    std::map<t_id,std::map<std::string,unsigned short int > > _edge_options; /*!< map<attr_id, option[] > */
+    std::map<t_id,std::string > _edge_verbatim_options; /*!< gexf strings */
+    std::map<t_id,std::map<t_id,std::string > > _edge_values; /*!< map<edge_id, map<attr_id, value > > */
 private:
     void init();
     friend std::ostream& operator<<(std::ostream& os, const Data& o);

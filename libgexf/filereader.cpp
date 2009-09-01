@@ -31,7 +31,7 @@
 #include "legacyparser.h"
 #include "exceptions.h"
 
-#include <stdio.h>
+#include <cstdio>
 #include <iostream>
 #include <libxml/xmlreader.h>
 
@@ -43,7 +43,7 @@ namespace libgexf {
 FileReader::FileReader(): _gexf(0), _parser(), _filepath(""), _v(_1_1) {
 }
 
-FileReader::FileReader(const std::string filepath, const Version v) {
+FileReader::FileReader(const std::string& filepath, const Version v) {
     this->init(filepath, v);
 }
 
@@ -59,11 +59,11 @@ FileReader::~FileReader() {
 //-----------------------------------------
 GEXF FileReader::getGEXFCopy() {
 //-----------------------------------------
-    return GEXF(*_gexf);
+    return *_gexf; // object passed by value, of course :)
 }
 
 //-----------------------------------------
-void FileReader::init(const std::string filepath, const Version v) {
+void FileReader::init(const std::string& filepath, const Version v) {
 //-----------------------------------------
     _filepath = filepath;
     _v = v;
@@ -111,7 +111,7 @@ void FileReader::streamFile() {
     xmlTextReaderPtr reader = xmlReaderForFile(_filepath.data(), NULL, 0);
     if (reader != NULL) {
         int ret = xmlTextReaderRead(reader);
-        const xmlChar *name;
+        const xmlChar* name;
         while (ret == 1) {
             name = xmlTextReaderConstName(reader);
             if (name != NULL) {

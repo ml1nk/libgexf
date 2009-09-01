@@ -44,20 +44,20 @@ RngValidator::~RngValidator() {
 
 
 //-----------------------------------------
-void RngValidator::readerErr(void *arg, const char *msg, xmlParserSeverities severity, xmlTextReaderLocatorPtr locator)
+void RngValidator::readerErr(void* arg, const char* const msg, xmlParserSeverities severity, xmlTextReaderLocatorPtr locator)
 //-----------------------------------------
 {
-    int line = xmlTextReaderLocatorLineNumber(locator);
+    const int line = xmlTextReaderLocatorLineNumber(locator);
     cerr << "WARN " << "Some kinda error! " << msg << ", severity: " << severity << ", line: " << line << endl;
 }
 
 //-----------------------------------------
-void RngValidator::structErr(void *userData, xmlErrorPtr error)
+void RngValidator::structErr(void* userData, xmlErrorPtr error)
 //-----------------------------------------
 {
     const char *msg = error->message;
-    int line = error->line;
-    int level = error->level;
+    const int line = error->line;
+    const int level = error->level;
 
     cerr << "WARN " << "Instance doc well-formedness error or validity error, level: " << level << endl;
     cerr << "WARN " << "message: " << msg;
@@ -65,21 +65,21 @@ void RngValidator::structErr(void *userData, xmlErrorPtr error)
 }
 
 //-----------------------------------------
-void RngValidator::rngWarn(void *ctx, const char *msg, xmlParserSeverities severity, xmlTextReaderLocatorPtr locator)
+void RngValidator::rngWarn(void* ctx, const char* const msg, xmlParserSeverities severity, xmlTextReaderLocatorPtr locator)
 //-----------------------------------------
 {
     cerr << "WARN " << "Relax NG warn: " << msg << endl;
 }
 
 //-----------------------------------------
-void RngValidator::rngErr(void *ctx, const char *msg, xmlParserSeverities severity, xmlTextReaderLocatorPtr locator)
+void RngValidator::rngErr(void* ctx, const char* const msg, xmlParserSeverities severity, xmlTextReaderLocatorPtr locator)
 //-----------------------------------------
 {
     cerr << "WARN " << "Relax NG err: " << msg << endl;
 }
 
 //-----------------------------------------
-bool RngValidator::run(std::string xml_file_pathname, std::string rng_file_pathname)
+bool RngValidator::run(const std::string& xml_file_pathname, const std::string& rng_file_pathname)
 //-----------------------------------------
 {
     // TODO handle multiple RNG files (eg viz)
@@ -103,7 +103,7 @@ bool RngValidator::run(std::string xml_file_pathname, std::string rng_file_pathn
 
     while (xmlTextReaderRead(reader));
 
-    bool valid = xmlTextReaderIsValid(reader) == 1;
+    const bool valid = xmlTextReaderIsValid(reader) == 1;
 
     xmlFreeTextReader(reader);
     xmlRelaxNGFree(schema);

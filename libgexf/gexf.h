@@ -116,6 +116,9 @@ namespace libgexf {
         libgexf::Data _data;  /*!< Associated data and attributes on nodes and edges */
         libgexf::MetaData _meta;  /*!< Associated meta data */
     private:
+        bool checkNodeLabels() const;
+        bool checkAttValues() const;
+        bool checkAttValueType(const std::string& value, const libgexf::t_attr_type type, const t_id elem_id, const t_id attr_id="", const bool isNode=true) const;
         friend std::ostream& operator<<(std::ostream& os, const GEXF& o);
     };
 

@@ -54,7 +54,7 @@ public:
     virtual ~GexfParser();
 
     void bind(libgexf::GEXF* gexf);
-    void processNode(xmlTextReaderPtr reader, const xmlChar* name);
+    void processNode(xmlTextReaderPtr reader, const xmlChar* const name);
 private:
     void processGEXFNode(xmlTextReaderPtr reader);
     void processMetaNode(xmlTextReaderPtr reader);
@@ -70,14 +70,15 @@ private:
     void processAttributesNode(xmlTextReaderPtr reader);
     void processAttributeNode(xmlTextReaderPtr reader);
     void processAttributeDefaultNode(xmlTextReaderPtr reader);
+    void processAttributeOptionsNode(xmlTextReaderPtr reader);
     void processAttvaluesNode(xmlTextReaderPtr reader);
     void processAttvalueNode(xmlTextReaderPtr reader);
     
     bool isProcessableNode(xmlTextReaderPtr reader);
-    libgexf::t_id getIdAttribute(xmlTextReaderPtr reader, const char* name);
-    std::string getStringAttribute(xmlTextReaderPtr reader, const char* name);
-    std::string getStringAttributeNs(xmlTextReaderPtr reader, const char* name, const char* namespaceURI);
-    unsigned int getUnsignedIntAttribute(xmlTextReaderPtr reader, const char* name);
+    libgexf::t_id getIdAttribute(xmlTextReaderPtr reader, const char* const name);
+    std::string getStringAttribute(xmlTextReaderPtr reader, const char* const name);
+    std::string getStringAttributeNs(xmlTextReaderPtr reader, const char* const name, const char* const namespaceURI);
+    unsigned int getUnsignedIntAttribute(xmlTextReaderPtr reader, const char* const name);
 private:
     enum ElemType { NODE, EDGE, ATTR_NODE, ATTR_EDGE };
     GEXF* _gexf;

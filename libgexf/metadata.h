@@ -97,47 +97,47 @@ public:
     /*!
      *  \brief Set the GEXF version
      */
-    void setVersion(const std::string version);
+    void setVersion(const std::string& version);
 
     /*!
      *  \brief Set the XMLNS
      */
-    void setXmlns(const std::string xmlns);
+    void setXmlns(const std::string& xmlns);
 
     /*!
      *  \brief Set the XMLNS:XSI
      */
-    void setXsi(const std::string xsi);
+    void setXsi(const std::string& xsi);
 
     /*!
      *  \brief Set the XML schema
      */
-    void setSchema(const std::string schema);
+    void setSchema(const std::string& schema);
 
     /*!
      *  \brief Set the variant
      */
-    void setVariant(const std::string variant);
+    void setVariant(const std::string& variant);
 
     /*!
      *  \brief Set the creator
      */
-    void setCreator(const std::string creator);
+    void setCreator(const std::string& creator);
 
     /*!
      *  \brief Set the description
      */
-    void setDescription(const std::string description);
+    void setDescription(const std::string& description);
 
     /*!
      *  \brief Set the keywords
      */
-    void setKeywords(const std::string keywords);
+    void setKeywords(const std::string& keywords);
 
     /*!
      *  \brief Set the last modified date
      */
-    void setLastModifiedDate(const std::string lastmodifieddate);
+    void setLastModifiedDate(const std::string& lastmodifieddate);
 private:
     void init();
 private:

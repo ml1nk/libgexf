@@ -118,55 +118,55 @@ std::string MetaData::getLastModifiedDate() const {
 }
 
 //-----------------------------------------
-void MetaData::setVersion(const std::string version) {
+void MetaData::setVersion(const std::string& version) {
 //-----------------------------------------
     _version = version;
 }
 
 //-----------------------------------------
-void MetaData::setXmlns(const std::string xmlns) {
+void MetaData::setXmlns(const std::string& xmlns) {
 //-----------------------------------------
     _xmlns = xmlns;
 }
 
 //-----------------------------------------
-void MetaData::setXsi(const std::string xsi) {
+void MetaData::setXsi(const std::string& xsi) {
 //-----------------------------------------
     _xsi = xsi;
 }
 
 //-----------------------------------------
-void MetaData::setSchema(const std::string schema) {
+void MetaData::setSchema(const std::string& schema) {
 //-----------------------------------------
     _schema = schema;
 }
 
 //-----------------------------------------
-void MetaData::setVariant(const std::string variant) {
+void MetaData::setVariant(const std::string& variant) {
 //-----------------------------------------
     _variant = variant;
 }
 
 //-----------------------------------------
-void MetaData::setCreator(const std::string creator) {
+void MetaData::setCreator(const std::string& creator) {
 //-----------------------------------------
     _creator = creator;
 }
 
 //-----------------------------------------
-void MetaData::setDescription(const std::string description) {
+void MetaData::setDescription(const std::string& description) {
 //-----------------------------------------
     _description = description;
 }
 
 //-----------------------------------------
-void MetaData::setKeywords(const std::string keywords) {
+void MetaData::setKeywords(const std::string& keywords) {
 //-----------------------------------------
     _keywords = keywords;
 }
 
 //-----------------------------------------
-void MetaData::setLastModifiedDate(const std::string lastmodifieddate) {
+void MetaData::setLastModifiedDate(const std::string& lastmodifieddate) {
 //-----------------------------------------
     _lastmodifieddate = lastmodifieddate;
 }

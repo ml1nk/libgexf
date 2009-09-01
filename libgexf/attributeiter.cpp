@@ -39,7 +39,9 @@ AttributeIter::AttributeIter(const Data* d, const AttributeIter::Type t): _data(
 AttributeIter::~AttributeIter() {
 }
 
+//-----------------------------------------
 AttributeIter* AttributeIter::begin() {
+//-----------------------------------------
     if( _t == NODE ) {
         _it = _data->_node_attributes.begin();
         _nb_items = _data->countNodeAttributeColumn();
@@ -52,11 +54,15 @@ AttributeIter* AttributeIter::begin() {
     return this;
 }
 
+//-----------------------------------------
 bool AttributeIter::hasNext() const {
+//-----------------------------------------
     return _nb_items != 0 && _cpt != _nb_items;
 }
 
+//-----------------------------------------
 t_id AttributeIter::next() {
+//-----------------------------------------
     if( _cpt != 0 && (
         (_t == NODE && _it != _data->_node_attributes.end()) ||
         (_t == EDGE && _it != _data->_edge_attributes.end()) ) ) {
@@ -66,11 +72,15 @@ t_id AttributeIter::next() {
     return _it->first;
 }
 
+//-----------------------------------------
 string AttributeIter::currentTitle() const {
+//-----------------------------------------
     return _it->second;
 }
 
+//-----------------------------------------
 t_attr_type AttributeIter::currentType() const {
+//-----------------------------------------
     if( _t == NODE ) {
         std::map<t_id,t_attr_type >::const_iterator it2 = _data->_node_attributes_types.find(_it->first);
         if( it2 != _data->_node_attributes_types.end() ) {

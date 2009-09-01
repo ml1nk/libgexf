@@ -29,7 +29,9 @@
 #include "conv.h"
 #include <iostream>
 #include <sstream>
-#include <string.h>
+#include <cstdio>
+#include <cstring>
+#include <set>
 #include <libxml/encoding.h>
 #include <libxml/xmlwriter.h>
 
@@ -49,19 +51,19 @@ Conv::~Conv() {
 //-----------------------------------------
 t_id Conv::xmlCharToId(const xmlChar* str) {
 //-----------------------------------------
-    stringstream ss((const char*) str);
-    return (t_id)ss.str();
+    istringstream iss((const char*) str);
+    return (t_id)iss.str();
 }
 
 //-----------------------------------------
 string Conv::xmlCharToStr(const xmlChar* str) {
 //-----------------------------------------
-    stringstream ss((const char*) str);
-    return ss.str();
+    istringstream iss((const char*) str);
+    return iss.str();
 }
 
 //-----------------------------------------
-t_id Conv::strToId(const std::string str) {
+t_id Conv::strToId(const std::string& str) {
 //-----------------------------------------
     return (t_id)str;
 }
@@ -69,9 +71,9 @@ t_id Conv::strToId(const std::string str) {
 //-----------------------------------------
 unsigned int Conv::xmlCharToUnsignedInt(const xmlChar* str) {
 //-----------------------------------------
-    stringstream ss((const char*) str);
+    istringstream iss((const char*) str);
     unsigned int i;
-    ss >> i;
+    iss >> i;
 
     return i;
 }
@@ -85,17 +87,17 @@ string Conv::idToStr(const t_id id) {
 //-----------------------------------------
 string Conv::unsignedIntToStr(const unsigned int i) {
 //-----------------------------------------
-    stringstream ss;
-    ss << i;
-    return ss.str();
+    ostringstream oss;
+    oss << i;
+    return oss.str();
 }
 
 //-----------------------------------------
-unsigned int Conv::strToUnsignedInt(const std::string str) {
+unsigned int Conv::strToUnsignedInt(const std::string& str) {
 //-----------------------------------------
-    stringstream ss(str.c_str());
+    istringstream iss(str.c_str());
     unsigned int i;
-    ss >> i;
+    iss >> i;
 
     return i;
 }
@@ -144,10 +146,72 @@ string Conv::attrTypeToStr(const t_attr_type t) {
             return "string";
             break;
         case LIST_STRING:
-            return "list-string";
+            return "liststring";
             break;
     }
     return "";
+}
+
+//-----------------------------------------
+bool Conv::isInteger(const std::string& str) {
+//-----------------------------------------
+    /*stringstream ss(str.c_str());
+    int i;
+    ss >> i;
+    stringstream si;
+    si << i;
+    
+    return si.str() == str;*/
+
+    /* optimized version */
+    int i = 0;
+    unsigned int nb_char = 0;
+
+    sscanf(str.c_str(), "%d%n", &i, &nb_char);
+    return ( str.length() == nb_char );
+}
+
+//-----------------------------------------
+bool Conv::isDouble(const std::string& str) {
+//-----------------------------------------
+    double d = 0;
+    unsigned int nb_char = 0;
+
+    sscanf(str.c_str(), "%lf%n", &d, &nb_char);
+    return ( str.length() == nb_char );
+}
+
+//-----------------------------------------
+bool Conv::isFloat(const std::string& str) {
+//-----------------------------------------
+    float f = 0;
+    unsigned int nb_char = 0;
+
+    sscanf(str.c_str(), "%f%n", &f, &nb_char);
+    return ( str.length() == nb_char );
+}
+
+//-----------------------------------------
+bool Conv::isBoolean(const std::string& str) {
+//-----------------------------------------
+    return ( str == "true" || str == "false" );
+}
+
+//-----------------------------------------
+std::set<std::string> Conv::tokenizer(const std::string& delimiter, const std::string& str) {
+//-----------------------------------------
+    std::set<string> tokens;
+    char* const cstr = new char [str.size()+1];
+    strcpy( cstr, str.c_str() );
+    char* tokenPtr = strtok(cstr,"|");
+    
+    while( tokenPtr != NULL ) {
+        tokens.insert(tokenPtr);
+        tokenPtr = strtok(NULL, "|");
+    }
+    delete[] cstr;
+
+    return tokens;
 }
 
 }

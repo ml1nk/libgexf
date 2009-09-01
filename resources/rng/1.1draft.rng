@@ -3,9 +3,9 @@
   <include href="viz.rng"/>
   <start>
     <a:documentation>TODO
-Pb cardinalite dynamique
-Continuous vs discrete time ? discrete car intevalles de temps (et non les diff)
-Ajout d'un attribut définissant type date ou int, date par défaut</a:documentation>
+Pb cardinalite dynamique -&gt; mot réservé "cardinal" dans les attributs
+Ajout d'un attribut définissant type date ou int, date par défaut
+Ajout des edge labels !</a:documentation>
     <a:documentation>Grammar root</a:documentation>
     <ref name="GEXF"/>
   </start>
@@ -109,6 +109,9 @@ Ajout d'un attribut définissant type date ou int, date par défaut</a:documenta
       <optional>
         <ref name="Default"/>
       </optional>
+      <optional>
+        <ref name="Options"/>
+      </optional>
     </element>
   </define>
   <define name="Node">
@@ -149,6 +152,9 @@ Ajout d'un attribut définissant type date ou int, date par défaut</a:documenta
       <ref name="ID"/>
       <ref name="Source"/>
       <ref name="Target"/>
+      <optional>
+        <ref name="Label"/>
+      </optional>
       <optional>
         <ref name="Cardinal"/>
       </optional>
@@ -200,6 +206,11 @@ Ajout d'un attribut définissant type date ou int, date par défaut</a:documenta
   </define>
   <define name="Keywords">
     <element name="keywords">
+      <text/>
+    </element>
+  </define>
+  <define name="Options">
+    <element name="options">
       <text/>
     </element>
   </define>

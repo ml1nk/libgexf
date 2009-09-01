@@ -53,7 +53,7 @@ public:
      *  \param filepath : Path to the written file
      *  \param gexf : reference to a GEXF object
      */
-    FileWriter(const std::string filepath, GEXF* gexf);
+    FileWriter(const std::string& filepath, GEXF* gexf);
 
     /*!
      *  \brief Copy constructor
@@ -76,7 +76,7 @@ public:
      *  \param filepath : Path to the GEXF file
      *  \param gexf : reference to a GEXF object
      */
-    void init(const std::string filepath, libgexf::GEXF* gexf);
+    void init(const std::string& filepath, libgexf::GEXF* gexf);
 
     /*!
      *  \brief Write the file
@@ -89,15 +89,15 @@ private:
 
     void writeGraphNode(xmlTextWriterPtr writer);
     void writeNodesNode(xmlTextWriterPtr writer);
-    void writeNodeNode(xmlTextWriterPtr writer, const std::string node_id, const std::string label="");
+    void writeNodeNode(xmlTextWriterPtr writer, const std::string& node_id, const std::string& label="");
     void writeEdgesNode(xmlTextWriterPtr writer);
-    void writeEdgeNode(xmlTextWriterPtr writer, const std::string edge_id, const std::string source_id, const std::string target_id, const std::string cardinal="1", const std::string type="undirected");
+    void writeEdgeNode(xmlTextWriterPtr writer, const std::string& edge_id, const std::string& source_id, const std::string& target_id, const std::string& cardinal="1", const std::string& type="undirected");
 
-    void writeAttributesNode(xmlTextWriterPtr writer, const std::string element_class);
-    void writeAttributeNode(xmlTextWriterPtr writer, const std::string id, const std::string title, const std::string type, const std::string default_value="");
-    void writeAttributeDefaultNode(xmlTextWriterPtr writer, const std::string default_value);
-    void writeAttvaluesNode(xmlTextWriterPtr writer, const ElemType type, const std::string id);
-    void writeAttvalueNode(xmlTextWriterPtr writer, const std::string attribute_id, const std::string value);
+    void writeAttributesNode(xmlTextWriterPtr writer, const std::string& element_class);
+    void writeAttributeNode(xmlTextWriterPtr writer, const std::string& id, const std::string& title, const std::string& type, const std::string& default_value="", const std::string& options="");
+    void writeAttributeDefaultNode(xmlTextWriterPtr writer, const std::string& default_value);
+    void writeAttvaluesNode(xmlTextWriterPtr writer, const ElemType type, const std::string& id);
+    void writeAttvalueNode(xmlTextWriterPtr writer, const std::string& attribute_id, const std::string& value);
 private:
     GEXF* _gexf;
     std::string _filepath;
