@@ -35,6 +35,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/libgexf/gexf.o \
 	${OBJECTDIR}/libgexf/nodeiter.o \
 	${OBJECTDIR}/libgexf/filereader.o \
+	${OBJECTDIR}/libgexf/legacywriter.o \
 	${OBJECTDIR}/libgexf/attvalueiter.o \
 	${OBJECTDIR}/libgexf/attributeiter.o \
 	${OBJECTDIR}/libgexf/filewriter.o \
@@ -93,6 +94,11 @@ ${OBJECTDIR}/libgexf/filereader.o: nbproject/Makefile-${CND_CONF}.mk libgexf/fil
 	${MKDIR} -p ${OBJECTDIR}/libgexf
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/filereader.o libgexf/filereader.cpp
+
+${OBJECTDIR}/libgexf/legacywriter.o: nbproject/Makefile-${CND_CONF}.mk libgexf/legacywriter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libgexf
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/legacywriter.o libgexf/legacywriter.cpp
 
 ${OBJECTDIR}/libgexf/attvalueiter.o: nbproject/Makefile-${CND_CONF}.mk libgexf/attvalueiter.cpp 
 	${MKDIR} -p ${OBJECTDIR}/libgexf

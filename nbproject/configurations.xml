@@ -43,6 +43,8 @@
       <logicalFolder name="f2" displayName="output" projectFiles="true">
         <itemPath>libgexf/filewriter.cpp</itemPath>
         <itemPath>libgexf/filewriter.h</itemPath>
+        <itemPath>libgexf/legacywriter.cpp</itemPath>
+        <itemPath>libgexf/legacywriter.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="utils" projectFiles="true">
         <itemPath>libgexf/conv.cpp</itemPath>

@@ -43,6 +43,7 @@
 #include <libgexf/abstractparser.h>
 #include <libgexf/filereader.h>
 #include <libgexf/filewriter.h>
+#include <libgexf/legacywriter.h>
 #include <libgexf/rngvalidator.h>
 #include <libgexf/schemavalidator.h>
 #include <libgexf/memoryvalidator.h>

@@ -1,4 +1,4 @@
-/*! \file filewriter.cpp
+/*! \file legacywriter.cpp
     \author sebastien heymann
     \date 8 juillet 2009, 17:58
     \version 0.1
@@ -27,7 +27,7 @@
 */
 
 #include "metadata.h"
-#include "filewriter.h"
+#include "legacywriter.h"
 #include "exceptions.h"
 #include "typedefs.h"
 #include "conv.h"
@@ -41,30 +41,30 @@ using namespace std;
 
 namespace libgexf {
 
-const char* FileWriter::_ENCODING = "UTF-8";
+const char* LegacyWriter::_ENCODING = "UTF-8";
 
-FileWriter::FileWriter(): _gexf(0), _filepath("") {
+LegacyWriter::LegacyWriter(): _gexf(0), _filepath(""), _nodes(), _attributes() {
 }
 
-FileWriter::FileWriter(const std::string& filepath, GEXF* gexf): _gexf(gexf),_filepath(filepath) {
+LegacyWriter::LegacyWriter(const std::string& filepath, GEXF* gexf): _gexf(gexf),_filepath(filepath), _nodes(), _attributes() {
 
 }
 
-FileWriter::FileWriter(const FileWriter& orig): _gexf(orig._gexf), _filepath(orig._filepath) {
+LegacyWriter::LegacyWriter(const LegacyWriter& orig): _gexf(orig._gexf), _filepath(orig._filepath), _nodes(orig._nodes), _attributes(orig._attributes) {
 }
 
-FileWriter::~FileWriter() {
+LegacyWriter::~LegacyWriter() {
     // do not delete _gexf
 }
 
 //-----------------------------------------
-GEXF FileWriter::getGEXFCopy() {
+GEXF LegacyWriter::getGEXFCopy() {
 //-----------------------------------------
     return GEXF(*_gexf);
 }
 
 //-----------------------------------------
-void FileWriter::init(const std::string& filepath, GEXF* gexf) {
+void LegacyWriter::init(const std::string& filepath, GEXF* gexf) {
 //-----------------------------------------
     _filepath = filepath;
     _gexf = gexf;
@@ -72,13 +72,13 @@ void FileWriter::init(const std::string& filepath, GEXF* gexf) {
 
 
 //-----------------------------------------
-void FileWriter::write() {
+void LegacyWriter::write() {
 //-----------------------------------------
     #ifndef LIBXML_READER_ENABLED
     throw FileWriterException( "LIBXML NOT FOUND" );
     #endif
 
-    cout << "INFO Start writing the file (gexf v1.1).." << endl;
+    cout << "INFO Start writing the file (gexf v1.0).." << endl;
 
     /*
      * this initialize the library and check potential ABI mismatches
@@ -90,7 +90,7 @@ void FileWriter::write() {
     /* Create a new XmlWriter for _filepath, with no compression. */
     xmlTextWriterPtr writer = xmlNewTextWriterFilename(_filepath.c_str(), 0);
     if (writer == NULL) {
-        throw FileWriterException( "Error creating the xml FileWriter" );
+        throw FileWriterException( "Error creating the xml LegacyWriter" );
     }
 
     /* Start the document with the xml default for the version,
@@ -120,7 +120,7 @@ void FileWriter::write() {
 }
 
 //-----------------------------------------
-void FileWriter::writeGexfNode(xmlTextWriterPtr writer) {
+void LegacyWriter::writeGexfNode(xmlTextWriterPtr writer) {
 //-----------------------------------------
     /* Start an element named "gexf". Since thist is the first
      * element, this will be the root element of the document. */
@@ -129,26 +129,8 @@ void FileWriter::writeGexfNode(xmlTextWriterPtr writer) {
         throw FileWriterException( "Error at xmlTextWriterStartElement" );
     }
 
-    /* Start an element named "xmlns" */
-    rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "xmlns", BAD_CAST _gexf->getMetaData().getXmlns().c_str());
-    if (rc < 0) {
-        throw FileWriterException("Error at xmlTextWriterWriteAttribute");
-    }
-
-    /* Start an element named "xsi" */
-    rc = xmlTextWriterWriteAttributeNS(writer, BAD_CAST "xmlns", BAD_CAST "xsi", NULL, BAD_CAST _gexf->getMetaData().getXsi().c_str());
-    if (rc < 0) {
-        throw FileWriterException("Error at xmlTextWriterWriteAttributeNS");
-    }
-
-    /* Start an element named "schemaLocation" */
-    rc = xmlTextWriterWriteAttributeNS(writer, BAD_CAST "xsi", BAD_CAST "schemaLocation", NULL, BAD_CAST _gexf->getMetaData().getSchema().c_str());
-    if (rc < 0) {
-        throw FileWriterException("Error at xmlTextWriterWriteAttributeNS");
-    }
-
     /* Add an attribute with name "version" */
-    rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "version", BAD_CAST _gexf->getMetaData().getVersion().c_str());
+    rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "version", BAD_CAST "1.0");
     if (rc < 0) {
         throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
     }
@@ -165,7 +147,7 @@ void FileWriter::writeGexfNode(xmlTextWriterPtr writer) {
 }
 
 //-----------------------------------------
-void FileWriter::writeMetaNode(xmlTextWriterPtr writer) {
+void LegacyWriter::writeMetaNode(xmlTextWriterPtr writer) {
 //-----------------------------------------
     /* Do we have to write all these nodes? */
     const bool do_lastmodifieddate = _gexf->getMetaData().getLastModifiedDate().compare("") != 0;
@@ -222,7 +204,7 @@ void FileWriter::writeMetaNode(xmlTextWriterPtr writer) {
 }
 
 //-----------------------------------------
-void FileWriter::writeGraphNode(xmlTextWriterPtr writer) {
+void LegacyWriter::writeGraphNode(xmlTextWriterPtr writer) {
 //-----------------------------------------
     /* Start an element named "graph" as child of gexf. */
     int rc = xmlTextWriterStartElement(writer, BAD_CAST "graph");
@@ -242,7 +224,7 @@ void FileWriter::writeGraphNode(xmlTextWriterPtr writer) {
         rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "defaultedgetype", BAD_CAST "directed");
     }
     else if (t == GRAPH_MIXED) {
-        rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "defaultedgetype", BAD_CAST "mixed");
+        rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "defaultedgetype", BAD_CAST "directed");
     }
     else {
         rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "defaultedgetype", BAD_CAST "undirected");
@@ -265,7 +247,7 @@ void FileWriter::writeGraphNode(xmlTextWriterPtr writer) {
 }
 
 //-----------------------------------------
-void FileWriter::writeNodesNode(xmlTextWriterPtr writer) {
+void LegacyWriter::writeNodesNode(xmlTextWriterPtr writer) {
 //-----------------------------------------
     /* Start an element named "nodes" as child of graph. */
     int rc = xmlTextWriterStartElement(writer, BAD_CAST "nodes");
@@ -275,10 +257,13 @@ void FileWriter::writeNodesNode(xmlTextWriterPtr writer) {
 
     /* Iterate on each node */
     NodeIter* it = _gexf->getUndirectedGraph().getNodes();
+    unsigned int cpt = 0;
     while(it->hasNext()) {
         const t_id node_id = it->next();
+        const unsigned int new_id = cpt++;
+        _nodes.insert( pair<t_id,unsigned int>(node_id,new_id) );
         const string label = _gexf->getData().getLabel(node_id);
-        this->writeNodeNode(writer, Conv::idToStr(node_id), label);
+        this->writeNodeNode(writer, Conv::idToStr(node_id), Conv::unsignedIntToStr(new_id), label);
     }
     
     /* Close the element named nodes. */
@@ -289,7 +274,7 @@ void FileWriter::writeNodesNode(xmlTextWriterPtr writer) {
 }
 
 //-----------------------------------------
-void FileWriter::writeNodeNode(xmlTextWriterPtr writer, const std::string& node_id, const std::string& label) {
+void LegacyWriter::writeNodeNode(xmlTextWriterPtr writer, const std::string& node_id, const std::string& new_id, const std::string& label) {
 //-----------------------------------------
     /* Write an element named "node" as child of nodes. */
     int rc = xmlTextWriterStartElement(writer, BAD_CAST "node");
@@ -298,7 +283,7 @@ void FileWriter::writeNodeNode(xmlTextWriterPtr writer, const std::string& node_
     }
 
     /* Add an attribute with name "id" */
-    rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "id", BAD_CAST node_id.c_str());
+    rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "id", BAD_CAST new_id.c_str());
     if (rc < 0) {
         throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
     }
@@ -322,7 +307,7 @@ void FileWriter::writeNodeNode(xmlTextWriterPtr writer, const std::string& node_
 }
 
 //-----------------------------------------
-void FileWriter::writeEdgesNode(xmlTextWriterPtr writer) {
+void LegacyWriter::writeEdgesNode(xmlTextWriterPtr writer) {
 //-----------------------------------------
     /* Start an element named "edges" as child of graph. */
     int rc = xmlTextWriterStartElement(writer, BAD_CAST "edges");
@@ -332,13 +317,19 @@ void FileWriter::writeEdgesNode(xmlTextWriterPtr writer) {
 
     /* Iterate on each edge */
     EdgeIter* it = _gexf->getUndirectedGraph().getEdges();
+    unsigned int cpt = 0;
     while(it->hasNext()) {
         const t_id edge_id = it->next();
         const t_id source_id = it->currentSource();
         const t_id target_id = it->currentTarget();
+
+        const unsigned int new_id = cpt++;
+        unsigned int new_source = _nodes.find(source_id)->second;
+        unsigned int new_target = _nodes.find(target_id)->second;
+
         const unsigned int card = (unsigned int)it->currentProperty(EDGE_COUNT);
         const t_edge_type type = (t_edge_type)it->currentProperty(EDGE_TYPE);
-        this->writeEdgeNode(writer, Conv::idToStr(edge_id), Conv::idToStr(source_id), Conv::idToStr(target_id), Conv::unsignedIntToStr(card), Conv::edgeTypeToStr(type));
+        this->writeEdgeNode(writer, Conv::idToStr(edge_id), Conv::unsignedIntToStr(new_id), Conv::unsignedIntToStr(new_source), Conv::unsignedIntToStr(new_target), Conv::unsignedIntToStr(card), Conv::edgeTypeToStr(type));
     }
 
     /* Close the element named edges. */
@@ -349,7 +340,7 @@ void FileWriter::writeEdgesNode(xmlTextWriterPtr writer) {
 }
 
 //-----------------------------------------
-void FileWriter::writeEdgeNode(xmlTextWriterPtr writer, const std::string& edge_id, const std::string& source_id, const std::string& target_id, const std::string& cardinal, const std::string& type) {
+void LegacyWriter::writeEdgeNode(xmlTextWriterPtr writer, const std::string& edge_id, const std::string& new_id, const std::string& source_id, const std::string& target_id, const std::string& cardinal, const std::string& type) {
 //-----------------------------------------
     /* Write an element named "edge" as child of edges. */
     int rc = xmlTextWriterStartElement(writer, BAD_CAST "edge");
@@ -358,7 +349,7 @@ void FileWriter::writeEdgeNode(xmlTextWriterPtr writer, const std::string& edge_
     }
 
     /* Add an attribute with name "id" */
-    rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "id", BAD_CAST edge_id.c_str());
+    rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "id", BAD_CAST new_id.c_str());
     if (rc < 0) {
         throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
     }
@@ -387,10 +378,12 @@ void FileWriter::writeEdgeNode(xmlTextWriterPtr writer, const std::string& edge_
     /* Add an attribute with name "type" */
     if( type.compare("undef") != 0 ) {
         t_graph t = _gexf->getGraphType();
-        if( (t != GRAPH_DIRECTED && type.compare("undirected") != 0) || /* undirected is the default value and can be omitted */
-            (t == GRAPH_DIRECTED && type.compare("directed") != 0) ) { /* directed can be omitted if it is the default value */
+        if( (t != GRAPH_DIRECTED && type != "undirected") || /* undirected is the default value and can be omitted */
+            (t != GRAPH_UNDIRECTED && type != "directed") ) { /* directed can be omitted if it is the default value */
 
-            rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "type", BAD_CAST type.c_str());
+            const string new_type = ( type == "undirected" ) ? "sim" : ( ( type == "directed" ) ? "dir" : "dou" );
+
+            rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "type", BAD_CAST new_type.c_str());
             if (rc < 0) {
                 throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
             }
@@ -410,7 +403,7 @@ void FileWriter::writeEdgeNode(xmlTextWriterPtr writer, const std::string& edge_
 }
 
 //-----------------------------------------
-void FileWriter::writeAttributesNode(xmlTextWriterPtr writer, const std::string& element_class) {
+void LegacyWriter::writeAttributesNode(xmlTextWriterPtr writer, const std::string& element_class) {
 //-----------------------------------------
 AttributeIter* it = 0;
 
@@ -438,26 +431,27 @@ AttributeIter* it = 0;
         throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
     }
 
+    unsigned int cpt = 0;
     while(it->hasNext()) {
         const t_id attr_id = it->next();
         const string title = it->currentTitle();
         const t_attr_type type = it->currentType();
         string default_value = "";
-        string options = "";
+
+        const unsigned int new_id = cpt++;
+        _attributes.insert( pair<t_id,unsigned int>(attr_id,new_id) );
 
         if(element_class.compare("node") == 0) {
             if( _gexf->getData().hasNodeAttributeDefault(attr_id) ) {
                 default_value = _gexf->getData().getNodeAttributeDefault(attr_id);
-                options = _gexf->getData().getNodeAttributeOptions(attr_id);
             }
         }
         else if(element_class.compare("edge") == 0) {
             if( _gexf->getData().hasEdgeAttributeDefault(attr_id) ) {
                 default_value = _gexf->getData().getEdgeAttributeDefault(attr_id);
-                options = _gexf->getData().getEdgeAttributeOptions(attr_id);
             }
         }
-        this->writeAttributeNode(writer, Conv::idToStr(attr_id), title, Conv::attrTypeToStr(type), default_value, options);
+        this->writeAttributeNode(writer, Conv::idToStr(attr_id), Conv::unsignedIntToStr(new_id), title, Conv::attrTypeToStr(type), default_value);
     }
 
     /* Close the element named attributes. */
@@ -468,7 +462,7 @@ AttributeIter* it = 0;
 }
 
 //-----------------------------------------
-void FileWriter::writeAttributeNode(xmlTextWriterPtr writer, const std::string& id, const std::string& title, const std::string& type, const std::string& default_value, const std::string& options) {
+void LegacyWriter::writeAttributeNode(xmlTextWriterPtr writer, const std::string& id, const std::string& new_id, const std::string& title, const std::string& type, const std::string& default_value) {
 //-----------------------------------------
     /* Start an element named "attribute" as child of attributes. */
     int rc = xmlTextWriterStartElement(writer, BAD_CAST "attribute");
@@ -477,7 +471,7 @@ void FileWriter::writeAttributeNode(xmlTextWriterPtr writer, const std::string& 
     }
 
     /* Add an attribute with name "id" */
-    rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "id", BAD_CAST id.c_str());
+    rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "id", BAD_CAST new_id.c_str());
     if (rc < 0) {
         throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
     }
@@ -489,7 +483,8 @@ void FileWriter::writeAttributeNode(xmlTextWriterPtr writer, const std::string& 
     }
 
     /* Add an attribute with name "type" */
-    rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "type", BAD_CAST type.c_str());
+    const string new_type = ( type == "liststring" ) ? "string" : type;
+    rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "type", BAD_CAST new_type.c_str());
     if (rc < 0) {
         throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
     }
@@ -497,14 +492,6 @@ void FileWriter::writeAttributeNode(xmlTextWriterPtr writer, const std::string& 
     /* Write a text element named "default" */
     if( !default_value.empty() ) {
         rc = xmlTextWriterWriteElement(writer, BAD_CAST "default", BAD_CAST default_value.c_str());
-        if (rc < 0) {
-            throw FileWriterException("Error at xmlTextWriterWriteElement");
-        }
-    }
-
-    /* Write a text element named "options" */
-    if( !options.empty() ) {
-        rc = xmlTextWriterWriteElement(writer, BAD_CAST "options", BAD_CAST options.c_str());
         if (rc < 0) {
             throw FileWriterException("Error at xmlTextWriterWriteElement");
         }
@@ -518,7 +505,7 @@ void FileWriter::writeAttributeNode(xmlTextWriterPtr writer, const std::string& 
 }
 
 //-----------------------------------------
-void FileWriter::writeAttributeDefaultNode(xmlTextWriterPtr writer, const std::string& default_value) {
+void LegacyWriter::writeAttributeDefaultNode(xmlTextWriterPtr writer, const std::string& default_value) {
 //-----------------------------------------
     /* Start an element named "default" as child of attribute. */
     int rc = xmlTextWriterStartElement(writer, BAD_CAST "default");
@@ -540,7 +527,7 @@ void FileWriter::writeAttributeDefaultNode(xmlTextWriterPtr writer, const std::s
 }
 
 //-----------------------------------------
-void FileWriter::writeAttvaluesNode(xmlTextWriterPtr writer, const ElemType type, const std::string& id) {
+void LegacyWriter::writeAttvaluesNode(xmlTextWriterPtr writer, const ElemType type, const std::string& id) {
 //-----------------------------------------
     /* Start an element named "attvalues" as child of node or edge. */
     int rc = xmlTextWriterStartElement(writer, BAD_CAST "attvalues");
@@ -559,8 +546,9 @@ void FileWriter::writeAttvaluesNode(xmlTextWriterPtr writer, const ElemType type
     if(row != NULL) {
         while(row->hasNext()) {
             const t_id attr_id = row->next();
+            unsigned int new_id = _attributes.find(attr_id)->second;
             const string v = row->currentValue();
-            this->writeAttvalueNode(writer, Conv::idToStr(attr_id), v);
+            this->writeAttvalueNode(writer, Conv::unsignedIntToStr(new_id), v);
         }
     }
     
@@ -572,7 +560,7 @@ void FileWriter::writeAttvaluesNode(xmlTextWriterPtr writer, const ElemType type
 }
 
 //-----------------------------------------
-void FileWriter::writeAttvalueNode(xmlTextWriterPtr writer, const std::string& attribute_id, const std::string& value) {
+void LegacyWriter::writeAttvalueNode(xmlTextWriterPtr writer, const std::string& attribute_id, const std::string& value) {
 //-----------------------------------------
     /* Start an element named "attvalue" as child of attvalues. */
     int rc = xmlTextWriterStartElement(writer, BAD_CAST "attvalue");
@@ -580,8 +568,8 @@ void FileWriter::writeAttvalueNode(xmlTextWriterPtr writer, const std::string& a
         throw FileWriterException("Error at xmlTextWriterStartElement");
     }
 
-    /* Add an attribute with name "for" */
-    rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "for", BAD_CAST attribute_id.c_str());
+    /* Add an attribute with name "id" */
+    rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "id", BAD_CAST attribute_id.c_str());
     if (rc < 0) {
         throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
     }
