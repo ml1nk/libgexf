@@ -19,31 +19,35 @@ libgexf_module = Extension(
     # et automatiquement linké avec le module
     
     #io::input
-    '../../filereader.cpp',
-    '../../gexfparser.cpp',
-    '../../legacyparser.cpp',
+    '../../libgexf/filereader.cpp',
+    '../../libgexf/gexfparser.cpp',
+    '../../libgexf/legacyparser.cpp',
+    '../../libgexf/rngvalidator.cpp',
+    '../../libgexf/schemavalidator.cpp',
     
     #io::output
-    '../../filewriter.cpp',
+    '../../libgexf/filewriter.cpp',
+    '../../libgexf/legacywriter.cpp',
     
     #io::utils
-    '../../conv.cpp',
+    '../../libgexf/conv.cpp',
     
     #db::topo
-    '../../graph.cpp',
-    '../../directedgraph.cpp',
-    '../../undirectedgraph.cpp',
-    '../../nodeiter.cpp',
-    '../../edgeiter.cpp',
+    '../../libgexf/graph.cpp',
+    '../../libgexf/directedgraph.cpp',
+    '../../libgexf/undirectedgraph.cpp',
+    '../../libgexf/nodeiter.cpp',
+    '../../libgexf/edgeiter.cpp',
     
     #db::data
-    '../../data.cpp',
-    '../../metadata.cpp',
-    '../../attributeiter.cpp',
-    '../../attvalueiter.cpp',
+    '../../libgexf/data.cpp',
+    '../../libgexf/metadata.cpp',
+    '../../libgexf/attributeiter.cpp',
+    '../../libgexf/attvalueiter.cpp',
     
     #main
-    '../../gexf.cpp',
+    '../../libgexf/gexf.cpp',
+    '../../libgexf/memoryvalidator.cpp',
 
     # chemin du wrapper généré automatiquement par SWIG (ce wrapper doit déjà exister donc)
     'libgexf_wrap.cpp',
@@ -66,7 +70,7 @@ setup (
        name='libgexf', # important, c'est le vrai nom du module, qui sera utilisé quand on fera un "import libgexf;" par exemple
 
        # metadonnees diverses
-       version='0.1.0', 
+       version='0.1.1', 
        author="Sebastien Heymann",
        author_email="sebastien.heymann@gephi.org",
        url="http://gephi.org",

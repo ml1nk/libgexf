@@ -263,6 +263,24 @@ class AbstractIter(_object):
 AbstractIter_swigregister = _libgexf.AbstractIter_swigregister
 AbstractIter_swigregister(AbstractIter)
 
+class MemoryValidator(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MemoryValidator, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, MemoryValidator, name)
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _libgexf.delete_MemoryValidator
+    __del__ = lambda self : None;
+    __swig_getmethods__["run"] = lambda x: _libgexf.MemoryValidator_run
+    if _newclass:run = staticmethod(_libgexf.MemoryValidator_run)
+MemoryValidator_swigregister = _libgexf.MemoryValidator_swigregister
+MemoryValidator_swigregister(MemoryValidator)
+
+def MemoryValidator_run(*args):
+  return _libgexf.MemoryValidator_run(*args)
+MemoryValidator_run = _libgexf.MemoryValidator_run
+
 class FileReader(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, FileReader, name, value)
@@ -304,11 +322,8 @@ class GexfParser(AbstractParser):
     __swig_getmethods__ = {}
     for _s in [AbstractParser]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
     __getattr__ = lambda self, name: _swig_getattr(self, GexfParser, name)
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
-    def __init__(self, *args): 
-        this = _libgexf.new_GexfParser(*args)
-        try: self.this.append(this)
-        except: self.this = this
     __swig_destroy__ = _libgexf.delete_GexfParser
     __del__ = lambda self : None;
     def bind(self, *args): return _libgexf.GexfParser_bind(self, *args)
@@ -335,6 +350,42 @@ class LegacyParser(AbstractParser):
 LegacyParser_swigregister = _libgexf.LegacyParser_swigregister
 LegacyParser_swigregister(LegacyParser)
 
+class RngValidator(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, RngValidator, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, RngValidator, name)
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _libgexf.delete_RngValidator
+    __del__ = lambda self : None;
+    __swig_getmethods__["run"] = lambda x: _libgexf.RngValidator_run
+    if _newclass:run = staticmethod(_libgexf.RngValidator_run)
+RngValidator_swigregister = _libgexf.RngValidator_swigregister
+RngValidator_swigregister(RngValidator)
+
+def RngValidator_run(*args):
+  return _libgexf.RngValidator_run(*args)
+RngValidator_run = _libgexf.RngValidator_run
+
+class SchemaValidator(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, SchemaValidator, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, SchemaValidator, name)
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _libgexf.delete_SchemaValidator
+    __del__ = lambda self : None;
+    __swig_getmethods__["run"] = lambda x: _libgexf.SchemaValidator_run
+    if _newclass:run = staticmethod(_libgexf.SchemaValidator_run)
+SchemaValidator_swigregister = _libgexf.SchemaValidator_swigregister
+SchemaValidator_swigregister(SchemaValidator)
+
+def SchemaValidator_run(*args):
+  return _libgexf.SchemaValidator_run(*args)
+SchemaValidator_run = _libgexf.SchemaValidator_run
+
 class FileWriter(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, FileWriter, name, value)
@@ -354,6 +405,26 @@ class FileWriter(_object):
     def write(self): return _libgexf.FileWriter_write(self)
 FileWriter_swigregister = _libgexf.FileWriter_swigregister
 FileWriter_swigregister(FileWriter)
+
+class LegacyWriter(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, LegacyWriter, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, LegacyWriter, name)
+    __repr__ = _swig_repr
+    NODE = _libgexf.LegacyWriter_NODE
+    EDGE = _libgexf.LegacyWriter_EDGE
+    def __init__(self, *args): 
+        this = _libgexf.new_LegacyWriter(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _libgexf.delete_LegacyWriter
+    __del__ = lambda self : None;
+    def getGEXFCopy(self): return _libgexf.LegacyWriter_getGEXFCopy(self)
+    def init(self, *args): return _libgexf.LegacyWriter_init(self, *args)
+    def write(self): return _libgexf.LegacyWriter_write(self)
+LegacyWriter_swigregister = _libgexf.LegacyWriter_swigregister
+LegacyWriter_swigregister(LegacyWriter)
 
 class Conv(_object):
     __swig_setmethods__ = {}
@@ -382,6 +453,16 @@ class Conv(_object):
     if _newclass:edgeTypeToStr = staticmethod(_libgexf.Conv_edgeTypeToStr)
     __swig_getmethods__["attrTypeToStr"] = lambda x: _libgexf.Conv_attrTypeToStr
     if _newclass:attrTypeToStr = staticmethod(_libgexf.Conv_attrTypeToStr)
+    __swig_getmethods__["isBoolean"] = lambda x: _libgexf.Conv_isBoolean
+    if _newclass:isBoolean = staticmethod(_libgexf.Conv_isBoolean)
+    __swig_getmethods__["isDouble"] = lambda x: _libgexf.Conv_isDouble
+    if _newclass:isDouble = staticmethod(_libgexf.Conv_isDouble)
+    __swig_getmethods__["isInteger"] = lambda x: _libgexf.Conv_isInteger
+    if _newclass:isInteger = staticmethod(_libgexf.Conv_isInteger)
+    __swig_getmethods__["isFloat"] = lambda x: _libgexf.Conv_isFloat
+    if _newclass:isFloat = staticmethod(_libgexf.Conv_isFloat)
+    __swig_getmethods__["tokenizer"] = lambda x: _libgexf.Conv_tokenizer
+    if _newclass:tokenizer = staticmethod(_libgexf.Conv_tokenizer)
 Conv_swigregister = _libgexf.Conv_swigregister
 Conv_swigregister(Conv)
 
@@ -420,6 +501,26 @@ Conv_edgeTypeToStr = _libgexf.Conv_edgeTypeToStr
 def Conv_attrTypeToStr(*args):
   return _libgexf.Conv_attrTypeToStr(*args)
 Conv_attrTypeToStr = _libgexf.Conv_attrTypeToStr
+
+def Conv_isBoolean(*args):
+  return _libgexf.Conv_isBoolean(*args)
+Conv_isBoolean = _libgexf.Conv_isBoolean
+
+def Conv_isDouble(*args):
+  return _libgexf.Conv_isDouble(*args)
+Conv_isDouble = _libgexf.Conv_isDouble
+
+def Conv_isInteger(*args):
+  return _libgexf.Conv_isInteger(*args)
+Conv_isInteger = _libgexf.Conv_isInteger
+
+def Conv_isFloat(*args):
+  return _libgexf.Conv_isFloat(*args)
+Conv_isFloat = _libgexf.Conv_isFloat
+
+def Conv_tokenizer(*args):
+  return _libgexf.Conv_tokenizer(*args)
+Conv_tokenizer = _libgexf.Conv_tokenizer
 
 class Graph(_object):
     __swig_setmethods__ = {}
@@ -563,6 +664,8 @@ class Data(_object):
     def addEdgeAttributeColumn(self, *args): return _libgexf.Data_addEdgeAttributeColumn(self, *args)
     def setNodeAttributeDefault(self, *args): return _libgexf.Data_setNodeAttributeDefault(self, *args)
     def setEdgeAttributeDefault(self, *args): return _libgexf.Data_setEdgeAttributeDefault(self, *args)
+    def setNodeAttributeOptions(self, *args): return _libgexf.Data_setNodeAttributeOptions(self, *args)
+    def setEdgeAttributeOptions(self, *args): return _libgexf.Data_setEdgeAttributeOptions(self, *args)
     def setNodeValue(self, *args): return _libgexf.Data_setNodeValue(self, *args)
     def setEdgeValue(self, *args): return _libgexf.Data_setEdgeValue(self, *args)
     def getNodeAttributeColumn(self): return _libgexf.Data_getNodeAttributeColumn(self)
@@ -572,9 +675,15 @@ class Data(_object):
     def getNodeAttributeRow(self, *args): return _libgexf.Data_getNodeAttributeRow(self, *args)
     def getEdgeAttributeRow(self, *args): return _libgexf.Data_getEdgeAttributeRow(self, *args)
     def getNodeAttributeDefault(self, *args): return _libgexf.Data_getNodeAttributeDefault(self, *args)
+    def getEdgeAttributeOptions(self, *args): return _libgexf.Data_getEdgeAttributeOptions(self, *args)
+    def getNodeAttributeOptions(self, *args): return _libgexf.Data_getNodeAttributeOptions(self, *args)
     def getEdgeAttributeDefault(self, *args): return _libgexf.Data_getEdgeAttributeDefault(self, *args)
     def hasNodeAttributeDefault(self, *args): return _libgexf.Data_hasNodeAttributeDefault(self, *args)
     def hasEdgeAttributeDefault(self, *args): return _libgexf.Data_hasEdgeAttributeDefault(self, *args)
+    def hasNodeAttributeOptions(self, *args): return _libgexf.Data_hasNodeAttributeOptions(self, *args)
+    def hasEdgeAttributeOptions(self, *args): return _libgexf.Data_hasEdgeAttributeOptions(self, *args)
+    def isNodeAttributeOption(self, *args): return _libgexf.Data_isNodeAttributeOption(self, *args)
+    def isEdgeAttributeOption(self, *args): return _libgexf.Data_isEdgeAttributeOption(self, *args)
     def clearNodeAttributes(self, *args): return _libgexf.Data_clearNodeAttributes(self, *args)
     def clearEdgeAttributes(self, *args): return _libgexf.Data_clearEdgeAttributes(self, *args)
     def clear(self): return _libgexf.Data_clear(self)

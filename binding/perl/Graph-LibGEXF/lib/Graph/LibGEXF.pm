@@ -126,26 +126,527 @@ sub ACQUIRE {
 }
 
 
-############# Class : Graph::LibGEXF::MessageExceptionBuilder ##############
+############# Class : Graph::LibGEXF::FileWriterException ##############
 
-package Graph::LibGEXF::MessageExceptionBuilder;
+package Graph::LibGEXF::FileWriterException;
 use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
 @ISA = qw( Graph::LibGEXF );
 %OWNER = ();
 %ITERATORS = ();
-*buildString = *Graph::LibGEXFc::MessageExceptionBuilder_buildString;
-*abstractClass = *Graph::LibGEXFc::MessageExceptionBuilder_abstractClass;
+sub new {
+    my $pkg = shift;
+    my $self = Graph::LibGEXFc::new_FileWriterException(@_);
+    bless $self, $pkg if defined($self);
+}
+
 sub DESTROY {
     return unless $_[0]->isa('HASH');
     my $self = tied(%{$_[0]});
     return unless defined $self;
     delete $ITERATORS{$self};
     if (exists $OWNER{$self}) {
-        Graph::LibGEXFc::delete_MessageExceptionBuilder($self);
+        Graph::LibGEXFc::delete_FileWriterException($self);
         delete $OWNER{$self};
     }
 }
 
+*what = *Graph::LibGEXFc::FileWriterException_what;
+sub DISOWN {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    delete $OWNER{$ptr};
+}
+
+sub ACQUIRE {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    $OWNER{$ptr} = 1;
+}
+
+
+############# Class : Graph::LibGEXF::FileReaderException ##############
+
+package Graph::LibGEXF::FileReaderException;
+use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
+@ISA = qw( Graph::LibGEXF );
+%OWNER = ();
+%ITERATORS = ();
+sub new {
+    my $pkg = shift;
+    my $self = Graph::LibGEXFc::new_FileReaderException(@_);
+    bless $self, $pkg if defined($self);
+}
+
+sub DESTROY {
+    return unless $_[0]->isa('HASH');
+    my $self = tied(%{$_[0]});
+    return unless defined $self;
+    delete $ITERATORS{$self};
+    if (exists $OWNER{$self}) {
+        Graph::LibGEXFc::delete_FileReaderException($self);
+        delete $OWNER{$self};
+    }
+}
+
+*what = *Graph::LibGEXFc::FileReaderException_what;
+sub DISOWN {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    delete $OWNER{$ptr};
+}
+
+sub ACQUIRE {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    $OWNER{$ptr} = 1;
+}
+
+
+############# Class : Graph::LibGEXF::GEXF ##############
+
+package Graph::LibGEXF::GEXF;
+use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
+@ISA = qw( Graph::LibGEXF );
+%OWNER = ();
+%ITERATORS = ();
+sub new {
+    my $pkg = shift;
+    my $self = Graph::LibGEXFc::new_GEXF(@_);
+    bless $self, $pkg if defined($self);
+}
+
+sub DESTROY {
+    return unless $_[0]->isa('HASH');
+    my $self = tied(%{$_[0]});
+    return unless defined $self;
+    delete $ITERATORS{$self};
+    if (exists $OWNER{$self}) {
+        Graph::LibGEXFc::delete_GEXF($self);
+        delete $OWNER{$self};
+    }
+}
+
+*getUndirectedGraph = *Graph::LibGEXFc::GEXF_getUndirectedGraph;
+*getDirectedGraph = *Graph::LibGEXFc::GEXF_getDirectedGraph;
+*getData = *Graph::LibGEXFc::GEXF_getData;
+*getMetaData = *Graph::LibGEXFc::GEXF_getMetaData;
+*setGraphType = *Graph::LibGEXFc::GEXF_setGraphType;
+*getGraphType = *Graph::LibGEXFc::GEXF_getGraphType;
+*checkIntegrity = *Graph::LibGEXFc::GEXF_checkIntegrity;
+*swig__graph_get = *Graph::LibGEXFc::GEXF__graph_get;
+*swig__graph_set = *Graph::LibGEXFc::GEXF__graph_set;
+*swig__type_get = *Graph::LibGEXFc::GEXF__type_get;
+*swig__type_set = *Graph::LibGEXFc::GEXF__type_set;
+*swig__data_get = *Graph::LibGEXFc::GEXF__data_get;
+*swig__data_set = *Graph::LibGEXFc::GEXF__data_set;
+*swig__meta_get = *Graph::LibGEXFc::GEXF__meta_get;
+*swig__meta_set = *Graph::LibGEXFc::GEXF__meta_set;
+sub DISOWN {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    delete $OWNER{$ptr};
+}
+
+sub ACQUIRE {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    $OWNER{$ptr} = 1;
+}
+
+
+############# Class : Graph::LibGEXF::AbstractIter ##############
+
+package Graph::LibGEXF::AbstractIter;
+use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
+@ISA = qw( Graph::LibGEXF );
+%OWNER = ();
+%ITERATORS = ();
+*begin = *Graph::LibGEXFc::AbstractIter_begin;
+*hasNext = *Graph::LibGEXFc::AbstractIter_hasNext;
+*next = *Graph::LibGEXFc::AbstractIter_next;
+sub DESTROY {
+    return unless $_[0]->isa('HASH');
+    my $self = tied(%{$_[0]});
+    return unless defined $self;
+    delete $ITERATORS{$self};
+    if (exists $OWNER{$self}) {
+        Graph::LibGEXFc::delete_AbstractIter($self);
+        delete $OWNER{$self};
+    }
+}
+
+sub DISOWN {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    delete $OWNER{$ptr};
+}
+
+sub ACQUIRE {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    $OWNER{$ptr} = 1;
+}
+
+
+############# Class : Graph::LibGEXF::MemoryValidator ##############
+
+package Graph::LibGEXF::MemoryValidator;
+use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
+@ISA = qw( Graph::LibGEXF );
+%OWNER = ();
+%ITERATORS = ();
+sub DESTROY {
+    return unless $_[0]->isa('HASH');
+    my $self = tied(%{$_[0]});
+    return unless defined $self;
+    delete $ITERATORS{$self};
+    if (exists $OWNER{$self}) {
+        Graph::LibGEXFc::delete_MemoryValidator($self);
+        delete $OWNER{$self};
+    }
+}
+
+*run = *Graph::LibGEXFc::MemoryValidator_run;
+sub DISOWN {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    delete $OWNER{$ptr};
+}
+
+sub ACQUIRE {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    $OWNER{$ptr} = 1;
+}
+
+
+############# Class : Graph::LibGEXF::FileReader ##############
+
+package Graph::LibGEXF::FileReader;
+use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
+@ISA = qw( Graph::LibGEXF );
+%OWNER = ();
+%ITERATORS = ();
+*_1_0 = *Graph::LibGEXFc::FileReader__1_0;
+*_1_1 = *Graph::LibGEXFc::FileReader__1_1;
+sub new {
+    my $pkg = shift;
+    my $self = Graph::LibGEXFc::new_FileReader(@_);
+    bless $self, $pkg if defined($self);
+}
+
+sub DESTROY {
+    return unless $_[0]->isa('HASH');
+    my $self = tied(%{$_[0]});
+    return unless defined $self;
+    delete $ITERATORS{$self};
+    if (exists $OWNER{$self}) {
+        Graph::LibGEXFc::delete_FileReader($self);
+        delete $OWNER{$self};
+    }
+}
+
+*getGEXFCopy = *Graph::LibGEXFc::FileReader_getGEXFCopy;
+*init = *Graph::LibGEXFc::FileReader_init;
+*slurp = *Graph::LibGEXFc::FileReader_slurp;
+sub DISOWN {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    delete $OWNER{$ptr};
+}
+
+sub ACQUIRE {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    $OWNER{$ptr} = 1;
+}
+
+
+############# Class : Graph::LibGEXF::AbstractParser ##############
+
+package Graph::LibGEXF::AbstractParser;
+use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
+@ISA = qw( Graph::LibGEXF );
+%OWNER = ();
+%ITERATORS = ();
+*bind = *Graph::LibGEXFc::AbstractParser_bind;
+*processNode = *Graph::LibGEXFc::AbstractParser_processNode;
+sub DESTROY {
+    return unless $_[0]->isa('HASH');
+    my $self = tied(%{$_[0]});
+    return unless defined $self;
+    delete $ITERATORS{$self};
+    if (exists $OWNER{$self}) {
+        Graph::LibGEXFc::delete_AbstractParser($self);
+        delete $OWNER{$self};
+    }
+}
+
+sub DISOWN {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    delete $OWNER{$ptr};
+}
+
+sub ACQUIRE {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    $OWNER{$ptr} = 1;
+}
+
+
+############# Class : Graph::LibGEXF::GexfParser ##############
+
+package Graph::LibGEXF::GexfParser;
+use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
+@ISA = qw( Graph::LibGEXF::AbstractParser Graph::LibGEXF );
+%OWNER = ();
+%ITERATORS = ();
+sub DESTROY {
+    return unless $_[0]->isa('HASH');
+    my $self = tied(%{$_[0]});
+    return unless defined $self;
+    delete $ITERATORS{$self};
+    if (exists $OWNER{$self}) {
+        Graph::LibGEXFc::delete_GexfParser($self);
+        delete $OWNER{$self};
+    }
+}
+
+*bind = *Graph::LibGEXFc::GexfParser_bind;
+*processNode = *Graph::LibGEXFc::GexfParser_processNode;
+sub DISOWN {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    delete $OWNER{$ptr};
+}
+
+sub ACQUIRE {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    $OWNER{$ptr} = 1;
+}
+
+
+############# Class : Graph::LibGEXF::LegacyParser ##############
+
+package Graph::LibGEXF::LegacyParser;
+use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
+@ISA = qw( Graph::LibGEXF::AbstractParser Graph::LibGEXF );
+%OWNER = ();
+%ITERATORS = ();
+sub new {
+    my $pkg = shift;
+    my $self = Graph::LibGEXFc::new_LegacyParser(@_);
+    bless $self, $pkg if defined($self);
+}
+
+sub DESTROY {
+    return unless $_[0]->isa('HASH');
+    my $self = tied(%{$_[0]});
+    return unless defined $self;
+    delete $ITERATORS{$self};
+    if (exists $OWNER{$self}) {
+        Graph::LibGEXFc::delete_LegacyParser($self);
+        delete $OWNER{$self};
+    }
+}
+
+*bind = *Graph::LibGEXFc::LegacyParser_bind;
+*processNode = *Graph::LibGEXFc::LegacyParser_processNode;
+sub DISOWN {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    delete $OWNER{$ptr};
+}
+
+sub ACQUIRE {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    $OWNER{$ptr} = 1;
+}
+
+
+############# Class : Graph::LibGEXF::RngValidator ##############
+
+package Graph::LibGEXF::RngValidator;
+use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
+@ISA = qw( Graph::LibGEXF );
+%OWNER = ();
+%ITERATORS = ();
+sub DESTROY {
+    return unless $_[0]->isa('HASH');
+    my $self = tied(%{$_[0]});
+    return unless defined $self;
+    delete $ITERATORS{$self};
+    if (exists $OWNER{$self}) {
+        Graph::LibGEXFc::delete_RngValidator($self);
+        delete $OWNER{$self};
+    }
+}
+
+*run = *Graph::LibGEXFc::RngValidator_run;
+sub DISOWN {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    delete $OWNER{$ptr};
+}
+
+sub ACQUIRE {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    $OWNER{$ptr} = 1;
+}
+
+
+############# Class : Graph::LibGEXF::SchemaValidator ##############
+
+package Graph::LibGEXF::SchemaValidator;
+use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
+@ISA = qw( Graph::LibGEXF );
+%OWNER = ();
+%ITERATORS = ();
+sub DESTROY {
+    return unless $_[0]->isa('HASH');
+    my $self = tied(%{$_[0]});
+    return unless defined $self;
+    delete $ITERATORS{$self};
+    if (exists $OWNER{$self}) {
+        Graph::LibGEXFc::delete_SchemaValidator($self);
+        delete $OWNER{$self};
+    }
+}
+
+*run = *Graph::LibGEXFc::SchemaValidator_run;
+sub DISOWN {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    delete $OWNER{$ptr};
+}
+
+sub ACQUIRE {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    $OWNER{$ptr} = 1;
+}
+
+
+############# Class : Graph::LibGEXF::FileWriter ##############
+
+package Graph::LibGEXF::FileWriter;
+use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
+@ISA = qw( Graph::LibGEXF );
+%OWNER = ();
+%ITERATORS = ();
+*NODE = *Graph::LibGEXFc::FileWriter_NODE;
+*EDGE = *Graph::LibGEXFc::FileWriter_EDGE;
+sub new {
+    my $pkg = shift;
+    my $self = Graph::LibGEXFc::new_FileWriter(@_);
+    bless $self, $pkg if defined($self);
+}
+
+sub DESTROY {
+    return unless $_[0]->isa('HASH');
+    my $self = tied(%{$_[0]});
+    return unless defined $self;
+    delete $ITERATORS{$self};
+    if (exists $OWNER{$self}) {
+        Graph::LibGEXFc::delete_FileWriter($self);
+        delete $OWNER{$self};
+    }
+}
+
+*getGEXFCopy = *Graph::LibGEXFc::FileWriter_getGEXFCopy;
+*init = *Graph::LibGEXFc::FileWriter_init;
+*write = *Graph::LibGEXFc::FileWriter_write;
+sub DISOWN {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    delete $OWNER{$ptr};
+}
+
+sub ACQUIRE {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    $OWNER{$ptr} = 1;
+}
+
+
+############# Class : Graph::LibGEXF::LegacyWriter ##############
+
+package Graph::LibGEXF::LegacyWriter;
+use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
+@ISA = qw( Graph::LibGEXF );
+%OWNER = ();
+%ITERATORS = ();
+*NODE = *Graph::LibGEXFc::LegacyWriter_NODE;
+*EDGE = *Graph::LibGEXFc::LegacyWriter_EDGE;
+sub new {
+    my $pkg = shift;
+    my $self = Graph::LibGEXFc::new_LegacyWriter(@_);
+    bless $self, $pkg if defined($self);
+}
+
+sub DESTROY {
+    return unless $_[0]->isa('HASH');
+    my $self = tied(%{$_[0]});
+    return unless defined $self;
+    delete $ITERATORS{$self};
+    if (exists $OWNER{$self}) {
+        Graph::LibGEXFc::delete_LegacyWriter($self);
+        delete $OWNER{$self};
+    }
+}
+
+*getGEXFCopy = *Graph::LibGEXFc::LegacyWriter_getGEXFCopy;
+*init = *Graph::LibGEXFc::LegacyWriter_init;
+*write = *Graph::LibGEXFc::LegacyWriter_write;
+sub DISOWN {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    delete $OWNER{$ptr};
+}
+
+sub ACQUIRE {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    $OWNER{$ptr} = 1;
+}
+
+
+############# Class : Graph::LibGEXF::Conv ##############
+
+package Graph::LibGEXF::Conv;
+use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
+@ISA = qw( Graph::LibGEXF );
+%OWNER = ();
+%ITERATORS = ();
+sub DESTROY {
+    return unless $_[0]->isa('HASH');
+    my $self = tied(%{$_[0]});
+    return unless defined $self;
+    delete $ITERATORS{$self};
+    if (exists $OWNER{$self}) {
+        Graph::LibGEXFc::delete_Conv($self);
+        delete $OWNER{$self};
+    }
+}
+
+*xmlCharToId = *Graph::LibGEXFc::Conv_xmlCharToId;
+*strToId = *Graph::LibGEXFc::Conv_strToId;
+*xmlCharToStr = *Graph::LibGEXFc::Conv_xmlCharToStr;
+*xmlCharToUnsignedInt = *Graph::LibGEXFc::Conv_xmlCharToUnsignedInt;
+*idToStr = *Graph::LibGEXFc::Conv_idToStr;
+*unsignedIntToStr = *Graph::LibGEXFc::Conv_unsignedIntToStr;
+*strToUnsignedInt = *Graph::LibGEXFc::Conv_strToUnsignedInt;
+*edgeTypeToStr = *Graph::LibGEXFc::Conv_edgeTypeToStr;
+*attrTypeToStr = *Graph::LibGEXFc::Conv_attrTypeToStr;
+*isBoolean = *Graph::LibGEXFc::Conv_isBoolean;
+*isDouble = *Graph::LibGEXFc::Conv_isDouble;
+*isInteger = *Graph::LibGEXFc::Conv_isInteger;
+*isFloat = *Graph::LibGEXFc::Conv_isFloat;
+*tokenizer = *Graph::LibGEXFc::Conv_tokenizer;
 sub DISOWN {
     my $self = shift;
     my $ptr = tied(%$self);
@@ -187,14 +688,14 @@ sub DESTROY {
 *addEdge = *Graph::LibGEXFc::Graph_addEdge;
 *removeNode = *Graph::LibGEXFc::Graph_removeNode;
 *removeEdge = *Graph::LibGEXFc::Graph_removeEdge;
-*removeInEdges = *Graph::LibGEXFc::Graph_removeInEdges;
-*removeOutEdges = *Graph::LibGEXFc::Graph_removeOutEdges;
 *containsNode = *Graph::LibGEXFc::Graph_containsNode;
 *containsEdge = *Graph::LibGEXFc::Graph_containsEdge;
+*getNodes = *Graph::LibGEXFc::Graph_getNodes;
+*getEdges = *Graph::LibGEXFc::Graph_getEdges;
+*getNeighbors = *Graph::LibGEXFc::Graph_getNeighbors;
 *getNodeCount = *Graph::LibGEXFc::Graph_getNodeCount;
 *getEdgeCount = *Graph::LibGEXFc::Graph_getEdgeCount;
 *getDegree = *Graph::LibGEXFc::Graph_getDegree;
-*getNeighbors = *Graph::LibGEXFc::Graph_getNeighbors;
 *clear = *Graph::LibGEXFc::Graph_clear;
 *clearEdges = *Graph::LibGEXFc::Graph_clearEdges;
 *readLock = *Graph::LibGEXFc::Graph_readLock;
@@ -241,6 +742,8 @@ sub DESTROY {
     }
 }
 
+*removeInEdges = *Graph::LibGEXFc::DirectedGraph_removeInEdges;
+*removeOutEdges = *Graph::LibGEXFc::DirectedGraph_removeOutEdges;
 *getInEdges = *Graph::LibGEXFc::DirectedGraph_getInEdges;
 *getOutEdges = *Graph::LibGEXFc::DirectedGraph_getOutEdges;
 *getSuccessors = *Graph::LibGEXFc::DirectedGraph_getSuccessors;
@@ -299,16 +802,16 @@ sub ACQUIRE {
 }
 
 
-############# Class : Graph::LibGEXF::GEXF ##############
+############# Class : Graph::LibGEXF::NodeIter ##############
 
-package Graph::LibGEXF::GEXF;
+package Graph::LibGEXF::NodeIter;
 use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
-@ISA = qw( Graph::LibGEXF );
+@ISA = qw( Graph::LibGEXF::AbstractIter Graph::LibGEXF );
 %OWNER = ();
 %ITERATORS = ();
 sub new {
     my $pkg = shift;
-    my $self = Graph::LibGEXFc::new_GEXF(@_);
+    my $self = Graph::LibGEXFc::new_NodeIter(@_);
     bless $self, $pkg if defined($self);
 }
 
@@ -318,15 +821,268 @@ sub DESTROY {
     return unless defined $self;
     delete $ITERATORS{$self};
     if (exists $OWNER{$self}) {
-        Graph::LibGEXFc::delete_GEXF($self);
+        Graph::LibGEXFc::delete_NodeIter($self);
         delete $OWNER{$self};
     }
 }
 
-*getUndirectedGraph = *Graph::LibGEXFc::GEXF_getUndirectedGraph;
-*getDirectedGraph = *Graph::LibGEXFc::GEXF_getDirectedGraph;
-*swig__graph_get = *Graph::LibGEXFc::GEXF__graph_get;
-*swig__graph_set = *Graph::LibGEXFc::GEXF__graph_set;
+*begin = *Graph::LibGEXFc::NodeIter_begin;
+*hasNext = *Graph::LibGEXFc::NodeIter_hasNext;
+*next = *Graph::LibGEXFc::NodeIter_next;
+sub DISOWN {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    delete $OWNER{$ptr};
+}
+
+sub ACQUIRE {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    $OWNER{$ptr} = 1;
+}
+
+
+############# Class : Graph::LibGEXF::EdgeIter ##############
+
+package Graph::LibGEXF::EdgeIter;
+use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
+@ISA = qw( Graph::LibGEXF::AbstractIter Graph::LibGEXF );
+%OWNER = ();
+%ITERATORS = ();
+sub new {
+    my $pkg = shift;
+    my $self = Graph::LibGEXFc::new_EdgeIter(@_);
+    bless $self, $pkg if defined($self);
+}
+
+sub DESTROY {
+    return unless $_[0]->isa('HASH');
+    my $self = tied(%{$_[0]});
+    return unless defined $self;
+    delete $ITERATORS{$self};
+    if (exists $OWNER{$self}) {
+        Graph::LibGEXFc::delete_EdgeIter($self);
+        delete $OWNER{$self};
+    }
+}
+
+*begin = *Graph::LibGEXFc::EdgeIter_begin;
+*hasNext = *Graph::LibGEXFc::EdgeIter_hasNext;
+*next = *Graph::LibGEXFc::EdgeIter_next;
+*currentSource = *Graph::LibGEXFc::EdgeIter_currentSource;
+*currentTarget = *Graph::LibGEXFc::EdgeIter_currentTarget;
+*currentProperty = *Graph::LibGEXFc::EdgeIter_currentProperty;
+sub DISOWN {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    delete $OWNER{$ptr};
+}
+
+sub ACQUIRE {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    $OWNER{$ptr} = 1;
+}
+
+
+############# Class : Graph::LibGEXF::Data ##############
+
+package Graph::LibGEXF::Data;
+use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
+@ISA = qw( Graph::LibGEXF );
+%OWNER = ();
+%ITERATORS = ();
+sub new {
+    my $pkg = shift;
+    my $self = Graph::LibGEXFc::new_Data(@_);
+    bless $self, $pkg if defined($self);
+}
+
+sub DESTROY {
+    return unless $_[0]->isa('HASH');
+    my $self = tied(%{$_[0]});
+    return unless defined $self;
+    delete $ITERATORS{$self};
+    if (exists $OWNER{$self}) {
+        Graph::LibGEXFc::delete_Data($self);
+        delete $OWNER{$self};
+    }
+}
+
+*getLabel = *Graph::LibGEXFc::Data_getLabel;
+*hasLabel = *Graph::LibGEXFc::Data_hasLabel;
+*setLabel = *Graph::LibGEXFc::Data_setLabel;
+*addNodeAttributeColumn = *Graph::LibGEXFc::Data_addNodeAttributeColumn;
+*addEdgeAttributeColumn = *Graph::LibGEXFc::Data_addEdgeAttributeColumn;
+*setNodeAttributeDefault = *Graph::LibGEXFc::Data_setNodeAttributeDefault;
+*setEdgeAttributeDefault = *Graph::LibGEXFc::Data_setEdgeAttributeDefault;
+*setNodeAttributeOptions = *Graph::LibGEXFc::Data_setNodeAttributeOptions;
+*setEdgeAttributeOptions = *Graph::LibGEXFc::Data_setEdgeAttributeOptions;
+*setNodeValue = *Graph::LibGEXFc::Data_setNodeValue;
+*setEdgeValue = *Graph::LibGEXFc::Data_setEdgeValue;
+*getNodeAttributeColumn = *Graph::LibGEXFc::Data_getNodeAttributeColumn;
+*getEdgeAttributeColumn = *Graph::LibGEXFc::Data_getEdgeAttributeColumn;
+*getNodeAttribute = *Graph::LibGEXFc::Data_getNodeAttribute;
+*getEdgeAttribute = *Graph::LibGEXFc::Data_getEdgeAttribute;
+*getNodeAttributeRow = *Graph::LibGEXFc::Data_getNodeAttributeRow;
+*getEdgeAttributeRow = *Graph::LibGEXFc::Data_getEdgeAttributeRow;
+*getNodeAttributeDefault = *Graph::LibGEXFc::Data_getNodeAttributeDefault;
+*getEdgeAttributeOptions = *Graph::LibGEXFc::Data_getEdgeAttributeOptions;
+*getNodeAttributeOptions = *Graph::LibGEXFc::Data_getNodeAttributeOptions;
+*getEdgeAttributeDefault = *Graph::LibGEXFc::Data_getEdgeAttributeDefault;
+*hasNodeAttributeDefault = *Graph::LibGEXFc::Data_hasNodeAttributeDefault;
+*hasEdgeAttributeDefault = *Graph::LibGEXFc::Data_hasEdgeAttributeDefault;
+*hasNodeAttributeOptions = *Graph::LibGEXFc::Data_hasNodeAttributeOptions;
+*hasEdgeAttributeOptions = *Graph::LibGEXFc::Data_hasEdgeAttributeOptions;
+*isNodeAttributeOption = *Graph::LibGEXFc::Data_isNodeAttributeOption;
+*isEdgeAttributeOption = *Graph::LibGEXFc::Data_isEdgeAttributeOption;
+*clearNodeAttributes = *Graph::LibGEXFc::Data_clearNodeAttributes;
+*clearEdgeAttributes = *Graph::LibGEXFc::Data_clearEdgeAttributes;
+*clear = *Graph::LibGEXFc::Data_clear;
+*clearEdgesAttributes = *Graph::LibGEXFc::Data_clearEdgesAttributes;
+sub DISOWN {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    delete $OWNER{$ptr};
+}
+
+sub ACQUIRE {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    $OWNER{$ptr} = 1;
+}
+
+
+############# Class : Graph::LibGEXF::MetaData ##############
+
+package Graph::LibGEXF::MetaData;
+use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
+@ISA = qw( Graph::LibGEXF );
+%OWNER = ();
+%ITERATORS = ();
+sub new {
+    my $pkg = shift;
+    my $self = Graph::LibGEXFc::new_MetaData(@_);
+    bless $self, $pkg if defined($self);
+}
+
+sub DESTROY {
+    return unless $_[0]->isa('HASH');
+    my $self = tied(%{$_[0]});
+    return unless defined $self;
+    delete $ITERATORS{$self};
+    if (exists $OWNER{$self}) {
+        Graph::LibGEXFc::delete_MetaData($self);
+        delete $OWNER{$self};
+    }
+}
+
+*getVersion = *Graph::LibGEXFc::MetaData_getVersion;
+*getXmlns = *Graph::LibGEXFc::MetaData_getXmlns;
+*getXsi = *Graph::LibGEXFc::MetaData_getXsi;
+*getSchema = *Graph::LibGEXFc::MetaData_getSchema;
+*getVariant = *Graph::LibGEXFc::MetaData_getVariant;
+*getCreator = *Graph::LibGEXFc::MetaData_getCreator;
+*getDescription = *Graph::LibGEXFc::MetaData_getDescription;
+*getKeywords = *Graph::LibGEXFc::MetaData_getKeywords;
+*getLastModifiedDate = *Graph::LibGEXFc::MetaData_getLastModifiedDate;
+*setVersion = *Graph::LibGEXFc::MetaData_setVersion;
+*setXmlns = *Graph::LibGEXFc::MetaData_setXmlns;
+*setXsi = *Graph::LibGEXFc::MetaData_setXsi;
+*setSchema = *Graph::LibGEXFc::MetaData_setSchema;
+*setVariant = *Graph::LibGEXFc::MetaData_setVariant;
+*setCreator = *Graph::LibGEXFc::MetaData_setCreator;
+*setDescription = *Graph::LibGEXFc::MetaData_setDescription;
+*setKeywords = *Graph::LibGEXFc::MetaData_setKeywords;
+*setLastModifiedDate = *Graph::LibGEXFc::MetaData_setLastModifiedDate;
+sub DISOWN {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    delete $OWNER{$ptr};
+}
+
+sub ACQUIRE {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    $OWNER{$ptr} = 1;
+}
+
+
+############# Class : Graph::LibGEXF::AttributeIter ##############
+
+package Graph::LibGEXF::AttributeIter;
+use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
+@ISA = qw( Graph::LibGEXF::AbstractIter Graph::LibGEXF );
+%OWNER = ();
+%ITERATORS = ();
+*NODE = *Graph::LibGEXFc::AttributeIter_NODE;
+*EDGE = *Graph::LibGEXFc::AttributeIter_EDGE;
+sub new {
+    my $pkg = shift;
+    my $self = Graph::LibGEXFc::new_AttributeIter(@_);
+    bless $self, $pkg if defined($self);
+}
+
+sub DESTROY {
+    return unless $_[0]->isa('HASH');
+    my $self = tied(%{$_[0]});
+    return unless defined $self;
+    delete $ITERATORS{$self};
+    if (exists $OWNER{$self}) {
+        Graph::LibGEXFc::delete_AttributeIter($self);
+        delete $OWNER{$self};
+    }
+}
+
+*begin = *Graph::LibGEXFc::AttributeIter_begin;
+*hasNext = *Graph::LibGEXFc::AttributeIter_hasNext;
+*next = *Graph::LibGEXFc::AttributeIter_next;
+*currentTitle = *Graph::LibGEXFc::AttributeIter_currentTitle;
+*currentType = *Graph::LibGEXFc::AttributeIter_currentType;
+sub DISOWN {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    delete $OWNER{$ptr};
+}
+
+sub ACQUIRE {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    $OWNER{$ptr} = 1;
+}
+
+
+############# Class : Graph::LibGEXF::AttValueIter ##############
+
+package Graph::LibGEXF::AttValueIter;
+use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
+@ISA = qw( Graph::LibGEXF::AbstractIter Graph::LibGEXF );
+%OWNER = ();
+%ITERATORS = ();
+*NODE = *Graph::LibGEXFc::AttValueIter_NODE;
+*EDGE = *Graph::LibGEXFc::AttValueIter_EDGE;
+sub new {
+    my $pkg = shift;
+    my $self = Graph::LibGEXFc::new_AttValueIter(@_);
+    bless $self, $pkg if defined($self);
+}
+
+sub DESTROY {
+    return unless $_[0]->isa('HASH');
+    my $self = tied(%{$_[0]});
+    return unless defined $self;
+    delete $ITERATORS{$self};
+    if (exists $OWNER{$self}) {
+        Graph::LibGEXFc::delete_AttValueIter($self);
+        delete $OWNER{$self};
+    }
+}
+
+*begin = *Graph::LibGEXFc::AttValueIter_begin;
+*hasNext = *Graph::LibGEXFc::AttValueIter_hasNext;
+*next = *Graph::LibGEXFc::AttValueIter_next;
+*currentValue = *Graph::LibGEXFc::AttValueIter_currentValue;
+*currentName = *Graph::LibGEXFc::AttValueIter_currentName;
 sub DISOWN {
     my $self = shift;
     my $ptr = tied(%$self);
@@ -344,6 +1100,22 @@ sub ACQUIRE {
 
 package Graph::LibGEXF;
 
+*GRAPH_DIRECTED = *Graph::LibGEXFc::GRAPH_DIRECTED;
+*GRAPH_UNDIRECTED = *Graph::LibGEXFc::GRAPH_UNDIRECTED;
+*GRAPH_MIXED = *Graph::LibGEXFc::GRAPH_MIXED;
+*EDGE_TYPE = *Graph::LibGEXFc::EDGE_TYPE;
+*EDGE_COUNT = *Graph::LibGEXFc::EDGE_COUNT;
+*EDGE_WEIGHT = *Graph::LibGEXFc::EDGE_WEIGHT;
+*EDGE_UNDEF = *Graph::LibGEXFc::EDGE_UNDEF;
+*EDGE_DIRECTED = *Graph::LibGEXFc::EDGE_DIRECTED;
+*EDGE_UNDIRECTED = *Graph::LibGEXFc::EDGE_UNDIRECTED;
+*EDGE_DOUBLE = *Graph::LibGEXFc::EDGE_DOUBLE;
+*INTEGER = *Graph::LibGEXFc::INTEGER;
+*DOUBLE = *Graph::LibGEXFc::DOUBLE;
+*FLOAT = *Graph::LibGEXFc::FLOAT;
+*BOOLEAN = *Graph::LibGEXFc::BOOLEAN;
+*STRING = *Graph::LibGEXFc::STRING;
+*LIST_STRING = *Graph::LibGEXFc::LIST_STRING;
 use version;
 our $VERSION = '0.01';
 1;

@@ -213,7 +213,7 @@ void GexfParser::processGraphNode(xmlTextReaderPtr reader) {
         try {
             mode = this->getStringAttribute(reader, "mode");
         } catch(exception &e) {
-            cerr << "INFO " << "Unknown mode, static used." << endl;
+            cerr << "INFO " << "Unknown mode, static graph created by default." << endl;
         }
         if( mode.compare("dynamic") == 0 ) {
             // TODO implement dynamic mode
@@ -230,10 +230,10 @@ void GexfParser::processGraphNode(xmlTextReaderPtr reader) {
                 _gexf->setGraphType(GRAPH_MIXED);
             }*/
             else {
-                cerr << "INFO " << "Unknown default edge type, undirected used." << endl;
+                cerr << "INFO " << "Unknown default edge type, undirected used by default." << endl;
             }
         } catch (exception &e) {
-            cerr << "INFO " << "Unknown default edge type, undirected used." << endl;
+            cerr << "INFO " << "Unknown default edge type, undirected used by default." << endl;
         }
     }
     else if(hasAttr  == -1) {

@@ -9,30 +9,34 @@
 %{
 #define SWIG_FILE_WITH_INIT
 /* main */
-#include "../../typedefs.h"
-#include "../../exceptions.h"
-#include "../../gexf.h"
-#include "../../abstractiter.h"
+#include "../../libgexf/typedefs.h"
+#include "../../libgexf/exceptions.h"
+#include "../../libgexf/gexf.h"
+#include "../../libgexf/abstractiter.h"
+#include "../../libgexf/memoryvalidator.h"
 /* io::input */
-#include "../../filereader.h"
-#include "../../abstractparser.h"
-#include "../../gexfparser.h"
-#include "../../legacyparser.h"
+#include "../../libgexf/filereader.h"
+#include "../../libgexf/abstractparser.h"
+#include "../../libgexf/gexfparser.h"
+#include "../../libgexf/legacyparser.h"
+#include "../../libgexf/rngvalidator.h"
+#include "../../libgexf/schemavalidator.h"
 /* io::output */
-#include "../../filewriter.h"
+#include "../../libgexf/filewriter.h"
+#include "../../libgexf/legacywriter.h"
 /* io::utils */
-#include "../../conv.h"
+#include "../../libgexf/conv.h"
 /* db::topo */
-#include "../../graph.h"
-#include "../../directedgraph.h"
-#include "../../undirectedgraph.h"
-#include "../../nodeiter.h"
-#include "../../edgeiter.h"
+#include "../../libgexf/graph.h"
+#include "../../libgexf/directedgraph.h"
+#include "../../libgexf/undirectedgraph.h"
+#include "../../libgexf/nodeiter.h"
+#include "../../libgexf/edgeiter.h"
 /* db::data */
-#include "../../data.h"
-#include "../../metadata.h"
-#include "../../attributeiter.h"
-#include "../../attvalueiter.h"
+#include "../../libgexf/data.h"
+#include "../../libgexf/metadata.h"
+#include "../../libgexf/attributeiter.h"
+#include "../../libgexf/attvalueiter.h"
 %}
 
 
@@ -58,29 +62,33 @@ namespace std {
 
 /* Let's just grab the original header file here */
 /* main */
-%include "../../typedefs.h"
-%include "../../exceptions.h"
-%include "../../gexf.h"
-%include "../../abstractiter.h"
+%include "../../libgexf/typedefs.h"
+%include "../../libgexf/exceptions.h"
+%include "../../libgexf/gexf.h"
+%include "../../libgexf/abstractiter.h"
+%include "../../libgexf/memoryvalidator.h"
 /* io::input */
-%include "../../filereader.h"
-%include "../../abstractparser.h"
-%include "../../gexfparser.h"
-%include "../../legacyparser.h"
+%include "../../libgexf/filereader.h"
+%include "../../libgexf/abstractparser.h"
+%include "../../libgexf/gexfparser.h"
+%include "../../libgexf/legacyparser.h"
+%include "../../libgexf/rngvalidator.h"
+%include "../../libgexf/schemavalidator.h"
 /* io::output */
-%include "../../filewriter.h"
+%include "../../libgexf/filewriter.h"
+%include "../../libgexf/legacywriter.h"
 /* io::utils */
-%include "../../conv.h"
+%include "../../libgexf/conv.h"
 /* db::topo */
-%include "../../graph.h"
-%include "../../directedgraph.h"
-%include "../../undirectedgraph.h"
-%include "../../nodeiter.h"
-%include "../../edgeiter.h"
+%include "../../libgexf/graph.h"
+%include "../../libgexf/directedgraph.h"
+%include "../../libgexf/undirectedgraph.h"
+%include "../../libgexf/nodeiter.h"
+%include "../../libgexf/edgeiter.h"
 /* db::data */
-%include "../../data.h"
-%include "../../metadata.h"
-%include "../../attributeiter.h"
-%include "../../attvalueiter.h"
+%include "../../libgexf/data.h"
+%include "../../libgexf/metadata.h"
+%include "../../libgexf/attributeiter.h"
+%include "../../libgexf/attvalueiter.h"
 
 

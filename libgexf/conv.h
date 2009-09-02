@@ -59,7 +59,6 @@ public:
     static bool isInteger(const std::string& str);
     static bool isFloat(const std::string& str);
     static std::set<std::string> tokenizer(const std::string& delimiter, const std::string& str);
-    static std::set<std::string> unokenizer(const std::string& delimiter, const std::string& str);
 private:
     virtual void f() = 0;
 };

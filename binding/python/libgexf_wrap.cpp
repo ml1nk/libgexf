@@ -2708,24 +2708,28 @@ SWIG_Python_MustGetPtr(PyObject *obj, swig_type_info *ty, int argnum, int flags)
 #define SWIGTYPE_p_libgexf__GexfParser swig_types[18]
 #define SWIGTYPE_p_libgexf__Graph swig_types[19]
 #define SWIGTYPE_p_libgexf__LegacyParser swig_types[20]
-#define SWIGTYPE_p_libgexf__MetaData swig_types[21]
-#define SWIGTYPE_p_libgexf__NodeIter swig_types[22]
-#define SWIGTYPE_p_libgexf__ReadLockException swig_types[23]
-#define SWIGTYPE_p_libgexf__UndirectedGraph swig_types[24]
-#define SWIGTYPE_p_libgexf__WriteLockException swig_types[25]
-#define SWIGTYPE_p_p_PyObject swig_types[26]
-#define SWIGTYPE_p_size_type swig_types[27]
-#define SWIGTYPE_p_std__exception swig_types[28]
-#define SWIGTYPE_p_std__invalid_argument swig_types[29]
-#define SWIGTYPE_p_std__lessT_std__string_t swig_types[30]
-#define SWIGTYPE_p_std__setT_std__string_std__lessT_std__string_t_std__allocatorT_std__string_t_t swig_types[31]
-#define SWIGTYPE_p_std__string swig_types[32]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[33]
-#define SWIGTYPE_p_value_type swig_types[34]
-#define SWIGTYPE_p_xmlChar swig_types[35]
-#define SWIGTYPE_p_xmlTextReaderPtr swig_types[36]
-static swig_type_info *swig_types[38];
-static swig_module_info swig_module = {swig_types, 37, 0, 0, 0, 0};
+#define SWIGTYPE_p_libgexf__LegacyWriter swig_types[21]
+#define SWIGTYPE_p_libgexf__MemoryValidator swig_types[22]
+#define SWIGTYPE_p_libgexf__MetaData swig_types[23]
+#define SWIGTYPE_p_libgexf__NodeIter swig_types[24]
+#define SWIGTYPE_p_libgexf__ReadLockException swig_types[25]
+#define SWIGTYPE_p_libgexf__RngValidator swig_types[26]
+#define SWIGTYPE_p_libgexf__SchemaValidator swig_types[27]
+#define SWIGTYPE_p_libgexf__UndirectedGraph swig_types[28]
+#define SWIGTYPE_p_libgexf__WriteLockException swig_types[29]
+#define SWIGTYPE_p_p_PyObject swig_types[30]
+#define SWIGTYPE_p_size_type swig_types[31]
+#define SWIGTYPE_p_std__exception swig_types[32]
+#define SWIGTYPE_p_std__invalid_argument swig_types[33]
+#define SWIGTYPE_p_std__lessT_std__string_t swig_types[34]
+#define SWIGTYPE_p_std__setT_std__string_std__lessT_std__string_t_std__allocatorT_std__string_t_t swig_types[35]
+#define SWIGTYPE_p_std__string swig_types[36]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[37]
+#define SWIGTYPE_p_value_type swig_types[38]
+#define SWIGTYPE_p_xmlChar swig_types[39]
+#define SWIGTYPE_p_xmlTextReaderPtr swig_types[40]
+static swig_type_info *swig_types[42];
+static swig_module_info swig_module = {swig_types, 41, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2824,30 +2828,34 @@ namespace swig {
 
 #define SWIG_FILE_WITH_INIT
 /* main */
-#include "../../typedefs.h"
-#include "../../exceptions.h"
-#include "../../gexf.h"
-#include "../../abstractiter.h"
+#include "../../libgexf/typedefs.h"
+#include "../../libgexf/exceptions.h"
+#include "../../libgexf/gexf.h"
+#include "../../libgexf/abstractiter.h"
+#include "../../libgexf/memoryvalidator.h"
 /* io::input */
-#include "../../filereader.h"
-#include "../../abstractparser.h"
-#include "../../gexfparser.h"
-#include "../../legacyparser.h"
+#include "../../libgexf/filereader.h"
+#include "../../libgexf/abstractparser.h"
+#include "../../libgexf/gexfparser.h"
+#include "../../libgexf/legacyparser.h"
+#include "../../libgexf/rngvalidator.h"
+#include "../../libgexf/schemavalidator.h"
 /* io::output */
-#include "../../filewriter.h"
+#include "../../libgexf/filewriter.h"
+#include "../../libgexf/legacywriter.h"
 /* io::utils */
-#include "../../conv.h"
+#include "../../libgexf/conv.h"
 /* db::topo */
-#include "../../graph.h"
-#include "../../directedgraph.h"
-#include "../../undirectedgraph.h"
-#include "../../nodeiter.h"
-#include "../../edgeiter.h"
+#include "../../libgexf/graph.h"
+#include "../../libgexf/directedgraph.h"
+#include "../../libgexf/undirectedgraph.h"
+#include "../../libgexf/nodeiter.h"
+#include "../../libgexf/edgeiter.h"
 /* db::data */
-#include "../../data.h"
-#include "../../metadata.h"
-#include "../../attributeiter.h"
-#include "../../attvalueiter.h"
+#include "../../libgexf/data.h"
+#include "../../libgexf/metadata.h"
+#include "../../libgexf/attributeiter.h"
+#include "../../libgexf/attvalueiter.h"
 
 
 #include <stdexcept>
@@ -6535,23 +6543,26 @@ SWIGINTERN PyObject *StringSet_swigregister(PyObject *SWIGUNUSEDPARM(self), PyOb
 
 SWIGINTERN PyObject *_wrap_new_ReadLockException(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::string arg1 ;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   libgexf::ReadLockException *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_ReadLockException",&obj0)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj0, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_ReadLockException" "', argument " "1"" of type '" "std::string const""'"); 
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ReadLockException" "', argument " "1"" of type '" "std::string const &""'"); 
     }
-    arg1 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ReadLockException" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
   }
   {
     try {
-      result = (libgexf::ReadLockException *)new libgexf::ReadLockException(arg1);
+      result = (libgexf::ReadLockException *)new libgexf::ReadLockException((std::string const &)*arg1);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -6559,8 +6570,10 @@ SWIGINTERN PyObject *_wrap_new_ReadLockException(PyObject *SWIGUNUSEDPARM(self),
     }
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_libgexf__ReadLockException, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return NULL;
 }
 
@@ -6633,23 +6646,26 @@ SWIGINTERN PyObject *ReadLockException_swigregister(PyObject *SWIGUNUSEDPARM(sel
 
 SWIGINTERN PyObject *_wrap_new_WriteLockException(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::string arg1 ;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   libgexf::WriteLockException *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_WriteLockException",&obj0)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj0, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_WriteLockException" "', argument " "1"" of type '" "std::string const""'"); 
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_WriteLockException" "', argument " "1"" of type '" "std::string const &""'"); 
     }
-    arg1 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_WriteLockException" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
   }
   {
     try {
-      result = (libgexf::WriteLockException *)new libgexf::WriteLockException(arg1);
+      result = (libgexf::WriteLockException *)new libgexf::WriteLockException((std::string const &)*arg1);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -6657,8 +6673,10 @@ SWIGINTERN PyObject *_wrap_new_WriteLockException(PyObject *SWIGUNUSEDPARM(self)
     }
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_libgexf__WriteLockException, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return NULL;
 }
 
@@ -6731,23 +6749,26 @@ SWIGINTERN PyObject *WriteLockException_swigregister(PyObject *SWIGUNUSEDPARM(se
 
 SWIGINTERN PyObject *_wrap_new_FileWriterException(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::string arg1 ;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   libgexf::FileWriterException *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_FileWriterException",&obj0)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj0, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_FileWriterException" "', argument " "1"" of type '" "std::string const""'"); 
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_FileWriterException" "', argument " "1"" of type '" "std::string const &""'"); 
     }
-    arg1 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_FileWriterException" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
   }
   {
     try {
-      result = (libgexf::FileWriterException *)new libgexf::FileWriterException(arg1);
+      result = (libgexf::FileWriterException *)new libgexf::FileWriterException((std::string const &)*arg1);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -6755,8 +6776,10 @@ SWIGINTERN PyObject *_wrap_new_FileWriterException(PyObject *SWIGUNUSEDPARM(self
     }
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_libgexf__FileWriterException, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return NULL;
 }
 
@@ -6829,23 +6852,26 @@ SWIGINTERN PyObject *FileWriterException_swigregister(PyObject *SWIGUNUSEDPARM(s
 
 SWIGINTERN PyObject *_wrap_new_FileReaderException(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::string arg1 ;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   libgexf::FileReaderException *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_FileReaderException",&obj0)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj0, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_FileReaderException" "', argument " "1"" of type '" "std::string const""'"); 
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_FileReaderException" "', argument " "1"" of type '" "std::string const &""'"); 
     }
-    arg1 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_FileReaderException" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
   }
   {
     try {
-      result = (libgexf::FileReaderException *)new libgexf::FileReaderException(arg1);
+      result = (libgexf::FileReaderException *)new libgexf::FileReaderException((std::string const &)*arg1);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -6853,8 +6879,10 @@ SWIGINTERN PyObject *_wrap_new_FileReaderException(PyObject *SWIGUNUSEDPARM(self
     }
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_libgexf__FileReaderException, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return NULL;
 }
 
@@ -7598,6 +7626,75 @@ SWIGINTERN PyObject *AbstractIter_swigregister(PyObject *SWIGUNUSEDPARM(self), P
   return SWIG_Py_Void();
 }
 
+SWIGINTERN PyObject *_wrap_delete_MemoryValidator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::MemoryValidator *arg1 = (libgexf::MemoryValidator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_MemoryValidator",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__MemoryValidator, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_MemoryValidator" "', argument " "1"" of type '" "libgexf::MemoryValidator *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::MemoryValidator * >(argp1);
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MemoryValidator_run(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::GEXF *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:MemoryValidator_run",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_libgexf__GEXF,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MemoryValidator_run" "', argument " "1"" of type '" "libgexf::GEXF const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MemoryValidator_run" "', argument " "1"" of type '" "libgexf::GEXF const &""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::GEXF * >(argp1);
+  {
+    try {
+      result = (bool)libgexf::MemoryValidator::run((libgexf::GEXF const &)*arg1);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *MemoryValidator_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_libgexf__MemoryValidator, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
 SWIGINTERN PyObject *_wrap_new_FileReader__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::FileReader *result = 0 ;
@@ -7621,8 +7718,9 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_FileReader__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::string arg1 ;
+  std::string *arg1 = 0 ;
   libgexf::FileReader::Version arg2 ;
+  int res1 = SWIG_OLDOBJ ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
@@ -7632,12 +7730,14 @@ SWIGINTERN PyObject *_wrap_new_FileReader__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   if (!PyArg_ParseTuple(args,(char *)"OO:new_FileReader",&obj0,&obj1)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj0, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_FileReader" "', argument " "1"" of type '" "std::string const""'"); 
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_FileReader" "', argument " "1"" of type '" "std::string const &""'"); 
     }
-    arg1 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_FileReader" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
   }
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
@@ -7646,7 +7746,7 @@ SWIGINTERN PyObject *_wrap_new_FileReader__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   arg2 = static_cast< libgexf::FileReader::Version >(val2);
   {
     try {
-      result = (libgexf::FileReader *)new libgexf::FileReader(arg1,arg2);
+      result = (libgexf::FileReader *)new libgexf::FileReader((std::string const &)*arg1,arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -7654,31 +7754,36 @@ SWIGINTERN PyObject *_wrap_new_FileReader__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
     }
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_libgexf__FileReader, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return NULL;
 }
 
 
 SWIGINTERN PyObject *_wrap_new_FileReader__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::string arg1 ;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   libgexf::FileReader *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_FileReader",&obj0)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj0, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_FileReader" "', argument " "1"" of type '" "std::string const""'"); 
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_FileReader" "', argument " "1"" of type '" "std::string const &""'"); 
     }
-    arg1 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_FileReader" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
   }
   {
     try {
-      result = (libgexf::FileReader *)new libgexf::FileReader(arg1);
+      result = (libgexf::FileReader *)new libgexf::FileReader((std::string const &)*arg1);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -7686,8 +7791,10 @@ SWIGINTERN PyObject *_wrap_new_FileReader__SWIG_2(PyObject *SWIGUNUSEDPARM(self)
     }
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_libgexf__FileReader, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return NULL;
 }
 
@@ -7773,8 +7880,8 @@ fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'new_FileReader'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    libgexf::FileReader()\n"
-    "    libgexf::FileReader(std::string const,libgexf::FileReader::Version const)\n"
-    "    libgexf::FileReader(std::string const)\n"
+    "    libgexf::FileReader(std::string const &,libgexf::FileReader::Version const)\n"
+    "    libgexf::FileReader(std::string const &)\n"
     "    libgexf::FileReader(libgexf::FileReader const &)\n");
   return NULL;
 }
@@ -7842,10 +7949,11 @@ fail:
 SWIGINTERN PyObject *_wrap_FileReader_init__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::FileReader *arg1 = (libgexf::FileReader *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
   libgexf::FileReader::Version arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   int val3 ;
   int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -7860,12 +7968,14 @@ SWIGINTERN PyObject *_wrap_FileReader_init__SWIG_0(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< libgexf::FileReader * >(argp1);
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "FileReader_init" "', argument " "2"" of type '" "std::string const""'"); 
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FileReader_init" "', argument " "2"" of type '" "std::string const &""'"); 
     }
-    arg2 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FileReader_init" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
   ecode3 = SWIG_AsVal_int(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -7874,7 +7984,7 @@ SWIGINTERN PyObject *_wrap_FileReader_init__SWIG_0(PyObject *SWIGUNUSEDPARM(self
   arg3 = static_cast< libgexf::FileReader::Version >(val3);
   {
     try {
-      (arg1)->init(arg2,arg3);
+      (arg1)->init((std::string const &)*arg2,arg3);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -7882,8 +7992,10 @@ SWIGINTERN PyObject *_wrap_FileReader_init__SWIG_0(PyObject *SWIGUNUSEDPARM(self
     }
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -7891,9 +8003,10 @@ fail:
 SWIGINTERN PyObject *_wrap_FileReader_init__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::FileReader *arg1 = (libgexf::FileReader *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -7905,16 +8018,18 @@ SWIGINTERN PyObject *_wrap_FileReader_init__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< libgexf::FileReader * >(argp1);
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "FileReader_init" "', argument " "2"" of type '" "std::string const""'"); 
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FileReader_init" "', argument " "2"" of type '" "std::string const &""'"); 
     }
-    arg2 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FileReader_init" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
   {
     try {
-      (arg1)->init(arg2);
+      (arg1)->init((std::string const &)*arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -7922,8 +8037,10 @@ SWIGINTERN PyObject *_wrap_FileReader_init__SWIG_1(PyObject *SWIGUNUSEDPARM(self
     }
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -7974,8 +8091,8 @@ SWIGINTERN PyObject *_wrap_FileReader_init(PyObject *self, PyObject *args) {
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'FileReader_init'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    init(libgexf::FileReader *,std::string const,libgexf::FileReader::Version const)\n"
-    "    init(libgexf::FileReader *,std::string const)\n");
+    "    init(libgexf::FileReader *,std::string const &,libgexf::FileReader::Version const)\n"
+    "    init(libgexf::FileReader *,std::string const &)\n");
   return NULL;
 }
 
@@ -8145,91 +8262,6 @@ SWIGINTERN PyObject *AbstractParser_swigregister(PyObject *SWIGUNUSEDPARM(self),
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_new_GexfParser__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  libgexf::GexfParser *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)":new_GexfParser")) SWIG_fail;
-  {
-    try {
-      result = (libgexf::GexfParser *)new libgexf::GexfParser();
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch(...) {
-      SWIG_exception(SWIG_RuntimeError, "Unknown error");
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_libgexf__GexfParser, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_GexfParser__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  libgexf::GexfParser *arg1 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  libgexf::GexfParser *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:new_GexfParser",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_libgexf__GexfParser,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_GexfParser" "', argument " "1"" of type '" "libgexf::GexfParser const &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_GexfParser" "', argument " "1"" of type '" "libgexf::GexfParser const &""'"); 
-  }
-  arg1 = reinterpret_cast< libgexf::GexfParser * >(argp1);
-  {
-    try {
-      result = (libgexf::GexfParser *)new libgexf::GexfParser((libgexf::GexfParser const &)*arg1);
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch(...) {
-      SWIG_exception(SWIG_RuntimeError, "Unknown error");
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_libgexf__GexfParser, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_GexfParser(PyObject *self, PyObject *args) {
-  int argc;
-  PyObject *argv[2];
-  int ii;
-  
-  if (!PyTuple_Check(args)) SWIG_fail;
-  argc = (int)PyObject_Length(args);
-  for (ii = 0; (ii < argc) && (ii < 1); ii++) {
-    argv[ii] = PyTuple_GET_ITEM(args,ii);
-  }
-  if (argc == 0) {
-    return _wrap_new_GexfParser__SWIG_0(self, args);
-  }
-  if (argc == 1) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_libgexf__GexfParser, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_GexfParser__SWIG_1(self, args);
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'new_GexfParser'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    libgexf::GexfParser()\n"
-    "    libgexf::GexfParser(libgexf::GexfParser const &)\n");
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_delete_GexfParser(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::GexfParser *arg1 = (libgexf::GexfParser *) 0 ;
@@ -8301,7 +8333,7 @@ SWIGINTERN PyObject *_wrap_GexfParser_processNode(PyObject *SWIGUNUSEDPARM(self)
   PyObject *resultobj = 0;
   libgexf::GexfParser *arg1 = (libgexf::GexfParser *) 0 ;
   xmlTextReaderPtr arg2 ;
-  xmlChar *arg3 = (xmlChar *) 0 ;
+  xmlChar *arg3 = (xmlChar *) (xmlChar *)0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -8333,7 +8365,7 @@ SWIGINTERN PyObject *_wrap_GexfParser_processNode(PyObject *SWIGUNUSEDPARM(self)
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_xmlChar, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GexfParser_processNode" "', argument " "3"" of type '" "xmlChar const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GexfParser_processNode" "', argument " "3"" of type '" "xmlChar const *const""'"); 
   }
   arg3 = reinterpret_cast< xmlChar * >(argp3);
   {
@@ -8573,6 +8605,184 @@ SWIGINTERN PyObject *LegacyParser_swigregister(PyObject *SWIGUNUSEDPARM(self), P
   return SWIG_Py_Void();
 }
 
+SWIGINTERN PyObject *_wrap_delete_RngValidator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::RngValidator *arg1 = (libgexf::RngValidator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_RngValidator",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__RngValidator, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_RngValidator" "', argument " "1"" of type '" "libgexf::RngValidator *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::RngValidator * >(argp1);
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RngValidator_run(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  std::string *arg2 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:RngValidator_run",&obj0,&obj1)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RngValidator_run" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RngValidator_run" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RngValidator_run" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RngValidator_run" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    try {
+      result = (bool)libgexf::RngValidator::run((std::string const &)*arg1,(std::string const &)*arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *RngValidator_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_libgexf__RngValidator, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_delete_SchemaValidator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::SchemaValidator *arg1 = (libgexf::SchemaValidator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_SchemaValidator",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__SchemaValidator, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SchemaValidator" "', argument " "1"" of type '" "libgexf::SchemaValidator *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::SchemaValidator * >(argp1);
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SchemaValidator_run(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  std::string *arg2 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:SchemaValidator_run",&obj0,&obj1)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SchemaValidator_run" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SchemaValidator_run" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SchemaValidator_run" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SchemaValidator_run" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    try {
+      result = (bool)libgexf::SchemaValidator::run((std::string const &)*arg1,(std::string const &)*arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *SchemaValidator_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_libgexf__SchemaValidator, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
 SWIGINTERN PyObject *_wrap_new_FileWriter__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::FileWriter *result = 0 ;
@@ -8596,8 +8806,9 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_FileWriter__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::string arg1 ;
+  std::string *arg1 = 0 ;
   libgexf::GEXF *arg2 = (libgexf::GEXF *) 0 ;
+  int res1 = SWIG_OLDOBJ ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   PyObject * obj0 = 0 ;
@@ -8607,12 +8818,14 @@ SWIGINTERN PyObject *_wrap_new_FileWriter__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   if (!PyArg_ParseTuple(args,(char *)"OO:new_FileWriter",&obj0,&obj1)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj0, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_FileWriter" "', argument " "1"" of type '" "std::string const""'"); 
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_FileWriter" "', argument " "1"" of type '" "std::string const &""'"); 
     }
-    arg1 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_FileWriter" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
   }
   res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_libgexf__GEXF, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
@@ -8621,7 +8834,7 @@ SWIGINTERN PyObject *_wrap_new_FileWriter__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   arg2 = reinterpret_cast< libgexf::GEXF * >(argp2);
   {
     try {
-      result = (libgexf::FileWriter *)new libgexf::FileWriter(arg1,arg2);
+      result = (libgexf::FileWriter *)new libgexf::FileWriter((std::string const &)*arg1,arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -8629,8 +8842,10 @@ SWIGINTERN PyObject *_wrap_new_FileWriter__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
     }
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_libgexf__FileWriter, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return NULL;
 }
 
@@ -8707,7 +8922,7 @@ fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'new_FileWriter'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    libgexf::FileWriter()\n"
-    "    libgexf::FileWriter(std::string const,libgexf::GEXF *)\n"
+    "    libgexf::FileWriter(std::string const &,libgexf::GEXF *)\n"
     "    libgexf::FileWriter(libgexf::FileWriter const &)\n");
   return NULL;
 }
@@ -8775,10 +8990,11 @@ fail:
 SWIGINTERN PyObject *_wrap_FileWriter_init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::FileWriter *arg1 = (libgexf::FileWriter *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
   libgexf::GEXF *arg3 = (libgexf::GEXF *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -8793,12 +9009,14 @@ SWIGINTERN PyObject *_wrap_FileWriter_init(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< libgexf::FileWriter * >(argp1);
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "FileWriter_init" "', argument " "2"" of type '" "std::string const""'"); 
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FileWriter_init" "', argument " "2"" of type '" "std::string const &""'"); 
     }
-    arg2 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FileWriter_init" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_libgexf__GEXF, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
@@ -8807,7 +9025,7 @@ SWIGINTERN PyObject *_wrap_FileWriter_init(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg3 = reinterpret_cast< libgexf::GEXF * >(argp3);
   {
     try {
-      (arg1)->init(arg2,arg3);
+      (arg1)->init((std::string const &)*arg2,arg3);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -8815,8 +9033,10 @@ SWIGINTERN PyObject *_wrap_FileWriter_init(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -8854,6 +9074,300 @@ SWIGINTERN PyObject *FileWriter_swigregister(PyObject *SWIGUNUSEDPARM(self), PyO
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
   SWIG_TypeNewClientData(SWIGTYPE_p_libgexf__FileWriter, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_LegacyWriter__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::LegacyWriter *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_LegacyWriter")) SWIG_fail;
+  {
+    try {
+      result = (libgexf::LegacyWriter *)new libgexf::LegacyWriter();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_libgexf__LegacyWriter, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_LegacyWriter__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  libgexf::GEXF *arg2 = (libgexf::GEXF *) 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  libgexf::LegacyWriter *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_LegacyWriter",&obj0,&obj1)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_LegacyWriter" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_LegacyWriter" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_libgexf__GEXF, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_LegacyWriter" "', argument " "2"" of type '" "libgexf::GEXF *""'"); 
+  }
+  arg2 = reinterpret_cast< libgexf::GEXF * >(argp2);
+  {
+    try {
+      result = (libgexf::LegacyWriter *)new libgexf::LegacyWriter((std::string const &)*arg1,arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_libgexf__LegacyWriter, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_LegacyWriter__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::LegacyWriter *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  libgexf::LegacyWriter *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_LegacyWriter",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_libgexf__LegacyWriter,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_LegacyWriter" "', argument " "1"" of type '" "libgexf::LegacyWriter const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_LegacyWriter" "', argument " "1"" of type '" "libgexf::LegacyWriter const &""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::LegacyWriter * >(argp1);
+  {
+    try {
+      result = (libgexf::LegacyWriter *)new libgexf::LegacyWriter((libgexf::LegacyWriter const &)*arg1);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_libgexf__LegacyWriter, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_LegacyWriter(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = (int)PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 2); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 0) {
+    return _wrap_new_LegacyWriter__SWIG_0(self, args);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_libgexf__LegacyWriter, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_LegacyWriter__SWIG_2(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_libgexf__GEXF, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_LegacyWriter__SWIG_1(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'new_LegacyWriter'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    libgexf::LegacyWriter()\n"
+    "    libgexf::LegacyWriter(std::string const &,libgexf::GEXF *)\n"
+    "    libgexf::LegacyWriter(libgexf::LegacyWriter const &)\n");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_LegacyWriter(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::LegacyWriter *arg1 = (libgexf::LegacyWriter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_LegacyWriter",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__LegacyWriter, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_LegacyWriter" "', argument " "1"" of type '" "libgexf::LegacyWriter *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::LegacyWriter * >(argp1);
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LegacyWriter_getGEXFCopy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::LegacyWriter *arg1 = (libgexf::LegacyWriter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  libgexf::GEXF result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:LegacyWriter_getGEXFCopy",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__LegacyWriter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LegacyWriter_getGEXFCopy" "', argument " "1"" of type '" "libgexf::LegacyWriter *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::LegacyWriter * >(argp1);
+  {
+    try {
+      result = (arg1)->getGEXFCopy();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new libgexf::GEXF(static_cast< const libgexf::GEXF& >(result))), SWIGTYPE_p_libgexf__GEXF, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LegacyWriter_init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::LegacyWriter *arg1 = (libgexf::LegacyWriter *) 0 ;
+  std::string *arg2 = 0 ;
+  libgexf::GEXF *arg3 = (libgexf::GEXF *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:LegacyWriter_init",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__LegacyWriter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LegacyWriter_init" "', argument " "1"" of type '" "libgexf::LegacyWriter *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::LegacyWriter * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LegacyWriter_init" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "LegacyWriter_init" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_libgexf__GEXF, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "LegacyWriter_init" "', argument " "3"" of type '" "libgexf::GEXF *""'"); 
+  }
+  arg3 = reinterpret_cast< libgexf::GEXF * >(argp3);
+  {
+    try {
+      (arg1)->init((std::string const &)*arg2,arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LegacyWriter_write(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::LegacyWriter *arg1 = (libgexf::LegacyWriter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:LegacyWriter_write",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__LegacyWriter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LegacyWriter_write" "', argument " "1"" of type '" "libgexf::LegacyWriter *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::LegacyWriter * >(argp1);
+  {
+    try {
+      (arg1)->write();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *LegacyWriter_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_libgexf__LegacyWriter, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -8918,23 +9432,26 @@ fail:
 
 SWIGINTERN PyObject *_wrap_Conv_strToId(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::string arg1 ;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   libgexf::t_id result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:Conv_strToId",&obj0)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj0, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Conv_strToId" "', argument " "1"" of type '" "std::string const""'"); 
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Conv_strToId" "', argument " "1"" of type '" "std::string const &""'"); 
     }
-    arg1 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Conv_strToId" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
   }
   {
     try {
-      result = libgexf::Conv::strToId(arg1);
+      result = libgexf::Conv::strToId((std::string const &)*arg1);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -8942,8 +9459,10 @@ SWIGINTERN PyObject *_wrap_Conv_strToId(PyObject *SWIGUNUSEDPARM(self), PyObject
     }
   }
   resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return NULL;
 }
 
@@ -9072,23 +9591,26 @@ fail:
 
 SWIGINTERN PyObject *_wrap_Conv_strToUnsignedInt(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::string arg1 ;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   unsigned int result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:Conv_strToUnsignedInt",&obj0)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj0, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Conv_strToUnsignedInt" "', argument " "1"" of type '" "std::string const""'"); 
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Conv_strToUnsignedInt" "', argument " "1"" of type '" "std::string const &""'"); 
     }
-    arg1 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Conv_strToUnsignedInt" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
   }
   {
     try {
-      result = (unsigned int)libgexf::Conv::strToUnsignedInt(arg1);
+      result = (unsigned int)libgexf::Conv::strToUnsignedInt((std::string const &)*arg1);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -9096,8 +9618,10 @@ SWIGINTERN PyObject *_wrap_Conv_strToUnsignedInt(PyObject *SWIGUNUSEDPARM(self),
     }
   }
   resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return NULL;
 }
 
@@ -9158,6 +9682,207 @@ SWIGINTERN PyObject *_wrap_Conv_attrTypeToStr(PyObject *SWIGUNUSEDPARM(self), Py
   resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
 fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Conv_isBoolean(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Conv_isBoolean",&obj0)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Conv_isBoolean" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Conv_isBoolean" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    try {
+      result = (bool)libgexf::Conv::isBoolean((std::string const &)*arg1);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Conv_isDouble(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Conv_isDouble",&obj0)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Conv_isDouble" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Conv_isDouble" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    try {
+      result = (bool)libgexf::Conv::isDouble((std::string const &)*arg1);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Conv_isInteger(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Conv_isInteger",&obj0)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Conv_isInteger" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Conv_isInteger" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    try {
+      result = (bool)libgexf::Conv::isInteger((std::string const &)*arg1);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Conv_isFloat(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Conv_isFloat",&obj0)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Conv_isFloat" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Conv_isFloat" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    try {
+      result = (bool)libgexf::Conv::isFloat((std::string const &)*arg1);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Conv_tokenizer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  std::string *arg2 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::set< std::string,std::less< std::string >,std::allocator< std::string > > result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Conv_tokenizer",&obj0,&obj1)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Conv_tokenizer" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Conv_tokenizer" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Conv_tokenizer" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Conv_tokenizer" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    try {
+      result = libgexf::Conv::tokenizer((std::string const &)*arg1,(std::string const &)*arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = swig::from(static_cast< std::set<std::string,std::less< std::string >,std::allocator< std::string > > >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -11672,9 +12397,10 @@ SWIGINTERN PyObject *_wrap_Data_setLabel(PyObject *SWIGUNUSEDPARM(self), PyObjec
   PyObject *resultobj = 0;
   libgexf::Data *arg1 = (libgexf::Data *) 0 ;
   libgexf::t_id arg2 ;
-  std::string arg3 ;
+  std::string *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -11696,16 +12422,18 @@ SWIGINTERN PyObject *_wrap_Data_setLabel(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj2, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_setLabel" "', argument " "3"" of type '" "std::string const""'"); 
+    res3 = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Data_setLabel" "', argument " "3"" of type '" "std::string const &""'"); 
     }
-    arg3 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Data_setLabel" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
   }
   {
     try {
-      (arg1)->setLabel(arg2,arg3);
+      (arg1)->setLabel(arg2,(std::string const &)*arg3);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -11713,8 +12441,10 @@ SWIGINTERN PyObject *_wrap_Data_setLabel(PyObject *SWIGUNUSEDPARM(self), PyObjec
     }
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res3)) delete arg3;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
   return NULL;
 }
 
@@ -11723,10 +12453,11 @@ SWIGINTERN PyObject *_wrap_Data_addNodeAttributeColumn(PyObject *SWIGUNUSEDPARM(
   PyObject *resultobj = 0;
   libgexf::Data *arg1 = (libgexf::Data *) 0 ;
   libgexf::t_id arg2 ;
-  std::string arg3 ;
+  std::string *arg3 = 0 ;
   libgexf::t_attr_type arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
   int val4 ;
   int ecode4 = 0 ;
   PyObject * obj0 = 0 ;
@@ -11751,12 +12482,14 @@ SWIGINTERN PyObject *_wrap_Data_addNodeAttributeColumn(PyObject *SWIGUNUSEDPARM(
   }
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj2, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_addNodeAttributeColumn" "', argument " "3"" of type '" "std::string const""'"); 
+    res3 = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Data_addNodeAttributeColumn" "', argument " "3"" of type '" "std::string const &""'"); 
     }
-    arg3 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Data_addNodeAttributeColumn" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
   }
   ecode4 = SWIG_AsVal_int(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
@@ -11765,7 +12498,7 @@ SWIGINTERN PyObject *_wrap_Data_addNodeAttributeColumn(PyObject *SWIGUNUSEDPARM(
   arg4 = static_cast< libgexf::t_attr_type >(val4);
   {
     try {
-      (arg1)->addNodeAttributeColumn(arg2,arg3,arg4);
+      (arg1)->addNodeAttributeColumn(arg2,(std::string const &)*arg3,arg4);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -11773,8 +12506,10 @@ SWIGINTERN PyObject *_wrap_Data_addNodeAttributeColumn(PyObject *SWIGUNUSEDPARM(
     }
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res3)) delete arg3;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
   return NULL;
 }
 
@@ -11783,10 +12518,11 @@ SWIGINTERN PyObject *_wrap_Data_addEdgeAttributeColumn(PyObject *SWIGUNUSEDPARM(
   PyObject *resultobj = 0;
   libgexf::Data *arg1 = (libgexf::Data *) 0 ;
   libgexf::t_id arg2 ;
-  std::string arg3 ;
+  std::string *arg3 = 0 ;
   libgexf::t_attr_type arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
   int val4 ;
   int ecode4 = 0 ;
   PyObject * obj0 = 0 ;
@@ -11811,12 +12547,14 @@ SWIGINTERN PyObject *_wrap_Data_addEdgeAttributeColumn(PyObject *SWIGUNUSEDPARM(
   }
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj2, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_addEdgeAttributeColumn" "', argument " "3"" of type '" "std::string const""'"); 
+    res3 = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Data_addEdgeAttributeColumn" "', argument " "3"" of type '" "std::string const &""'"); 
     }
-    arg3 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Data_addEdgeAttributeColumn" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
   }
   ecode4 = SWIG_AsVal_int(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
@@ -11825,7 +12563,7 @@ SWIGINTERN PyObject *_wrap_Data_addEdgeAttributeColumn(PyObject *SWIGUNUSEDPARM(
   arg4 = static_cast< libgexf::t_attr_type >(val4);
   {
     try {
-      (arg1)->addEdgeAttributeColumn(arg2,arg3,arg4);
+      (arg1)->addEdgeAttributeColumn(arg2,(std::string const &)*arg3,arg4);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -11833,8 +12571,10 @@ SWIGINTERN PyObject *_wrap_Data_addEdgeAttributeColumn(PyObject *SWIGUNUSEDPARM(
     }
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res3)) delete arg3;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
   return NULL;
 }
 
@@ -11843,9 +12583,10 @@ SWIGINTERN PyObject *_wrap_Data_setNodeAttributeDefault(PyObject *SWIGUNUSEDPARM
   PyObject *resultobj = 0;
   libgexf::Data *arg1 = (libgexf::Data *) 0 ;
   libgexf::t_id arg2 ;
-  std::string arg3 ;
+  std::string *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -11867,16 +12608,18 @@ SWIGINTERN PyObject *_wrap_Data_setNodeAttributeDefault(PyObject *SWIGUNUSEDPARM
   }
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj2, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_setNodeAttributeDefault" "', argument " "3"" of type '" "std::string const""'"); 
+    res3 = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Data_setNodeAttributeDefault" "', argument " "3"" of type '" "std::string const &""'"); 
     }
-    arg3 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Data_setNodeAttributeDefault" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
   }
   {
     try {
-      (arg1)->setNodeAttributeDefault(arg2,arg3);
+      (arg1)->setNodeAttributeDefault(arg2,(std::string const &)*arg3);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -11884,8 +12627,10 @@ SWIGINTERN PyObject *_wrap_Data_setNodeAttributeDefault(PyObject *SWIGUNUSEDPARM
     }
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res3)) delete arg3;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
   return NULL;
 }
 
@@ -11894,9 +12639,10 @@ SWIGINTERN PyObject *_wrap_Data_setEdgeAttributeDefault(PyObject *SWIGUNUSEDPARM
   PyObject *resultobj = 0;
   libgexf::Data *arg1 = (libgexf::Data *) 0 ;
   libgexf::t_id arg2 ;
-  std::string arg3 ;
+  std::string *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -11918,16 +12664,18 @@ SWIGINTERN PyObject *_wrap_Data_setEdgeAttributeDefault(PyObject *SWIGUNUSEDPARM
   }
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj2, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_setEdgeAttributeDefault" "', argument " "3"" of type '" "std::string const""'"); 
+    res3 = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Data_setEdgeAttributeDefault" "', argument " "3"" of type '" "std::string const &""'"); 
     }
-    arg3 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Data_setEdgeAttributeDefault" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
   }
   {
     try {
-      (arg1)->setEdgeAttributeDefault(arg2,arg3);
+      (arg1)->setEdgeAttributeDefault(arg2,(std::string const &)*arg3);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -11935,8 +12683,122 @@ SWIGINTERN PyObject *_wrap_Data_setEdgeAttributeDefault(PyObject *SWIGUNUSEDPARM
     }
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res3)) delete arg3;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Data_setNodeAttributeOptions(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Data_setNodeAttributeOptions",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__Data, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Data_setNodeAttributeOptions" "', argument " "1"" of type '" "libgexf::Data *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::Data * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_setNodeAttributeOptions" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Data_setNodeAttributeOptions" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Data_setNodeAttributeOptions" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  {
+    try {
+      (arg1)->setNodeAttributeOptions(arg2,(std::string const &)*arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Data_setEdgeAttributeOptions(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Data_setEdgeAttributeOptions",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__Data, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Data_setEdgeAttributeOptions" "', argument " "1"" of type '" "libgexf::Data *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::Data * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_setEdgeAttributeOptions" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Data_setEdgeAttributeOptions" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Data_setEdgeAttributeOptions" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  {
+    try {
+      (arg1)->setEdgeAttributeOptions(arg2,(std::string const &)*arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
   return NULL;
 }
 
@@ -11946,9 +12808,10 @@ SWIGINTERN PyObject *_wrap_Data_setNodeValue(PyObject *SWIGUNUSEDPARM(self), PyO
   libgexf::Data *arg1 = (libgexf::Data *) 0 ;
   libgexf::t_id arg2 ;
   libgexf::t_id arg3 ;
-  std::string arg4 ;
+  std::string *arg4 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int res4 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -11980,16 +12843,18 @@ SWIGINTERN PyObject *_wrap_Data_setNodeValue(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj3, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_setNodeValue" "', argument " "4"" of type '" "std::string const""'"); 
+    res4 = SWIG_AsPtr_std_string(obj3, &ptr);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "Data_setNodeValue" "', argument " "4"" of type '" "std::string const &""'"); 
     }
-    arg4 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Data_setNodeValue" "', argument " "4"" of type '" "std::string const &""'"); 
+    }
+    arg4 = ptr;
   }
   {
     try {
-      (arg1)->setNodeValue(arg2,arg3,arg4);
+      (arg1)->setNodeValue(arg2,arg3,(std::string const &)*arg4);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -11997,8 +12862,10 @@ SWIGINTERN PyObject *_wrap_Data_setNodeValue(PyObject *SWIGUNUSEDPARM(self), PyO
     }
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res4)) delete arg4;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res4)) delete arg4;
   return NULL;
 }
 
@@ -12008,9 +12875,10 @@ SWIGINTERN PyObject *_wrap_Data_setEdgeValue(PyObject *SWIGUNUSEDPARM(self), PyO
   libgexf::Data *arg1 = (libgexf::Data *) 0 ;
   libgexf::t_id arg2 ;
   libgexf::t_id arg3 ;
-  std::string arg4 ;
+  std::string *arg4 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int res4 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -12042,16 +12910,18 @@ SWIGINTERN PyObject *_wrap_Data_setEdgeValue(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj3, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_setEdgeValue" "', argument " "4"" of type '" "std::string const""'"); 
+    res4 = SWIG_AsPtr_std_string(obj3, &ptr);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "Data_setEdgeValue" "', argument " "4"" of type '" "std::string const &""'"); 
     }
-    arg4 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Data_setEdgeValue" "', argument " "4"" of type '" "std::string const &""'"); 
+    }
+    arg4 = ptr;
   }
   {
     try {
-      (arg1)->setEdgeValue(arg2,arg3,arg4);
+      (arg1)->setEdgeValue(arg2,arg3,(std::string const &)*arg4);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -12059,8 +12929,10 @@ SWIGINTERN PyObject *_wrap_Data_setEdgeValue(PyObject *SWIGUNUSEDPARM(self), PyO
     }
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res4)) delete arg4;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res4)) delete arg4;
   return NULL;
 }
 
@@ -12352,6 +13224,88 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Data_getEdgeAttributeOptions(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Data_getEdgeAttributeOptions",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__Data, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Data_getEdgeAttributeOptions" "', argument " "1"" of type '" "libgexf::Data const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::Data * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_getEdgeAttributeOptions" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      result = ((libgexf::Data const *)arg1)->getEdgeAttributeOptions(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Data_getNodeAttributeOptions(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Data_getNodeAttributeOptions",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__Data, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Data_getNodeAttributeOptions" "', argument " "1"" of type '" "libgexf::Data const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::Data * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_getNodeAttributeOptions" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      result = ((libgexf::Data const *)arg1)->getNodeAttributeOptions(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Data_getEdgeAttributeDefault(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::Data *arg1 = (libgexf::Data *) 0 ;
@@ -12471,6 +13425,202 @@ SWIGINTERN PyObject *_wrap_Data_hasEdgeAttributeDefault(PyObject *SWIGUNUSEDPARM
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Data_hasNodeAttributeOptions(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Data_hasNodeAttributeOptions",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__Data, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Data_hasNodeAttributeOptions" "', argument " "1"" of type '" "libgexf::Data const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::Data * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_hasNodeAttributeOptions" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      result = (bool)((libgexf::Data const *)arg1)->hasNodeAttributeOptions(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Data_hasEdgeAttributeOptions(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Data_hasEdgeAttributeOptions",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__Data, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Data_hasEdgeAttributeOptions" "', argument " "1"" of type '" "libgexf::Data const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::Data * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_hasEdgeAttributeOptions" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      result = (bool)((libgexf::Data const *)arg1)->hasEdgeAttributeOptions(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Data_isNodeAttributeOption(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Data_isNodeAttributeOption",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__Data, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Data_isNodeAttributeOption" "', argument " "1"" of type '" "libgexf::Data const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::Data * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_isNodeAttributeOption" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Data_isNodeAttributeOption" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Data_isNodeAttributeOption" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  {
+    try {
+      result = (bool)((libgexf::Data const *)arg1)->isNodeAttributeOption(arg2,(std::string const &)*arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Data_isEdgeAttributeOption(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Data_isEdgeAttributeOption",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__Data, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Data_isEdgeAttributeOption" "', argument " "1"" of type '" "libgexf::Data const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::Data * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_isEdgeAttributeOption" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Data_isEdgeAttributeOption" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Data_isEdgeAttributeOption" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  {
+    try {
+      result = (bool)((libgexf::Data const *)arg1)->isEdgeAttributeOption(arg2,(std::string const &)*arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
   return NULL;
 }
 
@@ -13007,9 +14157,10 @@ fail:
 SWIGINTERN PyObject *_wrap_MetaData_setVersion(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -13021,16 +14172,18 @@ SWIGINTERN PyObject *_wrap_MetaData_setVersion(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< libgexf::MetaData * >(argp1);
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "MetaData_setVersion" "', argument " "2"" of type '" "std::string const""'"); 
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MetaData_setVersion" "', argument " "2"" of type '" "std::string const &""'"); 
     }
-    arg2 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MetaData_setVersion" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
   {
     try {
-      (arg1)->setVersion(arg2);
+      (arg1)->setVersion((std::string const &)*arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -13038,8 +14191,10 @@ SWIGINTERN PyObject *_wrap_MetaData_setVersion(PyObject *SWIGUNUSEDPARM(self), P
     }
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -13047,9 +14202,10 @@ fail:
 SWIGINTERN PyObject *_wrap_MetaData_setXmlns(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -13061,16 +14217,18 @@ SWIGINTERN PyObject *_wrap_MetaData_setXmlns(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< libgexf::MetaData * >(argp1);
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "MetaData_setXmlns" "', argument " "2"" of type '" "std::string const""'"); 
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MetaData_setXmlns" "', argument " "2"" of type '" "std::string const &""'"); 
     }
-    arg2 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MetaData_setXmlns" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
   {
     try {
-      (arg1)->setXmlns(arg2);
+      (arg1)->setXmlns((std::string const &)*arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -13078,8 +14236,10 @@ SWIGINTERN PyObject *_wrap_MetaData_setXmlns(PyObject *SWIGUNUSEDPARM(self), PyO
     }
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -13087,9 +14247,10 @@ fail:
 SWIGINTERN PyObject *_wrap_MetaData_setXsi(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -13101,16 +14262,18 @@ SWIGINTERN PyObject *_wrap_MetaData_setXsi(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< libgexf::MetaData * >(argp1);
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "MetaData_setXsi" "', argument " "2"" of type '" "std::string const""'"); 
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MetaData_setXsi" "', argument " "2"" of type '" "std::string const &""'"); 
     }
-    arg2 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MetaData_setXsi" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
   {
     try {
-      (arg1)->setXsi(arg2);
+      (arg1)->setXsi((std::string const &)*arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -13118,8 +14281,10 @@ SWIGINTERN PyObject *_wrap_MetaData_setXsi(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -13127,9 +14292,10 @@ fail:
 SWIGINTERN PyObject *_wrap_MetaData_setSchema(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -13141,16 +14307,18 @@ SWIGINTERN PyObject *_wrap_MetaData_setSchema(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< libgexf::MetaData * >(argp1);
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "MetaData_setSchema" "', argument " "2"" of type '" "std::string const""'"); 
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MetaData_setSchema" "', argument " "2"" of type '" "std::string const &""'"); 
     }
-    arg2 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MetaData_setSchema" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
   {
     try {
-      (arg1)->setSchema(arg2);
+      (arg1)->setSchema((std::string const &)*arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -13158,8 +14326,10 @@ SWIGINTERN PyObject *_wrap_MetaData_setSchema(PyObject *SWIGUNUSEDPARM(self), Py
     }
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -13167,9 +14337,10 @@ fail:
 SWIGINTERN PyObject *_wrap_MetaData_setVariant(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -13181,16 +14352,18 @@ SWIGINTERN PyObject *_wrap_MetaData_setVariant(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< libgexf::MetaData * >(argp1);
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "MetaData_setVariant" "', argument " "2"" of type '" "std::string const""'"); 
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MetaData_setVariant" "', argument " "2"" of type '" "std::string const &""'"); 
     }
-    arg2 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MetaData_setVariant" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
   {
     try {
-      (arg1)->setVariant(arg2);
+      (arg1)->setVariant((std::string const &)*arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -13198,8 +14371,10 @@ SWIGINTERN PyObject *_wrap_MetaData_setVariant(PyObject *SWIGUNUSEDPARM(self), P
     }
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -13207,9 +14382,10 @@ fail:
 SWIGINTERN PyObject *_wrap_MetaData_setCreator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -13221,16 +14397,18 @@ SWIGINTERN PyObject *_wrap_MetaData_setCreator(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< libgexf::MetaData * >(argp1);
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "MetaData_setCreator" "', argument " "2"" of type '" "std::string const""'"); 
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MetaData_setCreator" "', argument " "2"" of type '" "std::string const &""'"); 
     }
-    arg2 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MetaData_setCreator" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
   {
     try {
-      (arg1)->setCreator(arg2);
+      (arg1)->setCreator((std::string const &)*arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -13238,8 +14416,10 @@ SWIGINTERN PyObject *_wrap_MetaData_setCreator(PyObject *SWIGUNUSEDPARM(self), P
     }
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -13247,9 +14427,10 @@ fail:
 SWIGINTERN PyObject *_wrap_MetaData_setDescription(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -13261,16 +14442,18 @@ SWIGINTERN PyObject *_wrap_MetaData_setDescription(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< libgexf::MetaData * >(argp1);
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "MetaData_setDescription" "', argument " "2"" of type '" "std::string const""'"); 
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MetaData_setDescription" "', argument " "2"" of type '" "std::string const &""'"); 
     }
-    arg2 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MetaData_setDescription" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
   {
     try {
-      (arg1)->setDescription(arg2);
+      (arg1)->setDescription((std::string const &)*arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -13278,8 +14461,10 @@ SWIGINTERN PyObject *_wrap_MetaData_setDescription(PyObject *SWIGUNUSEDPARM(self
     }
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -13287,9 +14472,10 @@ fail:
 SWIGINTERN PyObject *_wrap_MetaData_setKeywords(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -13301,16 +14487,18 @@ SWIGINTERN PyObject *_wrap_MetaData_setKeywords(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< libgexf::MetaData * >(argp1);
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "MetaData_setKeywords" "', argument " "2"" of type '" "std::string const""'"); 
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MetaData_setKeywords" "', argument " "2"" of type '" "std::string const &""'"); 
     }
-    arg2 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MetaData_setKeywords" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
   {
     try {
-      (arg1)->setKeywords(arg2);
+      (arg1)->setKeywords((std::string const &)*arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -13318,8 +14506,10 @@ SWIGINTERN PyObject *_wrap_MetaData_setKeywords(PyObject *SWIGUNUSEDPARM(self), 
     }
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -13327,9 +14517,10 @@ fail:
 SWIGINTERN PyObject *_wrap_MetaData_setLastModifiedDate(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -13341,16 +14532,18 @@ SWIGINTERN PyObject *_wrap_MetaData_setLastModifiedDate(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< libgexf::MetaData * >(argp1);
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "MetaData_setLastModifiedDate" "', argument " "2"" of type '" "std::string const""'"); 
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MetaData_setLastModifiedDate" "', argument " "2"" of type '" "std::string const &""'"); 
     }
-    arg2 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MetaData_setLastModifiedDate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
   {
     try {
-      (arg1)->setLastModifiedDate(arg2);
+      (arg1)->setLastModifiedDate((std::string const &)*arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -13358,8 +14551,10 @@ SWIGINTERN PyObject *_wrap_MetaData_setLastModifiedDate(PyObject *SWIGUNUSEDPARM
     }
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -13916,6 +15111,9 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"AbstractIter_next", _wrap_AbstractIter_next, METH_VARARGS, NULL},
 	 { (char *)"delete_AbstractIter", _wrap_delete_AbstractIter, METH_VARARGS, NULL},
 	 { (char *)"AbstractIter_swigregister", AbstractIter_swigregister, METH_VARARGS, NULL},
+	 { (char *)"delete_MemoryValidator", _wrap_delete_MemoryValidator, METH_VARARGS, NULL},
+	 { (char *)"MemoryValidator_run", _wrap_MemoryValidator_run, METH_VARARGS, NULL},
+	 { (char *)"MemoryValidator_swigregister", MemoryValidator_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_FileReader", _wrap_new_FileReader, METH_VARARGS, NULL},
 	 { (char *)"delete_FileReader", _wrap_delete_FileReader, METH_VARARGS, NULL},
 	 { (char *)"FileReader_getGEXFCopy", _wrap_FileReader_getGEXFCopy, METH_VARARGS, NULL},
@@ -13926,7 +15124,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"AbstractParser_processNode", _wrap_AbstractParser_processNode, METH_VARARGS, NULL},
 	 { (char *)"delete_AbstractParser", _wrap_delete_AbstractParser, METH_VARARGS, NULL},
 	 { (char *)"AbstractParser_swigregister", AbstractParser_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_GexfParser", _wrap_new_GexfParser, METH_VARARGS, NULL},
 	 { (char *)"delete_GexfParser", _wrap_delete_GexfParser, METH_VARARGS, NULL},
 	 { (char *)"GexfParser_bind", _wrap_GexfParser_bind, METH_VARARGS, NULL},
 	 { (char *)"GexfParser_processNode", _wrap_GexfParser_processNode, METH_VARARGS, NULL},
@@ -13936,12 +15133,24 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"LegacyParser_bind", _wrap_LegacyParser_bind, METH_VARARGS, NULL},
 	 { (char *)"LegacyParser_processNode", _wrap_LegacyParser_processNode, METH_VARARGS, NULL},
 	 { (char *)"LegacyParser_swigregister", LegacyParser_swigregister, METH_VARARGS, NULL},
+	 { (char *)"delete_RngValidator", _wrap_delete_RngValidator, METH_VARARGS, NULL},
+	 { (char *)"RngValidator_run", _wrap_RngValidator_run, METH_VARARGS, NULL},
+	 { (char *)"RngValidator_swigregister", RngValidator_swigregister, METH_VARARGS, NULL},
+	 { (char *)"delete_SchemaValidator", _wrap_delete_SchemaValidator, METH_VARARGS, NULL},
+	 { (char *)"SchemaValidator_run", _wrap_SchemaValidator_run, METH_VARARGS, NULL},
+	 { (char *)"SchemaValidator_swigregister", SchemaValidator_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_FileWriter", _wrap_new_FileWriter, METH_VARARGS, NULL},
 	 { (char *)"delete_FileWriter", _wrap_delete_FileWriter, METH_VARARGS, NULL},
 	 { (char *)"FileWriter_getGEXFCopy", _wrap_FileWriter_getGEXFCopy, METH_VARARGS, NULL},
 	 { (char *)"FileWriter_init", _wrap_FileWriter_init, METH_VARARGS, NULL},
 	 { (char *)"FileWriter_write", _wrap_FileWriter_write, METH_VARARGS, NULL},
 	 { (char *)"FileWriter_swigregister", FileWriter_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_LegacyWriter", _wrap_new_LegacyWriter, METH_VARARGS, NULL},
+	 { (char *)"delete_LegacyWriter", _wrap_delete_LegacyWriter, METH_VARARGS, NULL},
+	 { (char *)"LegacyWriter_getGEXFCopy", _wrap_LegacyWriter_getGEXFCopy, METH_VARARGS, NULL},
+	 { (char *)"LegacyWriter_init", _wrap_LegacyWriter_init, METH_VARARGS, NULL},
+	 { (char *)"LegacyWriter_write", _wrap_LegacyWriter_write, METH_VARARGS, NULL},
+	 { (char *)"LegacyWriter_swigregister", LegacyWriter_swigregister, METH_VARARGS, NULL},
 	 { (char *)"delete_Conv", _wrap_delete_Conv, METH_VARARGS, NULL},
 	 { (char *)"Conv_xmlCharToId", _wrap_Conv_xmlCharToId, METH_VARARGS, NULL},
 	 { (char *)"Conv_strToId", _wrap_Conv_strToId, METH_VARARGS, NULL},
@@ -13952,6 +15161,11 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Conv_strToUnsignedInt", _wrap_Conv_strToUnsignedInt, METH_VARARGS, NULL},
 	 { (char *)"Conv_edgeTypeToStr", _wrap_Conv_edgeTypeToStr, METH_VARARGS, NULL},
 	 { (char *)"Conv_attrTypeToStr", _wrap_Conv_attrTypeToStr, METH_VARARGS, NULL},
+	 { (char *)"Conv_isBoolean", _wrap_Conv_isBoolean, METH_VARARGS, NULL},
+	 { (char *)"Conv_isDouble", _wrap_Conv_isDouble, METH_VARARGS, NULL},
+	 { (char *)"Conv_isInteger", _wrap_Conv_isInteger, METH_VARARGS, NULL},
+	 { (char *)"Conv_isFloat", _wrap_Conv_isFloat, METH_VARARGS, NULL},
+	 { (char *)"Conv_tokenizer", _wrap_Conv_tokenizer, METH_VARARGS, NULL},
 	 { (char *)"Conv_swigregister", Conv_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_Graph", _wrap_new_Graph, METH_VARARGS, NULL},
 	 { (char *)"delete_Graph", _wrap_delete_Graph, METH_VARARGS, NULL},
@@ -14017,6 +15231,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Data_addEdgeAttributeColumn", _wrap_Data_addEdgeAttributeColumn, METH_VARARGS, NULL},
 	 { (char *)"Data_setNodeAttributeDefault", _wrap_Data_setNodeAttributeDefault, METH_VARARGS, NULL},
 	 { (char *)"Data_setEdgeAttributeDefault", _wrap_Data_setEdgeAttributeDefault, METH_VARARGS, NULL},
+	 { (char *)"Data_setNodeAttributeOptions", _wrap_Data_setNodeAttributeOptions, METH_VARARGS, NULL},
+	 { (char *)"Data_setEdgeAttributeOptions", _wrap_Data_setEdgeAttributeOptions, METH_VARARGS, NULL},
 	 { (char *)"Data_setNodeValue", _wrap_Data_setNodeValue, METH_VARARGS, NULL},
 	 { (char *)"Data_setEdgeValue", _wrap_Data_setEdgeValue, METH_VARARGS, NULL},
 	 { (char *)"Data_getNodeAttributeColumn", _wrap_Data_getNodeAttributeColumn, METH_VARARGS, NULL},
@@ -14026,9 +15242,15 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Data_getNodeAttributeRow", _wrap_Data_getNodeAttributeRow, METH_VARARGS, NULL},
 	 { (char *)"Data_getEdgeAttributeRow", _wrap_Data_getEdgeAttributeRow, METH_VARARGS, NULL},
 	 { (char *)"Data_getNodeAttributeDefault", _wrap_Data_getNodeAttributeDefault, METH_VARARGS, NULL},
+	 { (char *)"Data_getEdgeAttributeOptions", _wrap_Data_getEdgeAttributeOptions, METH_VARARGS, NULL},
+	 { (char *)"Data_getNodeAttributeOptions", _wrap_Data_getNodeAttributeOptions, METH_VARARGS, NULL},
 	 { (char *)"Data_getEdgeAttributeDefault", _wrap_Data_getEdgeAttributeDefault, METH_VARARGS, NULL},
 	 { (char *)"Data_hasNodeAttributeDefault", _wrap_Data_hasNodeAttributeDefault, METH_VARARGS, NULL},
 	 { (char *)"Data_hasEdgeAttributeDefault", _wrap_Data_hasEdgeAttributeDefault, METH_VARARGS, NULL},
+	 { (char *)"Data_hasNodeAttributeOptions", _wrap_Data_hasNodeAttributeOptions, METH_VARARGS, NULL},
+	 { (char *)"Data_hasEdgeAttributeOptions", _wrap_Data_hasEdgeAttributeOptions, METH_VARARGS, NULL},
+	 { (char *)"Data_isNodeAttributeOption", _wrap_Data_isNodeAttributeOption, METH_VARARGS, NULL},
+	 { (char *)"Data_isEdgeAttributeOption", _wrap_Data_isEdgeAttributeOption, METH_VARARGS, NULL},
 	 { (char *)"Data_clearNodeAttributes", _wrap_Data_clearNodeAttributes, METH_VARARGS, NULL},
 	 { (char *)"Data_clearEdgeAttributes", _wrap_Data_clearEdgeAttributes, METH_VARARGS, NULL},
 	 { (char *)"Data_clear", _wrap_Data_clear, METH_VARARGS, NULL},
@@ -14134,9 +15356,13 @@ static swig_type_info _swigt__p_libgexf__GEXF = {"_p_libgexf__GEXF", "libgexf::G
 static swig_type_info _swigt__p_libgexf__GexfParser = {"_p_libgexf__GexfParser", "libgexf::GexfParser *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_libgexf__Graph = {"_p_libgexf__Graph", "libgexf::Graph *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_libgexf__LegacyParser = {"_p_libgexf__LegacyParser", "libgexf::LegacyParser *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_libgexf__LegacyWriter = {"_p_libgexf__LegacyWriter", "libgexf::LegacyWriter *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_libgexf__MemoryValidator = {"_p_libgexf__MemoryValidator", "libgexf::MemoryValidator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_libgexf__MetaData = {"_p_libgexf__MetaData", "libgexf::MetaData *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_libgexf__NodeIter = {"_p_libgexf__NodeIter", "libgexf::NodeIter *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_libgexf__ReadLockException = {"_p_libgexf__ReadLockException", "libgexf::ReadLockException *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_libgexf__RngValidator = {"_p_libgexf__RngValidator", "libgexf::RngValidator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_libgexf__SchemaValidator = {"_p_libgexf__SchemaValidator", "libgexf::SchemaValidator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_libgexf__UndirectedGraph = {"_p_libgexf__UndirectedGraph", "libgexf::UndirectedGraph *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_libgexf__WriteLockException = {"_p_libgexf__WriteLockException", "libgexf::WriteLockException *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_PyObject = {"_p_p_PyObject", "PyObject **", 0, 0, (void*)0, 0};
@@ -14173,9 +15399,13 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_libgexf__GexfParser,
   &_swigt__p_libgexf__Graph,
   &_swigt__p_libgexf__LegacyParser,
+  &_swigt__p_libgexf__LegacyWriter,
+  &_swigt__p_libgexf__MemoryValidator,
   &_swigt__p_libgexf__MetaData,
   &_swigt__p_libgexf__NodeIter,
   &_swigt__p_libgexf__ReadLockException,
+  &_swigt__p_libgexf__RngValidator,
+  &_swigt__p_libgexf__SchemaValidator,
   &_swigt__p_libgexf__UndirectedGraph,
   &_swigt__p_libgexf__WriteLockException,
   &_swigt__p_p_PyObject,
@@ -14212,9 +15442,13 @@ static swig_cast_info _swigc__p_libgexf__GEXF[] = {  {&_swigt__p_libgexf__GEXF, 
 static swig_cast_info _swigc__p_libgexf__GexfParser[] = {  {&_swigt__p_libgexf__GexfParser, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_libgexf__Graph[] = {  {&_swigt__p_libgexf__Graph, 0, 0, 0},  {&_swigt__p_libgexf__DirectedGraph, _p_libgexf__DirectedGraphTo_p_libgexf__Graph, 0, 0},  {&_swigt__p_libgexf__UndirectedGraph, _p_libgexf__UndirectedGraphTo_p_libgexf__Graph, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_libgexf__LegacyParser[] = {  {&_swigt__p_libgexf__LegacyParser, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_libgexf__LegacyWriter[] = {  {&_swigt__p_libgexf__LegacyWriter, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_libgexf__MemoryValidator[] = {  {&_swigt__p_libgexf__MemoryValidator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_libgexf__MetaData[] = {  {&_swigt__p_libgexf__MetaData, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_libgexf__NodeIter[] = {  {&_swigt__p_libgexf__NodeIter, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_libgexf__ReadLockException[] = {  {&_swigt__p_libgexf__ReadLockException, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_libgexf__RngValidator[] = {  {&_swigt__p_libgexf__RngValidator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_libgexf__SchemaValidator[] = {  {&_swigt__p_libgexf__SchemaValidator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_libgexf__UndirectedGraph[] = {  {&_swigt__p_libgexf__UndirectedGraph, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_libgexf__WriteLockException[] = {  {&_swigt__p_libgexf__WriteLockException, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_PyObject[] = {  {&_swigt__p_p_PyObject, 0, 0, 0},{0, 0, 0, 0}};
@@ -14251,9 +15485,13 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_libgexf__GexfParser,
   _swigc__p_libgexf__Graph,
   _swigc__p_libgexf__LegacyParser,
+  _swigc__p_libgexf__LegacyWriter,
+  _swigc__p_libgexf__MemoryValidator,
   _swigc__p_libgexf__MetaData,
   _swigc__p_libgexf__NodeIter,
   _swigc__p_libgexf__ReadLockException,
+  _swigc__p_libgexf__RngValidator,
+  _swigc__p_libgexf__SchemaValidator,
   _swigc__p_libgexf__UndirectedGraph,
   _swigc__p_libgexf__WriteLockException,
   _swigc__p_p_PyObject,
@@ -14880,6 +16118,8 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "FileReader__1_1",SWIG_From_int(static_cast< int >(libgexf::FileReader::_1_1)));
   SWIG_Python_SetConstant(d, "FileWriter_NODE",SWIG_From_int(static_cast< int >(libgexf::FileWriter::NODE)));
   SWIG_Python_SetConstant(d, "FileWriter_EDGE",SWIG_From_int(static_cast< int >(libgexf::FileWriter::EDGE)));
+  SWIG_Python_SetConstant(d, "LegacyWriter_NODE",SWIG_From_int(static_cast< int >(libgexf::LegacyWriter::NODE)));
+  SWIG_Python_SetConstant(d, "LegacyWriter_EDGE",SWIG_From_int(static_cast< int >(libgexf::LegacyWriter::EDGE)));
   SWIG_Python_SetConstant(d, "AttributeIter_NODE",SWIG_From_int(static_cast< int >(libgexf::AttributeIter::NODE)));
   SWIG_Python_SetConstant(d, "AttributeIter_EDGE",SWIG_From_int(static_cast< int >(libgexf::AttributeIter::EDGE)));
   SWIG_Python_SetConstant(d, "AttValueIter_NODE",SWIG_From_int(static_cast< int >(libgexf::AttValueIter::NODE)));

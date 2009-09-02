@@ -24,35 +24,40 @@ makemaker_args
   DEFINE => '-o $*$(OBJ_EXT) -c';
 
 cc_inc_paths
-  '.';
+  '.',
+  '/usr/include/libxml2';
 
 cc_files
     #io::input
-    '../../../filereader.o',
-    '../../../gexfparser.o',
-    '../../../legacyparser.o',
+    '../../../libgexf/filereader.o',
+    '../../../libgexf/gexfparser.o',
+    '../../../libgexf/legacyparser.o',
+    '../../../libgexf/rngvalidator.o',
+    '../../../libgexf/schemavalidator.o',
     
     #io::output
-    '../../../filewriter.o',
+    '../../../libgexf/filewriter.o',
+    '../../../libgexf/legacywriter.o',
     
     #io::utils
-    '../../../conv.o',
+    '../../../libgexf/conv.o',
     
     #db::topo
-    '../../../graph.o',
-    '../../../directedgraph.o',
-    '../../../undirectedgraph.o',
-    '../../../nodeiter.o',
-    '../../../edgeiter.o',
+    '../../../libgexf/graph.o',
+    '../../../libgexf/directedgraph.o',
+    '../../../libgexf/undirectedgraph.o',
+    '../../../libgexf/nodeiter.o',
+    '../../../libgexf/edgeiter.o',
     
     #db::data
-    '../../../data.o',
-    '../../../metadata.o',
-    '../../../attributeiter.o',
-    '../../../attvalueiter.o',
+    '../../../libgexf/data.o',
+    '../../../libgexf/metadata.o',
+    '../../../libgexf/attributeiter.o',
+    '../../../libgexf/attvalueiter.o',
     
     #main
-    '../../../gexf.o',
+    '../../../libgexf/gexf.o',
+    '../../../libgexf/memoryvalidator.o',
 
     # chemin du wrapper généré automatiquement par SWIG (ce wrapper doit déjà exister donc)
     'libgexf_wrap.o';

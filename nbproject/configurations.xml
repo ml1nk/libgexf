@@ -25,6 +25,8 @@
         <itemPath>libgexf/undirectedgraph.h</itemPath>
       </logicalFolder>
       <itemPath>libgexf/abstractiter.h</itemPath>
+      <itemPath>libgexf/memoryvalidator.cpp</itemPath>
+      <itemPath>libgexf/memoryvalidator.h</itemPath>
     </logicalFolder>
     <logicalFolder name="f1" displayName="io" projectFiles="true">
       <logicalFolder name="f1" displayName="input" projectFiles="true">
@@ -56,8 +58,6 @@
       <itemPath>libgexf/gexf.cpp</itemPath>
       <itemPath>libgexf/gexf.h</itemPath>
       <itemPath>libgexf/libgexf.h</itemPath>
-      <itemPath>libgexf/memoryvalidator.cpp</itemPath>
-      <itemPath>libgexf/memoryvalidator.h</itemPath>
       <itemPath>libgexf/typedefs.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
