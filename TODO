@@ -6,6 +6,8 @@ Major:
    * hyperarchical graphs support
    * list-string storage optimization (values replaced by corresponding idx)
    * architecture: create a MemoryValidator class (extract the data checking methods from Gexf class)
+   * GEXF 1.0 export (Gephi 0.6)
+   * memory optimization (strings replaced by their real type like int) ; create a wrapper to access data?
 
 Minor:
    * Iterators for every set<> returned by methods for Java binding compatibility

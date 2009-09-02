@@ -37,7 +37,7 @@
 namespace libgexf {
 
 /*! \class Conv
-    \brief Utility class for transforming data.
+    \brief Utility static class for transforming data.
  */
 class Conv {
 public:

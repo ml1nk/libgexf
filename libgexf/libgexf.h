@@ -45,6 +45,7 @@
 #include <libgexf/filewriter.h>
 #include <libgexf/rngvalidator.h>
 #include <libgexf/schemavalidator.h>
+#include <libgexf/memoryvalidator.h>
 
 #endif	/* _LIBGEXF_H */
 

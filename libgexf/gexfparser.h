@@ -83,7 +83,7 @@ private:
     enum ElemType { NODE, EDGE, ATTR_NODE, ATTR_EDGE };
     GEXF* _gexf;
     ElemType _last_node_type;
-    t_id _last_id;
+    libgexf::t_id _last_id;
 };
 
 } /* namespace libgexf */
