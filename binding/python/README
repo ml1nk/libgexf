@@ -10,8 +10,8 @@ the libgexf.i interface, only available on the latest release of swig.
 
 Manual Python binding with swig on Linux:
    $ swig -c++ -python -o libgexf_wrap.cpp libgexf.i
-   $ gcc -fPIC -c libgexf_wrap.cpp ../../graph.cpp ${OTHER_CPP_FILES} -I/usr/include/python2.5
-   $ g++ -shared libgexf_wrap.o graph.o gexf.o -o _libgexf.so
+   $ gcc -fPIC -c libgexf_wrap.cpp ../../gexf.cpp ${OTHER_CPP_FILES} -I/usr/include/python2.5 -I/usr/include/libxml2
+   $ g++ -shared -lxml2 libgexf_wrap.o gexf.o ${OTHER_O_FILES} -o _libgexf.so
 
 Automated Python binding with swig on Linux:
    $ swig -c++ -python -o libgexf_wrap.cpp libgexf.i

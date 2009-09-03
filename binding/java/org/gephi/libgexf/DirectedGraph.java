@@ -41,35 +41,43 @@ public class DirectedGraph extends Graph {
     this(libgexfJNI.new_DirectedGraph__SWIG_1(DirectedGraph.getCPtr(orig), orig), true);
   }
 
-  public SWIGTYPE_p_std__setT_unsigned_int_t getInEdges(long node_id) {
-    return new SWIGTYPE_p_std__setT_unsigned_int_t(libgexfJNI.DirectedGraph_getInEdges(swigCPtr, this, node_id), true);
+  public void removeInEdges(String target_id) {
+    libgexfJNI.DirectedGraph_removeInEdges(swigCPtr, this, target_id);
   }
 
-  public SWIGTYPE_p_std__setT_unsigned_int_t getOutEdges(long node_id) {
-    return new SWIGTYPE_p_std__setT_unsigned_int_t(libgexfJNI.DirectedGraph_getOutEdges(swigCPtr, this, node_id), true);
+  public void removeOutEdges(String source_id) {
+    libgexfJNI.DirectedGraph_removeOutEdges(swigCPtr, this, source_id);
   }
 
-  public SWIGTYPE_p_std__setT_unsigned_int_t getSuccessors(long node_id) {
-    return new SWIGTYPE_p_std__setT_unsigned_int_t(libgexfJNI.DirectedGraph_getSuccessors(swigCPtr, this, node_id), true);
+  public SWIGTYPE_p_std__setT_std__string_t getInEdges(String node_id) {
+    return new SWIGTYPE_p_std__setT_std__string_t(libgexfJNI.DirectedGraph_getInEdges(swigCPtr, this, node_id), true);
   }
 
-  public SWIGTYPE_p_std__setT_unsigned_int_t getPredecessors(long node_id) {
-    return new SWIGTYPE_p_std__setT_unsigned_int_t(libgexfJNI.DirectedGraph_getPredecessors(swigCPtr, this, node_id), true);
+  public SWIGTYPE_p_std__setT_std__string_t getOutEdges(String node_id) {
+    return new SWIGTYPE_p_std__setT_std__string_t(libgexfJNI.DirectedGraph_getOutEdges(swigCPtr, this, node_id), true);
   }
 
-  public long getInDegree(long node_id) {
+  public SWIGTYPE_p_std__setT_std__string_t getSuccessors(String node_id) {
+    return new SWIGTYPE_p_std__setT_std__string_t(libgexfJNI.DirectedGraph_getSuccessors(swigCPtr, this, node_id), true);
+  }
+
+  public SWIGTYPE_p_std__setT_std__string_t getPredecessors(String node_id) {
+    return new SWIGTYPE_p_std__setT_std__string_t(libgexfJNI.DirectedGraph_getPredecessors(swigCPtr, this, node_id), true);
+  }
+
+  public long getInDegree(String node_id) {
     return libgexfJNI.DirectedGraph_getInDegree(swigCPtr, this, node_id);
   }
 
-  public long getOutDegree(long node_id) {
+  public long getOutDegree(String node_id) {
     return libgexfJNI.DirectedGraph_getOutDegree(swigCPtr, this, node_id);
   }
 
-  public boolean isSuccessor(long node_id, long successor_id) {
+  public boolean isSuccessor(String node_id, String successor_id) {
     return libgexfJNI.DirectedGraph_isSuccessor(swigCPtr, this, node_id, successor_id);
   }
 
-  public boolean isPredecessor(long node_id, long predecessor_id) {
+  public boolean isPredecessor(String node_id, String predecessor_id) {
     return libgexfJNI.DirectedGraph_isPredecessor(swigCPtr, this, node_id, predecessor_id);
   }
 

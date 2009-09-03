@@ -49,6 +49,26 @@ public class GEXF {
     return new DirectedGraph(libgexfJNI.GEXF_getDirectedGraph(swigCPtr, this), false);
   }
 
+  public Data getData() {
+    return new Data(libgexfJNI.GEXF_getData(swigCPtr, this), false);
+  }
+
+  public MetaData getMetaData() {
+    return new MetaData(libgexfJNI.GEXF_getMetaData(swigCPtr, this), false);
+  }
+
+  public void setGraphType(t_graph t) {
+    libgexfJNI.GEXF_setGraphType(swigCPtr, this, t.swigValue());
+  }
+
+  public t_graph getGraphType() {
+    return t_graph.swigToEnum(libgexfJNI.GEXF_getGraphType(swigCPtr, this));
+  }
+
+  public boolean checkIntegrity() {
+    return libgexfJNI.GEXF_checkIntegrity(swigCPtr, this);
+  }
+
   public void set_graph(Graph value) {
     libgexfJNI.GEXF__graph_set(swigCPtr, this, Graph.getCPtr(value), value);
   }
@@ -56,6 +76,32 @@ public class GEXF {
   public Graph get_graph() {
     long cPtr = libgexfJNI.GEXF__graph_get(swigCPtr, this);
     return (cPtr == 0) ? null : new Graph(cPtr, false);
+  }
+
+  public void set_type(t_graph value) {
+    libgexfJNI.GEXF__type_set(swigCPtr, this, value.swigValue());
+  }
+
+  public t_graph get_type() {
+    return t_graph.swigToEnum(libgexfJNI.GEXF__type_get(swigCPtr, this));
+  }
+
+  public void set_data(Data value) {
+    libgexfJNI.GEXF__data_set(swigCPtr, this, Data.getCPtr(value), value);
+  }
+
+  public Data get_data() {
+    long cPtr = libgexfJNI.GEXF__data_get(swigCPtr, this);
+    return (cPtr == 0) ? null : new Data(cPtr, false);
+  }
+
+  public void set_meta(MetaData value) {
+    libgexfJNI.GEXF__meta_set(swigCPtr, this, MetaData.getCPtr(value), value);
+  }
+
+  public MetaData get_meta() {
+    long cPtr = libgexfJNI.GEXF__meta_get(swigCPtr, this);
+    return (cPtr == 0) ? null : new MetaData(cPtr, false);
   }
 
 }

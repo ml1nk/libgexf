@@ -8,12 +8,47 @@ swig -c++ -java -package org.gephi.libgexf -outdir org/gephi/libgexf -o libgexf_
 
 echo "Compiling.."
 gcc -fPIC -c libgexf_wrap.cpp \
-    ../../graph.cpp \
-    ../../directedgraph.cpp \
-    ../../undirectedgraph.cpp \
-    ../../gexf.cpp \
-    -I/usr/lib/jvm/java-6-sun-1.6.0.10/include -I/usr/lib/jvm/java-6-sun-1.6.0.10/include/linux
-g++ -shared libgexf_wrap.o graph.o directedgraph.o undirectedgraph.o gexf.o -o libgexf.so
+    ../../libgexf/gexf.cpp \
+    ../../libgexf/memoryvalidator.cpp \
+    ../../libgexf/filereader.cpp \
+    ../../libgexf/gexfparser.cpp \
+    ../../libgexf/legacyparser.cpp \
+    ../../libgexf/rngvalidator.cpp \
+    ../../libgexf/schemavalidator.cpp \
+    ../../libgexf/filewriter.cpp \
+    ../../libgexf/legacywriter.cpp \
+    ../../libgexf/conv.cpp \
+    ../../libgexf/graph.cpp \
+    ../../libgexf/directedgraph.cpp \
+    ../../libgexf/undirectedgraph.cpp \
+    ../../libgexf/nodeiter.cpp \
+    ../../libgexf/edgeiter.cpp \
+    ../../libgexf/data.cpp \
+    ../../libgexf/metadata.cpp \
+    ../../libgexf/attributeiter.cpp \
+    ../../libgexf/attvalueiter.cpp \
+    -I/usr/lib/jvm/java-6-sun-1.6.0.10/include -I/usr/lib/jvm/java-6-sun-1.6.0.10/include/linux -I/usr/include/libxml2
+g++ -shared -lxml2 libgexf_wrap.o \
+    gexf.o \
+    memoryvalidator.o \
+    filereader.o \
+    gexfparser.o \
+    legacyparser.o \
+    rngvalidator.o \
+    schemavalidator.o \
+    filewriter.o \
+    legacywriter.o \
+    conv.o \
+    graph.o \
+    directedgraph.o \
+    undirectedgraph.o \
+    nodeiter.o \
+    edgeiter.o \
+    data.o \
+    metadata.o \
+    attributeiter.o \
+    attvalueiter.o \
+    -o libgexf.so
 
 #echo "Creating JAR.."
 #javac org/gephi/libgexf/*.java
@@ -25,7 +60,7 @@ rm *.o
 #rm libgexf_wrap.cpp
 echo "Testing.."
 javac runme.java
-java runme #-verbose:jni
+java -Xmx256m runme #-verbose:jni
 
 echo "Done!"
 

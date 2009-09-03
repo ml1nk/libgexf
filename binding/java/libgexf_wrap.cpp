@@ -209,38 +209,132 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 
 #define SWIG_contract_assert(nullreturn, expr, msg) if (!(expr)) {SWIG_JavaThrowException(jenv, SWIG_JavaIllegalArgumentException, msg); return nullreturn; } else
 
+/*  Errors in SWIG */
+#define  SWIG_UnknownError    	   -1 
+#define  SWIG_IOError        	   -2 
+#define  SWIG_RuntimeError   	   -3 
+#define  SWIG_IndexError     	   -4 
+#define  SWIG_TypeError      	   -5 
+#define  SWIG_DivisionByZero 	   -6 
+#define  SWIG_OverflowError  	   -7 
+#define  SWIG_SyntaxError    	   -8 
+#define  SWIG_ValueError     	   -9 
+#define  SWIG_SystemError    	   -10
+#define  SWIG_AttributeError 	   -11
+#define  SWIG_MemoryError    	   -12 
+#define  SWIG_NullReferenceError   -13
+
+
+
 
 #define SWIG_FILE_WITH_INIT
-#include "../../typedefs.h"
-#include "../../graph_exceptions.h"
-#include "../../graph.h"
-#include "../../directedgraph.h"
-#include "../../undirectedgraph.h"
-#include "../../gexf.h"
+/* main */
+#include "../../libgexf/typedefs.h"
+#include "../../libgexf/exceptions.h"
+#include "../../libgexf/gexf.h"
+#include "../../libgexf/abstractiter.h"
+#include "../../libgexf/memoryvalidator.h"
+/* io::input */
+#include "../../libgexf/filereader.h"
+#include "../../libgexf/abstractparser.h"
+#include "../../libgexf/gexfparser.h"
+#include "../../libgexf/legacyparser.h"
+#include "../../libgexf/rngvalidator.h"
+#include "../../libgexf/schemavalidator.h"
+/* io::output */
+#include "../../libgexf/filewriter.h"
+#include "../../libgexf/legacywriter.h"
+/* io::utils */
+#include "../../libgexf/conv.h"
+/* db::topo */
+#include "../../libgexf/graph.h"
+#include "../../libgexf/directedgraph.h"
+#include "../../libgexf/undirectedgraph.h"
+#include "../../libgexf/nodeiter.h"
+#include "../../libgexf/edgeiter.h"
+/* db::data */
+#include "../../libgexf/data.h"
+#include "../../libgexf/metadata.h"
+#include "../../libgexf/attributeiter.h"
+#include "../../libgexf/attvalueiter.h"
 
 
 #include <stdexcept>
+
+
+#include <string>
+
+
+#include <vector>
+#include <stdexcept>
+
+
+#include <map>
+#include <algorithm>
+#include <stdexcept>
+
+
+SWIGINTERN void SWIG_JavaException(JNIEnv *jenv, int code, const char *msg) {
+  SWIG_JavaExceptionCodes exception_code = SWIG_JavaUnknownError;
+  switch(code) {
+  case SWIG_MemoryError:
+    exception_code = SWIG_JavaOutOfMemoryError;
+    break;
+  case SWIG_IOError:
+    exception_code = SWIG_JavaIOException;
+    break;
+  case SWIG_SystemError:
+  case SWIG_RuntimeError:
+    exception_code = SWIG_JavaRuntimeException;
+    break;
+  case SWIG_OverflowError:
+  case SWIG_IndexError:
+    exception_code = SWIG_JavaIndexOutOfBoundsException;
+    break;
+  case SWIG_DivisionByZero:
+    exception_code = SWIG_JavaArithmeticException;
+    break;
+  case SWIG_SyntaxError:
+  case SWIG_ValueError:
+  case SWIG_TypeError:
+    exception_code = SWIG_JavaIllegalArgumentException;
+    break;
+  case SWIG_UnknownError:
+  default:
+    exception_code = SWIG_JavaUnknownError;
+    break;
+  }
+  SWIG_JavaThrowException(jenv, exception_code, msg);
+}
+
+
+#include <stdexcept>
+
+
+#include <utility>
 
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1ReadLockException(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1ReadLockException(JNIEnv *jenv, jclass jcls, jstring jarg1) {
   jlong jresult = 0 ;
-  std::string arg1 ;
-  std::string const *argp1 ;
+  std::string *arg1 = 0 ;
   libgexf::ReadLockException *result = 0 ;
   
   (void)jenv;
   (void)jcls;
-  argp1 = *(std::string **)&jarg1; 
-  if (!argp1) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null std::string const");
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
     return 0;
   }
-  arg1 = *argp1; 
-  result = (libgexf::ReadLockException *)new libgexf::ReadLockException(arg1);
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  result = (libgexf::ReadLockException *)new libgexf::ReadLockException((std::string const &)*arg1);
   *(libgexf::ReadLockException **)&jresult = result; 
   return jresult;
 }
@@ -271,21 +365,23 @@ SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_ReadLockException_1
 }
 
 
-SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1WriteLockException(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1WriteLockException(JNIEnv *jenv, jclass jcls, jstring jarg1) {
   jlong jresult = 0 ;
-  std::string arg1 ;
-  std::string const *argp1 ;
+  std::string *arg1 = 0 ;
   libgexf::WriteLockException *result = 0 ;
   
   (void)jenv;
   (void)jcls;
-  argp1 = *(std::string **)&jarg1; 
-  if (!argp1) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null std::string const");
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
     return 0;
   }
-  arg1 = *argp1; 
-  result = (libgexf::WriteLockException *)new libgexf::WriteLockException(arg1);
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  result = (libgexf::WriteLockException *)new libgexf::WriteLockException((std::string const &)*arg1);
   *(libgexf::WriteLockException **)&jresult = result; 
   return jresult;
 }
@@ -316,46 +412,1358 @@ SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_WriteLockException_
 }
 
 
-SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_MessageExceptionBuilder_1buildString(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2) {
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1FileWriterException(JNIEnv *jenv, jclass jcls, jstring jarg1) {
   jlong jresult = 0 ;
-  std::string arg1 ;
-  libgexf::t_id arg2 ;
-  std::string *argp1 ;
-  std::string result;
+  std::string *arg1 = 0 ;
+  libgexf::FileWriterException *result = 0 ;
   
   (void)jenv;
   (void)jcls;
-  argp1 = *(std::string **)&jarg1; 
-  if (!argp1) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null std::string");
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
     return 0;
   }
-  arg1 = *argp1; 
-  arg2 = (libgexf::t_id)jarg2; 
-  result = libgexf::MessageExceptionBuilder::buildString(arg1,arg2);
-  *(std::string **)&jresult = new std::string((const std::string &)result); 
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  result = (libgexf::FileWriterException *)new libgexf::FileWriterException((std::string const &)*arg1);
+  *(libgexf::FileWriterException **)&jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_MessageExceptionBuilder_1abstractClass(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  libgexf::MessageExceptionBuilder *arg1 = (libgexf::MessageExceptionBuilder *) 0 ;
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1FileWriterException(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  libgexf::FileWriterException *arg1 = (libgexf::FileWriterException *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(libgexf::FileWriterException **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_FileWriterException_1what(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  libgexf::FileWriterException *arg1 = (libgexf::FileWriterException *) 0 ;
+  char *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(libgexf::MessageExceptionBuilder **)&jarg1; 
-  (arg1)->abstractClass();
+  arg1 = *(libgexf::FileWriterException **)&jarg1; 
+  result = (char *)((libgexf::FileWriterException const *)arg1)->what();
+  if(result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
 }
 
 
-SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1MessageExceptionBuilder(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  libgexf::MessageExceptionBuilder *arg1 = (libgexf::MessageExceptionBuilder *) 0 ;
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1FileReaderException(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+  jlong jresult = 0 ;
+  std::string *arg1 = 0 ;
+  libgexf::FileReaderException *result = 0 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(libgexf::MessageExceptionBuilder **)&jarg1; 
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  result = (libgexf::FileReaderException *)new libgexf::FileReaderException((std::string const &)*arg1);
+  *(libgexf::FileReaderException **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1FileReaderException(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  libgexf::FileReaderException *arg1 = (libgexf::FileReaderException *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(libgexf::FileReaderException **)&jarg1; 
   delete arg1;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_FileReaderException_1what(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  libgexf::FileReaderException *arg1 = (libgexf::FileReaderException *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::FileReaderException **)&jarg1; 
+  result = (char *)((libgexf::FileReaderException const *)arg1)->what();
+  if(result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1GEXF_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  libgexf::GEXF *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (libgexf::GEXF *)new libgexf::GEXF();
+  *(libgexf::GEXF **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1GEXF_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::GEXF *arg1 = 0 ;
+  libgexf::GEXF *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::GEXF **)&jarg1;
+  if(!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "libgexf::GEXF const & reference is null");
+    return 0;
+  } 
+  result = (libgexf::GEXF *)new libgexf::GEXF((libgexf::GEXF const &)*arg1);
+  *(libgexf::GEXF **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1GEXF(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(libgexf::GEXF **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_GEXF_1getUndirectedGraph(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
+  libgexf::UndirectedGraph *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::GEXF **)&jarg1; 
+  result = (libgexf::UndirectedGraph *) &(arg1)->getUndirectedGraph();
+  *(libgexf::UndirectedGraph **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_GEXF_1getDirectedGraph(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
+  libgexf::DirectedGraph *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::GEXF **)&jarg1; 
+  result = (libgexf::DirectedGraph *) &(arg1)->getDirectedGraph();
+  *(libgexf::DirectedGraph **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_GEXF_1getData(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
+  libgexf::Data *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::GEXF **)&jarg1; 
+  result = (libgexf::Data *) &(arg1)->getData();
+  *(libgexf::Data **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_GEXF_1getMetaData(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
+  libgexf::MetaData *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::GEXF **)&jarg1; 
+  result = (libgexf::MetaData *) &(arg1)->getMetaData();
+  *(libgexf::MetaData **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_GEXF_1setGraphType(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
+  libgexf::t_graph arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::GEXF **)&jarg1; 
+  arg2 = (libgexf::t_graph)jarg2; 
+  (arg1)->setGraphType(arg2);
+}
+
+
+SWIGEXPORT jint JNICALL Java_org_gephi_libgexf_libgexfJNI_GEXF_1getGraphType(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
+  libgexf::t_graph result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::GEXF **)&jarg1; 
+  result = (libgexf::t_graph)(arg1)->getGraphType();
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_GEXF_1checkIntegrity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::GEXF **)&jarg1; 
+  result = (bool)(arg1)->checkIntegrity();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_GEXF_1_1graph_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
+  libgexf::Graph *arg2 = (libgexf::Graph *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(libgexf::GEXF **)&jarg1; 
+  arg2 = *(libgexf::Graph **)&jarg2; 
+  if (arg1) (arg1)->_graph = *arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_GEXF_1_1graph_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
+  libgexf::Graph *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::GEXF **)&jarg1; 
+  result = (libgexf::Graph *)& ((arg1)->_graph);
+  *(libgexf::Graph **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_GEXF_1_1type_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
+  libgexf::t_graph arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::GEXF **)&jarg1; 
+  arg2 = (libgexf::t_graph)jarg2; 
+  if (arg1) (arg1)->_type = arg2;
+}
+
+
+SWIGEXPORT jint JNICALL Java_org_gephi_libgexf_libgexfJNI_GEXF_1_1type_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
+  libgexf::t_graph result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::GEXF **)&jarg1; 
+  result = (libgexf::t_graph) ((arg1)->_type);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_GEXF_1_1data_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
+  libgexf::Data *arg2 = (libgexf::Data *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(libgexf::GEXF **)&jarg1; 
+  arg2 = *(libgexf::Data **)&jarg2; 
+  if (arg1) (arg1)->_data = *arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_GEXF_1_1data_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
+  libgexf::Data *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::GEXF **)&jarg1; 
+  result = (libgexf::Data *)& ((arg1)->_data);
+  *(libgexf::Data **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_GEXF_1_1meta_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
+  libgexf::MetaData *arg2 = (libgexf::MetaData *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(libgexf::GEXF **)&jarg1; 
+  arg2 = *(libgexf::MetaData **)&jarg2; 
+  if (arg1) (arg1)->_meta = *arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_GEXF_1_1meta_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
+  libgexf::MetaData *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::GEXF **)&jarg1; 
+  result = (libgexf::MetaData *)& ((arg1)->_meta);
+  *(libgexf::MetaData **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_AbstractIter_1begin(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::AbstractIter *arg1 = (libgexf::AbstractIter *) 0 ;
+  libgexf::AbstractIter *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::AbstractIter **)&jarg1; 
+  result = (libgexf::AbstractIter *)(arg1)->begin();
+  *(libgexf::AbstractIter **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_AbstractIter_1hasNext(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  libgexf::AbstractIter *arg1 = (libgexf::AbstractIter *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::AbstractIter **)&jarg1; 
+  result = (bool)((libgexf::AbstractIter const *)arg1)->hasNext();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_AbstractIter_1next(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  libgexf::AbstractIter *arg1 = (libgexf::AbstractIter *) 0 ;
+  libgexf::t_id result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::AbstractIter **)&jarg1; 
+  result = (arg1)->next();
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1AbstractIter(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  libgexf::AbstractIter *arg1 = (libgexf::AbstractIter *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(libgexf::AbstractIter **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1MemoryValidator(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  libgexf::MemoryValidator *arg1 = (libgexf::MemoryValidator *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(libgexf::MemoryValidator **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_MemoryValidator_1run(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  libgexf::GEXF *arg1 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::GEXF **)&jarg1;
+  if(!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "libgexf::GEXF const & reference is null");
+    return 0;
+  } 
+  result = (bool)libgexf::MemoryValidator::run((libgexf::GEXF const &)*arg1);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1FileReader_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  libgexf::FileReader *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (libgexf::FileReader *)new libgexf::FileReader();
+  *(libgexf::FileReader **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1FileReader_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jstring jarg1, jint jarg2) {
+  jlong jresult = 0 ;
+  std::string *arg1 = 0 ;
+  libgexf::FileReader::Version arg2 ;
+  libgexf::FileReader *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  arg2 = (libgexf::FileReader::Version)jarg2; 
+  result = (libgexf::FileReader *)new libgexf::FileReader((std::string const &)*arg1,arg2);
+  *(libgexf::FileReader **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1FileReader_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+  jlong jresult = 0 ;
+  std::string *arg1 = 0 ;
+  libgexf::FileReader *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  result = (libgexf::FileReader *)new libgexf::FileReader((std::string const &)*arg1);
+  *(libgexf::FileReader **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1FileReader_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::FileReader *arg1 = 0 ;
+  libgexf::FileReader *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::FileReader **)&jarg1;
+  if(!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "libgexf::FileReader const & reference is null");
+    return 0;
+  } 
+  result = (libgexf::FileReader *)new libgexf::FileReader((libgexf::FileReader const &)*arg1);
+  *(libgexf::FileReader **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1FileReader(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  libgexf::FileReader *arg1 = (libgexf::FileReader *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(libgexf::FileReader **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_FileReader_1getGEXFCopy(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::FileReader *arg1 = (libgexf::FileReader *) 0 ;
+  libgexf::GEXF result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::FileReader **)&jarg1; 
+  result = (arg1)->getGEXFCopy();
+  *(libgexf::GEXF **)&jresult = new libgexf::GEXF((const libgexf::GEXF &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_FileReader_1init_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jint jarg3) {
+  libgexf::FileReader *arg1 = (libgexf::FileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  libgexf::FileReader::Version arg3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::FileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  arg3 = (libgexf::FileReader::Version)jarg3; 
+  (arg1)->init((std::string const &)*arg2,arg3);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_FileReader_1init_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  libgexf::FileReader *arg1 = (libgexf::FileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::FileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  (arg1)->init((std::string const &)*arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_FileReader_1slurp(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  libgexf::FileReader *arg1 = (libgexf::FileReader *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::FileReader **)&jarg1; 
+  (arg1)->slurp();
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_AbstractParser_1bind(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  libgexf::AbstractParser *arg1 = (libgexf::AbstractParser *) 0 ;
+  libgexf::GEXF *arg2 = (libgexf::GEXF *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(libgexf::AbstractParser **)&jarg1; 
+  arg2 = *(libgexf::GEXF **)&jarg2; 
+  (arg1)->bind(arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_AbstractParser_1processNode(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3) {
+  libgexf::AbstractParser *arg1 = (libgexf::AbstractParser *) 0 ;
+  xmlTextReaderPtr arg2 ;
+  xmlChar *arg3 = (xmlChar *) 0 ;
+  xmlTextReaderPtr *argp2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::AbstractParser **)&jarg1; 
+  argp2 = *(xmlTextReaderPtr **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null xmlTextReaderPtr");
+    return ;
+  }
+  arg2 = *argp2; 
+  arg3 = *(xmlChar **)&jarg3; 
+  (arg1)->processNode(arg2,(xmlChar const *)arg3);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1AbstractParser(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  libgexf::AbstractParser *arg1 = (libgexf::AbstractParser *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(libgexf::AbstractParser **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1GexfParser(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  libgexf::GexfParser *arg1 = (libgexf::GexfParser *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(libgexf::GexfParser **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_GexfParser_1bind(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  libgexf::GexfParser *arg1 = (libgexf::GexfParser *) 0 ;
+  libgexf::GEXF *arg2 = (libgexf::GEXF *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(libgexf::GexfParser **)&jarg1; 
+  arg2 = *(libgexf::GEXF **)&jarg2; 
+  (arg1)->bind(arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_GexfParser_1processNode(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3) {
+  libgexf::GexfParser *arg1 = (libgexf::GexfParser *) 0 ;
+  xmlTextReaderPtr arg2 ;
+  xmlChar *arg3 = (xmlChar *) (xmlChar *)0 ;
+  xmlTextReaderPtr *argp2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::GexfParser **)&jarg1; 
+  argp2 = *(xmlTextReaderPtr **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null xmlTextReaderPtr");
+    return ;
+  }
+  arg2 = *argp2; 
+  arg3 = *(xmlChar **)&jarg3; 
+  (arg1)->processNode(arg2,(xmlChar const *)arg3);
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1LegacyParser_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  libgexf::LegacyParser *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (libgexf::LegacyParser *)new libgexf::LegacyParser();
+  *(libgexf::LegacyParser **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1LegacyParser_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::LegacyParser *arg1 = 0 ;
+  libgexf::LegacyParser *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::LegacyParser **)&jarg1;
+  if(!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "libgexf::LegacyParser const & reference is null");
+    return 0;
+  } 
+  result = (libgexf::LegacyParser *)new libgexf::LegacyParser((libgexf::LegacyParser const &)*arg1);
+  *(libgexf::LegacyParser **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1LegacyParser(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  libgexf::LegacyParser *arg1 = (libgexf::LegacyParser *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(libgexf::LegacyParser **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_LegacyParser_1bind(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  libgexf::LegacyParser *arg1 = (libgexf::LegacyParser *) 0 ;
+  libgexf::GEXF *arg2 = (libgexf::GEXF *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(libgexf::LegacyParser **)&jarg1; 
+  arg2 = *(libgexf::GEXF **)&jarg2; 
+  (arg1)->bind(arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_LegacyParser_1processNode(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3) {
+  libgexf::LegacyParser *arg1 = (libgexf::LegacyParser *) 0 ;
+  xmlTextReaderPtr arg2 ;
+  xmlChar *arg3 = (xmlChar *) 0 ;
+  xmlTextReaderPtr *argp2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::LegacyParser **)&jarg1; 
+  argp2 = *(xmlTextReaderPtr **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null xmlTextReaderPtr");
+    return ;
+  }
+  arg2 = *argp2; 
+  arg3 = *(xmlChar **)&jarg3; 
+  (arg1)->processNode(arg2,(xmlChar const *)arg3);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1RngValidator(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  libgexf::RngValidator *arg1 = (libgexf::RngValidator *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(libgexf::RngValidator **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_RngValidator_1run(JNIEnv *jenv, jclass jcls, jstring jarg1, jstring jarg2) {
+  jboolean jresult = 0 ;
+  std::string *arg1 = 0 ;
+  std::string *arg2 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (bool)libgexf::RngValidator::run((std::string const &)*arg1,(std::string const &)*arg2);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1SchemaValidator(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  libgexf::SchemaValidator *arg1 = (libgexf::SchemaValidator *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(libgexf::SchemaValidator **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_SchemaValidator_1run(JNIEnv *jenv, jclass jcls, jstring jarg1, jstring jarg2) {
+  jboolean jresult = 0 ;
+  std::string *arg1 = 0 ;
+  std::string *arg2 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (bool)libgexf::SchemaValidator::run((std::string const &)*arg1,(std::string const &)*arg2);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1FileWriter_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  libgexf::FileWriter *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (libgexf::FileWriter *)new libgexf::FileWriter();
+  *(libgexf::FileWriter **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1FileWriter_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jobject jarg2_) {
+  jlong jresult = 0 ;
+  std::string *arg1 = 0 ;
+  libgexf::GEXF *arg2 = (libgexf::GEXF *) 0 ;
+  libgexf::FileWriter *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg2_;
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  arg2 = *(libgexf::GEXF **)&jarg2; 
+  result = (libgexf::FileWriter *)new libgexf::FileWriter((std::string const &)*arg1,arg2);
+  *(libgexf::FileWriter **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1FileWriter_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::FileWriter *arg1 = 0 ;
+  libgexf::FileWriter *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::FileWriter **)&jarg1;
+  if(!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "libgexf::FileWriter const & reference is null");
+    return 0;
+  } 
+  result = (libgexf::FileWriter *)new libgexf::FileWriter((libgexf::FileWriter const &)*arg1);
+  *(libgexf::FileWriter **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1FileWriter(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  libgexf::FileWriter *arg1 = (libgexf::FileWriter *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(libgexf::FileWriter **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_FileWriter_1getGEXFCopy(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::FileWriter *arg1 = (libgexf::FileWriter *) 0 ;
+  libgexf::GEXF result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::FileWriter **)&jarg1; 
+  result = (arg1)->getGEXFCopy();
+  *(libgexf::GEXF **)&jresult = new libgexf::GEXF((const libgexf::GEXF &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_FileWriter_1init(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jlong jarg3, jobject jarg3_) {
+  libgexf::FileWriter *arg1 = (libgexf::FileWriter *) 0 ;
+  std::string *arg2 = 0 ;
+  libgexf::GEXF *arg3 = (libgexf::GEXF *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg3_;
+  arg1 = *(libgexf::FileWriter **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  arg3 = *(libgexf::GEXF **)&jarg3; 
+  (arg1)->init((std::string const &)*arg2,arg3);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_FileWriter_1write(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  libgexf::FileWriter *arg1 = (libgexf::FileWriter *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::FileWriter **)&jarg1; 
+  (arg1)->write();
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1LegacyWriter_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  libgexf::LegacyWriter *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (libgexf::LegacyWriter *)new libgexf::LegacyWriter();
+  *(libgexf::LegacyWriter **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1LegacyWriter_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jobject jarg2_) {
+  jlong jresult = 0 ;
+  std::string *arg1 = 0 ;
+  libgexf::GEXF *arg2 = (libgexf::GEXF *) 0 ;
+  libgexf::LegacyWriter *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg2_;
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  arg2 = *(libgexf::GEXF **)&jarg2; 
+  result = (libgexf::LegacyWriter *)new libgexf::LegacyWriter((std::string const &)*arg1,arg2);
+  *(libgexf::LegacyWriter **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1LegacyWriter_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::LegacyWriter *arg1 = 0 ;
+  libgexf::LegacyWriter *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::LegacyWriter **)&jarg1;
+  if(!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "libgexf::LegacyWriter const & reference is null");
+    return 0;
+  } 
+  result = (libgexf::LegacyWriter *)new libgexf::LegacyWriter((libgexf::LegacyWriter const &)*arg1);
+  *(libgexf::LegacyWriter **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1LegacyWriter(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  libgexf::LegacyWriter *arg1 = (libgexf::LegacyWriter *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(libgexf::LegacyWriter **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_LegacyWriter_1getGEXFCopy(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::LegacyWriter *arg1 = (libgexf::LegacyWriter *) 0 ;
+  libgexf::GEXF result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::LegacyWriter **)&jarg1; 
+  result = (arg1)->getGEXFCopy();
+  *(libgexf::GEXF **)&jresult = new libgexf::GEXF((const libgexf::GEXF &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_LegacyWriter_1init(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jlong jarg3, jobject jarg3_) {
+  libgexf::LegacyWriter *arg1 = (libgexf::LegacyWriter *) 0 ;
+  std::string *arg2 = 0 ;
+  libgexf::GEXF *arg3 = (libgexf::GEXF *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg3_;
+  arg1 = *(libgexf::LegacyWriter **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  arg3 = *(libgexf::GEXF **)&jarg3; 
+  (arg1)->init((std::string const &)*arg2,arg3);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_LegacyWriter_1write(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  libgexf::LegacyWriter *arg1 = (libgexf::LegacyWriter *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::LegacyWriter **)&jarg1; 
+  (arg1)->write();
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1Conv(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  libgexf::Conv *arg1 = (libgexf::Conv *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(libgexf::Conv **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_Conv_1xmlCharToId(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  jstring jresult = 0 ;
+  xmlChar *arg1 = (xmlChar *) 0 ;
+  libgexf::t_id result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(xmlChar **)&jarg1; 
+  result = libgexf::Conv::xmlCharToId((xmlChar const *)arg1);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_Conv_1strToId(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+  jstring jresult = 0 ;
+  std::string *arg1 = 0 ;
+  libgexf::t_id result;
+  
+  (void)jenv;
+  (void)jcls;
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  result = libgexf::Conv::strToId((std::string const &)*arg1);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_Conv_1xmlCharToStr(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  jstring jresult = 0 ;
+  xmlChar *arg1 = (xmlChar *) 0 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(xmlChar **)&jarg1; 
+  result = libgexf::Conv::xmlCharToStr((xmlChar const *)arg1);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_Conv_1xmlCharToUnsignedInt(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  jlong jresult = 0 ;
+  xmlChar *arg1 = (xmlChar *) 0 ;
+  unsigned int result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(xmlChar **)&jarg1; 
+  result = (unsigned int)libgexf::Conv::xmlCharToUnsignedInt((xmlChar const *)arg1);
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_Conv_1idToStr(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+  jstring jresult = 0 ;
+  libgexf::t_id arg1 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  (&arg1)->assign(arg1_pstr);
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  result = libgexf::Conv::idToStr(arg1);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_Conv_1unsignedIntToStr(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  jstring jresult = 0 ;
+  unsigned int arg1 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = (unsigned int)jarg1; 
+  result = libgexf::Conv::unsignedIntToStr(arg1);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_Conv_1strToUnsignedInt(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+  jlong jresult = 0 ;
+  std::string *arg1 = 0 ;
+  unsigned int result;
+  
+  (void)jenv;
+  (void)jcls;
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  result = (unsigned int)libgexf::Conv::strToUnsignedInt((std::string const &)*arg1);
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_Conv_1edgeTypeToStr(JNIEnv *jenv, jclass jcls, jint jarg1) {
+  jstring jresult = 0 ;
+  libgexf::t_edge_type arg1 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = (libgexf::t_edge_type)jarg1; 
+  result = libgexf::Conv::edgeTypeToStr(arg1);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_Conv_1attrTypeToStr(JNIEnv *jenv, jclass jcls, jint jarg1) {
+  jstring jresult = 0 ;
+  libgexf::t_attr_type arg1 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = (libgexf::t_attr_type)jarg1; 
+  result = libgexf::Conv::attrTypeToStr(arg1);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_Conv_1isBoolean(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+  jboolean jresult = 0 ;
+  std::string *arg1 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  result = (bool)libgexf::Conv::isBoolean((std::string const &)*arg1);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_Conv_1isDouble(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+  jboolean jresult = 0 ;
+  std::string *arg1 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  result = (bool)libgexf::Conv::isDouble((std::string const &)*arg1);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_Conv_1isInteger(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+  jboolean jresult = 0 ;
+  std::string *arg1 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  result = (bool)libgexf::Conv::isInteger((std::string const &)*arg1);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_Conv_1isFloat(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+  jboolean jresult = 0 ;
+  std::string *arg1 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  result = (bool)libgexf::Conv::isFloat((std::string const &)*arg1);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_Conv_1tokenizer(JNIEnv *jenv, jclass jcls, jstring jarg1, jstring jarg2) {
+  jlong jresult = 0 ;
+  std::string *arg1 = 0 ;
+  std::string *arg2 = 0 ;
+  SwigValueWrapper< std::set< std::string > > result;
+  
+  (void)jenv;
+  (void)jcls;
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = libgexf::Conv::tokenizer((std::string const &)*arg1,(std::string const &)*arg2);
+  *(std::set< std::string > **)&jresult = new std::set< std::string >((const std::set< std::string > &)result); 
+  return jresult;
 }
 
 
@@ -400,7 +1808,7 @@ SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1Graph(JNIEnv *
 }
 
 
-SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1addNode(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1addNode(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   libgexf::Graph *arg1 = (libgexf::Graph *) 0 ;
   libgexf::t_id arg2 ;
   
@@ -408,12 +1816,101 @@ SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1addNode(JNIEnv 
   (void)jcls;
   (void)jarg1_;
   arg1 = *(libgexf::Graph **)&jarg1; 
-  arg2 = (libgexf::t_id)jarg2; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
   (arg1)->addNode(arg2);
 }
 
 
-SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1addEdge(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3, jlong jarg4) {
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1addEdge_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3, jstring jarg4, jlong jarg5, jint jarg6) {
+  libgexf::Graph *arg1 = (libgexf::Graph *) 0 ;
+  libgexf::t_id arg2 ;
+  libgexf::t_id arg3 ;
+  libgexf::t_id arg4 ;
+  unsigned int arg5 ;
+  libgexf::t_edge_type arg6 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Graph **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return ;
+  (&arg3)->assign(arg3_pstr);
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
+  if(!jarg4) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg4_pstr = (const char *)jenv->GetStringUTFChars(jarg4, 0); 
+  if (!arg4_pstr) return ;
+  (&arg4)->assign(arg4_pstr);
+  jenv->ReleaseStringUTFChars(jarg4, arg4_pstr); 
+  arg5 = (unsigned int)jarg5; 
+  arg6 = (libgexf::t_edge_type)jarg6; 
+  (arg1)->addEdge(arg2,arg3,arg4,arg5,arg6);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1addEdge_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3, jstring jarg4, jlong jarg5) {
+  libgexf::Graph *arg1 = (libgexf::Graph *) 0 ;
+  libgexf::t_id arg2 ;
+  libgexf::t_id arg3 ;
+  libgexf::t_id arg4 ;
+  unsigned int arg5 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Graph **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return ;
+  (&arg3)->assign(arg3_pstr);
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
+  if(!jarg4) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg4_pstr = (const char *)jenv->GetStringUTFChars(jarg4, 0); 
+  if (!arg4_pstr) return ;
+  (&arg4)->assign(arg4_pstr);
+  jenv->ReleaseStringUTFChars(jarg4, arg4_pstr); 
+  arg5 = (unsigned int)jarg5; 
+  (arg1)->addEdge(arg2,arg3,arg4,arg5);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1addEdge_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3, jstring jarg4) {
   libgexf::Graph *arg1 = (libgexf::Graph *) 0 ;
   libgexf::t_id arg2 ;
   libgexf::t_id arg3 ;
@@ -423,14 +1920,35 @@ SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1addEdge(JNIEnv 
   (void)jcls;
   (void)jarg1_;
   arg1 = *(libgexf::Graph **)&jarg1; 
-  arg2 = (libgexf::t_id)jarg2; 
-  arg3 = (libgexf::t_id)jarg3; 
-  arg4 = (libgexf::t_id)jarg4; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return ;
+  (&arg3)->assign(arg3_pstr);
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
+  if(!jarg4) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg4_pstr = (const char *)jenv->GetStringUTFChars(jarg4, 0); 
+  if (!arg4_pstr) return ;
+  (&arg4)->assign(arg4_pstr);
+  jenv->ReleaseStringUTFChars(jarg4, arg4_pstr); 
   (arg1)->addEdge(arg2,arg3,arg4);
 }
 
 
-SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1removeNode(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1removeNode(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   libgexf::Graph *arg1 = (libgexf::Graph *) 0 ;
   libgexf::t_id arg2 ;
   
@@ -438,12 +1956,19 @@ SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1removeNode(JNIE
   (void)jcls;
   (void)jarg1_;
   arg1 = *(libgexf::Graph **)&jarg1; 
-  arg2 = (libgexf::t_id)jarg2; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
   (arg1)->removeNode(arg2);
 }
 
 
-SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1removeEdge(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3) {
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1removeEdge(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3) {
   libgexf::Graph *arg1 = (libgexf::Graph *) 0 ;
   libgexf::t_id arg2 ;
   libgexf::t_id arg3 ;
@@ -452,39 +1977,27 @@ SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1removeEdge(JNIE
   (void)jcls;
   (void)jarg1_;
   arg1 = *(libgexf::Graph **)&jarg1; 
-  arg2 = (libgexf::t_id)jarg2; 
-  arg3 = (libgexf::t_id)jarg3; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return ;
+  (&arg3)->assign(arg3_pstr);
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
   (arg1)->removeEdge(arg2,arg3);
 }
 
 
-SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1removeInEdges(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
-  libgexf::Graph *arg1 = (libgexf::Graph *) 0 ;
-  libgexf::t_id arg2 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(libgexf::Graph **)&jarg1; 
-  arg2 = (libgexf::t_id)jarg2; 
-  (arg1)->removeInEdges(arg2);
-}
-
-
-SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1removeOutEdges(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
-  libgexf::Graph *arg1 = (libgexf::Graph *) 0 ;
-  libgexf::t_id arg2 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(libgexf::Graph **)&jarg1; 
-  arg2 = (libgexf::t_id)jarg2; 
-  (arg1)->removeOutEdges(arg2);
-}
-
-
-SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1containsNode(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1containsNode(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jboolean jresult = 0 ;
   libgexf::Graph *arg1 = (libgexf::Graph *) 0 ;
   libgexf::t_id arg2 ;
@@ -494,14 +2007,21 @@ SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1containsNod
   (void)jcls;
   (void)jarg1_;
   arg1 = *(libgexf::Graph **)&jarg1; 
-  arg2 = (libgexf::t_id)jarg2; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
   result = (bool)((libgexf::Graph const *)arg1)->containsNode(arg2);
   jresult = (jboolean)result; 
   return jresult;
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1containsEdge(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3) {
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1containsEdge(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3) {
   jboolean jresult = 0 ;
   libgexf::Graph *arg1 = (libgexf::Graph *) 0 ;
   libgexf::t_id arg2 ;
@@ -512,10 +2032,78 @@ SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1containsEdg
   (void)jcls;
   (void)jarg1_;
   arg1 = *(libgexf::Graph **)&jarg1; 
-  arg2 = (libgexf::t_id)jarg2; 
-  arg3 = (libgexf::t_id)jarg3; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return 0;
+  (&arg3)->assign(arg3_pstr);
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
   result = (bool)((libgexf::Graph const *)arg1)->containsEdge(arg2,arg3);
   jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1getNodes(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::Graph *arg1 = (libgexf::Graph *) 0 ;
+  libgexf::NodeIter *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Graph **)&jarg1; 
+  result = (libgexf::NodeIter *)((libgexf::Graph const *)arg1)->getNodes();
+  *(libgexf::NodeIter **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1getEdges(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::Graph *arg1 = (libgexf::Graph *) 0 ;
+  libgexf::EdgeIter *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Graph **)&jarg1; 
+  result = (libgexf::EdgeIter *)((libgexf::Graph const *)arg1)->getEdges();
+  *(libgexf::EdgeIter **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1getNeighbors(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jlong jresult = 0 ;
+  libgexf::Graph *arg1 = (libgexf::Graph *) 0 ;
+  libgexf::t_id arg2 ;
+  SwigValueWrapper< std::set< std::string > > result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Graph **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = ((libgexf::Graph const *)arg1)->getNeighbors(arg2);
+  *(std::set< libgexf::t_id > **)&jresult = new std::set< libgexf::t_id >((const std::set< libgexf::t_id > &)result); 
   return jresult;
 }
 
@@ -550,7 +2138,7 @@ SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1getEdgeCount(J
 }
 
 
-SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1getDegree(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1getDegree(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jlong jresult = 0 ;
   libgexf::Graph *arg1 = (libgexf::Graph *) 0 ;
   libgexf::t_id arg2 ;
@@ -560,31 +2148,21 @@ SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1getDegree(JNIE
   (void)jcls;
   (void)jarg1_;
   arg1 = *(libgexf::Graph **)&jarg1; 
-  arg2 = (libgexf::t_id)jarg2; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
   result = (unsigned int)((libgexf::Graph const *)arg1)->getDegree(arg2);
   jresult = (jlong)result; 
   return jresult;
 }
 
 
-SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1getNeighbors(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
-  jlong jresult = 0 ;
-  libgexf::Graph *arg1 = (libgexf::Graph *) 0 ;
-  libgexf::t_id arg2 ;
-  std::set< libgexf::t_id > result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(libgexf::Graph **)&jarg1; 
-  arg2 = (libgexf::t_id)jarg2; 
-  result = ((libgexf::Graph const *)arg1)->getNeighbors(arg2);
-  *(std::set< libgexf::t_id > **)&jresult = new std::set< libgexf::t_id >((const std::set< libgexf::t_id > &)result); 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1clearEdges_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1clearEdges_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   libgexf::Graph *arg1 = (libgexf::Graph *) 0 ;
   libgexf::t_id arg2 ;
   
@@ -592,7 +2170,14 @@ SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Graph_1clearEdges_1_1S
   (void)jcls;
   (void)jarg1_;
   arg1 = *(libgexf::Graph **)&jarg1; 
-  arg2 = (libgexf::t_id)jarg2; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
   (arg1)->clearEdges(arg2);
 }
 
@@ -765,75 +2350,143 @@ SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1DirectedGraph(
 }
 
 
-SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_DirectedGraph_1getInEdges(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
-  jlong jresult = 0 ;
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_DirectedGraph_1removeInEdges(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   libgexf::DirectedGraph *arg1 = (libgexf::DirectedGraph *) 0 ;
   libgexf::t_id arg2 ;
-  std::set< libgexf::t_id > result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(libgexf::DirectedGraph **)&jarg1; 
-  arg2 = (libgexf::t_id)jarg2; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  (arg1)->removeInEdges(arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_DirectedGraph_1removeOutEdges(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  libgexf::DirectedGraph *arg1 = (libgexf::DirectedGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::DirectedGraph **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  (arg1)->removeOutEdges(arg2);
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_DirectedGraph_1getInEdges(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jlong jresult = 0 ;
+  libgexf::DirectedGraph *arg1 = (libgexf::DirectedGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  SwigValueWrapper< std::set< std::string > > result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::DirectedGraph **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
   result = ((libgexf::DirectedGraph const *)arg1)->getInEdges(arg2);
   *(std::set< libgexf::t_id > **)&jresult = new std::set< libgexf::t_id >((const std::set< libgexf::t_id > &)result); 
   return jresult;
 }
 
 
-SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_DirectedGraph_1getOutEdges(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_DirectedGraph_1getOutEdges(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jlong jresult = 0 ;
   libgexf::DirectedGraph *arg1 = (libgexf::DirectedGraph *) 0 ;
   libgexf::t_id arg2 ;
-  std::set< libgexf::t_id > result;
+  SwigValueWrapper< std::set< std::string > > result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(libgexf::DirectedGraph **)&jarg1; 
-  arg2 = (libgexf::t_id)jarg2; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
   result = ((libgexf::DirectedGraph const *)arg1)->getOutEdges(arg2);
   *(std::set< libgexf::t_id > **)&jresult = new std::set< libgexf::t_id >((const std::set< libgexf::t_id > &)result); 
   return jresult;
 }
 
 
-SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_DirectedGraph_1getSuccessors(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_DirectedGraph_1getSuccessors(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jlong jresult = 0 ;
   libgexf::DirectedGraph *arg1 = (libgexf::DirectedGraph *) 0 ;
   libgexf::t_id arg2 ;
-  std::set< libgexf::t_id > result;
+  SwigValueWrapper< std::set< std::string > > result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(libgexf::DirectedGraph **)&jarg1; 
-  arg2 = (libgexf::t_id)jarg2; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
   result = ((libgexf::DirectedGraph const *)arg1)->getSuccessors(arg2);
   *(std::set< libgexf::t_id > **)&jresult = new std::set< libgexf::t_id >((const std::set< libgexf::t_id > &)result); 
   return jresult;
 }
 
 
-SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_DirectedGraph_1getPredecessors(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_DirectedGraph_1getPredecessors(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jlong jresult = 0 ;
   libgexf::DirectedGraph *arg1 = (libgexf::DirectedGraph *) 0 ;
   libgexf::t_id arg2 ;
-  std::set< libgexf::t_id > result;
+  SwigValueWrapper< std::set< std::string > > result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(libgexf::DirectedGraph **)&jarg1; 
-  arg2 = (libgexf::t_id)jarg2; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
   result = ((libgexf::DirectedGraph const *)arg1)->getPredecessors(arg2);
   *(std::set< libgexf::t_id > **)&jresult = new std::set< libgexf::t_id >((const std::set< libgexf::t_id > &)result); 
   return jresult;
 }
 
 
-SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_DirectedGraph_1getInDegree(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_DirectedGraph_1getInDegree(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jlong jresult = 0 ;
   libgexf::DirectedGraph *arg1 = (libgexf::DirectedGraph *) 0 ;
   libgexf::t_id arg2 ;
@@ -843,14 +2496,21 @@ SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_DirectedGraph_1getInD
   (void)jcls;
   (void)jarg1_;
   arg1 = *(libgexf::DirectedGraph **)&jarg1; 
-  arg2 = (libgexf::t_id)jarg2; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
   result = (unsigned int)((libgexf::DirectedGraph const *)arg1)->getInDegree(arg2);
   jresult = (jlong)result; 
   return jresult;
 }
 
 
-SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_DirectedGraph_1getOutDegree(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_DirectedGraph_1getOutDegree(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jlong jresult = 0 ;
   libgexf::DirectedGraph *arg1 = (libgexf::DirectedGraph *) 0 ;
   libgexf::t_id arg2 ;
@@ -860,14 +2520,21 @@ SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_DirectedGraph_1getOut
   (void)jcls;
   (void)jarg1_;
   arg1 = *(libgexf::DirectedGraph **)&jarg1; 
-  arg2 = (libgexf::t_id)jarg2; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
   result = (unsigned int)((libgexf::DirectedGraph const *)arg1)->getOutDegree(arg2);
   jresult = (jlong)result; 
   return jresult;
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_DirectedGraph_1isSuccessor(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3) {
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_DirectedGraph_1isSuccessor(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3) {
   jboolean jresult = 0 ;
   libgexf::DirectedGraph *arg1 = (libgexf::DirectedGraph *) 0 ;
   libgexf::t_id arg2 ;
@@ -878,15 +2545,29 @@ SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_DirectedGraph_1isS
   (void)jcls;
   (void)jarg1_;
   arg1 = *(libgexf::DirectedGraph **)&jarg1; 
-  arg2 = (libgexf::t_id)jarg2; 
-  arg3 = (libgexf::t_id)jarg3; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return 0;
+  (&arg3)->assign(arg3_pstr);
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
   result = (bool)((libgexf::DirectedGraph const *)arg1)->isSuccessor(arg2,arg3);
   jresult = (jboolean)result; 
   return jresult;
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_DirectedGraph_1isPredecessor(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3) {
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_DirectedGraph_1isPredecessor(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3) {
   jboolean jresult = 0 ;
   libgexf::DirectedGraph *arg1 = (libgexf::DirectedGraph *) 0 ;
   libgexf::t_id arg2 ;
@@ -897,8 +2578,22 @@ SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_DirectedGraph_1isP
   (void)jcls;
   (void)jarg1_;
   arg1 = *(libgexf::DirectedGraph **)&jarg1; 
-  arg2 = (libgexf::t_id)jarg2; 
-  arg3 = (libgexf::t_id)jarg3; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return 0;
+  (&arg3)->assign(arg3_pstr);
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
   result = (bool)((libgexf::DirectedGraph const *)arg1)->isPredecessor(arg2,arg3);
   jresult = (jboolean)result; 
   return jresult;
@@ -946,105 +2641,1633 @@ SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1UndirectedGrap
 }
 
 
-SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1GEXF_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1NodeIter(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
-  libgexf::GEXF *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (libgexf::GEXF *)new libgexf::GEXF();
-  *(libgexf::GEXF **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1GEXF_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jlong jresult = 0 ;
-  libgexf::GEXF *arg1 = 0 ;
-  libgexf::GEXF *result = 0 ;
+  libgexf::Graph *arg1 = (libgexf::Graph *) 0 ;
+  libgexf::NodeIter *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(libgexf::GEXF **)&jarg1;
-  if(!arg1) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "libgexf::GEXF const & reference is null");
-    return 0;
-  } 
-  result = (libgexf::GEXF *)new libgexf::GEXF((libgexf::GEXF const &)*arg1);
-  *(libgexf::GEXF **)&jresult = result; 
+  arg1 = *(libgexf::Graph **)&jarg1; 
+  result = (libgexf::NodeIter *)new libgexf::NodeIter((libgexf::Graph const *)arg1);
+  *(libgexf::NodeIter **)&jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1GEXF(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1NodeIter(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  libgexf::NodeIter *arg1 = (libgexf::NodeIter *) 0 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(libgexf::GEXF **)&jarg1; 
+  arg1 = *(libgexf::NodeIter **)&jarg1; 
   delete arg1;
 }
 
 
-SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_GEXF_1getUndirectedGraph(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_NodeIter_1begin(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
-  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
-  libgexf::UndirectedGraph *result = 0 ;
+  libgexf::NodeIter *arg1 = (libgexf::NodeIter *) 0 ;
+  libgexf::NodeIter *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(libgexf::GEXF **)&jarg1; 
-  result = (libgexf::UndirectedGraph *) &(arg1)->getUndirectedGraph();
-  *(libgexf::UndirectedGraph **)&jresult = result; 
+  arg1 = *(libgexf::NodeIter **)&jarg1; 
+  result = (libgexf::NodeIter *)(arg1)->begin();
+  *(libgexf::NodeIter **)&jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_GEXF_1getDirectedGraph(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jlong jresult = 0 ;
-  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
-  libgexf::DirectedGraph *result = 0 ;
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_NodeIter_1hasNext(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  libgexf::NodeIter *arg1 = (libgexf::NodeIter *) 0 ;
+  bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(libgexf::GEXF **)&jarg1; 
-  result = (libgexf::DirectedGraph *) &(arg1)->getDirectedGraph();
-  *(libgexf::DirectedGraph **)&jresult = result; 
+  arg1 = *(libgexf::NodeIter **)&jarg1; 
+  result = (bool)((libgexf::NodeIter const *)arg1)->hasNext();
+  jresult = (jboolean)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_GEXF_1_1graph_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
-  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
-  libgexf::Graph *arg2 = (libgexf::Graph *) 0 ;
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_NodeIter_1next(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  libgexf::NodeIter *arg1 = (libgexf::NodeIter *) 0 ;
+  libgexf::t_id result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  (void)jarg2_;
-  arg1 = *(libgexf::GEXF **)&jarg1; 
-  arg2 = *(libgexf::Graph **)&jarg2; 
-  if (arg1) (arg1)->_graph = *arg2;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_GEXF_1_1graph_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jlong jresult = 0 ;
-  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
-  libgexf::Graph *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(libgexf::GEXF **)&jarg1; 
-  result = (libgexf::Graph *)& ((arg1)->_graph);
-  *(libgexf::Graph **)&jresult = result; 
+  arg1 = *(libgexf::NodeIter **)&jarg1; 
+  result = (arg1)->next();
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
   return jresult;
 }
 
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1EdgeIter(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::Graph *arg1 = (libgexf::Graph *) 0 ;
+  libgexf::EdgeIter *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Graph **)&jarg1; 
+  result = (libgexf::EdgeIter *)new libgexf::EdgeIter((libgexf::Graph const *)arg1);
+  *(libgexf::EdgeIter **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1EdgeIter(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  libgexf::EdgeIter *arg1 = (libgexf::EdgeIter *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(libgexf::EdgeIter **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_EdgeIter_1begin(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::EdgeIter *arg1 = (libgexf::EdgeIter *) 0 ;
+  libgexf::EdgeIter *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::EdgeIter **)&jarg1; 
+  result = (libgexf::EdgeIter *)(arg1)->begin();
+  *(libgexf::EdgeIter **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_EdgeIter_1hasNext(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  libgexf::EdgeIter *arg1 = (libgexf::EdgeIter *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::EdgeIter **)&jarg1; 
+  result = (bool)((libgexf::EdgeIter const *)arg1)->hasNext();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_EdgeIter_1next(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  libgexf::EdgeIter *arg1 = (libgexf::EdgeIter *) 0 ;
+  libgexf::t_id result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::EdgeIter **)&jarg1; 
+  result = (arg1)->next();
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_EdgeIter_1currentSource(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  libgexf::EdgeIter *arg1 = (libgexf::EdgeIter *) 0 ;
+  libgexf::t_id result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::EdgeIter **)&jarg1; 
+  result = ((libgexf::EdgeIter const *)arg1)->currentSource();
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_EdgeIter_1currentTarget(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  libgexf::EdgeIter *arg1 = (libgexf::EdgeIter *) 0 ;
+  libgexf::t_id result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::EdgeIter **)&jarg1; 
+  result = ((libgexf::EdgeIter const *)arg1)->currentTarget();
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jfloat JNICALL Java_org_gephi_libgexf_libgexfJNI_EdgeIter_1currentProperty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jfloat jresult = 0 ;
+  libgexf::EdgeIter *arg1 = (libgexf::EdgeIter *) 0 ;
+  libgexf::t_edge_property arg2 ;
+  float result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::EdgeIter **)&jarg1; 
+  arg2 = (libgexf::t_edge_property)jarg2; 
+  result = (float)((libgexf::EdgeIter const *)arg1)->currentProperty(arg2);
+  jresult = (jfloat)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1Data_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  libgexf::Data *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (libgexf::Data *)new libgexf::Data();
+  *(libgexf::Data **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1Data_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::Data *arg1 = 0 ;
+  libgexf::Data *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1;
+  if(!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "libgexf::Data const & reference is null");
+    return 0;
+  } 
+  result = (libgexf::Data *)new libgexf::Data((libgexf::Data const &)*arg1);
+  *(libgexf::Data **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1Data(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1getLabel(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jstring jresult = 0 ;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = ((libgexf::Data const *)arg1)->getLabel(arg2);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1hasLabel(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jboolean jresult = 0 ;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (bool)((libgexf::Data const *)arg1)->hasLabel(arg2);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1setLabel(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3) {
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string *arg3 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  }
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return ;
+  std::string arg3_str(arg3_pstr);
+  arg3 = &arg3_str;
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
+  (arg1)->setLabel(arg2,(std::string const &)*arg3);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1addNodeAttributeColumn(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3, jint jarg4) {
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string *arg3 = 0 ;
+  libgexf::t_attr_type arg4 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  }
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return ;
+  std::string arg3_str(arg3_pstr);
+  arg3 = &arg3_str;
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
+  arg4 = (libgexf::t_attr_type)jarg4; 
+  (arg1)->addNodeAttributeColumn(arg2,(std::string const &)*arg3,arg4);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1addEdgeAttributeColumn(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3, jint jarg4) {
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string *arg3 = 0 ;
+  libgexf::t_attr_type arg4 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  }
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return ;
+  std::string arg3_str(arg3_pstr);
+  arg3 = &arg3_str;
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
+  arg4 = (libgexf::t_attr_type)jarg4; 
+  (arg1)->addEdgeAttributeColumn(arg2,(std::string const &)*arg3,arg4);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1setNodeAttributeDefault(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3) {
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string *arg3 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  }
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return ;
+  std::string arg3_str(arg3_pstr);
+  arg3 = &arg3_str;
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
+  (arg1)->setNodeAttributeDefault(arg2,(std::string const &)*arg3);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1setEdgeAttributeDefault(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3) {
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string *arg3 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  }
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return ;
+  std::string arg3_str(arg3_pstr);
+  arg3 = &arg3_str;
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
+  (arg1)->setEdgeAttributeDefault(arg2,(std::string const &)*arg3);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1setNodeAttributeOptions(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3) {
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string *arg3 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  }
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return ;
+  std::string arg3_str(arg3_pstr);
+  arg3 = &arg3_str;
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
+  (arg1)->setNodeAttributeOptions(arg2,(std::string const &)*arg3);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1setEdgeAttributeOptions(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3) {
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string *arg3 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  }
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return ;
+  std::string arg3_str(arg3_pstr);
+  arg3 = &arg3_str;
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
+  (arg1)->setEdgeAttributeOptions(arg2,(std::string const &)*arg3);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1setNodeValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3, jstring jarg4) {
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  libgexf::t_id arg3 ;
+  std::string *arg4 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return ;
+  (&arg3)->assign(arg3_pstr);
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
+  if(!jarg4) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  }
+  const char *arg4_pstr = (const char *)jenv->GetStringUTFChars(jarg4, 0); 
+  if (!arg4_pstr) return ;
+  std::string arg4_str(arg4_pstr);
+  arg4 = &arg4_str;
+  jenv->ReleaseStringUTFChars(jarg4, arg4_pstr); 
+  (arg1)->setNodeValue(arg2,arg3,(std::string const &)*arg4);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1setEdgeValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3, jstring jarg4) {
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  libgexf::t_id arg3 ;
+  std::string *arg4 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return ;
+  (&arg3)->assign(arg3_pstr);
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
+  if(!jarg4) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  }
+  const char *arg4_pstr = (const char *)jenv->GetStringUTFChars(jarg4, 0); 
+  if (!arg4_pstr) return ;
+  std::string arg4_str(arg4_pstr);
+  arg4 = &arg4_str;
+  jenv->ReleaseStringUTFChars(jarg4, arg4_pstr); 
+  (arg1)->setEdgeValue(arg2,arg3,(std::string const &)*arg4);
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1getNodeAttributeColumn(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::AttributeIter *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  result = (libgexf::AttributeIter *)((libgexf::Data const *)arg1)->getNodeAttributeColumn();
+  *(libgexf::AttributeIter **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1getEdgeAttributeColumn(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::AttributeIter *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  result = (libgexf::AttributeIter *)((libgexf::Data const *)arg1)->getEdgeAttributeColumn();
+  *(libgexf::AttributeIter **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1getNodeAttribute(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3) {
+  jstring jresult = 0 ;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  libgexf::t_id arg3 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return 0;
+  (&arg3)->assign(arg3_pstr);
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
+  result = ((libgexf::Data const *)arg1)->getNodeAttribute(arg2,arg3);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1getEdgeAttribute(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3) {
+  jstring jresult = 0 ;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  libgexf::t_id arg3 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return 0;
+  (&arg3)->assign(arg3_pstr);
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
+  result = ((libgexf::Data const *)arg1)->getEdgeAttribute(arg2,arg3);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1getNodeAttributeRow(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jlong jresult = 0 ;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  libgexf::AttValueIter *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (libgexf::AttValueIter *)((libgexf::Data const *)arg1)->getNodeAttributeRow(arg2);
+  *(libgexf::AttValueIter **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1getEdgeAttributeRow(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jlong jresult = 0 ;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  libgexf::AttValueIter *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (libgexf::AttValueIter *)((libgexf::Data const *)arg1)->getEdgeAttributeRow(arg2);
+  *(libgexf::AttValueIter **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1getNodeAttributeDefault(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jstring jresult = 0 ;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = ((libgexf::Data const *)arg1)->getNodeAttributeDefault(arg2);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1getEdgeAttributeOptions(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jstring jresult = 0 ;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = ((libgexf::Data const *)arg1)->getEdgeAttributeOptions(arg2);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1getNodeAttributeOptions(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jstring jresult = 0 ;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = ((libgexf::Data const *)arg1)->getNodeAttributeOptions(arg2);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1getEdgeAttributeDefault(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jstring jresult = 0 ;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = ((libgexf::Data const *)arg1)->getEdgeAttributeDefault(arg2);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1hasNodeAttributeDefault(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jboolean jresult = 0 ;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (bool)((libgexf::Data const *)arg1)->hasNodeAttributeDefault(arg2);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1hasEdgeAttributeDefault(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jboolean jresult = 0 ;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (bool)((libgexf::Data const *)arg1)->hasEdgeAttributeDefault(arg2);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1hasNodeAttributeOptions(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jboolean jresult = 0 ;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (bool)((libgexf::Data const *)arg1)->hasNodeAttributeOptions(arg2);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1hasEdgeAttributeOptions(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jboolean jresult = 0 ;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (bool)((libgexf::Data const *)arg1)->hasEdgeAttributeOptions(arg2);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1isNodeAttributeOption(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3) {
+  jboolean jresult = 0 ;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string *arg3 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return 0;
+  std::string arg3_str(arg3_pstr);
+  arg3 = &arg3_str;
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
+  result = (bool)((libgexf::Data const *)arg1)->isNodeAttributeOption(arg2,(std::string const &)*arg3);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1isEdgeAttributeOption(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3) {
+  jboolean jresult = 0 ;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string *arg3 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return 0;
+  std::string arg3_str(arg3_pstr);
+  arg3 = &arg3_str;
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
+  result = (bool)((libgexf::Data const *)arg1)->isEdgeAttributeOption(arg2,(std::string const &)*arg3);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1clearNodeAttributes(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  (arg1)->clearNodeAttributes(arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1clearEdgeAttributes(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  (arg1)->clearEdgeAttributes(arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  (arg1)->clear();
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_Data_1clearEdgesAttributes(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  (arg1)->clearEdgesAttributes();
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1MetaData_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  libgexf::MetaData *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (libgexf::MetaData *)new libgexf::MetaData();
+  *(libgexf::MetaData **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1MetaData_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::MetaData *arg1 = 0 ;
+  libgexf::MetaData *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::MetaData **)&jarg1;
+  if(!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "libgexf::MetaData const & reference is null");
+    return 0;
+  } 
+  result = (libgexf::MetaData *)new libgexf::MetaData((libgexf::MetaData const &)*arg1);
+  *(libgexf::MetaData **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1MetaData(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(libgexf::MetaData **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_MetaData_1getVersion(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::MetaData **)&jarg1; 
+  result = ((libgexf::MetaData const *)arg1)->getVersion();
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_MetaData_1getXmlns(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::MetaData **)&jarg1; 
+  result = ((libgexf::MetaData const *)arg1)->getXmlns();
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_MetaData_1getXsi(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::MetaData **)&jarg1; 
+  result = ((libgexf::MetaData const *)arg1)->getXsi();
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_MetaData_1getSchema(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::MetaData **)&jarg1; 
+  result = ((libgexf::MetaData const *)arg1)->getSchema();
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_MetaData_1getVariant(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::MetaData **)&jarg1; 
+  result = ((libgexf::MetaData const *)arg1)->getVariant();
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_MetaData_1getCreator(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::MetaData **)&jarg1; 
+  result = ((libgexf::MetaData const *)arg1)->getCreator();
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_MetaData_1getDescription(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::MetaData **)&jarg1; 
+  result = ((libgexf::MetaData const *)arg1)->getDescription();
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_MetaData_1getKeywords(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::MetaData **)&jarg1; 
+  result = ((libgexf::MetaData const *)arg1)->getKeywords();
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_MetaData_1getLastModifiedDate(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::MetaData **)&jarg1; 
+  result = ((libgexf::MetaData const *)arg1)->getLastModifiedDate();
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_MetaData_1setVersion(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
+  std::string *arg2 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::MetaData **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  (arg1)->setVersion((std::string const &)*arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_MetaData_1setXmlns(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
+  std::string *arg2 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::MetaData **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  (arg1)->setXmlns((std::string const &)*arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_MetaData_1setXsi(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
+  std::string *arg2 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::MetaData **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  (arg1)->setXsi((std::string const &)*arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_MetaData_1setSchema(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
+  std::string *arg2 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::MetaData **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  (arg1)->setSchema((std::string const &)*arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_MetaData_1setVariant(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
+  std::string *arg2 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::MetaData **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  (arg1)->setVariant((std::string const &)*arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_MetaData_1setCreator(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
+  std::string *arg2 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::MetaData **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  (arg1)->setCreator((std::string const &)*arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_MetaData_1setDescription(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
+  std::string *arg2 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::MetaData **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  (arg1)->setDescription((std::string const &)*arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_MetaData_1setKeywords(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
+  std::string *arg2 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::MetaData **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  (arg1)->setKeywords((std::string const &)*arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_MetaData_1setLastModifiedDate(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  libgexf::MetaData *arg1 = (libgexf::MetaData *) 0 ;
+  std::string *arg2 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::MetaData **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  (arg1)->setLastModifiedDate((std::string const &)*arg2);
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1AttributeIter(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jlong jresult = 0 ;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::AttributeIter::Type arg2 ;
+  libgexf::AttributeIter *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  arg2 = (libgexf::AttributeIter::Type)jarg2; 
+  result = (libgexf::AttributeIter *)new libgexf::AttributeIter((libgexf::Data const *)arg1,arg2);
+  *(libgexf::AttributeIter **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1AttributeIter(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  libgexf::AttributeIter *arg1 = (libgexf::AttributeIter *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(libgexf::AttributeIter **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_AttributeIter_1begin(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::AttributeIter *arg1 = (libgexf::AttributeIter *) 0 ;
+  libgexf::AttributeIter *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::AttributeIter **)&jarg1; 
+  result = (libgexf::AttributeIter *)(arg1)->begin();
+  *(libgexf::AttributeIter **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_AttributeIter_1hasNext(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  libgexf::AttributeIter *arg1 = (libgexf::AttributeIter *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::AttributeIter **)&jarg1; 
+  result = (bool)((libgexf::AttributeIter const *)arg1)->hasNext();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_AttributeIter_1next(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  libgexf::AttributeIter *arg1 = (libgexf::AttributeIter *) 0 ;
+  libgexf::t_id result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::AttributeIter **)&jarg1; 
+  result = (arg1)->next();
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_AttributeIter_1currentTitle(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  libgexf::AttributeIter *arg1 = (libgexf::AttributeIter *) 0 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::AttributeIter **)&jarg1; 
+  result = ((libgexf::AttributeIter const *)arg1)->currentTitle();
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_org_gephi_libgexf_libgexfJNI_AttributeIter_1currentType(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  libgexf::AttributeIter *arg1 = (libgexf::AttributeIter *) 0 ;
+  libgexf::t_attr_type result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::AttributeIter **)&jarg1; 
+  result = (libgexf::t_attr_type)((libgexf::AttributeIter const *)arg1)->currentType();
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_new_1AttValueIter(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jint jarg3) {
+  jlong jresult = 0 ;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  libgexf::AttValueIter::Type arg3 ;
+  libgexf::AttValueIter *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::Data **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  arg3 = (libgexf::AttValueIter::Type)jarg3; 
+  result = (libgexf::AttValueIter *)new libgexf::AttValueIter((libgexf::Data const *)arg1,arg2,arg3);
+  *(libgexf::AttValueIter **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_gephi_libgexf_libgexfJNI_delete_1AttValueIter(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  libgexf::AttValueIter *arg1 = (libgexf::AttValueIter *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(libgexf::AttValueIter **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_AttValueIter_1begin(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  libgexf::AttValueIter *arg1 = (libgexf::AttValueIter *) 0 ;
+  libgexf::AttValueIter *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::AttValueIter **)&jarg1; 
+  result = (libgexf::AttValueIter *)(arg1)->begin();
+  *(libgexf::AttValueIter **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_org_gephi_libgexf_libgexfJNI_AttValueIter_1hasNext(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  libgexf::AttValueIter *arg1 = (libgexf::AttValueIter *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::AttValueIter **)&jarg1; 
+  result = (bool)((libgexf::AttValueIter const *)arg1)->hasNext();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_AttValueIter_1next(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  libgexf::AttValueIter *arg1 = (libgexf::AttValueIter *) 0 ;
+  libgexf::t_id result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::AttValueIter **)&jarg1; 
+  result = (arg1)->next();
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_AttValueIter_1currentValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  libgexf::AttValueIter *arg1 = (libgexf::AttValueIter *) 0 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::AttValueIter **)&jarg1; 
+  result = ((libgexf::AttValueIter const *)arg1)->currentValue();
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_org_gephi_libgexf_libgexfJNI_AttValueIter_1currentName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  libgexf::AttValueIter *arg1 = (libgexf::AttValueIter *) 0 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(libgexf::AttValueIter **)&jarg1; 
+  result = ((libgexf::AttValueIter const *)arg1)->currentName();
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_SWIGGexfParserUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+    jlong baseptr = 0;
+    (void)jenv;
+    (void)jcls;
+    *(libgexf::AbstractParser **)&baseptr = *(libgexf::GexfParser **)&jarg1;
+    return baseptr;
+}
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_SWIGLegacyParserUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+    jlong baseptr = 0;
+    (void)jenv;
+    (void)jcls;
+    *(libgexf::AbstractParser **)&baseptr = *(libgexf::LegacyParser **)&jarg1;
+    return baseptr;
+}
 
 SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_SWIGDirectedGraphUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
@@ -1059,6 +4282,38 @@ SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_SWIGUndirectedGraphUp
     (void)jenv;
     (void)jcls;
     *(libgexf::Graph **)&baseptr = *(libgexf::UndirectedGraph **)&jarg1;
+    return baseptr;
+}
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_SWIGNodeIterUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+    jlong baseptr = 0;
+    (void)jenv;
+    (void)jcls;
+    *(libgexf::AbstractIter **)&baseptr = *(libgexf::NodeIter **)&jarg1;
+    return baseptr;
+}
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_SWIGEdgeIterUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+    jlong baseptr = 0;
+    (void)jenv;
+    (void)jcls;
+    *(libgexf::AbstractIter **)&baseptr = *(libgexf::EdgeIter **)&jarg1;
+    return baseptr;
+}
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_SWIGAttributeIterUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+    jlong baseptr = 0;
+    (void)jenv;
+    (void)jcls;
+    *(libgexf::AbstractIter **)&baseptr = *(libgexf::AttributeIter **)&jarg1;
+    return baseptr;
+}
+
+SWIGEXPORT jlong JNICALL Java_org_gephi_libgexf_libgexfJNI_SWIGAttValueIterUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+    jlong baseptr = 0;
+    (void)jenv;
+    (void)jcls;
+    *(libgexf::AbstractIter **)&baseptr = *(libgexf::AttValueIter **)&jarg1;
     return baseptr;
 }
 

@@ -41,36 +41,50 @@ public class Graph {
     this(libgexfJNI.new_Graph__SWIG_1(Graph.getCPtr(orig), orig), true);
   }
 
-  public void addNode(long id) {
+  public void addNode(String id) {
     libgexfJNI.Graph_addNode(swigCPtr, this, id);
   }
 
-  public void addEdge(long id, long source_id, long target_id) {
-    libgexfJNI.Graph_addEdge(swigCPtr, this, id, source_id, target_id);
+  public void addEdge(String id, String source_id, String target_id, long cardinal, t_edge_type type) {
+    libgexfJNI.Graph_addEdge__SWIG_0(swigCPtr, this, id, source_id, target_id, cardinal, type.swigValue());
   }
 
-  public void removeNode(long id) {
+  public void addEdge(String id, String source_id, String target_id, long cardinal) {
+    libgexfJNI.Graph_addEdge__SWIG_1(swigCPtr, this, id, source_id, target_id, cardinal);
+  }
+
+  public void addEdge(String id, String source_id, String target_id) {
+    libgexfJNI.Graph_addEdge__SWIG_2(swigCPtr, this, id, source_id, target_id);
+  }
+
+  public void removeNode(String id) {
     libgexfJNI.Graph_removeNode(swigCPtr, this, id);
   }
 
-  public void removeEdge(long source_id, long target_id) {
+  public void removeEdge(String source_id, String target_id) {
     libgexfJNI.Graph_removeEdge(swigCPtr, this, source_id, target_id);
   }
 
-  public void removeInEdges(long target_id) {
-    libgexfJNI.Graph_removeInEdges(swigCPtr, this, target_id);
-  }
-
-  public void removeOutEdges(long source_id) {
-    libgexfJNI.Graph_removeOutEdges(swigCPtr, this, source_id);
-  }
-
-  public boolean containsNode(long id) {
+  public boolean containsNode(String id) {
     return libgexfJNI.Graph_containsNode(swigCPtr, this, id);
   }
 
-  public boolean containsEdge(long source_id, long target_id) {
+  public boolean containsEdge(String source_id, String target_id) {
     return libgexfJNI.Graph_containsEdge(swigCPtr, this, source_id, target_id);
+  }
+
+  public NodeIter getNodes() {
+    long cPtr = libgexfJNI.Graph_getNodes(swigCPtr, this);
+    return (cPtr == 0) ? null : new NodeIter(cPtr, false);
+  }
+
+  public EdgeIter getEdges() {
+    long cPtr = libgexfJNI.Graph_getEdges(swigCPtr, this);
+    return (cPtr == 0) ? null : new EdgeIter(cPtr, false);
+  }
+
+  public SWIGTYPE_p_std__setT_std__string_t getNeighbors(String node_id) {
+    return new SWIGTYPE_p_std__setT_std__string_t(libgexfJNI.Graph_getNeighbors(swigCPtr, this, node_id), true);
   }
 
   public long getNodeCount() {
@@ -81,15 +95,11 @@ public class Graph {
     return libgexfJNI.Graph_getEdgeCount(swigCPtr, this);
   }
 
-  public long getDegree(long node_id) {
+  public long getDegree(String node_id) {
     return libgexfJNI.Graph_getDegree(swigCPtr, this, node_id);
   }
 
-  public SWIGTYPE_p_std__setT_unsigned_int_t getNeighbors(long node_id) {
-    return new SWIGTYPE_p_std__setT_unsigned_int_t(libgexfJNI.Graph_getNeighbors(swigCPtr, this, node_id), true);
-  }
-
-  public void clearEdges(long node_id) {
+  public void clearEdges(String node_id) {
     libgexfJNI.Graph_clearEdges__SWIG_0(swigCPtr, this, node_id);
   }
 

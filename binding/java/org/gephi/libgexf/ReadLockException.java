@@ -33,8 +33,8 @@ public class ReadLockException {
     swigCPtr = 0;
   }
 
-  public ReadLockException(SWIGTYPE_p_std__string what) {
-    this(libgexfJNI.new_ReadLockException(SWIGTYPE_p_std__string.getCPtr(what)), true);
+  public ReadLockException(String what) {
+    this(libgexfJNI.new_ReadLockException(what), true);
   }
 
   public String what() {

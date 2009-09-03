@@ -24,7 +24,7 @@ echo "Testing.."
 make test
 
 echo "Cleaning.."
-rm libgexf_wrap.cpp
+#rm libgexf_wrap.cpp
 rm LibGEXF.bs
 rm pm_to_blib
 rm *~

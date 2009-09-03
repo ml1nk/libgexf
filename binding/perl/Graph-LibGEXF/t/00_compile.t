@@ -56,7 +56,8 @@ try {
 
 
 # test import file
-#my $reader = Graph::LibGEXF::FileReader->new("../../../t/attributes.gexf");
+my $reader = Graph::LibGEXF::FileReader->new();
+#$reader->init("../../../t/attributes.gexf");
 #$reader->slurp();
 #my $gexf_import = $reader->getGEXFCopy();
 #my $valid = $gexf_import->checkIntegrity();

@@ -33,8 +33,8 @@ public class WriteLockException {
     swigCPtr = 0;
   }
 
-  public WriteLockException(SWIGTYPE_p_std__string what) {
-    this(libgexfJNI.new_WriteLockException(SWIGTYPE_p_std__string.getCPtr(what)), true);
+  public WriteLockException(String what) {
+    this(libgexfJNI.new_WriteLockException(what), true);
   }
 
   public String what() {

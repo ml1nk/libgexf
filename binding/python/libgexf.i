@@ -43,7 +43,6 @@
 %include <pyabc.i>
 %include stl.i
 %include exception.i
-%include std_string.i
 %include std_set.i
 
 %exception {
