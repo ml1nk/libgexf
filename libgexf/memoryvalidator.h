@@ -53,6 +53,7 @@ namespace libgexf {
         static bool run(const GEXF& gexf);
     private:
         static bool checkNodeLabels(const GEXF& gexf);
+        static bool checkDefaultOptions(const GEXF& gexf);
         static bool checkAttValues(const GEXF& gexf);
         static bool checkAttValueType(const GEXF& gexf, const std::string& value, const libgexf::t_attr_type type, const t_id elem_id, const t_id attr_id="", const bool isNode=true);
 

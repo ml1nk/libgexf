@@ -90,6 +90,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="gexf:edge"/>
       </xs:sequence>
+      <xs:attribute name="count" type="xs:nonNegativeInteger"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="attribute">

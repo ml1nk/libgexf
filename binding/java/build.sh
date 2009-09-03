@@ -50,17 +50,16 @@ g++ -shared -lxml2 libgexf_wrap.o \
     attvalueiter.o \
     -o libgexf.so
 
-#echo "Creating JAR.."
-#javac org/gephi/libgexf/*.java
-#jar cfm libgexf.jar Manifest.txt org/gephi/libgexf/*.class
-# TODO edit Manifest.txt Main-Class
+echo "Creating JAR.." 
+javac org/gephi/libgexf/*.java
+jar cfm libgexf.jar Manifest.txt org/gephi/libgexf/*.class
 
 echo "Cleaning.."
 rm *.o
-#rm libgexf_wrap.cpp
+rm libgexf_wrap.cpp
 echo "Testing.."
 javac runme.java
-java -Xmx256m runme #-verbose:jni
+java runme #-verbose:jni
 
 echo "Done!"
 
