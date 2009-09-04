@@ -30,7 +30,6 @@
 #include "exceptions.h"
 #include <stdexcept>
 #include <map>
-#include <set>
 using namespace std;
 
 namespace libgexf {
@@ -81,7 +80,7 @@ void DirectedGraph::removeOutEdges(const t_id source_id) {
 }
 
 //-----------------------------------------
-std::set<t_id> DirectedGraph::getInEdges(const t_id node_id) const {
+std::vector<t_id> DirectedGraph::getInEdges(const t_id node_id) const {
 //-----------------------------------------
 set<t_id> s = set<t_id>();
 
@@ -99,12 +98,14 @@ set<t_id> s = set<t_id>();
             }
         }
     }
+    std::vector<t_id> v( s.begin(),s.end() );
+    s.clear();
 
-    return s;
+    return v;
 }
 
 //-----------------------------------------
-std::set<t_id> DirectedGraph::getOutEdges(const t_id node_id) const {
+std::vector<t_id> DirectedGraph::getOutEdges(const t_id node_id) const {
 //-----------------------------------------
 set<t_id> s = set<t_id>();
 
@@ -117,12 +118,14 @@ set<t_id> s = set<t_id>();
             s.insert(it2->second); // edge_id
         }
     }
+    std::vector<t_id> v( s.begin(),s.end() );
+    s.clear();
 
-    return s;
+    return v;
 }
 
 //-----------------------------------------
-std::set<t_id> DirectedGraph::getSuccessors(const t_id node_id) const {
+std::vector<t_id> DirectedGraph::getSuccessors(const t_id node_id) const {
 //-----------------------------------------
 set<t_id> s = set<t_id>();
 
@@ -135,12 +138,14 @@ set<t_id> s = set<t_id>();
             s.insert(it->first); // succ_id
         }
     }
+    std::vector<t_id> v( s.begin(),s.end() );
+    s.clear();
 
-    return s;
+    return v;
 }
 
 //-----------------------------------------
-std::set<t_id> DirectedGraph::getPredecessors(const t_id node_id) const {
+std::vector<t_id> DirectedGraph::getPredecessors(const t_id node_id) const {
 //-----------------------------------------
 set<t_id> s = set<t_id>();
 
@@ -153,8 +158,10 @@ set<t_id> s = set<t_id>();
             s.insert(*it); // pred_id
         }
     }
+    std::vector<t_id> v( s.begin(),s.end() );
+    s.clear();
 
-    return s;
+    return v;
 }
 
 //-----------------------------------------

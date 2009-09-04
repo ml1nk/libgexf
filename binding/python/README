@@ -3,13 +3,13 @@ README: PYTHIN BINDING WITH SWIG
 
 FOR DEVELOPERS
 --------------
-If you plan to contribute to the libgexf library, you will need to install SWIG (swig-1.3.39)
+If you plan to contribute to the libgexf library, you will need to install SWIG (swig-1.3.40)
 to generate a new libgexf_wrap.cpp wrapper each time you will modify the libgexf.i interface file.
 Note that earlier releases like swig 1.3.36 will *not* work since we use a special dependency in
 the libgexf.i interface, only available on the latest release of swig.
 
 Manual Python binding with swig on Linux:
-   $ swig -c++ -python -o libgexf_wrap.cpp libgexf.i
+   $ swig -c++ -python -fvirtual -o libgexf_wrap.cpp libgexf.i
    $ gcc -fPIC -c libgexf_wrap.cpp ../../gexf.cpp ${OTHER_CPP_FILES} -I/usr/include/python2.5 -I/usr/include/libxml2
    $ g++ -shared -lxml2 libgexf_wrap.o gexf.o ${OTHER_O_FILES} -o _libgexf.so
 
@@ -31,6 +31,7 @@ to build
 to distribute
     $ python setup.py sdist
 
+
 USAGE
 -----
 To use :
@@ -39,6 +40,7 @@ To use :
     >>> from libgexf import *
     >>> g = GEXF()
    ...
+
 
 TEST
 ----

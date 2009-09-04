@@ -4,7 +4,7 @@ echo " |    Java (jdk6) building   |"
 echo " ---------------------------------"
 echo ""
 echo "Generating interface files.."
-swig -c++ -java -package org.gephi.libgexf -outdir org/gephi/libgexf -o libgexf_wrap.cpp libgexf.i
+swig -c++ -java -fvirtual -package org.gephi.libgexf -outdir org/gephi/libgexf -o libgexf_wrap.cpp libgexf.i
 
 echo "Compiling.."
 gcc -fPIC -c libgexf_wrap.cpp \
@@ -54,12 +54,14 @@ echo "Creating JAR.."
 javac org/gephi/libgexf/*.java
 jar cfm libgexf.jar Manifest.txt org/gephi/libgexf/*.class
 
-echo "Cleaning.."
-rm *.o
-rm libgexf_wrap.cpp
 echo "Testing.."
 javac runme.java
 java runme #-verbose:jni
+
+echo "Cleaning.."
+rm *.o
+rm *.class
+rm org/gephi/libgexf/*.class
 
 echo "Done!"
 

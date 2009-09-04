@@ -75,7 +75,7 @@ setup (
        author_email="sebastien.heymann@gephi.org",
        url="http://gephi.org",
        description="""Toolkit library for GEXF file format.""",
-       long_description="""une description en un paragraphe (abstract)""",
+       long_description="""""",
        
        # liste des modules à compiler. 
        # le module "libgexf_module" a été défini ligne 12

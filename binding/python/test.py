@@ -12,6 +12,10 @@ reader.slurp()
 gexf = reader.getGEXFCopy()
 gexf.checkIntegrity()
 
+""" Neighbors """
+v = gexf.getDirectedGraph().getNeighbors("n0")
+print v
+
 """ Export (gexf 1.1) """
 writer = FileWriter()
 writer.init(output_file,gexf)
@@ -25,3 +29,4 @@ lwriter.write()
 """ XSD validation """
 valid = SchemaValidator.run("../../../../t/writer_test.gexf", "../../../../resources/xsd/1.1draft.xsd")
 print "File written valid: %s." %valid
+

@@ -92,6 +92,10 @@
 %typemap(javaout) unsigned int *INPUT { return $jnicall; }
 
 
+namespace std {
+  %template(StringVector) std::vector<std::string>;
+}
+
 
 /* Let's just grab the original header file here */
 /* main */

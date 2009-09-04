@@ -1,4 +1,5 @@
 import java.util.Set;
+import java.util.Vector;
 import java.lang.String;
 
 
@@ -25,10 +26,10 @@ public class runme {
         
         // ----- Generate data -----
         graph.writeLock();
-        for (int i=0; i<100; i++) {
+        for (int i=0; i<10; i++) {
             graph.addNode(""+i);
         }
-        for (int i=0; i<99; i++) {
+        for (int i=0; i<9; i++) {
             graph.addEdge(""+i, ""+i, ""+(i+1)); // chain
         }
         try {
@@ -43,11 +44,19 @@ public class runme {
         System.out.println("node count: " + graph.getNodeCount());
         System.out.println("edge count: " + graph.getEdgeCount());
         
-        //Set<String> neighbors = graph.getNeighbors("3");
+        org.gephi.libgexf.StringVector neighbors = graph.getNeighbors("3");
+        System.out.println("Neighbors vector empty: " + neighbors.isEmpty());
+        System.out.print("Neighbors content: ");
+        for(int i = 0; i < neighbors.size(); i++) {
+           System.out.print(neighbors.get(i) + " ");
+        }
+        System.out.println();
+        
         
         // ----- Call some methods -----
         System.out.println("Data integrity (labels missing):");
         gexf.checkIntegrity();
+        
         
         // ----- Delete everything -----
     
@@ -55,12 +64,22 @@ public class runme {
         // You could leave this to the garbage collector
         gexf.delete();
         
+        
         // ----- Import a GEXF file -----
         org.gephi.libgexf.FileReader reader = new org.gephi.libgexf.FileReader();
         reader.init( "../../t/attributes.gexf" );
         reader.slurp();
         org.gephi.libgexf.GEXF gexfImport = reader.getGEXFCopy();
         
+        
+        // ----- Access imported data -----
+        System.out.print("Imported nodes: ");
+        org.gephi.libgexf.NodeIter it = gexfImport.getDirectedGraph().getNodes();
+        while( it.hasNext() ) {
+            String id = it.next();
+            System.out.print(id + " ");
+        }
+        System.out.println();
         
         // ----- Export a GEXF file -----
         if( gexfImport.checkIntegrity() ) {
@@ -70,6 +89,7 @@ public class runme {
         } else {
             System.out.println("Errors in data, file not written.");
         }
+        
         
         // ----- XSD validate a GEXF file -----
         boolean res = org.gephi.libgexf.SchemaValidator.run( "../../t/attributes.gexf", "../../resources/xsd/1.1draft.xsd");

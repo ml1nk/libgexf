@@ -57,6 +57,7 @@
 
 namespace std {
   %template(StringSet) std::set<std::string>;
+  %template(StringVector) std::vector<std::string>;
 }
 
 /* Let's just grab the original header file here */

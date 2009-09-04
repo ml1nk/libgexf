@@ -30,6 +30,7 @@
 #define	_DIRECTEDGRAPH_H
 
 #include "graph.h"
+#include <vector>
 
 namespace libgexf {
 
@@ -65,33 +66,33 @@ public:
      *  \brief Get incoming edges from a node
      *
      *  \param node_id : node ID
-     *  \return Set of IDs of incoming edges
+     *  \return Vector of IDs of incoming edges
      */
-    std::set<libgexf::t_id> getInEdges(const libgexf::t_id node_id) const;
+    std::vector<libgexf::t_id> getInEdges(const libgexf::t_id node_id) const;
 
     /*!
      *  \brief Get outgoing edges from a node
      *
      *  \param node_id : node ID
-     *  \return Set of IDs of outgoing edges
+     *  \return Vector of IDs of outgoing edges
      */
-    std::set<libgexf::t_id> getOutEdges(const libgexf::t_id node_id) const;
+    std::vector<libgexf::t_id> getOutEdges(const libgexf::t_id node_id) const;
 
     /*!
      *  \brief Get node successors
      *
      *  \param node_id : node ID
-     *  \return Set of node IDs
+     *  \return Vector of node IDs
      */
-    std::set<libgexf::t_id> getSuccessors(const libgexf::t_id node_id) const;
+    std::vector<libgexf::t_id> getSuccessors(const libgexf::t_id node_id) const;
 
     /*!
      *  \brief Get node predecessors
      *
      *  \param node_id : node ID
-     *  \return Set of node IDs
+     *  \return Vector of node IDs
      */
-    std::set<libgexf::t_id> getPredecessors(const libgexf::t_id node_id) const;
+    std::vector<libgexf::t_id> getPredecessors(const libgexf::t_id node_id) const;
 
 
     /*!

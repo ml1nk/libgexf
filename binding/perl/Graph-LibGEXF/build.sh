@@ -5,7 +5,7 @@ echo " |         Perl5 building        |"
 echo " ---------------------------------"
 echo ""
 echo "Generating interface files.."
-swig -c++ -perl -shadow -o libgexf_wrap.cpp libgexf.i
+swig -c++ -perl -shadow -fvirtual -o libgexf_wrap.cpp libgexf.i
 mv LibGEXF.pm lib/Graph/
 
 # adding module version (dirty way)
@@ -24,10 +24,8 @@ echo "Testing.."
 make test
 
 echo "Cleaning.."
-#rm libgexf_wrap.cpp
 rm LibGEXF.bs
 rm pm_to_blib
-rm *~
 
 echo "Done!"
 

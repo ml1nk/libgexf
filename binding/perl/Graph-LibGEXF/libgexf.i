@@ -58,6 +58,10 @@
   }
 }
 
+namespace std {
+  %template(vectors) std::vector<std::string>;
+}
+
 
 /* Let's just grab the original header file here */
 /* main */

@@ -30,6 +30,7 @@
 #define	_GRAPH_H
 
 #include <set>
+#include <vector>
 #include <map>
 #include <iostream>
 #include "typedefs.h"
@@ -126,9 +127,9 @@ public:
      *  \brief Get node neighbors
      *
      *  \param node_id : node ID
-     *  \return Set of nodes directly linked to the node
+     *  \return Vector of nodes directly linked to the node
      */
-    std::set<libgexf::t_id> getNeighbors(const libgexf::t_id node_id) const;
+    std::vector<libgexf::t_id> getNeighbors(const libgexf::t_id node_id) const;
 
 
     /*!

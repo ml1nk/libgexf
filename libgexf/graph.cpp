@@ -335,7 +335,7 @@ unsigned int count = 0;
 }
 
 //-----------------------------------------
-set<t_id> Graph::getNeighbors(const t_id node_id) const {
+vector<t_id> Graph::getNeighbors(const t_id node_id) const {
 //-----------------------------------------
 set<t_id> s = set<t_id>();
 
@@ -345,6 +345,7 @@ set<t_id> s = set<t_id>();
     map<t_id,map<t_id,t_id> >::const_iterator it_e = _edges.find(node_id);
     if(it_e != _edges.end()) {
         for(map<t_id,t_id>::const_iterator it = (it_e->second).begin(); it != (it_e->second).end(); ++it) {
+            //v.push_back(it->first); // succ_id
             s.insert(it->first); // succ_id
         }
     }
@@ -352,11 +353,15 @@ set<t_id> s = set<t_id>();
     map<t_id,set<t_id> >::const_iterator it_re = _reverse_edges.find(node_id);
     if(it_re != _reverse_edges.end()) {
         for(set<t_id>::const_iterator it = (it_re->second).begin(); it != (it_re->second).end(); ++it) {
+            //v.push_back(*it); // pred_id
             s.insert(*it); // pred_id
         }
     }
+    
+    vector<t_id> v(s.begin(), s.end());
+    s.clear();
 
-    return s;
+    return v;
 }
 
 //-----------------------------------------
