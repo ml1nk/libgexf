@@ -63,14 +63,6 @@ copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}lib/${OUTPUT_BASE
 
 cd "${TOP}"
 makeDirectory ${TMPDIR}//usr/include/libgexf
-copyFileToTmpDir "libgexf/abstractiter.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/abstractiter.h" 0644
-
-cd "${TOP}"
-makeDirectory ${TMPDIR}//usr/include/libgexf
-copyFileToTmpDir "libgexf/abstractparser.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/abstractparser.h" 0644
-
-cd "${TOP}"
-makeDirectory ${TMPDIR}//usr/include/libgexf
 copyFileToTmpDir "libgexf/attributeiter.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/attributeiter.h" 0644
 
 cd "${TOP}"
@@ -83,6 +75,10 @@ copyFileToTmpDir "libgexf/data.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/d
 
 cd "${TOP}"
 makeDirectory ${TMPDIR}//usr/include/libgexf
+copyFileToTmpDir "libgexf/metadata.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/metadata.h" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf
 copyFileToTmpDir "libgexf/directedgraph.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/directedgraph.h" 0644
 
 cd "${TOP}"
@@ -91,31 +87,7 @@ copyFileToTmpDir "libgexf/edgeiter.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libge
 
 cd "${TOP}"
 makeDirectory ${TMPDIR}//usr/include/libgexf
-copyFileToTmpDir "libgexf/exceptions.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/exceptions.h" 0644
-
-cd "${TOP}"
-makeDirectory ${TMPDIR}//usr/include/libgexf
-copyFileToTmpDir "libgexf/filereader.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/filereader.h" 0644
-
-cd "${TOP}"
-makeDirectory ${TMPDIR}//usr/include/libgexf
-copyFileToTmpDir "libgexf/filewriter.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/filewriter.h" 0644
-
-cd "${TOP}"
-makeDirectory ${TMPDIR}//usr/include/libgexf
-copyFileToTmpDir "libgexf/gexf.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/gexf.h" 0644
-
-cd "${TOP}"
-makeDirectory ${TMPDIR}//usr/include/libgexf
 copyFileToTmpDir "libgexf/graph.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/graph.h" 0644
-
-cd "${TOP}"
-makeDirectory ${TMPDIR}//usr/include/libgexf
-copyFileToTmpDir "libgexf/libgexf.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/libgexf.h" 0644
-
-cd "${TOP}"
-makeDirectory ${TMPDIR}//usr/include/libgexf
-copyFileToTmpDir "libgexf/metadata.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/metadata.h" 0644
 
 cd "${TOP}"
 makeDirectory ${TMPDIR}//usr/include/libgexf
@@ -123,11 +95,70 @@ copyFileToTmpDir "libgexf/nodeiter.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libge
 
 cd "${TOP}"
 makeDirectory ${TMPDIR}//usr/include/libgexf
-copyFileToTmpDir "libgexf/typedefs.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/typedefs.h" 0644
+copyFileToTmpDir "libgexf/undirectedgraph.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/undirectedgraph.h" 0644
 
 cd "${TOP}"
 makeDirectory ${TMPDIR}//usr/include/libgexf
-copyFileToTmpDir "libgexf/undirectedgraph.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/undirectedgraph.h" 0644
+copyFileToTmpDir "libgexf/abstractiter.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/abstractiter.h" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf
+copyFileToTmpDir "libgexf/memoryvalidator.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/memoryvalidator.h" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf
+copyFileToTmpDir "libgexf/abstractparser.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/abstractparser.h" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf
+copyFileToTmpDir "libgexf/filereader.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/filereader.h" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf
+copyFileToTmpDir "libgexf/gexfparser.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/gexfparser.h" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf
+copyFileToTmpDir "libgexf/legacyparser.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/legacyparser.h" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf
+copyFileToTmpDir "libgexf/rngvalidator.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/rngvalidator.h" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf
+copyFileToTmpDir "libgexf/schemavalidator.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/schemavalidator.h" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf
+copyFileToTmpDir "libgexf/filewriter.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/filewriter.h" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf
+copyFileToTmpDir "libgexf/legacywriter.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/legacywriter.h" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf
+copyFileToTmpDir "libgexf/conv.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/conv.h" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf
+copyFileToTmpDir "libgexf/exceptions.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/exceptions.h" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf
+copyFileToTmpDir "libgexf/gexf.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/gexf.h" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf
+copyFileToTmpDir "libgexf/libgexf.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/libgexf.h" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf
+copyFileToTmpDir "libgexf/typedefs.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/typedefs.h" 0644
+
+cd "${TOP}"
+makeDirectory  "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/resources" 0755
 
 cd "${TOP}"
 makeDirectory ${TMPDIR}//usr/share/doc/libgexf
@@ -145,6 +176,28 @@ cd "${TOP}"
 makeDirectory ${TMPDIR}//usr/share/doc/libgexf
 copyFileToTmpDir "copyright" "${TMPDIR}/${PACKAGE_TOP_DIR}share/doc/libgexf/copyright" 0644
 
+cd "${TOP}"
+makeDirectory  "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/resources/rng" 0755
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf/resources/rng
+copyFileToTmpDir "resources/rng/1.1draft.rng" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/resources/rng/1.1draft.rng" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf/resources/rng
+copyFileToTmpDir "resources/rng/viz.rng" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/resources/rng/viz.rng" 0644
+
+cd "${TOP}"
+makeDirectory  "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/resources/xsd" 0755
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf/resources/xsd
+copyFileToTmpDir "resources/xsd/1.1draft.xsd" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/resources/xsd/1.1draft.xsd" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf/resources/xsd
+copyFileToTmpDir "resources/xsd/viz.xsd" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/resources/xsd/viz.xsd" 0644
+
 
 # Create control file
 cd "${TOP}"
@@ -154,7 +207,7 @@ mkdir -p ${TMPDIR}/DEBIAN
 
 cd "${TOP}"
 echo 'Package: libgexf' >> ${CONTROL_FILE}
-echo 'Version: 0.1.0' >> ${CONTROL_FILE}
+echo 'Version: 0.1.1' >> ${CONTROL_FILE}
 echo 'Architecture: i386' >> ${CONTROL_FILE}
 echo 'Section: libdevel' >> ${CONTROL_FILE}
 echo 'Priority: extra' >> ${CONTROL_FILE}

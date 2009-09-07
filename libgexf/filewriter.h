@@ -36,7 +36,7 @@
 namespace libgexf {
 
 /*! \class FileWriter
-    \brief Write a GEXF file.
+    \brief Write a GEXF 1.1 file (Gephi 0.7+).
  */
 class FileWriter {
 public:

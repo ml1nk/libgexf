@@ -5,9 +5,7 @@ Major:
    * hypergraphs
    * hyperarchical graphs support
    * list-string storage optimization (values replaced by corresponding idx)
-   * GEXF 1.0 export (Gephi 0.6)
    * memory optimization (strings replaced by their real type like int) ; create a wrapper to access data?
 
 Minor:
-   * Iterators for every set<> returned by methods for Java binding compatibility
    * Logger class for info(), warn() and err() messages

@@ -35,10 +35,18 @@
 
 namespace libgexf {
 
+/*! \class RngValidator
+    \brief RelaxNG validator
+*/
 class RngValidator {
 public:
     RngValidator();
+
+    /*!
+     *  \brief Copy constructor
+     */
     RngValidator(const RngValidator& orig);
+    
     virtual ~RngValidator();
 
     /*!

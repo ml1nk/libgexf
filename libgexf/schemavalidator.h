@@ -14,10 +14,18 @@
 
 namespace libgexf {
 
+/*! \class SchemaValidator
+    \brief XML Schema validator
+*/
 class SchemaValidator {
 public:
     SchemaValidator();
+
+    /*!
+     *  \brief Copy constructor
+     */
     SchemaValidator(const SchemaValidator& orig);
+    
     virtual ~SchemaValidator();
 
     /*!

@@ -274,6 +274,7 @@ public:
      *  \brief Check if an option is available for the given node attribute
      *
      *  \param attr_id : attribute ID
+     *  \param option : option strings separated by pipes (|)
      *  \return true if the option is available, false otherwise
      */
     bool isNodeAttributeOption(const libgexf::t_id attr_id, const std::string& option) const;
@@ -282,6 +283,7 @@ public:
      *  \brief Check if an option is available for the given edge attribute
      *
      *  \param attr_id : attribute ID
+     *  \param option : option strings separated by pipes (|)
      *  \return true if the option is available, false otherwise
      */
     bool isEdgeAttributeOption(const libgexf::t_id attr_id, const std::string& option) const;

@@ -41,7 +41,12 @@ namespace libgexf {
     class MemoryValidator {
     public:
         MemoryValidator();
+
+        /*!
+         *  \brief Copy constructor
+         */
         MemoryValidator(const MemoryValidator& orig);
+        
         virtual ~MemoryValidator();
 
         /*!
