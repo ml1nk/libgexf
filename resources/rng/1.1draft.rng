@@ -3,8 +3,7 @@
   <include href="viz.rng"/>
   <start>
     <a:documentation>TODO
-Pb cardinalite dynamique -&gt; mot réservé "cardinal" dans les attributs
-Ajout d'un attribut définissant type date ou int, date par défaut</a:documentation>
+cardinalite dynamique -&gt; mot réservé "cardinal" dans les attributs</a:documentation>
     <a:documentation>Grammar root</a:documentation>
     <ref name="GEXF"/>
   </start>
@@ -44,6 +43,9 @@ Ajout d'un attribut définissant type date ou int, date par défaut</a:documenta
   </define>
   <define name="Graph">
     <element name="graph">
+      <optional>
+        <ref name="IDType"/>
+      </optional>
       <zeroOrMore>
         <ref name="Attributes"/>
       </zeroOrMore>
@@ -54,6 +56,9 @@ Ajout d'un attribut définissant type date ou int, date par défaut</a:documenta
       </optional>
       <optional>
         <ref name="DefaultEdgeType"/>
+      </optional>
+      <optional>
+        <ref name="DateType"/>
       </optional>
       <optional>
         <ref name="DateFrom"/>
@@ -107,7 +112,7 @@ Ajout d'un attribut définissant type date ou int, date par défaut</a:documenta
     <element name="attribute">
       <ref name="ID"/>
       <ref name="Title"/>
-      <ref name="TypeAttr"/>
+      <ref name="AttrType"/>
       <optional>
         <ref name="Default"/>
       </optional>
@@ -224,31 +229,37 @@ Ajout d'un attribut définissant type date ou int, date par défaut</a:documenta
   </define>
   <define name="FOR">
     <attribute name="for">
-      <data type="string"/>
+      <ref name="id"/>
     </attribute>
   </define>
   <define name="ID">
     <attribute name="id">
-      <data type="string"/>
+      <ref name="id"/>
+    </attribute>
+  </define>
+  <define name="IDType">
+    <attribute name="idtype" a:defaultValue="string">
+      <choice>
+        <value type="string" datatypeLibrary="">integer</value>
+        <value type="string" datatypeLibrary="">string</value>
+      </choice>
     </attribute>
   </define>
   <define name="PID">
     <attribute name="pid">
-      <data type="string"/>
+      <ref name="id"/>
     </attribute>
   </define>
   <define name="Source">
     <attribute name="source">
-      <data type="string"/>
+      <ref name="id"/>
     </attribute>
   </define>
-  <!-- ref on ID -->
   <define name="Target">
     <attribute name="target">
-      <data type="string"/>
+      <ref name="id"/>
     </attribute>
   </define>
-  <!-- ref on ID -->
   <define name="Title">
     <attribute name="title">
       <data type="string"/>
@@ -274,12 +285,20 @@ Ajout d'un attribut définissant type date ou int, date par défaut</a:documenta
   </define>
   <define name="DateFrom">
     <attribute name="datefrom">
-      <data type="date"/>
+      <ref name="date"/>
     </attribute>
   </define>
   <define name="DateTo">
     <attribute name="dateto">
-      <data type="date"/>
+      <ref name="date"/>
+    </attribute>
+  </define>
+  <define name="DateType">
+    <attribute name="datetype" a:defaultValue="date">
+      <choice>
+        <value type="string" datatypeLibrary="">integer</value>
+        <value type="string" datatypeLibrary="">date</value>
+      </choice>
     </attribute>
   </define>
   <define name="DefaultEdgeType">
@@ -318,7 +337,7 @@ Ajout d'un attribut définissant type date ou int, date par défaut</a:documenta
       </choice>
     </attribute>
   </define>
-  <define name="TypeAttr">
+  <define name="AttrType">
     <attribute name="type">
       <choice>
         <value type="string" datatypeLibrary="">integer</value>
@@ -335,5 +354,18 @@ Ajout d'un attribut définissant type date ou int, date par défaut</a:documenta
     <attribute name="variant">
       <data type="string"/>
     </attribute>
+  </define>
+  <define name="date">
+    <a:documentation>Datatypes</a:documentation>
+    <choice>
+      <data type="date"/>
+      <data type="integer"/>
+    </choice>
+  </define>
+  <define name="id">
+    <choice>
+      <data type="string"/>
+      <data type="integer"/>
+    </choice>
   </define>
 </grammar>

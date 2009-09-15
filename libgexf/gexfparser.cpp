@@ -256,7 +256,7 @@ void GexfParser::processNodeNode(xmlTextReaderPtr reader) {
         const string label = this->getStringAttribute(reader, "label");
 
         _gexf->getUndirectedGraph().addNode( node_id );
-        _gexf->getData().setLabel( node_id, label );
+        _gexf->getData().setNodeLabel( node_id, label );
         _last_node_type = NODE;
         _last_id = node_id;
     }
@@ -354,7 +354,7 @@ void GexfParser::processAttributeNode(xmlTextReaderPtr reader) {
         else if( tmp_type.compare("boolean") == 0 )
             type = BOOLEAN;
         else if( tmp_type.compare("liststring") == 0 )
-            type = LIST_STRING;
+            type = LISTSTRING;
 
         if( _last_node_type == ATTR_NODE ) {
             _gexf->getData().addNodeAttributeColumn(attribute_id, title, type);

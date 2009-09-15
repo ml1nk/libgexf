@@ -262,7 +262,7 @@ void LegacyWriter::writeNodesNode(xmlTextWriterPtr writer) {
         const t_id node_id = it->next();
         const unsigned int new_id = cpt++;
         _nodes.insert( pair<t_id,unsigned int>(node_id,new_id) );
-        const string label = _gexf->getData().getLabel(node_id);
+        const string label = _gexf->getData().getNodeLabel(node_id);
         this->writeNodeNode(writer, Conv::idToStr(node_id), Conv::unsignedIntToStr(new_id), label);
     }
     

@@ -49,21 +49,21 @@ Conv::~Conv() {
 }
 
 //-----------------------------------------
-t_id Conv::xmlCharToId(const xmlChar* str) {
+libgexf::t_id Conv::xmlCharToId(const xmlChar* str) {
 //-----------------------------------------
     istringstream iss((const char*) str);
     return (t_id)iss.str();
 }
 
 //-----------------------------------------
-string Conv::xmlCharToStr(const xmlChar* str) {
+std::string Conv::xmlCharToStr(const xmlChar* str) {
 //-----------------------------------------
     istringstream iss((const char*) str);
     return iss.str();
 }
 
 //-----------------------------------------
-t_id Conv::strToId(const std::string& str) {
+libgexf::t_id Conv::strToId(const std::string& str) {
 //-----------------------------------------
     return (t_id)str;
 }
@@ -79,13 +79,13 @@ unsigned int Conv::xmlCharToUnsignedInt(const xmlChar* str) {
 }
 
 //-----------------------------------------
-string Conv::idToStr(const t_id id) {
+std::string Conv::idToStr(const libgexf::t_id id) {
 //-----------------------------------------
     return (string)id;
 }
 
 //-----------------------------------------
-string Conv::unsignedIntToStr(const unsigned int i) {
+std::string Conv::unsignedIntToStr(const unsigned int i) {
 //-----------------------------------------
     ostringstream oss;
     oss << i;
@@ -103,7 +103,7 @@ unsigned int Conv::strToUnsignedInt(const std::string& str) {
 }
 
 //-----------------------------------------
-string Conv::edgeTypeToStr(const t_edge_type t) {
+std::string Conv::edgeTypeToStr(const libgexf::t_edge_type t) {
 //-----------------------------------------
     // fonction de porc qui ne devrait pas exister
     switch(t)
@@ -125,7 +125,7 @@ string Conv::edgeTypeToStr(const t_edge_type t) {
 }
 
 //-----------------------------------------
-string Conv::attrTypeToStr(const t_attr_type t) {
+std::string Conv::attrTypeToStr(const libgexf::t_attr_type t) {
 //-----------------------------------------
     // fonction de porc qui ne devrait pas exister
     switch(t)
@@ -145,11 +145,48 @@ string Conv::attrTypeToStr(const t_attr_type t) {
         case STRING:
             return "string";
             break;
-        case LIST_STRING:
+        case LISTSTRING:
             return "liststring";
             break;
     }
     return "";
+}
+
+libgexf::t_edge_type strToEdgeType(const std::string& str) {
+    // fonction de porc qui ne devrait pas exister
+    if(str == "directed" || str == "DIRECTED") {
+        return EDGE_DIRECTED;
+    }
+    if(str == "undirected" || str == "UNDIRECTED") {
+        return EDGE_UNDIRECTED;
+    }
+    if(str == "double" || str == "DOUBLE") {
+        return EDGE_DOUBLE;
+    }
+    return EDGE_UNDEF;
+}
+
+libgexf::t_attr_type strToAttrType(const std::string& str) {
+    // fonction de porc qui ne devrait pas exister
+    if(str == "string" || str == "STRING") {
+        return STRING;
+    }
+    if(str == "integer" || str == "INTEGER") {
+        return INTEGER;
+    }
+    if(str == "float" || str == "FLOAT") {
+        return FLOAT;
+    }
+    if(str == "boolean" || str == "BOOLEAN") {
+        return BOOLEAN;
+    }
+    if(str == "double" || str == "DOUBLE") {
+        return DOUBLE;
+    }
+    if(str == "liststring" || str == "LISTSTRING") {
+        return LISTSTRING;
+    }
+    return STRING;
 }
 
 //-----------------------------------------

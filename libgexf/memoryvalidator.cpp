@@ -59,7 +59,7 @@ bool r = true;
     NodeIter* it = gexf._graph.getNodes();
     while(it->hasNext()) {
         const t_id node_id = it->next();
-        if( !gexf._data.hasLabel(node_id) ) {
+        if( !gexf._data.hasNodeLabel(node_id) ) {
             std::cerr << "No label for the node " << (std::string)node_id << std::endl;
             r = false;
         }
@@ -78,7 +78,7 @@ bool r = true;
     while( it->hasNext() ) {
         const t_id attr_id = it->next();
         const t_attr_type type = it->currentType();
-        if( type == LIST_STRING && gexf._data.hasNodeAttributeDefault(attr_id) && gexf._data.hasNodeAttributeOptions(attr_id) ) {
+        if( type == LISTSTRING && gexf._data.hasNodeAttributeDefault(attr_id) && gexf._data.hasNodeAttributeOptions(attr_id) ) {
             const std::string default_v = gexf._data.getNodeAttributeDefault(attr_id);
             const bool ok = gexf._data.isNodeAttributeOption(attr_id, default_v );
             if( !ok ) {
@@ -92,7 +92,7 @@ bool r = true;
     while( it->hasNext() ) {
         const t_id attr_id = it->next();
         const t_attr_type type = it->currentType();
-        if(type == LIST_STRING &&  gexf._data.hasEdgeAttributeDefault(attr_id) && gexf._data.hasEdgeAttributeOptions(attr_id) ) {
+        if(type == LISTSTRING &&  gexf._data.hasEdgeAttributeDefault(attr_id) && gexf._data.hasEdgeAttributeOptions(attr_id) ) {
             const std::string default_v = gexf._data.getEdgeAttributeDefault(attr_id);
             const bool ok = gexf._data.isEdgeAttributeOption(attr_id, default_v );
             if( !ok ) {
@@ -191,7 +191,7 @@ bool r = false;
                 std::cerr << "Attribute type error for the " << elem << " \"" << elem_id << "\": \"" << value << "\" should be a boolean (true|false)" << std::endl;
             }
             break;
-        case LIST_STRING:
+        case LISTSTRING:
             if( isNode ) {
                 r = gexf._data.isNodeAttributeOption(attr_id, value);
             }

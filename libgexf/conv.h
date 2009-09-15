@@ -54,6 +54,8 @@ public:
     static unsigned int strToUnsignedInt(const std::string& str);
     static std::string edgeTypeToStr(const libgexf::t_edge_type t);
     static std::string attrTypeToStr(const libgexf::t_attr_type t);
+    static libgexf::t_edge_type strToEdgeType(const std::string& str);
+    static libgexf::t_attr_type strToAttrType(const std::string& str);
     static bool isBoolean(const std::string& str);
     static bool isDouble(const std::string& str);
     static bool isInteger(const std::string& str);

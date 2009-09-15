@@ -61,14 +61,14 @@ public:
      *
      *  \param node_id : node ID
      */
-    std::string getLabel(const libgexf::t_id node_id) const;
+    std::string getNodeLabel(const libgexf::t_id node_id) const;
 
     /*!
      *  \brief Check if the node label exists
      *
      *  \param node_id : node ID
      */
-    bool hasLabel(const libgexf::t_id node_id) const;
+    bool hasNodeLabel(const libgexf::t_id node_id) const;
 
     /*!
      *  \brief Set node label
@@ -76,7 +76,30 @@ public:
      *  \param node_id : node ID
      *  \param label : node label
      */
-    void setLabel(const libgexf::t_id node_id, const std::string& label);
+    void setNodeLabel(const libgexf::t_id node_id, const std::string& label);
+
+    
+    /*!
+     *  \brief Get edge label
+     *
+     *  \param edge_id : edge ID
+     */
+    std::string getEdgeLabel(const libgexf::t_id edge_id) const;
+
+    /*!
+     *  \brief Check if the edge label exists
+     *
+     *  \param edge_id : edge ID
+     */
+    bool hasEdgeLabel(const libgexf::t_id edge_id) const;
+
+    /*!
+     *  \brief Set edge label
+     *
+     *  \param edge_id : edge ID
+     *  \param label : edge label
+     */
+    void setEdgeLabel(const libgexf::t_id edge_id, const std::string& label);
 
 
     /*!
@@ -86,7 +109,7 @@ public:
      *  \param title : name of the node attribute
      *  \param type : type of attribute (integer, double, float, boolean, string or list-string)
      */
-    void addNodeAttributeColumn(const libgexf::t_id id, const std::string& title, const libgexf::t_attr_type type);
+    void addNodeAttributeColumn(const libgexf::t_id id, const std::string& title, const libgexf::t_attr_type type=STRING);
 
     /*!
      *  \brief Add an edge attribute column
@@ -95,7 +118,7 @@ public:
      *  \param title : name of the edge attribute
      *  \param type : type of attribute (integer, double, float, boolean, string or list-string)
      */
-    void addEdgeAttributeColumn(const libgexf::t_id id, const std::string& title, const libgexf::t_attr_type type);
+    void addEdgeAttributeColumn(const libgexf::t_id id, const std::string& title, const libgexf::t_attr_type type=STRING);
 
 
     /*!
@@ -309,13 +332,14 @@ public:
     void clear();
 
     /*!
-     *  \brief Clear edge attributes (columns an rows)
+     *  \brief Clear edge attributes (columns an rows), and labels
      *
      */
     void clearEdgesAttributes();
 private:
     std::map<t_id,std::string > _node_labels; /*!< map<node_id, label > */
-    // TODO edge labels
+    std::map<t_id,std::string > _edge_labels; /*!< map<edge_id, label > */
+    
     std::map<t_id,std::string > _node_attributes; /*!< map<attr_id, title > */
     std::map<t_id,t_attr_type > _node_attributes_types; /*!< map<attr_id, type > */
     std::map<t_id,std::string > _node_default_values; /*!< map<attr_id, default > */

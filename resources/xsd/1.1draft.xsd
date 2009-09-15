@@ -37,6 +37,14 @@
         <xs:element ref="gexf:nodes"/>
         <xs:element ref="gexf:edges"/>
       </xs:sequence>
+      <xs:attribute name="idtype">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="integer"/>
+            <xs:enumeration value="string"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
       <xs:attribute name="mode">
         <xs:simpleType>
           <xs:restriction base="xs:string">
@@ -54,8 +62,16 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="datefrom" type="xs:date"/>
-      <xs:attribute name="dateto" type="xs:date"/>
+      <xs:attribute name="datetype">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="integer"/>
+            <xs:enumeration value="date"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="datefrom" type="gexf:date"/>
+      <xs:attribute name="dateto" type="gexf:date"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="attributes">
@@ -72,8 +88,8 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="datefrom" type="xs:date"/>
-      <xs:attribute name="dateto" type="xs:date"/>
+      <xs:attribute name="datefrom" type="gexf:date"/>
+      <xs:attribute name="dateto" type="gexf:date"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="nodes">
@@ -101,7 +117,7 @@
       </xs:sequence>
       <xs:attributeGroup ref="gexf:ID"/>
       <xs:attributeGroup ref="gexf:Title"/>
-      <xs:attributeGroup ref="gexf:TypeAttr"/>
+      <xs:attributeGroup ref="gexf:AttrType"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="node">
@@ -114,10 +130,10 @@
         <xs:element minOccurs="0" ref="viz:size"/>
       </xs:sequence>
       <xs:attributeGroup ref="gexf:ID"/>
-      <xs:attribute name="pid" type="xs:string"/>
+      <xs:attribute name="pid" type="gexf:id"/>
       <xs:attributeGroup ref="gexf:Label"/>
-      <xs:attribute name="datefrom" type="xs:date"/>
-      <xs:attribute name="dateto" type="xs:date"/>
+      <xs:attribute name="datefrom" type="gexf:date"/>
+      <xs:attribute name="dateto" type="gexf:date"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="edge">
@@ -139,8 +155,8 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="datefrom" type="xs:date"/>
-      <xs:attribute name="dateto" type="xs:date"/>
+      <xs:attribute name="datefrom" type="gexf:date"/>
+      <xs:attribute name="dateto" type="gexf:date"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="attvalues">
@@ -154,8 +170,8 @@
     <xs:complexType>
       <xs:attributeGroup ref="gexf:FOR"/>
       <xs:attributeGroup ref="gexf:Value"/>
-      <xs:attribute name="datefrom" type="xs:date"/>
-      <xs:attribute name="dateto" type="xs:date"/>
+      <xs:attribute name="datefrom" type="gexf:date"/>
+      <xs:attribute name="dateto" type="gexf:date"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="creator" type="xs:string"/>
@@ -170,22 +186,30 @@
     <xs:attribute name="count" use="required" type="xs:nonNegativeInteger"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="FOR">
-    <xs:attribute name="for" use="required" type="xs:string"/>
+    <xs:attribute name="for" use="required" type="gexf:id"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="ID">
-    <xs:attribute name="id" use="required" type="xs:string"/>
+    <xs:attribute name="id" use="required" type="gexf:id"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="IDType">
+    <xs:attribute name="idtype" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="integer"/>
+          <xs:enumeration value="string"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
   </xs:attributeGroup>
   <xs:attributeGroup name="PID">
-    <xs:attribute name="pid" use="required" type="xs:string"/>
+    <xs:attribute name="pid" use="required" type="gexf:id"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="Source">
-    <xs:attribute name="source" use="required" type="xs:string"/>
+    <xs:attribute name="source" use="required" type="gexf:id"/>
   </xs:attributeGroup>
-  <!-- ref on ID -->
   <xs:attributeGroup name="Target">
-    <xs:attribute name="target" use="required" type="xs:string"/>
+    <xs:attribute name="target" use="required" type="gexf:id"/>
   </xs:attributeGroup>
-  <!-- ref on ID -->
   <xs:attributeGroup name="Title">
     <xs:attribute name="title" use="required" type="xs:string"/>
   </xs:attributeGroup>
@@ -206,10 +230,20 @@
     </xs:attribute>
   </xs:attributeGroup>
   <xs:attributeGroup name="DateFrom">
-    <xs:attribute name="datefrom" use="required" type="xs:date"/>
+    <xs:attribute name="datefrom" use="required" type="gexf:date"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="DateTo">
-    <xs:attribute name="dateto" use="required" type="xs:date"/>
+    <xs:attribute name="dateto" use="required" type="gexf:date"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="DateType">
+    <xs:attribute name="datetype" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="integer"/>
+          <xs:enumeration value="date"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
   </xs:attributeGroup>
   <xs:attributeGroup name="DefaultEdgeType">
     <xs:attribute name="defaultedgetype" use="required">
@@ -249,7 +283,7 @@
       </xs:simpleType>
     </xs:attribute>
   </xs:attributeGroup>
-  <xs:attributeGroup name="TypeAttr">
+  <xs:attributeGroup name="AttrType">
     <xs:attribute name="type" use="required">
       <xs:simpleType>
         <xs:restriction base="xs:string">
@@ -267,4 +301,13 @@
   <xs:attributeGroup name="Variant">
     <xs:attribute name="variant" use="required" type="xs:string"/>
   </xs:attributeGroup>
+  <xs:simpleType name="date">
+    <xs:annotation>
+      <xs:documentation>Datatypes</xs:documentation>
+    </xs:annotation>
+    <xs:union memberTypes="xs:date xs:integer"/>
+  </xs:simpleType>
+  <xs:simpleType name="id">
+    <xs:union memberTypes="xs:string xs:integer"/>
+  </xs:simpleType>
 </xs:schema>

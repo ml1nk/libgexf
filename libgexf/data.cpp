@@ -45,6 +45,7 @@ Data::Data() {
 
 Data::Data(const Data& orig): 
         _node_labels(orig._node_labels),
+        _edge_labels(orig._edge_labels),
         _node_attributes(orig._node_attributes),
         _node_attributes_types(orig._node_attributes_types),
         _node_default_values(orig._node_default_values),
@@ -62,7 +63,7 @@ Data::~Data() {
 }
 
 void Data::init() {
-    _node_labels = map<t_id,string >();
+    _node_labels = _edge_labels = map<t_id,string >();
     _node_attributes = _edge_attributes = map<t_id,string >();
     _node_attributes_types = _edge_attributes_types = map<t_id,t_attr_type >();
     _node_values = _edge_values = map<t_id,map<t_id,string > >();
@@ -72,7 +73,7 @@ void Data::init() {
 }
 
 //-----------------------------------------
-string Data::getLabel(const t_id node_id) const {
+string Data::getNodeLabel(const t_id node_id) const {
 //-----------------------------------------
     map<t_id,string >::const_iterator it = _node_labels.find(node_id);
     if(it != _node_labels.end()) {
@@ -82,15 +83,37 @@ string Data::getLabel(const t_id node_id) const {
 }
 
 //-----------------------------------------
-bool Data::hasLabel(const t_id node_id) const {
+bool Data::hasNodeLabel(const t_id node_id) const {
 //-----------------------------------------
     return _node_labels.find(node_id) != _node_labels.end();
 }
 
 //-----------------------------------------
-void Data::setLabel(const t_id node_id, const std::string& label) {
+void Data::setNodeLabel(const t_id node_id, const std::string& label) {
 //-----------------------------------------
     _node_labels[node_id] = label;
+}
+
+//-----------------------------------------
+string Data::getEdgeLabel(const t_id edge_id) const {
+//-----------------------------------------
+    map<t_id,string >::const_iterator it = _edge_labels.find(edge_id);
+    if(it != _edge_labels.end()) {
+        return it->second;
+    }
+    return "";
+}
+
+//-----------------------------------------
+bool Data::hasEdgeLabel(const t_id edge_id) const {
+//-----------------------------------------
+    return _edge_labels.find(edge_id) != _edge_labels.end();
+}
+
+//-----------------------------------------
+void Data::setEdgeLabel(const t_id edge_id, const std::string& label) {
+//-----------------------------------------
+    _edge_labels[edge_id] = label;
 }
 
 //-----------------------------------------
@@ -342,6 +365,7 @@ void Data::clearEdgeAttributes(const t_id edge_id) {
 void Data::clear() {
 //-----------------------------------------
     _node_labels.clear();
+    _edge_labels.clear();
     _node_attributes.clear();
     _edge_attributes.clear();
     _node_attributes_types.clear();
@@ -359,6 +383,7 @@ void Data::clear() {
 //-----------------------------------------
 void Data::clearEdgesAttributes() {
 //-----------------------------------------
+    _edge_labels.clear();
     _edge_attributes.clear();
     _edge_attributes_types.clear();
     _edge_values.clear();

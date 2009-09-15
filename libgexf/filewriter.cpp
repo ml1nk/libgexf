@@ -277,7 +277,7 @@ void FileWriter::writeNodesNode(xmlTextWriterPtr writer) {
     NodeIter* it = _gexf->getUndirectedGraph().getNodes();
     while(it->hasNext()) {
         const t_id node_id = it->next();
-        const string label = _gexf->getData().getLabel(node_id);
+        const string label = _gexf->getData().getNodeLabel(node_id);
         this->writeNodeNode(writer, Conv::idToStr(node_id), label);
     }
     

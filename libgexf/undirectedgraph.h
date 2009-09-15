@@ -46,6 +46,11 @@ public:
     UndirectedGraph(const UndirectedGraph& orig);
     
     virtual ~UndirectedGraph();
+
+    /*!
+     *  \brief Merge edges where {source,target} <> {target,source}
+     */
+    void mergeSimilarEdges();
 private:
     UndirectedGraph& operator=(const UndirectedGraph& orig);
 };
