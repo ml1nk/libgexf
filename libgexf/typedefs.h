@@ -37,22 +37,22 @@ typedef std::string t_id; /*!< Type of all IDs */
 /*! \var enum t_graph
  *  \brief Available graph types
  */
-enum t_graph { GRAPH_DIRECTED, GRAPH_UNDIRECTED, GRAPH_MIXED };
+typedef enum { GRAPH_DIRECTED, GRAPH_UNDIRECTED, GRAPH_MIXED } t_graph;
 
 /*! \var enum t_edge_property
  *  \brief Available edge topological properties
  */
-enum t_edge_property { EDGE_TYPE, EDGE_COUNT, EDGE_WEIGHT };
+typedef enum { EDGE_TYPE, EDGE_COUNT, EDGE_WEIGHT } t_edge_property;
 
 /*! \var enum t_edge_type
  *  \brief Available edge types
  */
-enum t_edge_type { EDGE_UNDEF, EDGE_DIRECTED, EDGE_UNDIRECTED, EDGE_DOUBLE };
+typedef enum { EDGE_UNDEF, EDGE_DIRECTED, EDGE_UNDIRECTED, EDGE_DOUBLE } t_edge_type;
 
 /*! \var enum t_attr_type
  *  \brief Available types of attributes
  */
-enum t_attr_type { INTEGER, DOUBLE, FLOAT, BOOLEAN, STRING, LISTSTRING };
+typedef enum { INTEGER, DOUBLE, FLOAT, BOOLEAN, STRING, LISTSTRING } t_attr_type;
 
 typedef float t_edge_value; /*!< Value of edge topological properties */
 

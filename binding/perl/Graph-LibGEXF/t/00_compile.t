@@ -59,5 +59,3 @@ try {
 }
 # non-obvious problem for testing:
 #throws_ok( sub { $graph->addEdge(999999,999999,1000000) }, '/RuntimeError/', 'invalid_argument caught okay');
-
-

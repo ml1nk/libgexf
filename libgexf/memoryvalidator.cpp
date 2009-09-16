@@ -141,7 +141,7 @@ bool r = true;
         EdgeIter* it_edge = gexf._graph.getEdges();
         while(it_edge->hasNext()) {
             const t_id edge_id = it_edge->next();
-            const std::string value = gexf._data.getNodeAttribute(edge_id, attr_id);
+            const std::string value = gexf._data.getEdgeAttribute(edge_id, attr_id);
             if( value.empty() ) {
                 if( !has_default ) {
                     r = false;

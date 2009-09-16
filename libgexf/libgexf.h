@@ -30,6 +30,7 @@
 #define	_LIBGEXF_H
 
 #include <libgexf/typedefs.h>
+#include <libgexf/conv.h>
 #include <libgexf/exceptions.h>
 #include <libgexf/gexf.h>
 #include <libgexf/graph.h>

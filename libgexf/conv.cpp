@@ -151,8 +151,10 @@ std::string Conv::attrTypeToStr(const libgexf::t_attr_type t) {
     }
     return "";
 }
-
-libgexf::t_edge_type strToEdgeType(const std::string& str) {
+/*
+//-----------------------------------------
+libgexf::t_edge_type Conv::strToEdgeType(const std::string& str) {
+//-----------------------------------------
     // fonction de porc qui ne devrait pas exister
     if(str == "directed" || str == "DIRECTED") {
         return EDGE_DIRECTED;
@@ -166,7 +168,9 @@ libgexf::t_edge_type strToEdgeType(const std::string& str) {
     return EDGE_UNDEF;
 }
 
-libgexf::t_attr_type strToAttrType(const std::string& str) {
+//-----------------------------------------
+libgexf::t_attr_type Conv::strToAttrType(const std::string& str) {
+//-----------------------------------------
     // fonction de porc qui ne devrait pas exister
     if(str == "string" || str == "STRING") {
         return STRING;
@@ -188,7 +192,7 @@ libgexf::t_attr_type strToAttrType(const std::string& str) {
     }
     return STRING;
 }
-
+*/
 //-----------------------------------------
 bool Conv::isInteger(const std::string& str) {
 //-----------------------------------------

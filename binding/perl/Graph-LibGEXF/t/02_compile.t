@@ -10,6 +10,6 @@ use Test::Exception;
 BEGIN { use_ok 'Graph::LibGEXF' }
 
 # test XSD validation
-my $valid = Graph::LibGEXF::SchemaValidator->run("../../../t/attributes.gexf", "../../../resources/xsd/1.1draft.xsd");
+my $valid = Graph::LibGEXF::SchemaValidator::run("../../../t/attributes.gexf", "../../../resources/xsd/1.1draft.xsd");
 is($valid, 1, "SchemaValidator");
 

@@ -830,6 +830,7 @@ sub DESTROY {
     }
 }
 
+*mergeSimilarEdges = *Graph::LibGEXFc::UndirectedGraph_mergeSimilarEdges;
 sub DISOWN {
     my $self = shift;
     my $ptr = tied(%$self);
@@ -946,9 +947,12 @@ sub DESTROY {
     }
 }
 
-*getLabel = *Graph::LibGEXFc::Data_getLabel;
-*hasLabel = *Graph::LibGEXFc::Data_hasLabel;
-*setLabel = *Graph::LibGEXFc::Data_setLabel;
+*getNodeLabel = *Graph::LibGEXFc::Data_getNodeLabel;
+*hasNodeLabel = *Graph::LibGEXFc::Data_hasNodeLabel;
+*setNodeLabel = *Graph::LibGEXFc::Data_setNodeLabel;
+*getEdgeLabel = *Graph::LibGEXFc::Data_getEdgeLabel;
+*hasEdgeLabel = *Graph::LibGEXFc::Data_hasEdgeLabel;
+*setEdgeLabel = *Graph::LibGEXFc::Data_setEdgeLabel;
 *addNodeAttributeColumn = *Graph::LibGEXFc::Data_addNodeAttributeColumn;
 *addEdgeAttributeColumn = *Graph::LibGEXFc::Data_addEdgeAttributeColumn;
 *setNodeAttributeDefault = *Graph::LibGEXFc::Data_setNodeAttributeDefault;
@@ -1148,7 +1152,7 @@ package Graph::LibGEXF;
 *FLOAT = *Graph::LibGEXFc::FLOAT;
 *BOOLEAN = *Graph::LibGEXFc::BOOLEAN;
 *STRING = *Graph::LibGEXFc::STRING;
-*LIST_STRING = *Graph::LibGEXFc::LIST_STRING;
+*LISTSTRING = *Graph::LibGEXFc::LISTSTRING;
 use version;
 our $VERSION = '0.01';
 1;
