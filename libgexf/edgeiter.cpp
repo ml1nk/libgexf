@@ -35,7 +35,7 @@ using namespace std;
 
 namespace libgexf {
 
-EdgeIter::EdgeIter(const Graph* g): _graph(g), _cpt(0), _nb_items(g->getInternalEdgeCount()) {
+EdgeIter::EdgeIter(const Graph* g): _graph(g), _cpt(0), _nb_items(g->getEdgeCount()) {
     this->begin();
 }
 
@@ -46,7 +46,7 @@ EdgeIter* EdgeIter::begin() {
     _it = _graph->_edges.begin();
     _it2 = _it->second.begin();
     _cpt = 0;
-    _nb_items = _graph->getInternalEdgeCount();
+    _nb_items = _graph->getEdgeCount();
     return this;
 }
 

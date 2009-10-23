@@ -167,7 +167,7 @@ libgexf::t_edge_type Conv::strToEdgeType(const std::string& str) {
     }
     return EDGE_UNDEF;
 }
-
+*/
 //-----------------------------------------
 libgexf::t_attr_type Conv::strToAttrType(const std::string& str) {
 //-----------------------------------------
@@ -181,6 +181,9 @@ libgexf::t_attr_type Conv::strToAttrType(const std::string& str) {
     if(str == "float" || str == "FLOAT") {
         return FLOAT;
     }
+    if(str == "long" || str == "Long") {
+        return LONG;
+    }
     if(str == "boolean" || str == "BOOLEAN") {
         return BOOLEAN;
     }
@@ -190,9 +193,12 @@ libgexf::t_attr_type Conv::strToAttrType(const std::string& str) {
     if(str == "liststring" || str == "LISTSTRING") {
         return LISTSTRING;
     }
+    if(str == "anyURI" || str == "anyuri" || str == "ANYURI") {
+        return ANYURI;
+    }
     return STRING;
 }
-*/
+
 //-----------------------------------------
 bool Conv::isInteger(const std::string& str) {
 //-----------------------------------------

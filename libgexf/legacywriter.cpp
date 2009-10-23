@@ -451,7 +451,7 @@ AttributeIter* it = 0;
                 default_value = _gexf->getData().getEdgeAttributeDefault(attr_id);
             }
         }
-        this->writeAttributeNode(writer, Conv::idToStr(attr_id), Conv::unsignedIntToStr(new_id), title, Conv::attrTypeToStr(type), default_value);
+        this->writeAttributeNode(writer, Conv::unsignedIntToStr(new_id), title, Conv::attrTypeToStr(type), default_value);
     }
 
     /* Close the element named attributes. */
@@ -462,7 +462,7 @@ AttributeIter* it = 0;
 }
 
 //-----------------------------------------
-void LegacyWriter::writeAttributeNode(xmlTextWriterPtr writer, const std::string& id, const std::string& new_id, const std::string& title, const std::string& type, const std::string& default_value) {
+void LegacyWriter::writeAttributeNode(xmlTextWriterPtr writer, const std::string& new_id, const std::string& title, const std::string& type, const std::string& default_value) {
 //-----------------------------------------
     /* Start an element named "attribute" as child of attributes. */
     int rc = xmlTextWriterStartElement(writer, BAD_CAST "attribute");

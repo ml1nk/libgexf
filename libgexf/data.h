@@ -109,7 +109,7 @@ public:
      *  \param title : name of the node attribute
      *  \param type : type of attribute (integer, double, float, boolean, string or list-string)
      */
-    void addNodeAttributeColumn(const libgexf::t_id id, const std::string& title, const libgexf::t_attr_type type=STRING);
+    void addNodeAttributeColumn(const libgexf::t_id id, const std::string& title, const std::string& type="STRING");
 
     /*!
      *  \brief Add an edge attribute column
@@ -118,7 +118,7 @@ public:
      *  \param title : name of the edge attribute
      *  \param type : type of attribute (integer, double, float, boolean, string or list-string)
      */
-    void addEdgeAttributeColumn(const libgexf::t_id id, const std::string& title, const libgexf::t_attr_type type=STRING);
+    void addEdgeAttributeColumn(const libgexf::t_id id, const std::string& title, const std::string& type="STRING");
 
 
     /*!

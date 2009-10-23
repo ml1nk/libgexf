@@ -438,6 +438,12 @@ AttributeIter* it = 0;
         throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
     }
 
+    /* Add an attribute with name "mode" */
+    rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "mode", BAD_CAST "static");
+    if (rc < 0) {
+        throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
+    }
+
     while(it->hasNext()) {
         const t_id attr_id = it->next();
         const string title = it->currentTitle();

@@ -117,17 +117,19 @@ void Data::setEdgeLabel(const t_id edge_id, const std::string& label) {
 }
 
 //-----------------------------------------
-void Data::addNodeAttributeColumn(const t_id id, const std::string& title, const t_attr_type type) {
+void Data::addNodeAttributeColumn(const t_id id, const std::string& title, const std::string& type) {
 //-----------------------------------------
+    const t_attr_type t = Conv::strToAttrType(type);
     _node_attributes.insert(pair<t_id,string>(id,title));
-    _node_attributes_types.insert(pair<t_id,t_attr_type>(id,type));
+    _node_attributes_types.insert(pair<t_id,t_attr_type>(id,t));
 }
 
 //-----------------------------------------
-void Data::addEdgeAttributeColumn(const t_id id, const std::string& title, const t_attr_type type) {
+void Data::addEdgeAttributeColumn(const t_id id, const std::string& title, const std::string& type) {
 //-----------------------------------------
+    const t_attr_type t = Conv::strToAttrType(type);
     _edge_attributes.insert(pair<t_id,string>(id,title));
-    _edge_attributes_types.insert(pair<t_id,t_attr_type>(id,type));
+    _edge_attributes_types.insert(pair<t_id,t_attr_type>(id,t));
 }
 
 //-----------------------------------------

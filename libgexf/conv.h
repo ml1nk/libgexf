@@ -30,40 +30,50 @@
 #define	_CONV_H
 
 #include "typedefs.h"
+#include "data.h"
+#include "gexfparser.h"
 #include <string>
 #include <set>
 #include <libxml/xmlstring.h>
 
 namespace libgexf {
 
-/*! \class Conv
-    \brief Utility static class for transforming data.
- */
-class Conv {
-public:
-    Conv();
-    Conv(const Conv& orig);
-    virtual ~Conv();
+    class Data;
+    class GexfParser;
+    class LegacyParser;
 
-    static libgexf::t_id xmlCharToId(const xmlChar* str);
-    static libgexf::t_id strToId(const std::string& str);
-    static std::string xmlCharToStr(const xmlChar* str);
-    static unsigned int xmlCharToUnsignedInt(const xmlChar* str);
-    static std::string idToStr(const libgexf::t_id id);
-    static std::string unsignedIntToStr(const unsigned int i);
-    static unsigned int strToUnsignedInt(const std::string& str);
-    static std::string edgeTypeToStr(const libgexf::t_edge_type t);
-    static std::string attrTypeToStr(const libgexf::t_attr_type t);
-    /*static libgexf::t_edge_type strToEdgeType(const std::string& str);
-    static libgexf::t_attr_type strToAttrType(const std::string& str);*/
-    static bool isBoolean(const std::string& str);
-    static bool isDouble(const std::string& str);
-    static bool isInteger(const std::string& str);
-    static bool isFloat(const std::string& str);
-    static std::set<std::string> tokenizer(const std::string& delimiter, const std::string& str);
-private:
-    virtual void f() = 0;
-};
+    /*! \class Conv
+        \brief Utility static class for transforming data.
+     */
+    class Conv {
+    public:
+        Conv();
+        Conv(const Conv& orig);
+        virtual ~Conv();
+
+        static libgexf::t_id xmlCharToId(const xmlChar* str);
+        static libgexf::t_id strToId(const std::string& str);
+        static std::string xmlCharToStr(const xmlChar* str);
+        static unsigned int xmlCharToUnsignedInt(const xmlChar* str);
+        static std::string idToStr(const libgexf::t_id id);
+        static std::string unsignedIntToStr(const unsigned int i);
+        static unsigned int strToUnsignedInt(const std::string& str);
+        static std::string edgeTypeToStr(const libgexf::t_edge_type t);
+        static std::string attrTypeToStr(const libgexf::t_attr_type t);
+        static bool isBoolean(const std::string& str);
+        static bool isDouble(const std::string& str);
+        static bool isInteger(const std::string& str);
+        static bool isFloat(const std::string& str);
+        static std::set<std::string> tokenizer(const std::string& delimiter, const std::string& str);
+    private:
+        virtual void f() = 0;
+
+        /*static libgexf::t_edge_type strToEdgeType(const std::string& str);*/
+        static libgexf::t_attr_type strToAttrType(const std::string& str);
+        friend class Data; /*!< Data */
+        friend class GexfParser; /*!< GexfParser */
+        friend class LegacyParser; /*!< LegacyParser */
+    };
 
 } /* namespace libgexf */
 

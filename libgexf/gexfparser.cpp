@@ -342,25 +342,14 @@ void GexfParser::processAttributeNode(xmlTextReaderPtr reader) {
     if(hasAttr == 1) {
         const t_id attribute_id = this->getIdAttribute(reader, "id");
         const string title = this->getStringAttribute(reader, "title");
-        const string tmp_type = this->getStringAttribute(reader, "type");
-        t_attr_type type = STRING; /* internal default value */
-
-        if( tmp_type.compare("integer") == 0 )
-            type = INTEGER;
-        else if( tmp_type.compare("double") == 0 )
-            type = DOUBLE;
-        else if( tmp_type.compare("float") == 0 )
-            type = FLOAT;
-        else if( tmp_type.compare("boolean") == 0 )
-            type = BOOLEAN;
-        else if( tmp_type.compare("liststring") == 0 )
-            type = LISTSTRING;
+        const string type_str = this->getStringAttribute(reader, "type");
+        const t_attr_type type = Conv::strToAttrType(type_str);
 
         if( _last_node_type == ATTR_NODE ) {
-            _gexf->getData().addNodeAttributeColumn(attribute_id, title, type);
+            _gexf->getData().addNodeAttributeColumn(attribute_id, title, Conv::attrTypeToStr(type));
         }
         else if( _last_node_type == ATTR_EDGE ) {
-            _gexf->getData().addEdgeAttributeColumn(attribute_id, title, type);
+            _gexf->getData().addEdgeAttributeColumn(attribute_id, title, Conv::attrTypeToStr(type));
         }
         _last_id = attribute_id;
     }

@@ -224,16 +224,6 @@ protected:
      */
     char _lock_flag;
 
-
-    /*!
-     *  \brief Count edge rows
-     *
-     *  Used for EdgeIter; This is not the real number of edges (cardinals are not count).
-     *
-     *  \return number of edge rows
-     */
-    unsigned int getInternalEdgeCount() const;
-
     friend std::ostream& operator<<(std::ostream& os, const Graph& o);
     friend class NodeIter;
     friend class EdgeIter;

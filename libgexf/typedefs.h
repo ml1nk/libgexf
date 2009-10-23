@@ -52,7 +52,7 @@ typedef enum { EDGE_UNDEF, EDGE_DIRECTED, EDGE_UNDIRECTED, EDGE_DOUBLE } t_edge_
 /*! \var enum t_attr_type
  *  \brief Available types of attributes
  */
-typedef enum { INTEGER, DOUBLE, FLOAT, BOOLEAN, STRING, LISTSTRING } t_attr_type;
+typedef enum { INTEGER, DOUBLE, FLOAT, LONG, BOOLEAN, STRING, LISTSTRING, ANYURI } t_attr_type;
 
 typedef float t_edge_value; /*!< Value of edge topological properties */
 

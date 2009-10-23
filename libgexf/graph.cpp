@@ -274,29 +274,6 @@ unsigned int count = 0;
     for(map<t_id,map<t_id,t_id> >::const_iterator it = _edges.begin() ; it != _edges.end() ; ++it) {
         count += (it->second).size();
     }
-    // 0(n + log-n)
-    map<t_id,map<t_edge_property,t_edge_value> >::const_iterator it;
-    for ( it=_edges_properties.begin() ; it != _edges_properties.end(); ++it ) {
-        map<t_edge_property,t_edge_value>::const_iterator it2 = ((*it).second).find(EDGE_COUNT);
-        if(it2 != ((*it).second).end()) {
-            count += (unsigned int)(*it2).second - 1;
-        }
-    }
-
-    return count;
-}
-
-//-----------------------------------------
-unsigned int Graph::getInternalEdgeCount() const {
-//-----------------------------------------
-unsigned int count = 0;
-
-    if(_lock_flag == '2') throw WriteLockException("Read not allowed");
-
-    // 0(n)
-    for(map<t_id,map<t_id,t_id> >::const_iterator it = _edges.begin() ; it != _edges.end() ; ++it) {
-        count += (it->second).size();
-    }
 
     return count;
 }
