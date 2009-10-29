@@ -327,7 +327,7 @@ void LegacyWriter::writeEdgesNode(xmlTextWriterPtr writer) {
         unsigned int new_source = _nodes.find(source_id)->second;
         unsigned int new_target = _nodes.find(target_id)->second;
 
-        const unsigned int card = (unsigned int)it->currentProperty(EDGE_COUNT);
+        const unsigned int card = (unsigned int)it->currentProperty(EDGE_WEIGHT);
         const t_edge_type type = (t_edge_type)it->currentProperty(EDGE_TYPE);
         this->writeEdgeNode(writer, Conv::idToStr(edge_id), Conv::unsignedIntToStr(new_id), Conv::unsignedIntToStr(new_source), Conv::unsignedIntToStr(new_target), Conv::unsignedIntToStr(card), Conv::edgeTypeToStr(type));
     }

@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.gephi.org/gexf/1.1draft" xmlns:gexf="http://www.gephi.org/gexf/1.1draft" xmlns:viz="http://www.gephi.org/gexf/1.1draft/viz">
+  <xs:include schemaLocation="data.xsd"/>
+  <xs:include schemaLocation="dynamics.xsd"/>
+  <xs:include schemaLocation="hierarchy.xsd"/>
+  <xs:include schemaLocation="phylogenics.xsd"/>
   <xs:import namespace="http://www.gephi.org/gexf/1.1draft/viz" schemaLocation="viz.xsd"/>
-  <xs:attributeGroup name="Version">
+  <xs:element name="gexf" type="gexf:gexf-content"/>
+  <xs:complexType name="gexf-content">
+    <xs:annotation>
+      <xs:documentation>Tree</xs:documentation>
+    </xs:annotation>
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="gexf:meta"/>
+      <xs:element ref="gexf:graph"/>
+    </xs:choice>
     <xs:attribute name="version" use="required">
       <xs:simpleType>
         <xs:restriction base="xs:string">
@@ -9,305 +21,68 @@
         </xs:restriction>
       </xs:simpleType>
     </xs:attribute>
-  </xs:attributeGroup>
-  <xs:element name="gexf">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" ref="gexf:meta"/>
-        <xs:element ref="gexf:graph"/>
-      </xs:sequence>
-      <xs:attributeGroup ref="gexf:Version"/>
-      <xs:attribute name="variant" type="xs:string"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="meta">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" ref="gexf:creator"/>
-        <xs:element minOccurs="0" ref="gexf:keywords"/>
-        <xs:element minOccurs="0" ref="gexf:description"/>
-      </xs:sequence>
-      <xs:attribute name="lastmodifieddate" type="xs:date"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="graph">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="gexf:attributes"/>
-        <xs:element ref="gexf:nodes"/>
-        <xs:element ref="gexf:edges"/>
-      </xs:sequence>
-      <xs:attribute name="idtype">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="integer"/>
-            <xs:enumeration value="string"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="mode">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="static"/>
-            <xs:enumeration value="dynamic"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="defaultedgetype">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="directed"/>
-            <xs:enumeration value="undirected"/>
-            <xs:enumeration value="double"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="datetype">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="integer"/>
-            <xs:enumeration value="date"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="datefrom" type="gexf:date"/>
-      <xs:attribute name="dateto" type="gexf:date"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="attributes">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="gexf:attribute"/>
-      </xs:sequence>
-      <xs:attributeGroup ref="gexf:Class"/>
-      <xs:attribute name="mode">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="static"/>
-            <xs:enumeration value="dynamic"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="datefrom" type="gexf:date"/>
-      <xs:attribute name="dateto" type="gexf:date"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="nodes">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="gexf:node"/>
-        <xs:element minOccurs="0" ref="gexf:edges"/>
-      </xs:sequence>
-      <xs:attribute name="count" type="xs:nonNegativeInteger"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="edges">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="gexf:edge"/>
-      </xs:sequence>
-      <xs:attribute name="count" type="xs:nonNegativeInteger"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="attribute">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" ref="gexf:default"/>
-        <xs:element minOccurs="0" ref="gexf:options"/>
-      </xs:sequence>
-      <xs:attributeGroup ref="gexf:ID"/>
-      <xs:attributeGroup ref="gexf:Title"/>
-      <xs:attributeGroup ref="gexf:AttrType"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="node">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" ref="gexf:attvalues"/>
-        <xs:element minOccurs="0" ref="gexf:nodes"/>
-        <xs:element minOccurs="0" ref="viz:color"/>
-        <xs:element minOccurs="0" ref="viz:position"/>
-        <xs:element minOccurs="0" ref="viz:size"/>
-      </xs:sequence>
-      <xs:attributeGroup ref="gexf:ID"/>
-      <xs:attribute name="pid" type="gexf:id"/>
-      <xs:attributeGroup ref="gexf:Label"/>
-      <xs:attribute name="datefrom" type="gexf:date"/>
-      <xs:attribute name="dateto" type="gexf:date"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="edge">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" ref="gexf:attvalues"/>
-      </xs:sequence>
-      <xs:attributeGroup ref="gexf:ID"/>
-      <xs:attributeGroup ref="gexf:Source"/>
-      <xs:attributeGroup ref="gexf:Target"/>
-      <xs:attribute name="label" type="xs:token"/>
-      <xs:attribute name="cardinal" type="xs:positiveInteger"/>
-      <xs:attribute name="type">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="directed"/>
-            <xs:enumeration value="undirected"/>
-            <xs:enumeration value="double"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="datefrom" type="gexf:date"/>
-      <xs:attribute name="dateto" type="gexf:date"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="attvalues">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="gexf:attvalue"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="attvalue">
-    <xs:complexType>
-      <xs:attributeGroup ref="gexf:FOR"/>
-      <xs:attributeGroup ref="gexf:Value"/>
-      <xs:attribute name="datefrom" type="gexf:date"/>
-      <xs:attribute name="dateto" type="gexf:date"/>
-    </xs:complexType>
-  </xs:element>
+    <xs:attribute name="variant" type="xs:string"/>
+  </xs:complexType>
+  <xs:element name="meta" type="gexf:meta-content"/>
+  <xs:element name="graph" type="gexf:graph-content"/>
+  <xs:complexType name="meta-content">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="gexf:creator"/>
+      <xs:element ref="gexf:keywords"/>
+      <xs:element ref="gexf:description"/>
+    </xs:choice>
+    <xs:attribute name="lastmodifieddate" type="xs:date"/>
+  </xs:complexType>
   <xs:element name="creator" type="xs:string"/>
-  <xs:element name="default" type="xs:string"/>
-  <xs:element name="description" type="xs:string"/>
   <xs:element name="keywords" type="xs:string"/>
-  <xs:element name="options" type="xs:string"/>
-  <xs:attributeGroup name="Count">
-    <xs:annotation>
-      <xs:documentation>Attribute leafs</xs:documentation>
-    </xs:annotation>
-    <xs:attribute name="count" use="required" type="xs:nonNegativeInteger"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="FOR">
-    <xs:attribute name="for" use="required" type="gexf:id"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="ID">
-    <xs:attribute name="id" use="required" type="gexf:id"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="IDType">
-    <xs:attribute name="idtype" use="required">
-      <xs:simpleType>
-        <xs:restriction base="xs:string">
-          <xs:enumeration value="integer"/>
-          <xs:enumeration value="string"/>
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:attribute>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="PID">
-    <xs:attribute name="pid" use="required" type="gexf:id"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="Source">
-    <xs:attribute name="source" use="required" type="gexf:id"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="Target">
-    <xs:attribute name="target" use="required" type="gexf:id"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="Title">
-    <xs:attribute name="title" use="required" type="xs:string"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="Value">
-    <xs:attribute name="value" use="required" type="xs:string"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="Cardinal">
-    <xs:attribute name="cardinal" use="required" type="xs:positiveInteger"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="Class">
-    <xs:attribute name="class" use="required">
-      <xs:simpleType>
-        <xs:restriction base="xs:string">
-          <xs:enumeration value="node"/>
-          <xs:enumeration value="edge"/>
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:attribute>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="DateFrom">
-    <xs:attribute name="datefrom" use="required" type="gexf:date"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="DateTo">
-    <xs:attribute name="dateto" use="required" type="gexf:date"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="DateType">
-    <xs:attribute name="datetype" use="required">
-      <xs:simpleType>
-        <xs:restriction base="xs:string">
-          <xs:enumeration value="integer"/>
-          <xs:enumeration value="date"/>
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:attribute>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="DefaultEdgeType">
-    <xs:attribute name="defaultedgetype" use="required">
-      <xs:simpleType>
-        <xs:restriction base="xs:string">
-          <xs:enumeration value="directed"/>
-          <xs:enumeration value="undirected"/>
-          <xs:enumeration value="double"/>
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:attribute>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="EdgeType">
-    <xs:attribute name="type" use="required">
-      <xs:simpleType>
-        <xs:restriction base="xs:string">
-          <xs:enumeration value="directed"/>
-          <xs:enumeration value="undirected"/>
-          <xs:enumeration value="double"/>
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:attribute>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="Label">
-    <xs:attribute name="label" use="required" type="xs:token"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="LastModifiedDate">
-    <xs:attribute name="lastmodifieddate" use="required" type="xs:date"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="Mode">
-    <xs:attribute name="mode" use="required">
-      <xs:simpleType>
-        <xs:restriction base="xs:string">
-          <xs:enumeration value="static"/>
-          <xs:enumeration value="dynamic"/>
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:attribute>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="AttrType">
-    <xs:attribute name="type" use="required">
-      <xs:simpleType>
-        <xs:restriction base="xs:string">
-          <xs:enumeration value="integer"/>
-          <xs:enumeration value="double"/>
-          <xs:enumeration value="float"/>
-          <xs:enumeration value="boolean"/>
-          <xs:enumeration value="liststring"/>
-          <xs:enumeration value="string"/>
-          <xs:enumeration value="url"/>
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:attribute>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="Variant">
-    <xs:attribute name="variant" use="required" type="xs:string"/>
-  </xs:attributeGroup>
-  <xs:simpleType name="date">
+  <xs:element name="description" type="xs:string"/>
+  <xs:complexType name="nodes-content">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="gexf:node"/>
+    </xs:sequence>
+    <xs:attribute name="count" type="xs:nonNegativeInteger"/>
+  </xs:complexType>
+  <xs:element name="node" type="gexf:node-content"/>
+  <xs:complexType name="edges-content">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="gexf:edge"/>
+    </xs:sequence>
+    <xs:attribute name="count" type="xs:nonNegativeInteger"/>
+  </xs:complexType>
+  <xs:element name="edge" type="gexf:edge-content"/>
+  <xs:simpleType name="defaultedgetype-type">
     <xs:annotation>
       <xs:documentation>Datatypes</xs:documentation>
     </xs:annotation>
-    <xs:union memberTypes="xs:date xs:integer"/>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="directed"/>
+      <xs:enumeration value="undirected"/>
+      <xs:enumeration value="mutual"/>
+    </xs:restriction>
   </xs:simpleType>
-  <xs:simpleType name="id">
+  <xs:simpleType name="edgetype-type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="directed"/>
+      <xs:enumeration value="undirected"/>
+      <xs:enumeration value="mutual"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="id-type">
     <xs:union memberTypes="xs:string xs:integer"/>
+  </xs:simpleType>
+  <xs:simpleType name="idtype-type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="integer"/>
+      <xs:enumeration value="string"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="mode-type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="static"/>
+      <xs:enumeration value="dynamic"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="weight-type">
+    <xs:restriction base="xs:float"/>
   </xs:simpleType>
 </xs:schema>

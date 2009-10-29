@@ -47,6 +47,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/libgexf/edgeiter.o \
 	${OBJECTDIR}/libgexf/memoryvalidator.o \
 	${OBJECTDIR}/libgexf/undirectedgraph.o \
+	${OBJECTDIR}/libgexf/abstractparser.o \
 	${OBJECTDIR}/libgexf/directedgraph.o \
 	${OBJECTDIR}/libgexf/legacyparser.o \
 	${OBJECTDIR}/libgexf/graph.o
@@ -154,6 +155,11 @@ ${OBJECTDIR}/libgexf/undirectedgraph.o: nbproject/Makefile-${CND_CONF}.mk libgex
 	${MKDIR} -p ${OBJECTDIR}/libgexf
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/undirectedgraph.o libgexf/undirectedgraph.cpp
+
+${OBJECTDIR}/libgexf/abstractparser.o: nbproject/Makefile-${CND_CONF}.mk libgexf/abstractparser.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libgexf
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/abstractparser.o libgexf/abstractparser.cpp
 
 ${OBJECTDIR}/libgexf/directedgraph.o: nbproject/Makefile-${CND_CONF}.mk libgexf/directedgraph.cpp 
 	${MKDIR} -p ${OBJECTDIR}/libgexf

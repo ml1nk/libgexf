@@ -55,8 +55,12 @@ public:
      *  \param name : Name of the XML element to process
      */
     virtual void processNode(xmlTextReaderPtr reader, const xmlChar* name) = 0;
-private:
-
+protected:
+    libgexf::t_id getIdAttribute(xmlTextReaderPtr reader, const char* const name);
+    std::string getStringAttribute(xmlTextReaderPtr reader, const char* const name);
+    std::string getStringAttributeNs(xmlTextReaderPtr reader, const char* const name, const char* const namespaceURI);
+    unsigned int getUnsignedIntAttribute(xmlTextReaderPtr reader, const char* const name);
+    float getFloatAttribute(xmlTextReaderPtr reader, const char* const name);
 };
 
 }

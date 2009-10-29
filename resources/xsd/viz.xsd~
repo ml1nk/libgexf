@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:gexf="http://www.gephi.org/gexf/1.1draft" xmlns:viz="http://www.gephi.org/gexf/1.1draft/viz">
   <xs:import namespace="http://www.gephi.org/gexf/1.1draft" schemaLocation="1.1draft.xsd"/>
-  <xs:import namespace="http://www.gephi.org/gexf/1.1draft/viz" schemaLocation="viz.xsd"/>
+  <xs:import namespace="http://www.gephi.org/gexf/1.1draft/viz" schemaLocation="viz1.xsd"/>
   <!-- extension point -->
   <!-- new point -->
   <xs:attributeGroup name="color-content">

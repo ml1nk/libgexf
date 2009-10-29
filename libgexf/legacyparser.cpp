@@ -242,10 +242,10 @@ void LegacyParser::processEdgeNode(xmlTextReaderPtr reader) {
         t_id edge_id = this->getIdAttribute(reader, "id");
         t_id source = this->getIdAttribute(reader, "source");
         t_id target = this->getIdAttribute(reader, "target");
-        unsigned int cardinal = 1;
+        float cardinal = 1.0;
         string tmp_type = "";
         try {
-            cardinal = this->getUnsignedIntAttribute(reader, "cardinal");
+            cardinal = this->getFloatAttribute(reader, "cardinal");
         } catch(exception &e) {
             // nothing to do
         }
@@ -257,7 +257,7 @@ void LegacyParser::processEdgeNode(xmlTextReaderPtr reader) {
 
         t_edge_type type = EDGE_UNDIRECTED;
         if( tmp_type.compare("dou") == 0 ) {
-            type = EDGE_DOUBLE;
+            type = EDGE_MUTUAL;
         }
         else if( _gexf->getGraphType() == GRAPH_DIRECTED || tmp_type.compare("dir") == 0 ) {
             type = EDGE_DIRECTED;
@@ -369,58 +369,6 @@ bool LegacyParser::isProcessableNode(xmlTextReaderPtr reader) {
      */
     int t = xmlTextReaderNodeType(reader);
     return t != 15 && t != 16 && t != 12 && t != 13 && t != 7;
-}
-
-//-----------------------------------------
-t_id LegacyParser::getIdAttribute(xmlTextReaderPtr reader, const char* name) {
-//-----------------------------------------
-    xmlChar* attr = xmlTextReaderGetAttribute(reader, xmlCharStrdup(name));
-    if( attr != NULL )
-        return Conv::xmlCharToId(attr);
-    else {
-        stringstream ss;
-        ss << "No attribute " << name;
-        throw FileReaderException(ss.str());
-    }
-}
-
-//-----------------------------------------
-string LegacyParser::getStringAttribute(xmlTextReaderPtr reader, const char* name) {
-//-----------------------------------------
-    xmlChar* attr = xmlTextReaderGetAttribute(reader, xmlCharStrdup(name));
-    if( attr != NULL )
-        return Conv::xmlCharToStr(attr);
-    else {
-        stringstream ss;
-        ss << "No attribute " << name;
-        throw FileReaderException(ss.str());
-    }
-}
-
-//-----------------------------------------
-string LegacyParser::getStringAttributeNS(xmlTextReaderPtr reader, const char* name, const char* namespaceURI) {
-//-----------------------------------------
-    xmlChar* attr = xmlTextReaderGetAttributeNs(reader, xmlCharStrdup(name), xmlCharStrdup(namespaceURI));
-    if( attr != NULL )
-        return Conv::xmlCharToStr(attr);
-    else {
-        stringstream ss;
-        ss << "No attribute " << namespaceURI << ":" << name;
-        throw FileReaderException(ss.str());
-    }
-}
-
-//-----------------------------------------
-unsigned int LegacyParser::getUnsignedIntAttribute(xmlTextReaderPtr reader, const char* name) {
-//-----------------------------------------
-    xmlChar* attr = xmlTextReaderGetAttribute(reader, xmlCharStrdup(name));
-    if( attr != NULL )
-        return Conv::xmlCharToUnsignedInt(attr);
-    else {
-        stringstream ss;
-        ss << "No attribute " << name;
-        throw FileReaderException(ss.str());
-    }
 }
 
 } /* namespace libgexf */

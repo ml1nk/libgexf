@@ -1,74 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
-  <!--
-    Viz elements are bound in the main gexf definition
-    start = VIZ
-    VIZ = element viz { empty }
-  -->
-  <define name="VizColor">
-    <a:documentation>VIZ namespace leafs</a:documentation>
-    <element name="color">
-      <ref name="R"/>
-      <ref name="G"/>
-      <ref name="B"/>
-    </element>
+<grammar ns="http://www.gephi.org/gexf/1.1draft/viz" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <!-- extension point -->
+  <define name="node-content" combine="interleave">
+    <interleave>
+      <optional>
+        <element name="color">
+          <ref name="color-content"/>
+        </element>
+      </optional>
+      <optional>
+        <element name="position">
+          <ref name="position-content"/>
+        </element>
+      </optional>
+      <optional>
+        <element name="size">
+          <ref name="size-content"/>
+        </element>
+      </optional>
+    </interleave>
   </define>
-  <define name="VizPosition">
-    <element name="position">
-      <ref name="X"/>
-      <ref name="Y"/>
-      <ref name="Z"/>
-    </element>
+  <!-- new point -->
+  <define name="color-content">
+    <interleave>
+      <attribute name="r">
+        <ref name="color-channel"/>
+      </attribute>
+      <attribute name="g">
+        <ref name="color-channel"/>
+      </attribute>
+      <attribute name="b">
+        <ref name="color-channel"/>
+      </attribute>
+    </interleave>
   </define>
-  <define name="VizSize">
-    <element name="size">
-      <ref name="sizeValue"/>
-    </element>
+  <!-- new point -->
+  <define name="position-content">
+    <interleave>
+      <attribute name="x">
+        <ref name="space-point"/>
+      </attribute>
+      <attribute name="y">
+        <ref name="space-point"/>
+      </attribute>
+      <attribute name="z">
+        <ref name="space-point"/>
+      </attribute>
+    </interleave>
   </define>
-  <define name="R">
-    <attribute name="r">
-      <ref name="colorChannelValue"/>
+  <!-- new point -->
+  <define name="size-content">
+    <attribute name="value">
+      <ref name="size-type"/>
     </attribute>
   </define>
-  <define name="G">
-    <attribute name="g">
-      <ref name="colorChannelValue"/>
-    </attribute>
-  </define>
-  <define name="B">
-    <attribute name="b">
-      <ref name="colorChannelValue"/>
-    </attribute>
-  </define>
-  <define name="X">
-    <attribute name="x">
-      <ref name="spacePointValue"/>
-    </attribute>
-  </define>
-  <define name="Y">
-    <attribute name="y">
-      <ref name="spacePointValue"/>
-    </attribute>
-  </define>
-  <define name="Z">
-    <attribute name="z">
-      <ref name="spacePointValue"/>
-    </attribute>
-  </define>
-  <define name="colorChannelValue">
-    <a:documentation>Datatypes</a:documentation>
+  <!-- new datatype -->
+  <define name="color-channel">
     <data type="nonNegativeInteger">
       <param name="maxInclusive">255</param>
     </data>
   </define>
-  <define name="sizeValue">
-    <attribute name="value" a:defaultValue="1.0">
-      <data type="float">
-        <param name="minInclusive">0.0</param>
-      </data>
-    </attribute>
+  <!-- new datatype -->
+  <define name="size-type">
+    <data type="float" a:defaultValue="1.0">
+      <param name="minInclusive">0.0</param>
+    </data>
   </define>
-  <define name="spacePointValue">
+  <!-- new datatype -->
+  <define name="space-point">
     <data type="float"/>
   </define>
 </grammar>

@@ -30,6 +30,7 @@
     </logicalFolder>
     <logicalFolder name="f1" displayName="io" projectFiles="true">
       <logicalFolder name="f1" displayName="input" projectFiles="true">
+        <itemPath>libgexf/abstractparser.cpp</itemPath>
         <itemPath>libgexf/abstractparser.h</itemPath>
         <itemPath>libgexf/filereader.cpp</itemPath>
         <itemPath>libgexf/filereader.h</itemPath>

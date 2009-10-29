@@ -79,6 +79,16 @@ unsigned int Conv::xmlCharToUnsignedInt(const xmlChar* str) {
 }
 
 //-----------------------------------------
+float Conv::xmlCharToFloat(const xmlChar* str) {
+//-----------------------------------------
+    istringstream iss((const char*) str);
+    float i;
+    iss >> i;
+
+    return i;
+}
+
+//-----------------------------------------
 std::string Conv::idToStr(const libgexf::t_id id) {
 //-----------------------------------------
     return (string)id;
@@ -89,6 +99,14 @@ std::string Conv::unsignedIntToStr(const unsigned int i) {
 //-----------------------------------------
     ostringstream oss;
     oss << i;
+    return oss.str();
+}
+
+//-----------------------------------------
+std::string Conv::floatToStr(const float f) {
+//-----------------------------------------
+    ostringstream oss;
+    oss << f;
     return oss.str();
 }
 
@@ -117,8 +135,8 @@ std::string Conv::edgeTypeToStr(const libgexf::t_edge_type t) {
         case EDGE_UNDIRECTED:
             return "undirected";
             break;
-        case EDGE_DOUBLE:
-            return "double";
+        case EDGE_MUTUAL:
+            return "mutual";
             break;
     }
     return "undef";
@@ -139,6 +157,9 @@ std::string Conv::attrTypeToStr(const libgexf::t_attr_type t) {
         case FLOAT:
             return "float";
             break;
+        case LONG:
+            return "long";
+            break;
         case BOOLEAN:
             return "boolean";
             break;
@@ -147,6 +168,9 @@ std::string Conv::attrTypeToStr(const libgexf::t_attr_type t) {
             break;
         case LISTSTRING:
             return "liststring";
+            break;
+        case ANYURI:
+            return "anyURI";
             break;
     }
     return "";

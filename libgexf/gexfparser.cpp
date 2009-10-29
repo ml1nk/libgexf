@@ -226,9 +226,7 @@ void GexfParser::processGraphNode(xmlTextReaderPtr reader) {
             const string defaultedgetype = this->getStringAttribute(reader, "defaultedgetype");
             if( defaultedgetype.compare("directed") == 0 ) {
                 _gexf->setGraphType(GRAPH_DIRECTED);
-            }/* else if( defaultedgetype.compare("mixed") == 0 ) {
-                _gexf->setGraphType(GRAPH_MIXED);
-            }*/
+            }
             else {
                 cerr << "INFO " << "Unknown default edge type, undirected used by default." << endl;
             }
@@ -279,10 +277,10 @@ void GexfParser::processEdgeNode(xmlTextReaderPtr reader) {
         const t_id edge_id = this->getIdAttribute(reader, "id");
         const t_id source = this->getIdAttribute(reader, "source");
         const t_id target = this->getIdAttribute(reader, "target");
-        unsigned int cardinal = 1;
+        float weight = 1.0;
         string tmp_type = "";
         try {
-            cardinal = this->getUnsignedIntAttribute(reader, "cardinal");
+            weight = this->getFloatAttribute(reader, "weight");
         } catch(exception &e) {
             // nothing to do
         }
@@ -293,18 +291,18 @@ void GexfParser::processEdgeNode(xmlTextReaderPtr reader) {
         }
 
         t_edge_type type = EDGE_UNDIRECTED;
-        if( tmp_type.compare("double") == 0 ) {
-            type = EDGE_DOUBLE;
+        if( tmp_type.compare("mutual") == 0 ) {
+            type = EDGE_MUTUAL;
         }
         else if( _gexf->getGraphType() == GRAPH_DIRECTED || tmp_type.compare("directed") == 0 ) {
             type = EDGE_DIRECTED;
         }
 
         if(_gexf->getGraphType() == GRAPH_DIRECTED) {
-            _gexf->getDirectedGraph().addEdge( edge_id, source, target, cardinal, type);
+            _gexf->getDirectedGraph().addEdge( edge_id, source, target, weight, type);
         }
         else { /*undirected or mixed, use undirected*/
-            _gexf->getUndirectedGraph().addEdge( edge_id, source, target, cardinal, type);
+            _gexf->getUndirectedGraph().addEdge( edge_id, source, target, weight, type);
         }
         _last_node_type = EDGE;
         _last_id = edge_id;
@@ -439,58 +437,6 @@ bool GexfParser::isProcessableNode(xmlTextReaderPtr reader) {
      */
     const int t = xmlTextReaderNodeType(reader);
     return t != 15 && t != 16 && t != 12 && t != 13 && t != 7;
-}
-
-//-----------------------------------------
-t_id GexfParser::getIdAttribute(xmlTextReaderPtr reader, const char* const name) {
-//-----------------------------------------
-    const xmlChar* const attr = xmlTextReaderGetAttribute(reader, xmlCharStrdup(name));
-    if( attr != NULL )
-        return Conv::xmlCharToId(attr);
-    else {
-        stringstream ss;
-        ss << "No attribute " << name;
-        throw FileReaderException(ss.str());
-    }
-}
-
-//-----------------------------------------
-string GexfParser::getStringAttribute(xmlTextReaderPtr reader, const char* const name) {
-//-----------------------------------------
-    const xmlChar* const attr = xmlTextReaderGetAttribute(reader, xmlCharStrdup(name));
-    if( attr != NULL )
-        return Conv::xmlCharToStr(attr);
-    else {
-        stringstream ss;
-        ss << "No attribute " << name;
-        throw FileReaderException(ss.str());
-    }
-}
-
-//-----------------------------------------
-string GexfParser::getStringAttributeNs(xmlTextReaderPtr reader, const char* const name, const char* const namespaceURI) {
-//-----------------------------------------
-    const xmlChar* const attr = xmlTextReaderGetAttributeNs(reader, xmlCharStrdup(name), xmlCharStrdup(namespaceURI));
-    if( attr != NULL )
-        return Conv::xmlCharToStr(attr);
-    else {
-        stringstream ss;
-        ss << "No attribute " << namespaceURI << ":" << name;
-        throw FileReaderException(ss.str());
-    }
-}
-
-//-----------------------------------------
-unsigned int GexfParser::getUnsignedIntAttribute(xmlTextReaderPtr reader, const char* const name) {
-//-----------------------------------------
-    const xmlChar* const attr = xmlTextReaderGetAttribute(reader, xmlCharStrdup(name));
-    if( attr != NULL )
-        return Conv::xmlCharToUnsignedInt(attr);
-    else {
-        stringstream ss;
-        ss << "No attribute " << name;
-        throw FileReaderException(ss.str());
-    }
 }
 
 } /* namespace libgexf */

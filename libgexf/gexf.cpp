@@ -32,7 +32,7 @@
 
 namespace libgexf {
 
-GEXF::GEXF(): _graph(), _type(GRAPH_MIXED), _data(), _meta() {
+GEXF::GEXF(): _graph(), _type(GRAPH_UNDEF), _data(), _meta() {
 }
 
 GEXF::GEXF(const GEXF& orig) : _graph(orig._graph), _type(orig._type), _data(orig._data), _meta(orig._meta) {
@@ -45,7 +45,7 @@ GEXF::~GEXF() {
 UndirectedGraph& GEXF::getUndirectedGraph() {
 //-----------------------------------------
     // a graph is instanciable if the current one is empty
-    if(_graph.getNodeCount() == 0) {
+    if(_type == GRAPH_UNDEF) {
         UndirectedGraph* g = new UndirectedGraph();
         _graph = *g;
         _type = GRAPH_UNDIRECTED;
@@ -58,7 +58,7 @@ UndirectedGraph& GEXF::getUndirectedGraph() {
 DirectedGraph& GEXF::getDirectedGraph() {
 //-----------------------------------------
     // a graph is instanciable if the current one is empty
-    if(_graph.getNodeCount() == 0) {
+    if(_type == GRAPH_UNDEF) {
         DirectedGraph* g = new DirectedGraph();
         _graph = *g;
         _type = GRAPH_DIRECTED;

@@ -241,9 +241,6 @@ void FileWriter::writeGraphNode(xmlTextWriterPtr writer) {
     if (t == GRAPH_DIRECTED) {
         rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "defaultedgetype", BAD_CAST "directed");
     }
-    else if (t == GRAPH_MIXED) {
-        rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "defaultedgetype", BAD_CAST "mixed");
-    }
     else {
         rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "defaultedgetype", BAD_CAST "undirected");
     }
@@ -336,9 +333,9 @@ void FileWriter::writeEdgesNode(xmlTextWriterPtr writer) {
         const t_id edge_id = it->next();
         const t_id source_id = it->currentSource();
         const t_id target_id = it->currentTarget();
-        const unsigned int card = (unsigned int)it->currentProperty(EDGE_COUNT);
+        const float weight = (float)it->currentProperty(EDGE_WEIGHT);
         const t_edge_type type = (t_edge_type)it->currentProperty(EDGE_TYPE);
-        this->writeEdgeNode(writer, Conv::idToStr(edge_id), Conv::idToStr(source_id), Conv::idToStr(target_id), Conv::unsignedIntToStr(card), Conv::edgeTypeToStr(type));
+        this->writeEdgeNode(writer, Conv::idToStr(edge_id), Conv::idToStr(source_id), Conv::idToStr(target_id), Conv::floatToStr(weight), Conv::edgeTypeToStr(type));
     }
 
     /* Close the element named edges. */
@@ -349,7 +346,7 @@ void FileWriter::writeEdgesNode(xmlTextWriterPtr writer) {
 }
 
 //-----------------------------------------
-void FileWriter::writeEdgeNode(xmlTextWriterPtr writer, const std::string& edge_id, const std::string& source_id, const std::string& target_id, const std::string& cardinal, const std::string& type) {
+void FileWriter::writeEdgeNode(xmlTextWriterPtr writer, const std::string& edge_id, const std::string& source_id, const std::string& target_id, const std::string& weight, const std::string& type) {
 //-----------------------------------------
     /* Write an element named "edge" as child of edges. */
     int rc = xmlTextWriterStartElement(writer, BAD_CAST "edge");
@@ -375,10 +372,10 @@ void FileWriter::writeEdgeNode(xmlTextWriterPtr writer, const std::string& edge_
         throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
     }
 
-    /* Add an attribute with name "cardinal" */
-    if(cardinal.compare("1") > 0) {
+    /* Add an attribute with name "weight" */
+    if(weight.compare("1") > 0) {
         /* 1 is a defaultValue and can be omitted */
-        rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "cardinal", BAD_CAST cardinal.c_str());
+        rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "weight", BAD_CAST weight.c_str());
         if (rc < 0) {
             throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
         }

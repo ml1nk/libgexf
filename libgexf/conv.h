@@ -55,8 +55,10 @@ namespace libgexf {
         static libgexf::t_id strToId(const std::string& str);
         static std::string xmlCharToStr(const xmlChar* str);
         static unsigned int xmlCharToUnsignedInt(const xmlChar* str);
+        static float xmlCharToFloat(const xmlChar* str);
         static std::string idToStr(const libgexf::t_id id);
         static std::string unsignedIntToStr(const unsigned int i);
+        static std::string floatToStr(const float f);
         static unsigned int strToUnsignedInt(const std::string& str);
         static std::string edgeTypeToStr(const libgexf::t_edge_type t);
         static std::string attrTypeToStr(const libgexf::t_attr_type t);

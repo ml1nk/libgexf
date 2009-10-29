@@ -74,10 +74,6 @@ private:
     void processAttvalueNode(xmlTextReaderPtr reader);
     
     bool isProcessableNode(xmlTextReaderPtr reader);
-    libgexf::t_id getIdAttribute(xmlTextReaderPtr reader, const char* name);
-    std::string getStringAttribute(xmlTextReaderPtr reader, const char* name);
-    std::string getStringAttributeNS(xmlTextReaderPtr reader, const char* name, const char* namespaceURI);
-    unsigned int getUnsignedIntAttribute(xmlTextReaderPtr reader, const char* name);
 private:
     enum ElemType { NODE, EDGE, ATTR_NODE, ATTR_EDGE };
     GEXF* _gexf;

@@ -70,10 +70,10 @@ public:
      *  \param id : edge ID
      *  \param source_id : source node ID
      *  \param target_id : target node ID
-     *  \param cardinal : number of edges (optional, 1 by default)
+     *  \param weight : weight of the edge (optional, 1.0 by default)
      *  \param type : type of edge (optional, undef by default)
      */
-    void addEdge(const libgexf::t_id id, const libgexf::t_id source_id, const libgexf::t_id target_id, const unsigned int cardinal=1, const libgexf::t_edge_type type=EDGE_UNDEF);
+    void addEdge(const libgexf::t_id id, const libgexf::t_id source_id, const libgexf::t_id target_id, const float weight=1.0, const libgexf::t_edge_type type=EDGE_UNDEF);
 
     /*!
      *  \brief Remove a node
