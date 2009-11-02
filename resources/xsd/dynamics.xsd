@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.gephi.org/gexf/1.1draft" xmlns:gexf="http://www.gephi.org/gexf/1.1draft" xmlns:viz="http://www.gephi.org/gexf/1.1draft/viz">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.gephi.org/gexf/1.1draft" xmlns:gexf="http://www.gephi.org/gexf/1.1draft">
   <xs:import schemaLocation="viz.xsd"/>
-  <xs:import namespace="http://www.gephi.org/gexf/1.1draft/viz" schemaLocation="viz1.xsd"/>
   <!-- extension point -->
   <!-- extension point -->
   <!-- extension point -->
