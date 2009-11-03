@@ -37,6 +37,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/libgexf/filereader.o \
 	${OBJECTDIR}/libgexf/legacywriter.o \
 	${OBJECTDIR}/libgexf/attvalueiter.o \
+	${OBJECTDIR}/libgexf/dynamicgraph.o \
 	${OBJECTDIR}/libgexf/attributeiter.o \
 	${OBJECTDIR}/libgexf/filewriter.o \
 	${OBJECTDIR}/libgexf/schemavalidator.o \
@@ -105,6 +106,11 @@ ${OBJECTDIR}/libgexf/attvalueiter.o: nbproject/Makefile-${CND_CONF}.mk libgexf/a
 	${MKDIR} -p ${OBJECTDIR}/libgexf
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/attvalueiter.o libgexf/attvalueiter.cpp
+
+${OBJECTDIR}/libgexf/dynamicgraph.o: nbproject/Makefile-${CND_CONF}.mk libgexf/dynamicgraph.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libgexf
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/dynamicgraph.o libgexf/dynamicgraph.cpp
 
 ${OBJECTDIR}/libgexf/attributeiter.o: nbproject/Makefile-${CND_CONF}.mk libgexf/attributeiter.cpp 
 	${MKDIR} -p ${OBJECTDIR}/libgexf

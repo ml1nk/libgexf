@@ -42,7 +42,7 @@ UndirectedGraph::UndirectedGraph(const UndirectedGraph& orig) : Graph(orig) {
 UndirectedGraph::~UndirectedGraph() {
 }
 
-void UndirectedGraph::mergeSimilarEdges() {
+/*void UndirectedGraph::mergeSimilarEdges() {
     // 0(n2)
     for(map<t_id,map<t_id,t_id> >::const_iterator it_ref_src = _edges.begin() ; it_ref_src != _edges.end() ; ++it_ref_src) {
         for(map<t_id,t_id>::const_iterator it_ref_target = (it_ref_src->second).begin() ; it_ref_target != (it_ref_src->second).end() ; ++it_ref_target) {
@@ -127,6 +127,6 @@ void UndirectedGraph::mergeSimilarEdges() {
             }
         }
     }
-}
+}*/
 
 }

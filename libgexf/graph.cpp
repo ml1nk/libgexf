@@ -241,16 +241,30 @@ bool Graph::containsNode(const t_id id) const {
 //-----------------------------------------
 bool Graph::containsEdge(const t_id source_id, const t_id target_id) const {
 //-----------------------------------------
-bool exist = false;
-
     if(_lock_flag == '2') throw WriteLockException("Read not allowed");
 
     // 2*0(log-n)
     map<t_id,map<t_id,t_id> >::const_iterator it = _edges.find(source_id);
     if(it != _edges.end()) {
-        exist = ((it->second).find(target_id) != (it->second).end());
+        return ((it->second).find(target_id) != (it->second).end());
     }
-    return exist;
+    return false;
+}
+
+//-----------------------------------------
+t_id Graph::getEdge(const t_id source_id, const t_id target_id) const {
+//-----------------------------------------
+    if(_lock_flag == '2') throw WriteLockException("Read not allowed");
+
+    // 2*0(log-n)
+    map<t_id,map<t_id,t_id> >::const_iterator it = _edges.find(source_id);
+    if(it != _edges.end()) {
+        map<t_id,t_id>::const_iterator it2 = (it->second).find(target_id);
+        if(it2 != (it->second).end()) {
+            return it2->second;
+        }
+    }
+    return "";
 }
 
 //-----------------------------------------
@@ -292,12 +306,12 @@ unsigned int count = 0;
         /* add weights */
         for ( map<t_id,t_id>::const_iterator it_t=(it_e->second).begin() ; it_t != (it_e->second).end(); ++it_t ) {
             map<t_id,map<t_edge_property,t_edge_value> >::const_iterator it_data = _edges_properties.find(it_t->second);
-            if(it_data != _edges_properties.end()) {
+            /*if(it_data != _edges_properties.end()) {
                 map<t_edge_property,t_edge_value>::const_iterator it_count = (it_data->second).find(EDGE_COUNT);
                 if(it_count != (it_data->second).end()) {
                     count += (unsigned int)it_count->second - 1;
                 }
-            }
+            }*/
         }
     }
 

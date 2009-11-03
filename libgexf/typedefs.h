@@ -42,7 +42,7 @@ typedef enum { GRAPH_UNDEF, GRAPH_DIRECTED, GRAPH_UNDIRECTED, GRAPH_MIXED } t_gr
 /*! \var enum t_edge_property
  *  \brief Available edge topological properties
  */
-typedef enum { EDGE_TYPE, EDGE_COUNT, EDGE_WEIGHT } t_edge_property;
+typedef enum { EDGE_TYPE, EDGE_WEIGHT } t_edge_property;
 
 /*! \var enum t_edge_type
  *  \brief Available edge types

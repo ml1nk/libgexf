@@ -168,40 +168,28 @@ string Data::getEdgeAttributeDefault(const t_id attr_id) const {
 bool Data::hasNodeAttributeDefault(const t_id attr_id) const {
 //-----------------------------------------
     map<t_id,std::string >::const_iterator it = _node_default_values.find(attr_id);
-    if( it != _node_default_values.end() ) {
-        return true;
-    }
-    return false;
+    return it != _node_default_values.end();
 }
 
 //-----------------------------------------
 bool Data::hasEdgeAttributeDefault(const t_id attr_id) const {
 //-----------------------------------------
     map<t_id,std::string >::const_iterator it = _edge_default_values.find(attr_id);
-    if( it != _edge_default_values.end() ) {
-        return true;
-    }
-    return false;
+    return it != _edge_default_values.end();
 }
 
 //-----------------------------------------
 bool Data::hasNodeAttributeOptions(const t_id attr_id) const {
 //-----------------------------------------
     map<t_id,std::map<std::string,unsigned short int> >::const_iterator it = _node_options.find(attr_id);
-    if( it != _node_options.end() ) {
-        return true;
-    }
-    return false;
+    return it != _node_options.end();
 }
 
 //-----------------------------------------
 bool Data::hasEdgeAttributeOptions(const t_id attr_id) const {
 //-----------------------------------------
     map<t_id,std::map<std::string,unsigned short int> >::const_iterator it = _edge_options.find(attr_id);
-    if( it != _edge_options.end() ) {
-        return true;
-    }
-    return false;
+    return it != _edge_options.end();
 }
 
 //-----------------------------------------

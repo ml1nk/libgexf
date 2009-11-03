@@ -50,7 +50,7 @@ public:
     /*!
      *  \brief Merge edges where {source,target} <> {target,source}
      */
-    void mergeSimilarEdges();
+    //void mergeSimilarEdges();
 private:
     UndirectedGraph& operator=(const UndirectedGraph& orig);
 };

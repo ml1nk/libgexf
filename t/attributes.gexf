@@ -16,10 +16,10 @@
       </attribute>
       <attribute id="2" title="int test" type="integer">
         <default>1</default>
+        <options>1|2|3|4|5</options>
       </attribute>
       <attribute id="3" title="abcd" type="liststring">
         <default>a</default>
-        <options>a|b|c|d</options>
       </attribute>
     </attributes>
     <attributes class="edge">
@@ -39,7 +39,7 @@
         <attvalues>
           <attvalue for="0" value="http://webatlas.fr"/>
           <attvalue for="1" value="2"/>
-          <attvalue for="3" value="c"/>
+          <attvalue for="3" value="a|c"/>
         </attvalues>
       </node>
       <node id="n2" label="RTGI">

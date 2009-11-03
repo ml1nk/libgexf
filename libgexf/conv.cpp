@@ -263,6 +263,23 @@ bool Conv::isFloat(const std::string& str) {
 }
 
 //-----------------------------------------
+bool Conv::isLong(const std::string& str) {
+//-----------------------------------------
+    long double l = 0;
+    unsigned int nb_char = 0;
+
+    sscanf(str.c_str(), "%Lf%n", &l, &nb_char);
+    return ( str.length() == nb_char );
+}
+
+//-----------------------------------------
+bool Conv::isAnyURI(const std::string& str) {
+//-----------------------------------------
+    // TODO regexp, assumed as a simple string
+    return true;
+}
+
+//-----------------------------------------
 bool Conv::isBoolean(const std::string& str) {
 //-----------------------------------------
     return ( str == "true" || str == "false" );

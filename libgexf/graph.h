@@ -108,6 +108,15 @@ public:
      */
     bool containsEdge(const libgexf::t_id source_id, const libgexf::t_id target_id) const;
 
+    /*!
+     *  \brief Get the edge id
+     *
+     *  \param source_id : source node ID
+     *  \param target_id : target node ID
+     *  \return the edge id the edge exists, empty string otherwise
+     */
+    t_id getEdge(const libgexf::t_id source_id, const libgexf::t_id target_id) const;
+
 
     /*!
      *  \brief Get all nodes

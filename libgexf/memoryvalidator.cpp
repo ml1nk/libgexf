@@ -87,7 +87,7 @@ bool r = true;
             }
         }
     }
-
+    /* same for edges */
     it = gexf._data.getEdgeAttributeColumn();
     while( it->hasNext() ) {
         const t_id attr_id = it->next();
@@ -132,6 +132,7 @@ bool r = true;
             }
         }
     }
+    /* same for edges */
     it_attr = gexf._data.getEdgeAttributeColumn();
     while(it_attr->hasNext()) {
         const t_id attr_id = it_attr->next();
@@ -184,6 +185,13 @@ bool r = false;
                 std::cerr << "Attribute type error for the " << elem << " \"" << elem_id << "\": \"" << value << "\" should be a float" << std::endl;
             }
             break;
+        case LONG:
+            r = Conv::isLong(value);
+            if( !r ) {
+                const std::string elem = (isNode) ? "node" : "edge";
+                std::cerr << "Attribute type error for the " << elem << " \"" << elem_id << "\": \"" << value << "\" should be a long" << std::endl;
+            }
+            break;
         case BOOLEAN:
             r = Conv::isBoolean(value);
             if( !r ) {
@@ -191,21 +199,29 @@ bool r = false;
                 std::cerr << "Attribute type error for the " << elem << " \"" << elem_id << "\": \"" << value << "\" should be a boolean (true|false)" << std::endl;
             }
             break;
-        case LISTSTRING:
-            if( isNode ) {
-                r = gexf._data.isNodeAttributeOption(attr_id, value);
-            }
-            else {
-                r = gexf._data.isEdgeAttributeOption(attr_id, value);
-            }
+        case ANYURI:
+            r = Conv::isAnyURI(value);
             if( !r ) {
                 const std::string elem = (isNode) ? "node" : "edge";
-                std::cerr << "Attribute type error for the " << elem << " \"" << elem_id << "\": \"" << value << "\" does not exist in option \"" << attr_id << "\"" << std::endl;
+                std::cerr << "Attribute type error for the " << elem << " \"" << elem_id << "\": \"" << value << "\" should be an uri" << std::endl;
             }
             break;
-        default: // =STRING
+        default: // =STRING | LISTSTRING
             r = true;
             break;
+    }
+
+    if(r) {
+        if( isNode && gexf._data.hasNodeAttributeOptions(attr_id) ) {
+            r = gexf._data.isNodeAttributeOption(attr_id, value);
+        }
+        else if(!isNode && gexf._data.hasEdgeAttributeOptions(attr_id)) {
+            r = gexf._data.isEdgeAttributeOption(attr_id, value);
+        }
+        if( !r ) {
+            const std::string elem = (isNode) ? "node" : "edge";
+            std::cerr << "Attribute type error for the " << elem << " \"" << elem_id << "\": \"" << value << "\" does not exist in option \"" << attr_id << "\"" << std::endl;
+        }
     }
 
     return r;
