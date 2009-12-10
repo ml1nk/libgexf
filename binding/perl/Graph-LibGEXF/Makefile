@@ -18,7 +18,7 @@
 #     LIBS => q[ -lm -lstdc++ -lxml2]
 #     NAME => q[Graph::LibGEXF]
 #     NO_META => q[1]
-#     OBJECT => q[../../../libgexf/filereader.o ../../../libgexf/gexfparser.o ../../../libgexf/legacyparser.o ../../../libgexf/rngvalidator.o ../../../libgexf/schemavalidator.o ../../../libgexf/filewriter.o ../../../libgexf/legacywriter.o ../../../libgexf/conv.o ../../../libgexf/graph.o ../../../libgexf/directedgraph.o ../../../libgexf/undirectedgraph.o ../../../libgexf/nodeiter.o ../../../libgexf/edgeiter.o ../../../libgexf/data.o ../../../libgexf/metadata.o ../../../libgexf/attributeiter.o ../../../libgexf/attvalueiter.o ../../../libgexf/gexf.o ../../../libgexf/memoryvalidator.o libgexf_wrap.o]
+#     OBJECT => q[../../../libgexf/filereader.o ../../../libgexf/abstractparser.o ../../../libgexf/gexfparser.o ../../../libgexf/legacyparser.o ../../../libgexf/rngvalidator.o ../../../libgexf/schemavalidator.o ../../../libgexf/filewriter.o ../../../libgexf/legacywriter.o ../../../libgexf/conv.o ../../../libgexf/graph.o ../../../libgexf/directedgraph.o ../../../libgexf/undirectedgraph.o ../../../libgexf/nodeiter.o ../../../libgexf/edgeiter.o ../../../libgexf/data.o ../../../libgexf/metadata.o ../../../libgexf/attributeiter.o ../../../libgexf/attvalueiter.o ../../../libgexf/gexf.o ../../../libgexf/memoryvalidator.o libgexf_wrap.o]
 #     PL_FILES => {  }
 #     PREREQ_PM => { Test::More=>q[0], ExtUtils::MakeMaker=>q[6.50] }
 #     VERSION => q[0.01]
@@ -156,7 +156,7 @@ DLBASE = $(BASEEXT)
 VERSION_FROM = 
 INC = -I. -I/usr/include/libxml2
 DEFINE = -o $*$(OBJ_EXT) -c
-OBJECT = ../../../libgexf/filereader$(OBJ_EXT) ../../../libgexf/gexfparser$(OBJ_EXT) ../../../libgexf/legacyparser$(OBJ_EXT) ../../../libgexf/rngvalidator$(OBJ_EXT) ../../../libgexf/schemavalidator$(OBJ_EXT) ../../../libgexf/filewriter$(OBJ_EXT) ../../../libgexf/legacywriter$(OBJ_EXT) ../../../libgexf/conv$(OBJ_EXT) ../../../libgexf/graph$(OBJ_EXT) ../../../libgexf/directedgraph$(OBJ_EXT) ../../../libgexf/undirectedgraph$(OBJ_EXT) ../../../libgexf/nodeiter$(OBJ_EXT) ../../../libgexf/edgeiter$(OBJ_EXT) ../../../libgexf/data$(OBJ_EXT) ../../../libgexf/metadata$(OBJ_EXT) ../../../libgexf/attributeiter$(OBJ_EXT) ../../../libgexf/attvalueiter$(OBJ_EXT) ../../../libgexf/gexf$(OBJ_EXT) ../../../libgexf/memoryvalidator$(OBJ_EXT) libgexf_wrap$(OBJ_EXT)
+OBJECT = ../../../libgexf/filereader$(OBJ_EXT) ../../../libgexf/abstractparser$(OBJ_EXT) ../../../libgexf/gexfparser$(OBJ_EXT) ../../../libgexf/legacyparser$(OBJ_EXT) ../../../libgexf/rngvalidator$(OBJ_EXT) ../../../libgexf/schemavalidator$(OBJ_EXT) ../../../libgexf/filewriter$(OBJ_EXT) ../../../libgexf/legacywriter$(OBJ_EXT) ../../../libgexf/conv$(OBJ_EXT) ../../../libgexf/graph$(OBJ_EXT) ../../../libgexf/directedgraph$(OBJ_EXT) ../../../libgexf/undirectedgraph$(OBJ_EXT) ../../../libgexf/nodeiter$(OBJ_EXT) ../../../libgexf/edgeiter$(OBJ_EXT) ../../../libgexf/data$(OBJ_EXT) ../../../libgexf/metadata$(OBJ_EXT) ../../../libgexf/attributeiter$(OBJ_EXT) ../../../libgexf/attvalueiter$(OBJ_EXT) ../../../libgexf/gexf$(OBJ_EXT) ../../../libgexf/memoryvalidator$(OBJ_EXT) libgexf_wrap$(OBJ_EXT)
 LDFROM = $(OBJECT)
 LINKTYPE = dynamic
 BOOTDEP = 

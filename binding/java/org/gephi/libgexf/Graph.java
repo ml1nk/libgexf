@@ -47,12 +47,12 @@ public class Graph {
     libgexfJNI.Graph_addNode(swigCPtr, this, id);
   }
 
-  public void addEdge(String id, String source_id, String target_id, long cardinal, t_edge_type type) {
-    libgexfJNI.Graph_addEdge__SWIG_0(swigCPtr, this, id, source_id, target_id, cardinal, type.swigValue());
+  public void addEdge(String id, String source_id, String target_id, float weight, t_edge_type type) {
+    libgexfJNI.Graph_addEdge__SWIG_0(swigCPtr, this, id, source_id, target_id, weight, type.swigValue());
   }
 
-  public void addEdge(String id, String source_id, String target_id, long cardinal) {
-    libgexfJNI.Graph_addEdge__SWIG_1(swigCPtr, this, id, source_id, target_id, cardinal);
+  public void addEdge(String id, String source_id, String target_id, float weight) {
+    libgexfJNI.Graph_addEdge__SWIG_1(swigCPtr, this, id, source_id, target_id, weight);
   }
 
   public void addEdge(String id, String source_id, String target_id) {
@@ -73,6 +73,10 @@ public class Graph {
 
   public boolean containsEdge(String source_id, String target_id) {
     return libgexfJNI.Graph_containsEdge(swigCPtr, this, source_id, target_id);
+  }
+
+  public String getEdge(String source_id, String target_id) {
+    return libgexfJNI.Graph_getEdge(swigCPtr, this, source_id, target_id);
   }
 
   public NodeIter getNodes() {

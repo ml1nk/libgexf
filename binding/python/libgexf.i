@@ -28,6 +28,7 @@
 #include "../../libgexf/conv.h"
 /* db::topo */
 #include "../../libgexf/graph.h"
+#include "../../libgexf/dynamicgraph.h"
 #include "../../libgexf/directedgraph.h"
 #include "../../libgexf/undirectedgraph.h"
 #include "../../libgexf/nodeiter.h"
@@ -81,6 +82,7 @@ namespace std {
 %include "../../libgexf/conv.h"
 /* db::topo */
 %include "../../libgexf/graph.h"
+%include "../../libgexf/dynamicgraph.h"
 %include "../../libgexf/directedgraph.h"
 %include "../../libgexf/undirectedgraph.h"
 %include "../../libgexf/nodeiter.h"

@@ -2697,39 +2697,44 @@ SWIG_Python_MustGetPtr(PyObject *obj, swig_type_info *ty, int argnum, int flags)
 #define SWIGTYPE_p_libgexf__Conv swig_types[9]
 #define SWIGTYPE_p_libgexf__Data swig_types[10]
 #define SWIGTYPE_p_libgexf__DirectedGraph swig_types[11]
-#define SWIGTYPE_p_libgexf__EdgeIter swig_types[12]
-#define SWIGTYPE_p_libgexf__FileReader swig_types[13]
-#define SWIGTYPE_p_libgexf__FileReaderException swig_types[14]
-#define SWIGTYPE_p_libgexf__FileWriter swig_types[15]
-#define SWIGTYPE_p_libgexf__FileWriterException swig_types[16]
-#define SWIGTYPE_p_libgexf__GEXF swig_types[17]
-#define SWIGTYPE_p_libgexf__GexfParser swig_types[18]
-#define SWIGTYPE_p_libgexf__Graph swig_types[19]
-#define SWIGTYPE_p_libgexf__LegacyParser swig_types[20]
-#define SWIGTYPE_p_libgexf__LegacyWriter swig_types[21]
-#define SWIGTYPE_p_libgexf__MemoryValidator swig_types[22]
-#define SWIGTYPE_p_libgexf__MetaData swig_types[23]
-#define SWIGTYPE_p_libgexf__NodeIter swig_types[24]
-#define SWIGTYPE_p_libgexf__ReadLockException swig_types[25]
-#define SWIGTYPE_p_libgexf__RngValidator swig_types[26]
-#define SWIGTYPE_p_libgexf__SchemaValidator swig_types[27]
-#define SWIGTYPE_p_libgexf__UndirectedGraph swig_types[28]
-#define SWIGTYPE_p_libgexf__WriteLockException swig_types[29]
-#define SWIGTYPE_p_p_PyObject swig_types[30]
-#define SWIGTYPE_p_size_type swig_types[31]
-#define SWIGTYPE_p_std__exception swig_types[32]
-#define SWIGTYPE_p_std__invalid_argument swig_types[33]
-#define SWIGTYPE_p_std__lessT_std__string_t swig_types[34]
-#define SWIGTYPE_p_std__setT_std__string_std__lessT_std__string_t_std__allocatorT_std__string_t_t swig_types[35]
-#define SWIGTYPE_p_std__string swig_types[36]
-#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[37]
-#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t__allocator_type swig_types[38]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[39]
-#define SWIGTYPE_p_value_type swig_types[40]
-#define SWIGTYPE_p_xmlChar swig_types[41]
-#define SWIGTYPE_p_xmlTextReaderPtr swig_types[42]
-static swig_type_info *swig_types[44];
-static swig_module_info swig_module = {swig_types, 43, 0, 0, 0, 0};
+#define SWIGTYPE_p_libgexf__DynamicGraph swig_types[12]
+#define SWIGTYPE_p_libgexf__EdgeIter swig_types[13]
+#define SWIGTYPE_p_libgexf__FileReader swig_types[14]
+#define SWIGTYPE_p_libgexf__FileReaderException swig_types[15]
+#define SWIGTYPE_p_libgexf__FileWriter swig_types[16]
+#define SWIGTYPE_p_libgexf__FileWriterException swig_types[17]
+#define SWIGTYPE_p_libgexf__GEXF swig_types[18]
+#define SWIGTYPE_p_libgexf__GexfParser swig_types[19]
+#define SWIGTYPE_p_libgexf__Graph swig_types[20]
+#define SWIGTYPE_p_libgexf__LegacyParser swig_types[21]
+#define SWIGTYPE_p_libgexf__LegacyWriter swig_types[22]
+#define SWIGTYPE_p_libgexf__MemoryValidator swig_types[23]
+#define SWIGTYPE_p_libgexf__MetaData swig_types[24]
+#define SWIGTYPE_p_libgexf__NodeIter swig_types[25]
+#define SWIGTYPE_p_libgexf__ReadLockException swig_types[26]
+#define SWIGTYPE_p_libgexf__RngValidator swig_types[27]
+#define SWIGTYPE_p_libgexf__SchemaValidator swig_types[28]
+#define SWIGTYPE_p_libgexf__UndirectedGraph swig_types[29]
+#define SWIGTYPE_p_libgexf__WriteLockException swig_types[30]
+#define SWIGTYPE_p_libgexf__t_attr_type swig_types[31]
+#define SWIGTYPE_p_libgexf__t_edge_property swig_types[32]
+#define SWIGTYPE_p_libgexf__t_edge_type swig_types[33]
+#define SWIGTYPE_p_libgexf__t_graph swig_types[34]
+#define SWIGTYPE_p_p_PyObject swig_types[35]
+#define SWIGTYPE_p_size_type swig_types[36]
+#define SWIGTYPE_p_std__exception swig_types[37]
+#define SWIGTYPE_p_std__invalid_argument swig_types[38]
+#define SWIGTYPE_p_std__lessT_std__string_t swig_types[39]
+#define SWIGTYPE_p_std__setT_std__string_std__lessT_std__string_t_std__allocatorT_std__string_t_t swig_types[40]
+#define SWIGTYPE_p_std__string swig_types[41]
+#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[42]
+#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t__allocator_type swig_types[43]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[44]
+#define SWIGTYPE_p_value_type swig_types[45]
+#define SWIGTYPE_p_xmlChar swig_types[46]
+#define SWIGTYPE_p_xmlTextReaderPtr swig_types[47]
+static swig_type_info *swig_types[49];
+static swig_module_info swig_module = {swig_types, 48, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2847,6 +2852,7 @@ namespace swig {
 #include "../../libgexf/conv.h"
 /* db::topo */
 #include "../../libgexf/graph.h"
+#include "../../libgexf/dynamicgraph.h"
 #include "../../libgexf/directedgraph.h"
 #include "../../libgexf/undirectedgraph.h"
 #include "../../libgexf/nodeiter.h"
@@ -4595,6 +4601,16 @@ SWIG_From_unsigned_SS_int  (unsigned int value)
 }
 
 
+  #define SWIG_From_double   PyFloat_FromDouble 
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_float  (float value)
+{    
+  return SWIG_From_double  (value);
+}
+
+
 SWIGINTERN int
 SWIG_AsVal_unsigned_SS_int (PyObject * obj, unsigned int *val)
 {
@@ -4611,13 +4627,19 @@ SWIG_AsVal_unsigned_SS_int (PyObject * obj, unsigned int *val)
 }
 
 
-  #define SWIG_From_double   PyFloat_FromDouble 
-
-
-SWIGINTERNINLINE PyObject *
-SWIG_From_float  (float value)
-{    
-  return SWIG_From_double  (value);
+SWIGINTERN int
+SWIG_AsVal_float (PyObject * obj, float *val)
+{
+  double v;
+  int res = SWIG_AsVal_double (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v < -FLT_MAX || v > FLT_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = static_cast< float >(v);
+    }
+  }  
+  return res;
 }
 
 #ifdef __cplusplus
@@ -9429,6 +9451,81 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_GEXF_initGraphMode(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:GEXF_initGraphMode",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__GEXF, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GEXF_initGraphMode" "', argument " "1"" of type '" "libgexf::GEXF *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::GEXF * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GEXF_initGraphMode" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GEXF_initGraphMode" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    try {
+      (arg1)->initGraphMode((std::string const &)*arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GEXF_getGraphMode(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GEXF_getGraphMode",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__GEXF, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GEXF_getGraphMode" "', argument " "1"" of type '" "libgexf::GEXF *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::GEXF * >(argp1);
+  {
+    try {
+      result = (arg1)->getGraphMode();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_GEXF_checkIntegrity(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
@@ -9557,6 +9654,65 @@ SWIGINTERN PyObject *_wrap_GEXF__type_get(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg1 = reinterpret_cast< libgexf::GEXF * >(argp1);
   result = (libgexf::t_graph) ((arg1)->_type);
   resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GEXF__mode_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:GEXF__mode_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__GEXF, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GEXF__mode_set" "', argument " "1"" of type '" "libgexf::GEXF *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::GEXF * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GEXF__mode_set" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GEXF__mode_set" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  if (arg1) (arg1)->_mode = *arg2;
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GEXF__mode_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::GEXF *arg1 = (libgexf::GEXF *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  std::string *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GEXF__mode_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__GEXF, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GEXF__mode_get" "', argument " "1"" of type '" "libgexf::GEXF *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::GEXF * >(argp1);
+  result = (std::string *) & ((arg1)->_mode);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
   return resultobj;
 fail:
   return NULL;
@@ -11570,6 +11726,36 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Conv_xmlCharToFloat(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  xmlChar *arg1 = (xmlChar *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Conv_xmlCharToFloat",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_xmlChar, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Conv_xmlCharToFloat" "', argument " "1"" of type '" "xmlChar const *""'"); 
+  }
+  arg1 = reinterpret_cast< xmlChar * >(argp1);
+  {
+    try {
+      result = (float)libgexf::Conv::xmlCharToFloat((xmlChar const *)arg1);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Conv_idToStr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::t_id arg1 ;
@@ -11619,6 +11805,36 @@ SWIGINTERN PyObject *_wrap_Conv_unsignedIntToStr(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = libgexf::Conv::unsignedIntToStr(arg1);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Conv_floatToStr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  float arg1 ;
+  float val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Conv_floatToStr",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_float(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "Conv_floatToStr" "', argument " "1"" of type '" "float""'");
+  } 
+  arg1 = static_cast< float >(val1);
+  {
+    try {
+      result = libgexf::Conv::floatToStr(arg1);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -11877,6 +12093,80 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Conv_isLong(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Conv_isLong",&obj0)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Conv_isLong" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Conv_isLong" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    try {
+      result = (bool)libgexf::Conv::isLong((std::string const &)*arg1);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Conv_isAnyURI(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Conv_isAnyURI",&obj0)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Conv_isAnyURI" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Conv_isAnyURI" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    try {
+      result = (bool)libgexf::Conv::isAnyURI((std::string const &)*arg1);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Conv_tokenizer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   std::string *arg1 = 0 ;
@@ -12097,11 +12387,11 @@ SWIGINTERN PyObject *_wrap_Graph_addEdge__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   libgexf::t_id arg2 ;
   libgexf::t_id arg3 ;
   libgexf::t_id arg4 ;
-  unsigned int arg5 ;
+  float arg5 ;
   libgexf::t_edge_type arg6 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  unsigned int val5 ;
+  float val5 ;
   int ecode5 = 0 ;
   int val6 ;
   int ecode6 = 0 ;
@@ -12145,11 +12435,11 @@ SWIGINTERN PyObject *_wrap_Graph_addEdge__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
     arg4 = *ptr;
     if (SWIG_IsNewObj(res)) delete ptr;
   }
-  ecode5 = SWIG_AsVal_unsigned_SS_int(obj4, &val5);
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
   if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "Graph_addEdge" "', argument " "5"" of type '" "unsigned int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "Graph_addEdge" "', argument " "5"" of type '" "float""'");
   } 
-  arg5 = static_cast< unsigned int >(val5);
+  arg5 = static_cast< float >(val5);
   ecode6 = SWIG_AsVal_int(obj5, &val6);
   if (!SWIG_IsOK(ecode6)) {
     SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "Graph_addEdge" "', argument " "6"" of type '" "libgexf::t_edge_type""'");
@@ -12177,10 +12467,10 @@ SWIGINTERN PyObject *_wrap_Graph_addEdge__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   libgexf::t_id arg2 ;
   libgexf::t_id arg3 ;
   libgexf::t_id arg4 ;
-  unsigned int arg5 ;
+  float arg5 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  unsigned int val5 ;
+  float val5 ;
   int ecode5 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
@@ -12221,11 +12511,11 @@ SWIGINTERN PyObject *_wrap_Graph_addEdge__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
     arg4 = *ptr;
     if (SWIG_IsNewObj(res)) delete ptr;
   }
-  ecode5 = SWIG_AsVal_unsigned_SS_int(obj4, &val5);
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
   if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "Graph_addEdge" "', argument " "5"" of type '" "unsigned int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "Graph_addEdge" "', argument " "5"" of type '" "float""'");
   } 
-  arg5 = static_cast< unsigned int >(val5);
+  arg5 = static_cast< float >(val5);
   {
     try {
       (arg1)->addEdge(arg2,arg3,arg4,arg5);
@@ -12351,7 +12641,7 @@ SWIGINTERN PyObject *_wrap_Graph_addEdge(PyObject *self, PyObject *args) {
           _v = SWIG_CheckState(res);
           if (_v) {
             {
-              int res = SWIG_AsVal_unsigned_SS_int(argv[4], NULL);
+              int res = SWIG_AsVal_float(argv[4], NULL);
               _v = SWIG_CheckState(res);
             }
             if (_v) {
@@ -12378,7 +12668,7 @@ SWIGINTERN PyObject *_wrap_Graph_addEdge(PyObject *self, PyObject *args) {
           _v = SWIG_CheckState(res);
           if (_v) {
             {
-              int res = SWIG_AsVal_unsigned_SS_int(argv[4], NULL);
+              int res = SWIG_AsVal_float(argv[4], NULL);
               _v = SWIG_CheckState(res);
             }
             if (_v) {
@@ -12399,8 +12689,8 @@ SWIGINTERN PyObject *_wrap_Graph_addEdge(PyObject *self, PyObject *args) {
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'Graph_addEdge'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    addEdge(libgexf::Graph *,libgexf::t_id const,libgexf::t_id const,libgexf::t_id const,unsigned int const,libgexf::t_edge_type const)\n"
-    "    addEdge(libgexf::Graph *,libgexf::t_id const,libgexf::t_id const,libgexf::t_id const,unsigned int const)\n"
+    "    addEdge(libgexf::Graph *,libgexf::t_id const,libgexf::t_id const,libgexf::t_id const,float const,libgexf::t_edge_type const)\n"
+    "    addEdge(libgexf::Graph *,libgexf::t_id const,libgexf::t_id const,libgexf::t_id const,float const)\n"
     "    addEdge(libgexf::Graph *,libgexf::t_id const,libgexf::t_id const,libgexf::t_id const)\n");
   return NULL;
 }
@@ -12584,6 +12874,58 @@ SWIGINTERN PyObject *_wrap_Graph_containsEdge(PyObject *SWIGUNUSEDPARM(self), Py
     }
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Graph_getEdge(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::Graph *arg1 = (libgexf::Graph *) 0 ;
+  libgexf::t_id arg2 ;
+  libgexf::t_id arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  libgexf::t_id result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Graph_getEdge",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__Graph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Graph_getEdge" "', argument " "1"" of type '" "libgexf::Graph const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::Graph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Graph_getEdge" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Graph_getEdge" "', argument " "3"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg3 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      result = ((libgexf::Graph const *)arg1)->getEdge(arg2,arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
 fail:
   return NULL;
@@ -13154,6 +13496,1628 @@ SWIGINTERN PyObject *Graph_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
   SWIG_TypeNewClientData(SWIGTYPE_p_libgexf__Graph, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_DynamicGraph__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_DynamicGraph")) SWIG_fail;
+  {
+    try {
+      result = (libgexf::DynamicGraph *)new libgexf::DynamicGraph();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_libgexf__DynamicGraph, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_DynamicGraph__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  libgexf::DynamicGraph *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_DynamicGraph",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_libgexf__DynamicGraph,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DynamicGraph" "', argument " "1"" of type '" "libgexf::DynamicGraph const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DynamicGraph" "', argument " "1"" of type '" "libgexf::DynamicGraph const &""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    try {
+      result = (libgexf::DynamicGraph *)new libgexf::DynamicGraph((libgexf::DynamicGraph const &)*arg1);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_libgexf__DynamicGraph, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_DynamicGraph(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[2];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = (int)PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 1); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 0) {
+    return _wrap_new_DynamicGraph__SWIG_0(self, args);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_libgexf__DynamicGraph, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_DynamicGraph__SWIG_1(self, args);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'new_DynamicGraph'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    libgexf::DynamicGraph()\n"
+    "    libgexf::DynamicGraph(libgexf::DynamicGraph const &)\n");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_DynamicGraph(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_DynamicGraph",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_DynamicGraph" "', argument " "1"" of type '" "libgexf::DynamicGraph *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_hasNodeStart(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DynamicGraph_hasNodeStart",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_hasNodeStart" "', argument " "1"" of type '" "libgexf::DynamicGraph const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_hasNodeStart" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      result = (bool)((libgexf::DynamicGraph const *)arg1)->hasNodeStart(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_hasEdgeStart(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DynamicGraph_hasEdgeStart",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_hasEdgeStart" "', argument " "1"" of type '" "libgexf::DynamicGraph const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_hasEdgeStart" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      result = (bool)((libgexf::DynamicGraph const *)arg1)->hasEdgeStart(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_hasNodeEnd(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DynamicGraph_hasNodeEnd",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_hasNodeEnd" "', argument " "1"" of type '" "libgexf::DynamicGraph const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_hasNodeEnd" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      result = (bool)((libgexf::DynamicGraph const *)arg1)->hasNodeEnd(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_hasEdgeEnd(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DynamicGraph_hasEdgeEnd",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_hasEdgeEnd" "', argument " "1"" of type '" "libgexf::DynamicGraph const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_hasEdgeEnd" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      result = (bool)((libgexf::DynamicGraph const *)arg1)->hasEdgeEnd(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_getNodeStart(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DynamicGraph_getNodeStart",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_getNodeStart" "', argument " "1"" of type '" "libgexf::DynamicGraph const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_getNodeStart" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      result = ((libgexf::DynamicGraph const *)arg1)->getNodeStart(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_getEdgeStart(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DynamicGraph_getEdgeStart",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_getEdgeStart" "', argument " "1"" of type '" "libgexf::DynamicGraph const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_getEdgeStart" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      result = ((libgexf::DynamicGraph const *)arg1)->getEdgeStart(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_getNodeEnd(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DynamicGraph_getNodeEnd",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_getNodeEnd" "', argument " "1"" of type '" "libgexf::DynamicGraph const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_getNodeEnd" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      result = ((libgexf::DynamicGraph const *)arg1)->getNodeEnd(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_getEdgeEnd(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DynamicGraph_getEdgeEnd",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_getEdgeEnd" "', argument " "1"" of type '" "libgexf::DynamicGraph const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_getEdgeEnd" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      result = ((libgexf::DynamicGraph const *)arg1)->getEdgeEnd(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_setNodeStart(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:DynamicGraph_setNodeStart",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_setNodeStart" "', argument " "1"" of type '" "libgexf::DynamicGraph *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_setNodeStart" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DynamicGraph_setNodeStart" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DynamicGraph_setNodeStart" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  {
+    try {
+      (arg1)->setNodeStart(arg2,(std::string const &)*arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_setEdgeStart(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:DynamicGraph_setEdgeStart",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_setEdgeStart" "', argument " "1"" of type '" "libgexf::DynamicGraph *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_setEdgeStart" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DynamicGraph_setEdgeStart" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DynamicGraph_setEdgeStart" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  {
+    try {
+      (arg1)->setEdgeStart(arg2,(std::string const &)*arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_setNodeEnd(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:DynamicGraph_setNodeEnd",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_setNodeEnd" "', argument " "1"" of type '" "libgexf::DynamicGraph *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_setNodeEnd" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DynamicGraph_setNodeEnd" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DynamicGraph_setNodeEnd" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  {
+    try {
+      (arg1)->setNodeEnd(arg2,(std::string const &)*arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_setEdgeEnd(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:DynamicGraph_setEdgeEnd",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_setEdgeEnd" "', argument " "1"" of type '" "libgexf::DynamicGraph *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_setEdgeEnd" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DynamicGraph_setEdgeEnd" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DynamicGraph_setEdgeEnd" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  {
+    try {
+      (arg1)->setEdgeEnd(arg2,(std::string const &)*arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_getDegree(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  unsigned int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:DynamicGraph_getDegree",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_getDegree" "', argument " "1"" of type '" "libgexf::DynamicGraph const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_getDegree" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DynamicGraph_getDegree" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DynamicGraph_getDegree" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  {
+    try {
+      result = (unsigned int)((libgexf::DynamicGraph const *)arg1)->getDegree(arg2,(std::string const &)*arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_addNode(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DynamicGraph_addNode",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_addNode" "', argument " "1"" of type '" "libgexf::DynamicGraph *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_addNode" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      (arg1)->addNode(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_addEdge__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  libgexf::t_id arg3 ;
+  libgexf::t_id arg4 ;
+  float arg5 ;
+  libgexf::t_edge_type arg6 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  int val6 ;
+  int ecode6 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOO:DynamicGraph_addEdge",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_addEdge" "', argument " "1"" of type '" "libgexf::DynamicGraph *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_addEdge" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_addEdge" "', argument " "3"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg3 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj3, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_addEdge" "', argument " "4"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg4 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "DynamicGraph_addEdge" "', argument " "5"" of type '" "float""'");
+  } 
+  arg5 = static_cast< float >(val5);
+  ecode6 = SWIG_AsVal_int(obj5, &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "DynamicGraph_addEdge" "', argument " "6"" of type '" "libgexf::t_edge_type""'");
+  } 
+  arg6 = static_cast< libgexf::t_edge_type >(val6);
+  {
+    try {
+      (arg1)->addEdge(arg2,arg3,arg4,arg5,arg6);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_addEdge__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  libgexf::t_id arg3 ;
+  libgexf::t_id arg4 ;
+  float arg5 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOO:DynamicGraph_addEdge",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_addEdge" "', argument " "1"" of type '" "libgexf::DynamicGraph *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_addEdge" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_addEdge" "', argument " "3"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg3 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj3, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_addEdge" "', argument " "4"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg4 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "DynamicGraph_addEdge" "', argument " "5"" of type '" "float""'");
+  } 
+  arg5 = static_cast< float >(val5);
+  {
+    try {
+      (arg1)->addEdge(arg2,arg3,arg4,arg5);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_addEdge__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  libgexf::t_id arg3 ;
+  libgexf::t_id arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:DynamicGraph_addEdge",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_addEdge" "', argument " "1"" of type '" "libgexf::DynamicGraph *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_addEdge" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_addEdge" "', argument " "3"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg3 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj3, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_addEdge" "', argument " "4"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg4 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      (arg1)->addEdge(arg2,arg3,arg4);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_addEdge(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[7];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = (int)PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 6); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_libgexf__DynamicGraph, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_AsPtr_std_string(argv[2], (std::string**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_AsPtr_std_string(argv[3], (std::string**)(0));
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_DynamicGraph_addEdge__SWIG_2(self, args);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_libgexf__DynamicGraph, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_AsPtr_std_string(argv[2], (std::string**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_AsPtr_std_string(argv[3], (std::string**)(0));
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              return _wrap_DynamicGraph_addEdge__SWIG_1(self, args);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 6) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_libgexf__DynamicGraph, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_AsPtr_std_string(argv[2], (std::string**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_AsPtr_std_string(argv[3], (std::string**)(0));
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              {
+                int res = SWIG_AsVal_int(argv[5], NULL);
+                _v = SWIG_CheckState(res);
+              }
+              if (_v) {
+                return _wrap_DynamicGraph_addEdge__SWIG_0(self, args);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'DynamicGraph_addEdge'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    addEdge(libgexf::DynamicGraph *,libgexf::t_id const,libgexf::t_id const,libgexf::t_id const,float const,libgexf::t_edge_type const)\n"
+    "    addEdge(libgexf::DynamicGraph *,libgexf::t_id const,libgexf::t_id const,libgexf::t_id const,float const)\n"
+    "    addEdge(libgexf::DynamicGraph *,libgexf::t_id const,libgexf::t_id const,libgexf::t_id const)\n");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_removeNode(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DynamicGraph_removeNode",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_removeNode" "', argument " "1"" of type '" "libgexf::DynamicGraph *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_removeNode" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      (arg1)->removeNode(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_removeEdge(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  libgexf::t_id arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:DynamicGraph_removeEdge",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_removeEdge" "', argument " "1"" of type '" "libgexf::DynamicGraph *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_removeEdge" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_removeEdge" "', argument " "3"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg3 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      (arg1)->removeEdge(arg2,arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_containsNode(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DynamicGraph_containsNode",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_containsNode" "', argument " "1"" of type '" "libgexf::DynamicGraph const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_containsNode" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      result = (bool)((libgexf::DynamicGraph const *)arg1)->containsNode(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_containsEdge(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  libgexf::t_id arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:DynamicGraph_containsEdge",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_containsEdge" "', argument " "1"" of type '" "libgexf::DynamicGraph const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_containsEdge" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_containsEdge" "', argument " "3"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg3 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      result = (bool)((libgexf::DynamicGraph const *)arg1)->containsEdge(arg2,arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_getEdge(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  libgexf::t_id arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  libgexf::t_id result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:DynamicGraph_getEdge",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_getEdge" "', argument " "1"" of type '" "libgexf::DynamicGraph const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_getEdge" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_getEdge" "', argument " "3"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg3 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      result = ((libgexf::DynamicGraph const *)arg1)->getEdge(arg2,arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_getNodes(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  libgexf::NodeIter *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:DynamicGraph_getNodes",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_getNodes" "', argument " "1"" of type '" "libgexf::DynamicGraph const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    try {
+      result = (libgexf::NodeIter *)((libgexf::DynamicGraph const *)arg1)->getNodes();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_libgexf__NodeIter, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_getEdges(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  libgexf::EdgeIter *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:DynamicGraph_getEdges",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_getEdges" "', argument " "1"" of type '" "libgexf::DynamicGraph const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    try {
+      result = (libgexf::EdgeIter *)((libgexf::DynamicGraph const *)arg1)->getEdges();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_libgexf__EdgeIter, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_getNeighbors(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::vector< libgexf::t_id,std::allocator< libgexf::t_id > > result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DynamicGraph_getNeighbors",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_getNeighbors" "', argument " "1"" of type '" "libgexf::DynamicGraph const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_getNeighbors" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      result = ((libgexf::DynamicGraph const *)arg1)->getNeighbors(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = swig::from(static_cast< std::vector<std::string,std::allocator< std::string > > >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_getNodeCount(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  unsigned int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:DynamicGraph_getNodeCount",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_getNodeCount" "', argument " "1"" of type '" "libgexf::DynamicGraph const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    try {
+      result = (unsigned int)((libgexf::DynamicGraph const *)arg1)->getNodeCount();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_getEdgeCount(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  unsigned int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:DynamicGraph_getEdgeCount",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_getEdgeCount" "', argument " "1"" of type '" "libgexf::DynamicGraph const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    try {
+      result = (unsigned int)((libgexf::DynamicGraph const *)arg1)->getEdgeCount();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_clearEdges__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  libgexf::t_id arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DynamicGraph_clearEdges",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_clearEdges" "', argument " "1"" of type '" "libgexf::DynamicGraph *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "DynamicGraph_clearEdges" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      (arg1)->clearEdges(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_clearEdges__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:DynamicGraph_clearEdges",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_clearEdges" "', argument " "1"" of type '" "libgexf::DynamicGraph *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    try {
+      (arg1)->clearEdges();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_clearEdges(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = (int)PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 2); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_libgexf__DynamicGraph, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_DynamicGraph_clearEdges__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_libgexf__DynamicGraph, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_DynamicGraph_clearEdges__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'DynamicGraph_clearEdges'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    clearEdges(libgexf::DynamicGraph *,libgexf::t_id const)\n"
+    "    clearEdges(libgexf::DynamicGraph *)\n");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DynamicGraph_clear(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::DynamicGraph *arg1 = (libgexf::DynamicGraph *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:DynamicGraph_clear",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__DynamicGraph, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DynamicGraph_clear" "', argument " "1"" of type '" "libgexf::DynamicGraph *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::DynamicGraph * >(argp1);
+  {
+    try {
+      (arg1)->clear();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *DynamicGraph_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_libgexf__DynamicGraph, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -14234,7 +16198,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Data_getLabel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Data_getNodeLabel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::Data *arg1 = (libgexf::Data *) 0 ;
   libgexf::t_id arg2 ;
@@ -14244,24 +16208,24 @@ SWIGINTERN PyObject *_wrap_Data_getLabel(PyObject *SWIGUNUSEDPARM(self), PyObjec
   PyObject * obj1 = 0 ;
   std::string result;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:Data_getLabel",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:Data_getNodeLabel",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__Data, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Data_getLabel" "', argument " "1"" of type '" "libgexf::Data const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Data_getNodeLabel" "', argument " "1"" of type '" "libgexf::Data const *""'"); 
   }
   arg1 = reinterpret_cast< libgexf::Data * >(argp1);
   {
     std::string *ptr = (std::string *)0;
     int res = SWIG_AsPtr_std_string(obj1, &ptr);
     if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_getLabel" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_getNodeLabel" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
     }
     arg2 = *ptr;
     if (SWIG_IsNewObj(res)) delete ptr;
   }
   {
     try {
-      result = ((libgexf::Data const *)arg1)->getLabel(arg2);
+      result = ((libgexf::Data const *)arg1)->getNodeLabel(arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -14275,7 +16239,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Data_hasLabel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Data_hasNodeLabel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::Data *arg1 = (libgexf::Data *) 0 ;
   libgexf::t_id arg2 ;
@@ -14285,24 +16249,24 @@ SWIGINTERN PyObject *_wrap_Data_hasLabel(PyObject *SWIGUNUSEDPARM(self), PyObjec
   PyObject * obj1 = 0 ;
   bool result;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:Data_hasLabel",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:Data_hasNodeLabel",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__Data, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Data_hasLabel" "', argument " "1"" of type '" "libgexf::Data const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Data_hasNodeLabel" "', argument " "1"" of type '" "libgexf::Data const *""'"); 
   }
   arg1 = reinterpret_cast< libgexf::Data * >(argp1);
   {
     std::string *ptr = (std::string *)0;
     int res = SWIG_AsPtr_std_string(obj1, &ptr);
     if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_hasLabel" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_hasNodeLabel" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
     }
     arg2 = *ptr;
     if (SWIG_IsNewObj(res)) delete ptr;
   }
   {
     try {
-      result = (bool)((libgexf::Data const *)arg1)->hasLabel(arg2);
+      result = (bool)((libgexf::Data const *)arg1)->hasNodeLabel(arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -14316,7 +16280,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Data_setLabel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Data_setNodeLabel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::Data *arg1 = (libgexf::Data *) 0 ;
   libgexf::t_id arg2 ;
@@ -14328,17 +16292,17 @@ SWIGINTERN PyObject *_wrap_Data_setLabel(PyObject *SWIGUNUSEDPARM(self), PyObjec
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOO:Data_setLabel",&obj0,&obj1,&obj2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Data_setNodeLabel",&obj0,&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__Data, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Data_setLabel" "', argument " "1"" of type '" "libgexf::Data *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Data_setNodeLabel" "', argument " "1"" of type '" "libgexf::Data *""'"); 
   }
   arg1 = reinterpret_cast< libgexf::Data * >(argp1);
   {
     std::string *ptr = (std::string *)0;
     int res = SWIG_AsPtr_std_string(obj1, &ptr);
     if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_setLabel" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_setNodeLabel" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
     }
     arg2 = *ptr;
     if (SWIG_IsNewObj(res)) delete ptr;
@@ -14347,16 +16311,16 @@ SWIGINTERN PyObject *_wrap_Data_setLabel(PyObject *SWIGUNUSEDPARM(self), PyObjec
     std::string *ptr = (std::string *)0;
     res3 = SWIG_AsPtr_std_string(obj2, &ptr);
     if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Data_setLabel" "', argument " "3"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Data_setNodeLabel" "', argument " "3"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Data_setLabel" "', argument " "3"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Data_setNodeLabel" "', argument " "3"" of type '" "std::string const &""'"); 
     }
     arg3 = ptr;
   }
   {
     try {
-      (arg1)->setLabel(arg2,(std::string const &)*arg3);
+      (arg1)->setNodeLabel(arg2,(std::string const &)*arg3);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -14372,17 +16336,154 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Data_addNodeAttributeColumn(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Data_getEdgeLabel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Data_getEdgeLabel",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__Data, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Data_getEdgeLabel" "', argument " "1"" of type '" "libgexf::Data const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::Data * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_getEdgeLabel" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      result = ((libgexf::Data const *)arg1)->getEdgeLabel(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Data_hasEdgeLabel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Data_hasEdgeLabel",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__Data, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Data_hasEdgeLabel" "', argument " "1"" of type '" "libgexf::Data const *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::Data * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_hasEdgeLabel" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      result = (bool)((libgexf::Data const *)arg1)->hasEdgeLabel(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Data_setEdgeLabel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::Data *arg1 = (libgexf::Data *) 0 ;
   libgexf::t_id arg2 ;
   std::string *arg3 = 0 ;
-  libgexf::t_attr_type arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res3 = SWIG_OLDOBJ ;
-  int val4 ;
-  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Data_setEdgeLabel",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__Data, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Data_setEdgeLabel" "', argument " "1"" of type '" "libgexf::Data *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::Data * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_setEdgeLabel" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Data_setEdgeLabel" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Data_setEdgeLabel" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  {
+    try {
+      (arg1)->setEdgeLabel(arg2,(std::string const &)*arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Data_addNodeAttributeColumn__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string *arg3 = 0 ;
+  std::string *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  int res4 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -14414,14 +16515,78 @@ SWIGINTERN PyObject *_wrap_Data_addNodeAttributeColumn(PyObject *SWIGUNUSEDPARM(
     }
     arg3 = ptr;
   }
-  ecode4 = SWIG_AsVal_int(obj3, &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Data_addNodeAttributeColumn" "', argument " "4"" of type '" "libgexf::t_attr_type""'");
-  } 
-  arg4 = static_cast< libgexf::t_attr_type >(val4);
+  {
+    std::string *ptr = (std::string *)0;
+    res4 = SWIG_AsPtr_std_string(obj3, &ptr);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "Data_addNodeAttributeColumn" "', argument " "4"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Data_addNodeAttributeColumn" "', argument " "4"" of type '" "std::string const &""'"); 
+    }
+    arg4 = ptr;
+  }
   {
     try {
-      (arg1)->addNodeAttributeColumn(arg2,(std::string const &)*arg3,arg4);
+      (arg1)->addNodeAttributeColumn(arg2,(std::string const &)*arg3,(std::string const &)*arg4);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Data_addNodeAttributeColumn__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Data_addNodeAttributeColumn",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__Data, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Data_addNodeAttributeColumn" "', argument " "1"" of type '" "libgexf::Data *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::Data * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_addNodeAttributeColumn" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Data_addNodeAttributeColumn" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Data_addNodeAttributeColumn" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  {
+    try {
+      (arg1)->addNodeAttributeColumn(arg2,(std::string const &)*arg3);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -14437,17 +16602,74 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Data_addEdgeAttributeColumn(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Data_addNodeAttributeColumn(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[5];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = (int)PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 4); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_libgexf__Data, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_AsPtr_std_string(argv[2], (std::string**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_Data_addNodeAttributeColumn__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_libgexf__Data, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_AsPtr_std_string(argv[2], (std::string**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_AsPtr_std_string(argv[3], (std::string**)(0));
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_Data_addNodeAttributeColumn__SWIG_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'Data_addNodeAttributeColumn'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    addNodeAttributeColumn(libgexf::Data *,libgexf::t_id const,std::string const &,std::string const &)\n"
+    "    addNodeAttributeColumn(libgexf::Data *,libgexf::t_id const,std::string const &)\n");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Data_addEdgeAttributeColumn__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   libgexf::Data *arg1 = (libgexf::Data *) 0 ;
   libgexf::t_id arg2 ;
   std::string *arg3 = 0 ;
-  libgexf::t_attr_type arg4 ;
+  std::string *arg4 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res3 = SWIG_OLDOBJ ;
-  int val4 ;
-  int ecode4 = 0 ;
+  int res4 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -14479,14 +16701,78 @@ SWIGINTERN PyObject *_wrap_Data_addEdgeAttributeColumn(PyObject *SWIGUNUSEDPARM(
     }
     arg3 = ptr;
   }
-  ecode4 = SWIG_AsVal_int(obj3, &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Data_addEdgeAttributeColumn" "', argument " "4"" of type '" "libgexf::t_attr_type""'");
-  } 
-  arg4 = static_cast< libgexf::t_attr_type >(val4);
+  {
+    std::string *ptr = (std::string *)0;
+    res4 = SWIG_AsPtr_std_string(obj3, &ptr);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "Data_addEdgeAttributeColumn" "', argument " "4"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Data_addEdgeAttributeColumn" "', argument " "4"" of type '" "std::string const &""'"); 
+    }
+    arg4 = ptr;
+  }
   {
     try {
-      (arg1)->addEdgeAttributeColumn(arg2,(std::string const &)*arg3,arg4);
+      (arg1)->addEdgeAttributeColumn(arg2,(std::string const &)*arg3,(std::string const &)*arg4);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Data_addEdgeAttributeColumn__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  std::string *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Data_addEdgeAttributeColumn",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__Data, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Data_addEdgeAttributeColumn" "', argument " "1"" of type '" "libgexf::Data *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::Data * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_addEdgeAttributeColumn" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Data_addEdgeAttributeColumn" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Data_addEdgeAttributeColumn" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  {
+    try {
+      (arg1)->addEdgeAttributeColumn(arg2,(std::string const &)*arg3);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch(...) {
@@ -14498,6 +16784,64 @@ SWIGINTERN PyObject *_wrap_Data_addEdgeAttributeColumn(PyObject *SWIGUNUSEDPARM(
   return resultobj;
 fail:
   if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Data_addEdgeAttributeColumn(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[5];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = (int)PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 4); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_libgexf__Data, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_AsPtr_std_string(argv[2], (std::string**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_Data_addEdgeAttributeColumn__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_libgexf__Data, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_AsPtr_std_string(argv[2], (std::string**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_AsPtr_std_string(argv[3], (std::string**)(0));
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_Data_addEdgeAttributeColumn__SWIG_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'Data_addEdgeAttributeColumn'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    addEdgeAttributeColumn(libgexf::Data *,libgexf::t_id const,std::string const &,std::string const &)\n"
+    "    addEdgeAttributeColumn(libgexf::Data *,libgexf::t_id const,std::string const &)\n");
   return NULL;
 }
 
@@ -15544,6 +17888,86 @@ SWIGINTERN PyObject *_wrap_Data_isEdgeAttributeOption(PyObject *SWIGUNUSEDPARM(s
   return resultobj;
 fail:
   if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Data_removeNodeAttributeColumn(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Data_removeNodeAttributeColumn",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__Data, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Data_removeNodeAttributeColumn" "', argument " "1"" of type '" "libgexf::Data *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::Data * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_removeNodeAttributeColumn" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      (arg1)->removeNodeAttributeColumn(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Data_removeEdgeAttributeColumn(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  libgexf::Data *arg1 = (libgexf::Data *) 0 ;
+  libgexf::t_id arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Data_removeEdgeAttributeColumn",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_libgexf__Data, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Data_removeEdgeAttributeColumn" "', argument " "1"" of type '" "libgexf::Data *""'"); 
+  }
+  arg1 = reinterpret_cast< libgexf::Data * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Data_removeEdgeAttributeColumn" "', argument " "2"" of type '" "libgexf::t_id const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      (arg1)->removeEdgeAttributeColumn(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch(...) {
+      SWIG_exception(SWIG_RuntimeError, "Unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
   return NULL;
 }
 
@@ -16933,11 +19357,15 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"GEXF_getMetaData", _wrap_GEXF_getMetaData, METH_VARARGS, NULL},
 	 { (char *)"GEXF_setGraphType", _wrap_GEXF_setGraphType, METH_VARARGS, NULL},
 	 { (char *)"GEXF_getGraphType", _wrap_GEXF_getGraphType, METH_VARARGS, NULL},
+	 { (char *)"GEXF_initGraphMode", _wrap_GEXF_initGraphMode, METH_VARARGS, NULL},
+	 { (char *)"GEXF_getGraphMode", _wrap_GEXF_getGraphMode, METH_VARARGS, NULL},
 	 { (char *)"GEXF_checkIntegrity", _wrap_GEXF_checkIntegrity, METH_VARARGS, NULL},
 	 { (char *)"GEXF__graph_set", _wrap_GEXF__graph_set, METH_VARARGS, NULL},
 	 { (char *)"GEXF__graph_get", _wrap_GEXF__graph_get, METH_VARARGS, NULL},
 	 { (char *)"GEXF__type_set", _wrap_GEXF__type_set, METH_VARARGS, NULL},
 	 { (char *)"GEXF__type_get", _wrap_GEXF__type_get, METH_VARARGS, NULL},
+	 { (char *)"GEXF__mode_set", _wrap_GEXF__mode_set, METH_VARARGS, NULL},
+	 { (char *)"GEXF__mode_get", _wrap_GEXF__mode_get, METH_VARARGS, NULL},
 	 { (char *)"GEXF__data_set", _wrap_GEXF__data_set, METH_VARARGS, NULL},
 	 { (char *)"GEXF__data_get", _wrap_GEXF__data_get, METH_VARARGS, NULL},
 	 { (char *)"GEXF__meta_set", _wrap_GEXF__meta_set, METH_VARARGS, NULL},
@@ -16990,8 +19418,10 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Conv_strToId", _wrap_Conv_strToId, METH_VARARGS, NULL},
 	 { (char *)"Conv_xmlCharToStr", _wrap_Conv_xmlCharToStr, METH_VARARGS, NULL},
 	 { (char *)"Conv_xmlCharToUnsignedInt", _wrap_Conv_xmlCharToUnsignedInt, METH_VARARGS, NULL},
+	 { (char *)"Conv_xmlCharToFloat", _wrap_Conv_xmlCharToFloat, METH_VARARGS, NULL},
 	 { (char *)"Conv_idToStr", _wrap_Conv_idToStr, METH_VARARGS, NULL},
 	 { (char *)"Conv_unsignedIntToStr", _wrap_Conv_unsignedIntToStr, METH_VARARGS, NULL},
+	 { (char *)"Conv_floatToStr", _wrap_Conv_floatToStr, METH_VARARGS, NULL},
 	 { (char *)"Conv_strToUnsignedInt", _wrap_Conv_strToUnsignedInt, METH_VARARGS, NULL},
 	 { (char *)"Conv_edgeTypeToStr", _wrap_Conv_edgeTypeToStr, METH_VARARGS, NULL},
 	 { (char *)"Conv_attrTypeToStr", _wrap_Conv_attrTypeToStr, METH_VARARGS, NULL},
@@ -16999,6 +19429,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Conv_isDouble", _wrap_Conv_isDouble, METH_VARARGS, NULL},
 	 { (char *)"Conv_isInteger", _wrap_Conv_isInteger, METH_VARARGS, NULL},
 	 { (char *)"Conv_isFloat", _wrap_Conv_isFloat, METH_VARARGS, NULL},
+	 { (char *)"Conv_isLong", _wrap_Conv_isLong, METH_VARARGS, NULL},
+	 { (char *)"Conv_isAnyURI", _wrap_Conv_isAnyURI, METH_VARARGS, NULL},
 	 { (char *)"Conv_tokenizer", _wrap_Conv_tokenizer, METH_VARARGS, NULL},
 	 { (char *)"Conv_swigregister", Conv_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_Graph", _wrap_new_Graph, METH_VARARGS, NULL},
@@ -17009,6 +19441,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Graph_removeEdge", _wrap_Graph_removeEdge, METH_VARARGS, NULL},
 	 { (char *)"Graph_containsNode", _wrap_Graph_containsNode, METH_VARARGS, NULL},
 	 { (char *)"Graph_containsEdge", _wrap_Graph_containsEdge, METH_VARARGS, NULL},
+	 { (char *)"Graph_getEdge", _wrap_Graph_getEdge, METH_VARARGS, NULL},
 	 { (char *)"Graph_getNodes", _wrap_Graph_getNodes, METH_VARARGS, NULL},
 	 { (char *)"Graph_getEdges", _wrap_Graph_getEdges, METH_VARARGS, NULL},
 	 { (char *)"Graph_getNeighbors", _wrap_Graph_getNeighbors, METH_VARARGS, NULL},
@@ -17025,6 +19458,36 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Graph_isWriteLock", _wrap_Graph_isWriteLock, METH_VARARGS, NULL},
 	 { (char *)"Graph_isUnlock", _wrap_Graph_isUnlock, METH_VARARGS, NULL},
 	 { (char *)"Graph_swigregister", Graph_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_DynamicGraph", _wrap_new_DynamicGraph, METH_VARARGS, NULL},
+	 { (char *)"delete_DynamicGraph", _wrap_delete_DynamicGraph, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_hasNodeStart", _wrap_DynamicGraph_hasNodeStart, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_hasEdgeStart", _wrap_DynamicGraph_hasEdgeStart, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_hasNodeEnd", _wrap_DynamicGraph_hasNodeEnd, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_hasEdgeEnd", _wrap_DynamicGraph_hasEdgeEnd, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_getNodeStart", _wrap_DynamicGraph_getNodeStart, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_getEdgeStart", _wrap_DynamicGraph_getEdgeStart, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_getNodeEnd", _wrap_DynamicGraph_getNodeEnd, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_getEdgeEnd", _wrap_DynamicGraph_getEdgeEnd, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_setNodeStart", _wrap_DynamicGraph_setNodeStart, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_setEdgeStart", _wrap_DynamicGraph_setEdgeStart, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_setNodeEnd", _wrap_DynamicGraph_setNodeEnd, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_setEdgeEnd", _wrap_DynamicGraph_setEdgeEnd, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_getDegree", _wrap_DynamicGraph_getDegree, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_addNode", _wrap_DynamicGraph_addNode, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_addEdge", _wrap_DynamicGraph_addEdge, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_removeNode", _wrap_DynamicGraph_removeNode, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_removeEdge", _wrap_DynamicGraph_removeEdge, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_containsNode", _wrap_DynamicGraph_containsNode, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_containsEdge", _wrap_DynamicGraph_containsEdge, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_getEdge", _wrap_DynamicGraph_getEdge, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_getNodes", _wrap_DynamicGraph_getNodes, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_getEdges", _wrap_DynamicGraph_getEdges, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_getNeighbors", _wrap_DynamicGraph_getNeighbors, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_getNodeCount", _wrap_DynamicGraph_getNodeCount, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_getEdgeCount", _wrap_DynamicGraph_getEdgeCount, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_clearEdges", _wrap_DynamicGraph_clearEdges, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_clear", _wrap_DynamicGraph_clear, METH_VARARGS, NULL},
+	 { (char *)"DynamicGraph_swigregister", DynamicGraph_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_DirectedGraph", _wrap_new_DirectedGraph, METH_VARARGS, NULL},
 	 { (char *)"delete_DirectedGraph", _wrap_delete_DirectedGraph, METH_VARARGS, NULL},
 	 { (char *)"DirectedGraph_removeInEdges", _wrap_DirectedGraph_removeInEdges, METH_VARARGS, NULL},
@@ -17054,9 +19517,12 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"EdgeIter_swigregister", EdgeIter_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_Data", _wrap_new_Data, METH_VARARGS, NULL},
 	 { (char *)"delete_Data", _wrap_delete_Data, METH_VARARGS, NULL},
-	 { (char *)"Data_getLabel", _wrap_Data_getLabel, METH_VARARGS, NULL},
-	 { (char *)"Data_hasLabel", _wrap_Data_hasLabel, METH_VARARGS, NULL},
-	 { (char *)"Data_setLabel", _wrap_Data_setLabel, METH_VARARGS, NULL},
+	 { (char *)"Data_getNodeLabel", _wrap_Data_getNodeLabel, METH_VARARGS, NULL},
+	 { (char *)"Data_hasNodeLabel", _wrap_Data_hasNodeLabel, METH_VARARGS, NULL},
+	 { (char *)"Data_setNodeLabel", _wrap_Data_setNodeLabel, METH_VARARGS, NULL},
+	 { (char *)"Data_getEdgeLabel", _wrap_Data_getEdgeLabel, METH_VARARGS, NULL},
+	 { (char *)"Data_hasEdgeLabel", _wrap_Data_hasEdgeLabel, METH_VARARGS, NULL},
+	 { (char *)"Data_setEdgeLabel", _wrap_Data_setEdgeLabel, METH_VARARGS, NULL},
 	 { (char *)"Data_addNodeAttributeColumn", _wrap_Data_addNodeAttributeColumn, METH_VARARGS, NULL},
 	 { (char *)"Data_addEdgeAttributeColumn", _wrap_Data_addEdgeAttributeColumn, METH_VARARGS, NULL},
 	 { (char *)"Data_setNodeAttributeDefault", _wrap_Data_setNodeAttributeDefault, METH_VARARGS, NULL},
@@ -17081,6 +19547,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Data_hasEdgeAttributeOptions", _wrap_Data_hasEdgeAttributeOptions, METH_VARARGS, NULL},
 	 { (char *)"Data_isNodeAttributeOption", _wrap_Data_isNodeAttributeOption, METH_VARARGS, NULL},
 	 { (char *)"Data_isEdgeAttributeOption", _wrap_Data_isEdgeAttributeOption, METH_VARARGS, NULL},
+	 { (char *)"Data_removeNodeAttributeColumn", _wrap_Data_removeNodeAttributeColumn, METH_VARARGS, NULL},
+	 { (char *)"Data_removeEdgeAttributeColumn", _wrap_Data_removeEdgeAttributeColumn, METH_VARARGS, NULL},
 	 { (char *)"Data_clearNodeAttributes", _wrap_Data_clearNodeAttributes, METH_VARARGS, NULL},
 	 { (char *)"Data_clearEdgeAttributes", _wrap_Data_clearEdgeAttributes, METH_VARARGS, NULL},
 	 { (char *)"Data_clear", _wrap_Data_clear, METH_VARARGS, NULL},
@@ -17173,6 +19641,7 @@ static swig_type_info _swigt__p_libgexf__AttributeIter = {"_p_libgexf__Attribute
 static swig_type_info _swigt__p_libgexf__Conv = {"_p_libgexf__Conv", "libgexf::Conv *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_libgexf__Data = {"_p_libgexf__Data", "libgexf::Data *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_libgexf__DirectedGraph = {"_p_libgexf__DirectedGraph", "libgexf::DirectedGraph *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_libgexf__DynamicGraph = {"_p_libgexf__DynamicGraph", "libgexf::DynamicGraph *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_libgexf__EdgeIter = {"_p_libgexf__EdgeIter", "libgexf::EdgeIter *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_libgexf__FileReader = {"_p_libgexf__FileReader", "libgexf::FileReader *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_libgexf__FileReaderException = {"_p_libgexf__FileReaderException", "libgexf::FileReaderException *", 0, 0, (void*)0, 0};
@@ -17191,6 +19660,10 @@ static swig_type_info _swigt__p_libgexf__RngValidator = {"_p_libgexf__RngValidat
 static swig_type_info _swigt__p_libgexf__SchemaValidator = {"_p_libgexf__SchemaValidator", "libgexf::SchemaValidator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_libgexf__UndirectedGraph = {"_p_libgexf__UndirectedGraph", "libgexf::UndirectedGraph *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_libgexf__WriteLockException = {"_p_libgexf__WriteLockException", "libgexf::WriteLockException *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_libgexf__t_attr_type = {"_p_libgexf__t_attr_type", "enum libgexf::t_attr_type *|libgexf::t_attr_type *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_libgexf__t_edge_property = {"_p_libgexf__t_edge_property", "enum libgexf::t_edge_property *|libgexf::t_edge_property *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_libgexf__t_edge_type = {"_p_libgexf__t_edge_type", "enum libgexf::t_edge_type *|libgexf::t_edge_type *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_libgexf__t_graph = {"_p_libgexf__t_graph", "enum libgexf::t_graph *|libgexf::t_graph *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_PyObject = {"_p_p_PyObject", "PyObject **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_size_type = {"_p_size_type", "size_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__exception = {"_p_std__exception", "std::exception *", 0, 0, (void*)0, 0};
@@ -17218,6 +19691,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_libgexf__Conv,
   &_swigt__p_libgexf__Data,
   &_swigt__p_libgexf__DirectedGraph,
+  &_swigt__p_libgexf__DynamicGraph,
   &_swigt__p_libgexf__EdgeIter,
   &_swigt__p_libgexf__FileReader,
   &_swigt__p_libgexf__FileReaderException,
@@ -17236,6 +19710,10 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_libgexf__SchemaValidator,
   &_swigt__p_libgexf__UndirectedGraph,
   &_swigt__p_libgexf__WriteLockException,
+  &_swigt__p_libgexf__t_attr_type,
+  &_swigt__p_libgexf__t_edge_property,
+  &_swigt__p_libgexf__t_edge_type,
+  &_swigt__p_libgexf__t_graph,
   &_swigt__p_p_PyObject,
   &_swigt__p_size_type,
   &_swigt__p_std__exception,
@@ -17263,6 +19741,7 @@ static swig_cast_info _swigc__p_libgexf__AttributeIter[] = {  {&_swigt__p_libgex
 static swig_cast_info _swigc__p_libgexf__Conv[] = {  {&_swigt__p_libgexf__Conv, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_libgexf__Data[] = {  {&_swigt__p_libgexf__Data, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_libgexf__DirectedGraph[] = {  {&_swigt__p_libgexf__DirectedGraph, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_libgexf__DynamicGraph[] = {  {&_swigt__p_libgexf__DynamicGraph, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_libgexf__EdgeIter[] = {  {&_swigt__p_libgexf__EdgeIter, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_libgexf__FileReader[] = {  {&_swigt__p_libgexf__FileReader, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_libgexf__FileReaderException[] = {  {&_swigt__p_libgexf__FileReaderException, 0, 0, 0},{0, 0, 0, 0}};
@@ -17281,6 +19760,10 @@ static swig_cast_info _swigc__p_libgexf__RngValidator[] = {  {&_swigt__p_libgexf
 static swig_cast_info _swigc__p_libgexf__SchemaValidator[] = {  {&_swigt__p_libgexf__SchemaValidator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_libgexf__UndirectedGraph[] = {  {&_swigt__p_libgexf__UndirectedGraph, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_libgexf__WriteLockException[] = {  {&_swigt__p_libgexf__WriteLockException, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_libgexf__t_attr_type[] = {  {&_swigt__p_libgexf__t_attr_type, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_libgexf__t_edge_property[] = {  {&_swigt__p_libgexf__t_edge_property, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_libgexf__t_edge_type[] = {  {&_swigt__p_libgexf__t_edge_type, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_libgexf__t_graph[] = {  {&_swigt__p_libgexf__t_graph, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_PyObject[] = {  {&_swigt__p_p_PyObject, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_size_type[] = {  {&_swigt__p_size_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__exception[] = {  {&_swigt__p_std__exception, 0, 0, 0},  {&_swigt__p_libgexf__ReadLockException, _p_libgexf__ReadLockExceptionTo_p_std__exception, 0, 0},  {&_swigt__p_libgexf__WriteLockException, _p_libgexf__WriteLockExceptionTo_p_std__exception, 0, 0},  {&_swigt__p_libgexf__FileWriterException, _p_libgexf__FileWriterExceptionTo_p_std__exception, 0, 0},  {&_swigt__p_libgexf__FileReaderException, _p_libgexf__FileReaderExceptionTo_p_std__exception, 0, 0},{0, 0, 0, 0}};
@@ -17308,6 +19791,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_libgexf__Conv,
   _swigc__p_libgexf__Data,
   _swigc__p_libgexf__DirectedGraph,
+  _swigc__p_libgexf__DynamicGraph,
   _swigc__p_libgexf__EdgeIter,
   _swigc__p_libgexf__FileReader,
   _swigc__p_libgexf__FileReaderException,
@@ -17326,6 +19810,10 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_libgexf__SchemaValidator,
   _swigc__p_libgexf__UndirectedGraph,
   _swigc__p_libgexf__WriteLockException,
+  _swigc__p_libgexf__t_attr_type,
+  _swigc__p_libgexf__t_edge_property,
+  _swigc__p_libgexf__t_edge_type,
+  _swigc__p_libgexf__t_graph,
   _swigc__p_p_PyObject,
   _swigc__p_size_type,
   _swigc__p_std__exception,
@@ -17932,22 +20420,24 @@ SWIG_init(void) {
   SWIG_InstallConstants(d,swig_const_table);
   
   
+  SWIG_Python_SetConstant(d, "GRAPH_UNDEF",SWIG_From_int(static_cast< int >(libgexf::GRAPH_UNDEF)));
   SWIG_Python_SetConstant(d, "GRAPH_DIRECTED",SWIG_From_int(static_cast< int >(libgexf::GRAPH_DIRECTED)));
   SWIG_Python_SetConstant(d, "GRAPH_UNDIRECTED",SWIG_From_int(static_cast< int >(libgexf::GRAPH_UNDIRECTED)));
   SWIG_Python_SetConstant(d, "GRAPH_MIXED",SWIG_From_int(static_cast< int >(libgexf::GRAPH_MIXED)));
   SWIG_Python_SetConstant(d, "EDGE_TYPE",SWIG_From_int(static_cast< int >(libgexf::EDGE_TYPE)));
-  SWIG_Python_SetConstant(d, "EDGE_COUNT",SWIG_From_int(static_cast< int >(libgexf::EDGE_COUNT)));
   SWIG_Python_SetConstant(d, "EDGE_WEIGHT",SWIG_From_int(static_cast< int >(libgexf::EDGE_WEIGHT)));
   SWIG_Python_SetConstant(d, "EDGE_UNDEF",SWIG_From_int(static_cast< int >(libgexf::EDGE_UNDEF)));
   SWIG_Python_SetConstant(d, "EDGE_DIRECTED",SWIG_From_int(static_cast< int >(libgexf::EDGE_DIRECTED)));
   SWIG_Python_SetConstant(d, "EDGE_UNDIRECTED",SWIG_From_int(static_cast< int >(libgexf::EDGE_UNDIRECTED)));
-  SWIG_Python_SetConstant(d, "EDGE_DOUBLE",SWIG_From_int(static_cast< int >(libgexf::EDGE_DOUBLE)));
+  SWIG_Python_SetConstant(d, "EDGE_MUTUAL",SWIG_From_int(static_cast< int >(libgexf::EDGE_MUTUAL)));
   SWIG_Python_SetConstant(d, "INTEGER",SWIG_From_int(static_cast< int >(libgexf::INTEGER)));
   SWIG_Python_SetConstant(d, "DOUBLE",SWIG_From_int(static_cast< int >(libgexf::DOUBLE)));
   SWIG_Python_SetConstant(d, "FLOAT",SWIG_From_int(static_cast< int >(libgexf::FLOAT)));
+  SWIG_Python_SetConstant(d, "LONG",SWIG_From_int(static_cast< int >(libgexf::LONG)));
   SWIG_Python_SetConstant(d, "BOOLEAN",SWIG_From_int(static_cast< int >(libgexf::BOOLEAN)));
   SWIG_Python_SetConstant(d, "STRING",SWIG_From_int(static_cast< int >(libgexf::STRING)));
-  SWIG_Python_SetConstant(d, "LIST_STRING",SWIG_From_int(static_cast< int >(libgexf::LIST_STRING)));
+  SWIG_Python_SetConstant(d, "LISTSTRING",SWIG_From_int(static_cast< int >(libgexf::LISTSTRING)));
+  SWIG_Python_SetConstant(d, "ANYURI",SWIG_From_int(static_cast< int >(libgexf::ANYURI)));
   SWIG_Python_SetConstant(d, "FileReader__1_0",SWIG_From_int(static_cast< int >(libgexf::FileReader::_1_0)));
   SWIG_Python_SetConstant(d, "FileReader__1_1",SWIG_From_int(static_cast< int >(libgexf::FileReader::_1_1)));
   SWIG_Python_SetConstant(d, "FileWriter_NODE",SWIG_From_int(static_cast< int >(libgexf::FileWriter::NODE)));

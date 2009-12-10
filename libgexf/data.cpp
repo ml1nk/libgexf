@@ -326,6 +326,18 @@ bool Data::isEdgeAttributeOption(const libgexf::t_id attr_id, const std::string&
     return false;
 }
 
+//-----------------------------------------
+void Data::removeNodeAttributeColumn(const libgexf::t_id attr_id) {
+//-----------------------------------------
+cerr << "WARN " << "Data::removeNodeAttributeColumn() is not coded yet!" << endl;
+}
+
+//-----------------------------------------
+void Data::removeEdgeAttributeColumn(const libgexf::t_id attr_id) {
+//-----------------------------------------
+cerr << "WARN " << "Data::removeEdgeAttributeColumn() is not coded yet!" << endl;
+}
+
 
 //-----------------------------------------
 void Data::setNodeValue(const t_id node_id, const t_id attr_id, const std::string& value) {
@@ -354,8 +366,6 @@ void Data::clearEdgeAttributes(const t_id edge_id) {
 //-----------------------------------------
 void Data::clear() {
 //-----------------------------------------
-    _node_labels.clear();
-    _edge_labels.clear();
     _node_attributes.clear();
     _edge_attributes.clear();
     _node_attributes_types.clear();
@@ -373,7 +383,6 @@ void Data::clear() {
 //-----------------------------------------
 void Data::clearEdgesAttributes() {
 //-----------------------------------------
-    _edge_labels.clear();
     _edge_attributes.clear();
     _edge_attributes_types.clear();
     _edge_values.clear();

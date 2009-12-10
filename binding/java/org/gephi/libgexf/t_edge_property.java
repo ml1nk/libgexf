@@ -10,7 +10,6 @@ package org.gephi.libgexf;
 
 public final class t_edge_property {
   public final static t_edge_property EDGE_TYPE = new t_edge_property("EDGE_TYPE");
-  public final static t_edge_property EDGE_COUNT = new t_edge_property("EDGE_COUNT");
   public final static t_edge_property EDGE_WEIGHT = new t_edge_property("EDGE_WEIGHT");
 
   public final int swigValue() {
@@ -47,7 +46,7 @@ public final class t_edge_property {
     swigNext = this.swigValue+1;
   }
 
-  private static t_edge_property[] swigValues = { EDGE_TYPE, EDGE_COUNT, EDGE_WEIGHT };
+  private static t_edge_property[] swigValues = { EDGE_TYPE, EDGE_WEIGHT };
   private static int swigNext = 0;
   private final int swigValue;
   private final String swigName;

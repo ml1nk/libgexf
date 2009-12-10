@@ -80,6 +80,23 @@ void GEXF::setGraphType(t_graph t) {
 }
 
 //-----------------------------------------
+std::string GEXF::getGraphMode() {
+//-----------------------------------------
+    return _mode;
+}
+
+//-----------------------------------------
+void GEXF::initGraphMode(const std::string& mode) {
+//-----------------------------------------
+    if(mode.compare("static") == 0 || mode.compare("dynamic") == 0) {
+        _mode = mode;
+    }
+    else {
+        _mode = "static";
+    }
+}
+
+//-----------------------------------------
 Data& GEXF::getData() {
 //-----------------------------------------
     return _data;

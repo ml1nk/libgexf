@@ -67,6 +67,14 @@ public class GEXF {
     return t_graph.swigToEnum(libgexfJNI.GEXF_getGraphType(swigCPtr, this));
   }
 
+  public void initGraphMode(String mode) {
+    libgexfJNI.GEXF_initGraphMode(swigCPtr, this, mode);
+  }
+
+  public String getGraphMode() {
+    return libgexfJNI.GEXF_getGraphMode(swigCPtr, this);
+  }
+
   public boolean checkIntegrity() {
     return libgexfJNI.GEXF_checkIntegrity(swigCPtr, this);
   }
@@ -86,6 +94,14 @@ public class GEXF {
 
   public t_graph get_type() {
     return t_graph.swigToEnum(libgexfJNI.GEXF__type_get(swigCPtr, this));
+  }
+
+  public void set_mode(String value) {
+    libgexfJNI.GEXF__mode_set(swigCPtr, this, value);
+  }
+
+  public String get_mode() {
+    return libgexfJNI.GEXF__mode_get(swigCPtr, this);
   }
 
   public void set_data(Data value) {

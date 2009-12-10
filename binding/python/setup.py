@@ -20,6 +20,7 @@ libgexf_module = Extension(
     
     #io::input
     '../../libgexf/filereader.cpp',
+    '../../libgexf/abstractparser.cpp',
     '../../libgexf/gexfparser.cpp',
     '../../libgexf/legacyparser.cpp',
     '../../libgexf/rngvalidator.cpp',
@@ -34,6 +35,7 @@ libgexf_module = Extension(
     
     #db::topo
     '../../libgexf/graph.cpp',
+    '../../libgexf/dynamicgraph.cpp',
     '../../libgexf/directedgraph.cpp',
     '../../libgexf/undirectedgraph.cpp',
     '../../libgexf/nodeiter.cpp',
@@ -70,10 +72,10 @@ setup (
        name='libgexf', # important, c'est le vrai nom du module, qui sera utilisé quand on fera un "import libgexf;" par exemple
 
        # metadonnees diverses
-       version='0.1.1', 
+       version='0.1.2', 
        author="Sebastien Heymann",
        author_email="sebastien.heymann@gephi.org",
-       url="http://gephi.org",
+       url="http://gexf.net",
        description="""Toolkit library for GEXF file format.""",
        long_description="""""",
        

@@ -9,6 +9,7 @@
 package org.gephi.libgexf;
 
 public final class t_graph {
+  public final static t_graph GRAPH_UNDEF = new t_graph("GRAPH_UNDEF");
   public final static t_graph GRAPH_DIRECTED = new t_graph("GRAPH_DIRECTED");
   public final static t_graph GRAPH_UNDIRECTED = new t_graph("GRAPH_UNDIRECTED");
   public final static t_graph GRAPH_MIXED = new t_graph("GRAPH_MIXED");
@@ -47,7 +48,7 @@ public final class t_graph {
     swigNext = this.swigValue+1;
   }
 
-  private static t_graph[] swigValues = { GRAPH_DIRECTED, GRAPH_UNDIRECTED, GRAPH_MIXED };
+  private static t_graph[] swigValues = { GRAPH_UNDEF, GRAPH_DIRECTED, GRAPH_UNDIRECTED, GRAPH_MIXED };
   private static int swigNext = 0;
   private final int swigValue;
   private final String swigName;

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.gephi.org/gexf/1.1draft" xmlns:gexf="http://www.gephi.org/gexf/1.1draft">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.gexf.net/1.1draft" xmlns:ns1="http://www.gexf.net/1.1draft">
   <xs:include schemaLocation="data.xsd"/>
   <xs:include schemaLocation="dynamics.xsd"/>
   <xs:include schemaLocation="hierarchy.xsd"/>
   <xs:include schemaLocation="phylogenics.xsd"/>
   <xs:import schemaLocation="viz.xsd"/>
-  <xs:element name="gexf" type="gexf:gexf-content"/>
+  <xs:element name="gexf" type="ns1:gexf-content"/>
   <xs:complexType name="gexf-content">
     <xs:annotation>
       <xs:documentation>Tree</xs:documentation>
     </xs:annotation>
     <xs:choice minOccurs="0" maxOccurs="unbounded">
-      <xs:element ref="gexf:meta"/>
-      <xs:element ref="gexf:graph"/>
+      <xs:element ref="ns1:meta"/>
+      <xs:element ref="ns1:graph"/>
     </xs:choice>
     <xs:attribute name="version" use="required">
       <xs:simpleType>
@@ -23,13 +23,13 @@
     </xs:attribute>
     <xs:attribute name="variant" type="xs:string"/>
   </xs:complexType>
-  <xs:element name="meta" type="gexf:meta-content"/>
-  <xs:element name="graph" type="gexf:graph-content"/>
+  <xs:element name="meta" type="ns1:meta-content"/>
+  <xs:element name="graph" type="ns1:graph-content"/>
   <xs:complexType name="meta-content">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
-      <xs:element ref="gexf:creator"/>
-      <xs:element ref="gexf:keywords"/>
-      <xs:element ref="gexf:description"/>
+      <xs:element ref="ns1:creator"/>
+      <xs:element ref="ns1:keywords"/>
+      <xs:element ref="ns1:description"/>
     </xs:choice>
     <xs:attribute name="lastmodifieddate" type="xs:date"/>
   </xs:complexType>
@@ -38,18 +38,18 @@
   <xs:element name="description" type="xs:string"/>
   <xs:complexType name="nodes-content">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" ref="gexf:node"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns1:node"/>
     </xs:sequence>
     <xs:attribute name="count" type="xs:nonNegativeInteger"/>
   </xs:complexType>
-  <xs:element name="node" type="gexf:node-content"/>
+  <xs:element name="node" type="ns1:node-content"/>
   <xs:complexType name="edges-content">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" ref="gexf:edge"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns1:edge"/>
     </xs:sequence>
     <xs:attribute name="count" type="xs:nonNegativeInteger"/>
   </xs:complexType>
-  <xs:element name="edge" type="gexf:edge-content"/>
+  <xs:element name="edge" type="ns1:edge-content"/>
   <xs:simpleType name="defaultedgetype-type">
     <xs:annotation>
       <xs:documentation>Datatypes</xs:documentation>

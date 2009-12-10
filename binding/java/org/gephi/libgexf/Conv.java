@@ -51,12 +51,20 @@ public class Conv {
     return libgexfJNI.Conv_xmlCharToUnsignedInt(SWIGTYPE_p_xmlChar.getCPtr(str));
   }
 
+  public static float xmlCharToFloat(SWIGTYPE_p_xmlChar str) {
+    return libgexfJNI.Conv_xmlCharToFloat(SWIGTYPE_p_xmlChar.getCPtr(str));
+  }
+
   public static String idToStr(String id) {
     return libgexfJNI.Conv_idToStr(id);
   }
 
   public static String unsignedIntToStr(long i) {
     return libgexfJNI.Conv_unsignedIntToStr(i);
+  }
+
+  public static String floatToStr(float f) {
+    return libgexfJNI.Conv_floatToStr(f);
   }
 
   public static long strToUnsignedInt(String str) {
@@ -85,6 +93,14 @@ public class Conv {
 
   public static boolean isFloat(String str) {
     return libgexfJNI.Conv_isFloat(str);
+  }
+
+  public static boolean isLong(String str) {
+    return libgexfJNI.Conv_isLong(str);
+  }
+
+  public static boolean isAnyURI(String str) {
+    return libgexfJNI.Conv_isAnyURI(str);
   }
 
   public static SWIGTYPE_p_std__setT_std__string_t tokenizer(String delimiter, String str) {

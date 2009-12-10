@@ -12,9 +12,11 @@ public final class t_attr_type {
   public final static t_attr_type INTEGER = new t_attr_type("INTEGER");
   public final static t_attr_type DOUBLE = new t_attr_type("DOUBLE");
   public final static t_attr_type FLOAT = new t_attr_type("FLOAT");
+  public final static t_attr_type LONG = new t_attr_type("LONG");
   public final static t_attr_type BOOLEAN = new t_attr_type("BOOLEAN");
   public final static t_attr_type STRING = new t_attr_type("STRING");
-  public final static t_attr_type LIST_STRING = new t_attr_type("LIST_STRING");
+  public final static t_attr_type LISTSTRING = new t_attr_type("LISTSTRING");
+  public final static t_attr_type ANYURI = new t_attr_type("ANYURI");
 
   public final int swigValue() {
     return swigValue;
@@ -50,7 +52,7 @@ public final class t_attr_type {
     swigNext = this.swigValue+1;
   }
 
-  private static t_attr_type[] swigValues = { INTEGER, DOUBLE, FLOAT, BOOLEAN, STRING, LIST_STRING };
+  private static t_attr_type[] swigValues = { INTEGER, DOUBLE, FLOAT, LONG, BOOLEAN, STRING, LISTSTRING, ANYURI };
   private static int swigNext = 0;
   private final int swigValue;
   private final String swigName;

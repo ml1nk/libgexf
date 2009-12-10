@@ -43,24 +43,44 @@ public class Data {
     this(libgexfJNI.new_Data__SWIG_1(Data.getCPtr(orig), orig), true);
   }
 
-  public String getLabel(String node_id) {
-    return libgexfJNI.Data_getLabel(swigCPtr, this, node_id);
+  public String getNodeLabel(String node_id) {
+    return libgexfJNI.Data_getNodeLabel(swigCPtr, this, node_id);
   }
 
-  public boolean hasLabel(String node_id) {
-    return libgexfJNI.Data_hasLabel(swigCPtr, this, node_id);
+  public boolean hasNodeLabel(String node_id) {
+    return libgexfJNI.Data_hasNodeLabel(swigCPtr, this, node_id);
   }
 
-  public void setLabel(String node_id, String label) {
-    libgexfJNI.Data_setLabel(swigCPtr, this, node_id, label);
+  public void setNodeLabel(String node_id, String label) {
+    libgexfJNI.Data_setNodeLabel(swigCPtr, this, node_id, label);
   }
 
-  public void addNodeAttributeColumn(String id, String title, t_attr_type type) {
-    libgexfJNI.Data_addNodeAttributeColumn(swigCPtr, this, id, title, type.swigValue());
+  public String getEdgeLabel(String edge_id) {
+    return libgexfJNI.Data_getEdgeLabel(swigCPtr, this, edge_id);
   }
 
-  public void addEdgeAttributeColumn(String id, String title, t_attr_type type) {
-    libgexfJNI.Data_addEdgeAttributeColumn(swigCPtr, this, id, title, type.swigValue());
+  public boolean hasEdgeLabel(String edge_id) {
+    return libgexfJNI.Data_hasEdgeLabel(swigCPtr, this, edge_id);
+  }
+
+  public void setEdgeLabel(String edge_id, String label) {
+    libgexfJNI.Data_setEdgeLabel(swigCPtr, this, edge_id, label);
+  }
+
+  public void addNodeAttributeColumn(String id, String title, String type) {
+    libgexfJNI.Data_addNodeAttributeColumn__SWIG_0(swigCPtr, this, id, title, type);
+  }
+
+  public void addNodeAttributeColumn(String id, String title) {
+    libgexfJNI.Data_addNodeAttributeColumn__SWIG_1(swigCPtr, this, id, title);
+  }
+
+  public void addEdgeAttributeColumn(String id, String title, String type) {
+    libgexfJNI.Data_addEdgeAttributeColumn__SWIG_0(swigCPtr, this, id, title, type);
+  }
+
+  public void addEdgeAttributeColumn(String id, String title) {
+    libgexfJNI.Data_addEdgeAttributeColumn__SWIG_1(swigCPtr, this, id, title);
   }
 
   public void setNodeAttributeDefault(String attr_id, String default_value) {
@@ -153,6 +173,14 @@ public class Data {
 
   public boolean isEdgeAttributeOption(String attr_id, String option) {
     return libgexfJNI.Data_isEdgeAttributeOption(swigCPtr, this, attr_id, option);
+  }
+
+  public void removeNodeAttributeColumn(String attr_id) {
+    libgexfJNI.Data_removeNodeAttributeColumn(swigCPtr, this, attr_id);
+  }
+
+  public void removeEdgeAttributeColumn(String attr_id) {
+    libgexfJNI.Data_removeEdgeAttributeColumn(swigCPtr, this, attr_id);
   }
 
   public void clearNodeAttributes(String node_id) {

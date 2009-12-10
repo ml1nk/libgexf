@@ -276,11 +276,15 @@ sub DESTROY {
 *getMetaData = *Graph::LibGEXFc::GEXF_getMetaData;
 *setGraphType = *Graph::LibGEXFc::GEXF_setGraphType;
 *getGraphType = *Graph::LibGEXFc::GEXF_getGraphType;
+*initGraphMode = *Graph::LibGEXFc::GEXF_initGraphMode;
+*getGraphMode = *Graph::LibGEXFc::GEXF_getGraphMode;
 *checkIntegrity = *Graph::LibGEXFc::GEXF_checkIntegrity;
 *swig__graph_get = *Graph::LibGEXFc::GEXF__graph_get;
 *swig__graph_set = *Graph::LibGEXFc::GEXF__graph_set;
 *swig__type_get = *Graph::LibGEXFc::GEXF__type_get;
 *swig__type_set = *Graph::LibGEXFc::GEXF__type_set;
+*swig__mode_get = *Graph::LibGEXFc::GEXF__mode_get;
+*swig__mode_set = *Graph::LibGEXFc::GEXF__mode_set;
 *swig__data_get = *Graph::LibGEXFc::GEXF__data_get;
 *swig__data_set = *Graph::LibGEXFc::GEXF__data_set;
 *swig__meta_get = *Graph::LibGEXFc::GEXF__meta_get;
@@ -678,8 +682,10 @@ sub DESTROY {
 *strToId = *Graph::LibGEXFc::Conv_strToId;
 *xmlCharToStr = *Graph::LibGEXFc::Conv_xmlCharToStr;
 *xmlCharToUnsignedInt = *Graph::LibGEXFc::Conv_xmlCharToUnsignedInt;
+*xmlCharToFloat = *Graph::LibGEXFc::Conv_xmlCharToFloat;
 *idToStr = *Graph::LibGEXFc::Conv_idToStr;
 *unsignedIntToStr = *Graph::LibGEXFc::Conv_unsignedIntToStr;
+*floatToStr = *Graph::LibGEXFc::Conv_floatToStr;
 *strToUnsignedInt = *Graph::LibGEXFc::Conv_strToUnsignedInt;
 *edgeTypeToStr = *Graph::LibGEXFc::Conv_edgeTypeToStr;
 *attrTypeToStr = *Graph::LibGEXFc::Conv_attrTypeToStr;
@@ -687,6 +693,8 @@ sub DESTROY {
 *isDouble = *Graph::LibGEXFc::Conv_isDouble;
 *isInteger = *Graph::LibGEXFc::Conv_isInteger;
 *isFloat = *Graph::LibGEXFc::Conv_isFloat;
+*isLong = *Graph::LibGEXFc::Conv_isLong;
+*isAnyURI = *Graph::LibGEXFc::Conv_isAnyURI;
 *tokenizer = *Graph::LibGEXFc::Conv_tokenizer;
 sub DISOWN {
     my $self = shift;
@@ -731,6 +739,7 @@ sub DESTROY {
 *removeEdge = *Graph::LibGEXFc::Graph_removeEdge;
 *containsNode = *Graph::LibGEXFc::Graph_containsNode;
 *containsEdge = *Graph::LibGEXFc::Graph_containsEdge;
+*getEdge = *Graph::LibGEXFc::Graph_getEdge;
 *getNodes = *Graph::LibGEXFc::Graph_getNodes;
 *getEdges = *Graph::LibGEXFc::Graph_getEdges;
 *getNeighbors = *Graph::LibGEXFc::Graph_getNeighbors;
@@ -830,7 +839,6 @@ sub DESTROY {
     }
 }
 
-*mergeSimilarEdges = *Graph::LibGEXFc::UndirectedGraph_mergeSimilarEdges;
 sub DISOWN {
     my $self = shift;
     my $ptr = tied(%$self);
@@ -977,6 +985,8 @@ sub DESTROY {
 *hasEdgeAttributeOptions = *Graph::LibGEXFc::Data_hasEdgeAttributeOptions;
 *isNodeAttributeOption = *Graph::LibGEXFc::Data_isNodeAttributeOption;
 *isEdgeAttributeOption = *Graph::LibGEXFc::Data_isEdgeAttributeOption;
+*removeNodeAttributeColumn = *Graph::LibGEXFc::Data_removeNodeAttributeColumn;
+*removeEdgeAttributeColumn = *Graph::LibGEXFc::Data_removeEdgeAttributeColumn;
 *clearNodeAttributes = *Graph::LibGEXFc::Data_clearNodeAttributes;
 *clearEdgeAttributes = *Graph::LibGEXFc::Data_clearEdgeAttributes;
 *clear = *Graph::LibGEXFc::Data_clear;
@@ -1137,22 +1147,24 @@ sub ACQUIRE {
 
 package Graph::LibGEXF;
 
+*GRAPH_UNDEF = *Graph::LibGEXFc::GRAPH_UNDEF;
 *GRAPH_DIRECTED = *Graph::LibGEXFc::GRAPH_DIRECTED;
 *GRAPH_UNDIRECTED = *Graph::LibGEXFc::GRAPH_UNDIRECTED;
 *GRAPH_MIXED = *Graph::LibGEXFc::GRAPH_MIXED;
 *EDGE_TYPE = *Graph::LibGEXFc::EDGE_TYPE;
-*EDGE_COUNT = *Graph::LibGEXFc::EDGE_COUNT;
 *EDGE_WEIGHT = *Graph::LibGEXFc::EDGE_WEIGHT;
 *EDGE_UNDEF = *Graph::LibGEXFc::EDGE_UNDEF;
 *EDGE_DIRECTED = *Graph::LibGEXFc::EDGE_DIRECTED;
 *EDGE_UNDIRECTED = *Graph::LibGEXFc::EDGE_UNDIRECTED;
-*EDGE_DOUBLE = *Graph::LibGEXFc::EDGE_DOUBLE;
+*EDGE_MUTUAL = *Graph::LibGEXFc::EDGE_MUTUAL;
 *INTEGER = *Graph::LibGEXFc::INTEGER;
 *DOUBLE = *Graph::LibGEXFc::DOUBLE;
 *FLOAT = *Graph::LibGEXFc::FLOAT;
+*LONG = *Graph::LibGEXFc::LONG;
 *BOOLEAN = *Graph::LibGEXFc::BOOLEAN;
 *STRING = *Graph::LibGEXFc::STRING;
 *LISTSTRING = *Graph::LibGEXFc::LISTSTRING;
+*ANYURI = *Graph::LibGEXFc::ANYURI;
 use version;
 our $VERSION = '0.01';
 1;

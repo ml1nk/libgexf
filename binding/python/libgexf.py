@@ -181,22 +181,24 @@ class StringVector(_object):
 StringVector_swigregister = _libgexf.StringVector_swigregister
 StringVector_swigregister(StringVector)
 
+GRAPH_UNDEF = _libgexf.GRAPH_UNDEF
 GRAPH_DIRECTED = _libgexf.GRAPH_DIRECTED
 GRAPH_UNDIRECTED = _libgexf.GRAPH_UNDIRECTED
 GRAPH_MIXED = _libgexf.GRAPH_MIXED
 EDGE_TYPE = _libgexf.EDGE_TYPE
-EDGE_COUNT = _libgexf.EDGE_COUNT
 EDGE_WEIGHT = _libgexf.EDGE_WEIGHT
 EDGE_UNDEF = _libgexf.EDGE_UNDEF
 EDGE_DIRECTED = _libgexf.EDGE_DIRECTED
 EDGE_UNDIRECTED = _libgexf.EDGE_UNDIRECTED
-EDGE_DOUBLE = _libgexf.EDGE_DOUBLE
+EDGE_MUTUAL = _libgexf.EDGE_MUTUAL
 INTEGER = _libgexf.INTEGER
 DOUBLE = _libgexf.DOUBLE
 FLOAT = _libgexf.FLOAT
+LONG = _libgexf.LONG
 BOOLEAN = _libgexf.BOOLEAN
 STRING = _libgexf.STRING
-LIST_STRING = _libgexf.LIST_STRING
+LISTSTRING = _libgexf.LISTSTRING
+ANYURI = _libgexf.ANYURI
 class ReadLockException(Exception):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, ReadLockException, name, value)
@@ -279,6 +281,8 @@ class GEXF(_object):
     def getMetaData(self): return _libgexf.GEXF_getMetaData(self)
     def setGraphType(self, *args): return _libgexf.GEXF_setGraphType(self, *args)
     def getGraphType(self): return _libgexf.GEXF_getGraphType(self)
+    def initGraphMode(self, *args): return _libgexf.GEXF_initGraphMode(self, *args)
+    def getGraphMode(self): return _libgexf.GEXF_getGraphMode(self)
     def checkIntegrity(self): return _libgexf.GEXF_checkIntegrity(self)
     __swig_setmethods__["_graph"] = _libgexf.GEXF__graph_set
     __swig_getmethods__["_graph"] = _libgexf.GEXF__graph_get
@@ -286,6 +290,9 @@ class GEXF(_object):
     __swig_setmethods__["_type"] = _libgexf.GEXF__type_set
     __swig_getmethods__["_type"] = _libgexf.GEXF__type_get
     if _newclass:_type = _swig_property(_libgexf.GEXF__type_get, _libgexf.GEXF__type_set)
+    __swig_setmethods__["_mode"] = _libgexf.GEXF__mode_set
+    __swig_getmethods__["_mode"] = _libgexf.GEXF__mode_get
+    if _newclass:_mode = _swig_property(_libgexf.GEXF__mode_get, _libgexf.GEXF__mode_set)
     __swig_setmethods__["_data"] = _libgexf.GEXF__data_set
     __swig_getmethods__["_data"] = _libgexf.GEXF__data_get
     if _newclass:_data = _swig_property(_libgexf.GEXF__data_get, _libgexf.GEXF__data_set)
@@ -487,10 +494,14 @@ class Conv(_object):
     if _newclass:xmlCharToStr = staticmethod(_libgexf.Conv_xmlCharToStr)
     __swig_getmethods__["xmlCharToUnsignedInt"] = lambda x: _libgexf.Conv_xmlCharToUnsignedInt
     if _newclass:xmlCharToUnsignedInt = staticmethod(_libgexf.Conv_xmlCharToUnsignedInt)
+    __swig_getmethods__["xmlCharToFloat"] = lambda x: _libgexf.Conv_xmlCharToFloat
+    if _newclass:xmlCharToFloat = staticmethod(_libgexf.Conv_xmlCharToFloat)
     __swig_getmethods__["idToStr"] = lambda x: _libgexf.Conv_idToStr
     if _newclass:idToStr = staticmethod(_libgexf.Conv_idToStr)
     __swig_getmethods__["unsignedIntToStr"] = lambda x: _libgexf.Conv_unsignedIntToStr
     if _newclass:unsignedIntToStr = staticmethod(_libgexf.Conv_unsignedIntToStr)
+    __swig_getmethods__["floatToStr"] = lambda x: _libgexf.Conv_floatToStr
+    if _newclass:floatToStr = staticmethod(_libgexf.Conv_floatToStr)
     __swig_getmethods__["strToUnsignedInt"] = lambda x: _libgexf.Conv_strToUnsignedInt
     if _newclass:strToUnsignedInt = staticmethod(_libgexf.Conv_strToUnsignedInt)
     __swig_getmethods__["edgeTypeToStr"] = lambda x: _libgexf.Conv_edgeTypeToStr
@@ -505,6 +516,10 @@ class Conv(_object):
     if _newclass:isInteger = staticmethod(_libgexf.Conv_isInteger)
     __swig_getmethods__["isFloat"] = lambda x: _libgexf.Conv_isFloat
     if _newclass:isFloat = staticmethod(_libgexf.Conv_isFloat)
+    __swig_getmethods__["isLong"] = lambda x: _libgexf.Conv_isLong
+    if _newclass:isLong = staticmethod(_libgexf.Conv_isLong)
+    __swig_getmethods__["isAnyURI"] = lambda x: _libgexf.Conv_isAnyURI
+    if _newclass:isAnyURI = staticmethod(_libgexf.Conv_isAnyURI)
     __swig_getmethods__["tokenizer"] = lambda x: _libgexf.Conv_tokenizer
     if _newclass:tokenizer = staticmethod(_libgexf.Conv_tokenizer)
 Conv_swigregister = _libgexf.Conv_swigregister
@@ -526,6 +541,10 @@ def Conv_xmlCharToUnsignedInt(*args):
   return _libgexf.Conv_xmlCharToUnsignedInt(*args)
 Conv_xmlCharToUnsignedInt = _libgexf.Conv_xmlCharToUnsignedInt
 
+def Conv_xmlCharToFloat(*args):
+  return _libgexf.Conv_xmlCharToFloat(*args)
+Conv_xmlCharToFloat = _libgexf.Conv_xmlCharToFloat
+
 def Conv_idToStr(*args):
   return _libgexf.Conv_idToStr(*args)
 Conv_idToStr = _libgexf.Conv_idToStr
@@ -533,6 +552,10 @@ Conv_idToStr = _libgexf.Conv_idToStr
 def Conv_unsignedIntToStr(*args):
   return _libgexf.Conv_unsignedIntToStr(*args)
 Conv_unsignedIntToStr = _libgexf.Conv_unsignedIntToStr
+
+def Conv_floatToStr(*args):
+  return _libgexf.Conv_floatToStr(*args)
+Conv_floatToStr = _libgexf.Conv_floatToStr
 
 def Conv_strToUnsignedInt(*args):
   return _libgexf.Conv_strToUnsignedInt(*args)
@@ -562,6 +585,14 @@ def Conv_isFloat(*args):
   return _libgexf.Conv_isFloat(*args)
 Conv_isFloat = _libgexf.Conv_isFloat
 
+def Conv_isLong(*args):
+  return _libgexf.Conv_isLong(*args)
+Conv_isLong = _libgexf.Conv_isLong
+
+def Conv_isAnyURI(*args):
+  return _libgexf.Conv_isAnyURI(*args)
+Conv_isAnyURI = _libgexf.Conv_isAnyURI
+
 def Conv_tokenizer(*args):
   return _libgexf.Conv_tokenizer(*args)
 Conv_tokenizer = _libgexf.Conv_tokenizer
@@ -584,6 +615,7 @@ class Graph(_object):
     def removeEdge(self, *args): return _libgexf.Graph_removeEdge(self, *args)
     def containsNode(self, *args): return _libgexf.Graph_containsNode(self, *args)
     def containsEdge(self, *args): return _libgexf.Graph_containsEdge(self, *args)
+    def getEdge(self, *args): return _libgexf.Graph_getEdge(self, *args)
     def getNodes(self): return _libgexf.Graph_getNodes(self)
     def getEdges(self): return _libgexf.Graph_getEdges(self)
     def getNeighbors(self, *args): return _libgexf.Graph_getNeighbors(self, *args)
@@ -601,6 +633,48 @@ class Graph(_object):
     def isUnlock(self): return _libgexf.Graph_isUnlock(self)
 Graph_swigregister = _libgexf.Graph_swigregister
 Graph_swigregister(Graph)
+
+class DynamicGraph(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, DynamicGraph, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, DynamicGraph, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _libgexf.new_DynamicGraph(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _libgexf.delete_DynamicGraph
+    __del__ = lambda self : None;
+    def hasNodeStart(self, *args): return _libgexf.DynamicGraph_hasNodeStart(self, *args)
+    def hasEdgeStart(self, *args): return _libgexf.DynamicGraph_hasEdgeStart(self, *args)
+    def hasNodeEnd(self, *args): return _libgexf.DynamicGraph_hasNodeEnd(self, *args)
+    def hasEdgeEnd(self, *args): return _libgexf.DynamicGraph_hasEdgeEnd(self, *args)
+    def getNodeStart(self, *args): return _libgexf.DynamicGraph_getNodeStart(self, *args)
+    def getEdgeStart(self, *args): return _libgexf.DynamicGraph_getEdgeStart(self, *args)
+    def getNodeEnd(self, *args): return _libgexf.DynamicGraph_getNodeEnd(self, *args)
+    def getEdgeEnd(self, *args): return _libgexf.DynamicGraph_getEdgeEnd(self, *args)
+    def setNodeStart(self, *args): return _libgexf.DynamicGraph_setNodeStart(self, *args)
+    def setEdgeStart(self, *args): return _libgexf.DynamicGraph_setEdgeStart(self, *args)
+    def setNodeEnd(self, *args): return _libgexf.DynamicGraph_setNodeEnd(self, *args)
+    def setEdgeEnd(self, *args): return _libgexf.DynamicGraph_setEdgeEnd(self, *args)
+    def getDegree(self, *args): return _libgexf.DynamicGraph_getDegree(self, *args)
+    def addNode(self, *args): return _libgexf.DynamicGraph_addNode(self, *args)
+    def addEdge(self, *args): return _libgexf.DynamicGraph_addEdge(self, *args)
+    def removeNode(self, *args): return _libgexf.DynamicGraph_removeNode(self, *args)
+    def removeEdge(self, *args): return _libgexf.DynamicGraph_removeEdge(self, *args)
+    def containsNode(self, *args): return _libgexf.DynamicGraph_containsNode(self, *args)
+    def containsEdge(self, *args): return _libgexf.DynamicGraph_containsEdge(self, *args)
+    def getEdge(self, *args): return _libgexf.DynamicGraph_getEdge(self, *args)
+    def getNodes(self): return _libgexf.DynamicGraph_getNodes(self)
+    def getEdges(self): return _libgexf.DynamicGraph_getEdges(self)
+    def getNeighbors(self, *args): return _libgexf.DynamicGraph_getNeighbors(self, *args)
+    def getNodeCount(self): return _libgexf.DynamicGraph_getNodeCount(self)
+    def getEdgeCount(self): return _libgexf.DynamicGraph_getEdgeCount(self)
+    def clearEdges(self, *args): return _libgexf.DynamicGraph_clearEdges(self, *args)
+    def clear(self): return _libgexf.DynamicGraph_clear(self)
+DynamicGraph_swigregister = _libgexf.DynamicGraph_swigregister
+DynamicGraph_swigregister(DynamicGraph)
 
 class DirectedGraph(Graph):
     __swig_setmethods__ = {}
@@ -697,9 +771,12 @@ class Data(_object):
         except: self.this = this
     __swig_destroy__ = _libgexf.delete_Data
     __del__ = lambda self : None;
-    def getLabel(self, *args): return _libgexf.Data_getLabel(self, *args)
-    def hasLabel(self, *args): return _libgexf.Data_hasLabel(self, *args)
-    def setLabel(self, *args): return _libgexf.Data_setLabel(self, *args)
+    def getNodeLabel(self, *args): return _libgexf.Data_getNodeLabel(self, *args)
+    def hasNodeLabel(self, *args): return _libgexf.Data_hasNodeLabel(self, *args)
+    def setNodeLabel(self, *args): return _libgexf.Data_setNodeLabel(self, *args)
+    def getEdgeLabel(self, *args): return _libgexf.Data_getEdgeLabel(self, *args)
+    def hasEdgeLabel(self, *args): return _libgexf.Data_hasEdgeLabel(self, *args)
+    def setEdgeLabel(self, *args): return _libgexf.Data_setEdgeLabel(self, *args)
     def addNodeAttributeColumn(self, *args): return _libgexf.Data_addNodeAttributeColumn(self, *args)
     def addEdgeAttributeColumn(self, *args): return _libgexf.Data_addEdgeAttributeColumn(self, *args)
     def setNodeAttributeDefault(self, *args): return _libgexf.Data_setNodeAttributeDefault(self, *args)
@@ -724,6 +801,8 @@ class Data(_object):
     def hasEdgeAttributeOptions(self, *args): return _libgexf.Data_hasEdgeAttributeOptions(self, *args)
     def isNodeAttributeOption(self, *args): return _libgexf.Data_isNodeAttributeOption(self, *args)
     def isEdgeAttributeOption(self, *args): return _libgexf.Data_isEdgeAttributeOption(self, *args)
+    def removeNodeAttributeColumn(self, *args): return _libgexf.Data_removeNodeAttributeColumn(self, *args)
+    def removeEdgeAttributeColumn(self, *args): return _libgexf.Data_removeEdgeAttributeColumn(self, *args)
     def clearNodeAttributes(self, *args): return _libgexf.Data_clearNodeAttributes(self, *args)
     def clearEdgeAttributes(self, *args): return _libgexf.Data_clearEdgeAttributes(self, *args)
     def clear(self): return _libgexf.Data_clear(self)

@@ -311,6 +311,13 @@ public:
      */
     bool isEdgeAttributeOption(const libgexf::t_id attr_id, const std::string& option) const;
 
+
+    // TODO
+    void removeNodeAttributeColumn(const libgexf::t_id attr_id);
+
+    // TODO
+    void removeEdgeAttributeColumn(const libgexf::t_id attr_id);
+
     /*!
      *  \brief Delete all attribute values for a node
      *

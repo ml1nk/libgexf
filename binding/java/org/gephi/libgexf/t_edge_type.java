@@ -12,7 +12,7 @@ public final class t_edge_type {
   public final static t_edge_type EDGE_UNDEF = new t_edge_type("EDGE_UNDEF");
   public final static t_edge_type EDGE_DIRECTED = new t_edge_type("EDGE_DIRECTED");
   public final static t_edge_type EDGE_UNDIRECTED = new t_edge_type("EDGE_UNDIRECTED");
-  public final static t_edge_type EDGE_DOUBLE = new t_edge_type("EDGE_DOUBLE");
+  public final static t_edge_type EDGE_MUTUAL = new t_edge_type("EDGE_MUTUAL");
 
   public final int swigValue() {
     return swigValue;
@@ -48,7 +48,7 @@ public final class t_edge_type {
     swigNext = this.swigValue+1;
   }
 
-  private static t_edge_type[] swigValues = { EDGE_UNDEF, EDGE_DIRECTED, EDGE_UNDIRECTED, EDGE_DOUBLE };
+  private static t_edge_type[] swigValues = { EDGE_UNDEF, EDGE_DIRECTED, EDGE_UNDIRECTED, EDGE_MUTUAL };
   private static int swigNext = 0;
   private final int swigValue;
   private final String swigName;

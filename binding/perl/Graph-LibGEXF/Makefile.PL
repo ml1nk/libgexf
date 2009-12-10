@@ -30,6 +30,7 @@ cc_inc_paths
 cc_files
     #io::input
     '../../../libgexf/filereader.o',
+    '../../../libgexf/abstractparser.o',
     '../../../libgexf/gexfparser.o',
     '../../../libgexf/legacyparser.o',
     '../../../libgexf/rngvalidator.o',

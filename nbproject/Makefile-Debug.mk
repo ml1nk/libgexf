@@ -33,8 +33,8 @@ OBJECTDIR=build/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/libgexf/rngvalidator.o \
 	${OBJECTDIR}/libgexf/gexf.o \
-	${OBJECTDIR}/libgexf/nodeiter.o \
 	${OBJECTDIR}/libgexf/filereader.o \
+	${OBJECTDIR}/libgexf/nodeiter.o \
 	${OBJECTDIR}/libgexf/legacywriter.o \
 	${OBJECTDIR}/libgexf/attvalueiter.o \
 	${OBJECTDIR}/libgexf/dynamicgraph.o \
@@ -87,15 +87,15 @@ ${OBJECTDIR}/libgexf/gexf.o: nbproject/Makefile-${CND_CONF}.mk libgexf/gexf.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/gexf.o libgexf/gexf.cpp
 
-${OBJECTDIR}/libgexf/nodeiter.o: nbproject/Makefile-${CND_CONF}.mk libgexf/nodeiter.cpp 
-	${MKDIR} -p ${OBJECTDIR}/libgexf
-	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/nodeiter.o libgexf/nodeiter.cpp
-
 ${OBJECTDIR}/libgexf/filereader.o: nbproject/Makefile-${CND_CONF}.mk libgexf/filereader.cpp 
 	${MKDIR} -p ${OBJECTDIR}/libgexf
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/filereader.o libgexf/filereader.cpp
+
+${OBJECTDIR}/libgexf/nodeiter.o: nbproject/Makefile-${CND_CONF}.mk libgexf/nodeiter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libgexf
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -I/usr/include/libxml2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libgexf/nodeiter.o libgexf/nodeiter.cpp
 
 ${OBJECTDIR}/libgexf/legacywriter.o: nbproject/Makefile-${CND_CONF}.mk libgexf/legacywriter.cpp 
 	${MKDIR} -p ${OBJECTDIR}/libgexf

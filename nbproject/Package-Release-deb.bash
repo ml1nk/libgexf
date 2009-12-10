@@ -222,9 +222,9 @@ dpkg-deb  --build ${TMPDIRNAME}
 checkReturnCode
 cd "${TOP}"
 mkdir -p  dist/Release/${PLATFORM}/package
-mv ${TMPDIR}.deb dist/Release/${PLATFORM}/package/libgexf-0.1.0.linux-i386.deb
+mv ${TMPDIR}.deb dist/Release/${PLATFORM}/package/libgexf-0.1.2.linux-i386.deb
 checkReturnCode
-echo Debian: dist/Release/${PLATFORM}/package/libgexf-0.1.0.linux-i386.deb
+echo Debian: dist/Release/${PLATFORM}/package/libgexf-0.1.2.linux-i386.deb
 
 # Cleanup
 cd "${TOP}"

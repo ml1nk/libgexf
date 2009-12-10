@@ -92,7 +92,7 @@ public class runme {
         
         
         // ----- XSD validate a GEXF file -----
-        boolean res = org.gephi.libgexf.SchemaValidator.run( "../../t/attributes.gexf", "../../resources/xsd/1.1draft.xsd");
+        boolean res = org.gephi.libgexf.SchemaValidator.run( "../../t/attributes.gexf", "../../resources/xsd/gexf.xsd");
         System.out.println("XSD valid: " + res);
         
         

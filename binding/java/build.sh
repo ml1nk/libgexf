@@ -11,6 +11,7 @@ gcc -fPIC -c libgexf_wrap.cpp \
     ../../libgexf/gexf.cpp \
     ../../libgexf/memoryvalidator.cpp \
     ../../libgexf/filereader.cpp \
+    ../../libgexf/abstractparser.cpp \
     ../../libgexf/gexfparser.cpp \
     ../../libgexf/legacyparser.cpp \
     ../../libgexf/rngvalidator.cpp \
@@ -27,11 +28,12 @@ gcc -fPIC -c libgexf_wrap.cpp \
     ../../libgexf/metadata.cpp \
     ../../libgexf/attributeiter.cpp \
     ../../libgexf/attvalueiter.cpp \
-    -I/usr/lib/jvm/java-6-sun-1.6.0.10/include -I/usr/lib/jvm/java-6-sun-1.6.0.10/include/linux -I/usr/include/libxml2
+    -I/usr/lib/jvm/java-6-sun-1.6.0.14/include -I/usr/lib/jvm/java-6-sun-1.6.0.14/include/linux -I/usr/include/libxml2
 g++ -shared -lxml2 libgexf_wrap.o \
     gexf.o \
     memoryvalidator.o \
     filereader.o \
+    abstractparser.o \
     gexfparser.o \
     legacyparser.o \
     rngvalidator.o \

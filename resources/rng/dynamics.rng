@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+<grammar ns="http://www.gexf.net/1.1draft" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
   <!-- extension point -->
   <define name="graph-content" combine="interleave">
     <a:documentation>Note: dynamic weight can be obtained by using the reserved title "weight" in attributes</a:documentation>
     <interleave>
       <optional>
-        <attribute name="datetype">
-          <ref name="datetype-type"/>
+        <attribute name="timetype">
+          <ref name="timetype-type"/>
         </attribute>
       </optional>
       <optional>
-        <attribute name="datefrom">
-          <ref name="date-type"/>
+        <attribute name="start">
+          <ref name="time-type"/>
         </attribute>
       </optional>
       <optional>
-        <attribute name="dateto">
-          <ref name="date-type"/>
+        <attribute name="end">
+          <ref name="time-type"/>
         </attribute>
       </optional>
     </interleave>
@@ -25,13 +25,13 @@
   <define name="attributes-content" combine="interleave">
     <interleave>
       <optional>
-        <attribute name="datefrom">
-          <ref name="date-type"/>
+        <attribute name="start">
+          <ref name="time-type"/>
         </attribute>
       </optional>
       <optional>
-        <attribute name="dateto">
-          <ref name="date-type"/>
+        <attribute name="end">
+          <ref name="time-type"/>
         </attribute>
       </optional>
     </interleave>
@@ -40,13 +40,13 @@
   <define name="attvalue-content" combine="interleave">
     <interleave>
       <optional>
-        <attribute name="datefrom">
-          <ref name="date-type"/>
+        <attribute name="start">
+          <ref name="time-type"/>
         </attribute>
       </optional>
       <optional>
-        <attribute name="dateto">
-          <ref name="date-type"/>
+        <attribute name="end">
+          <ref name="time-type"/>
         </attribute>
       </optional>
     </interleave>
@@ -55,14 +55,19 @@
   <define name="node-content" combine="interleave">
     <interleave>
       <optional>
-        <attribute name="datefrom">
-          <ref name="date-type"/>
+        <attribute name="start">
+          <ref name="time-type"/>
         </attribute>
       </optional>
       <optional>
-        <attribute name="dateto">
-          <ref name="date-type"/>
+        <attribute name="end">
+          <ref name="time-type"/>
         </attribute>
+      </optional>
+      <optional>
+        <element name="slices">
+          <ref name="slices-content"/>
+        </element>
       </optional>
     </interleave>
   </define>
@@ -70,28 +75,56 @@
   <define name="edge-content" combine="interleave">
     <interleave>
       <optional>
-        <attribute name="datefrom">
-          <ref name="date-type"/>
+        <attribute name="start">
+          <ref name="time-type"/>
         </attribute>
       </optional>
       <optional>
-        <attribute name="dateto">
-          <ref name="date-type"/>
+        <attribute name="end">
+          <ref name="time-type"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="slices">
+          <ref name="slices-content"/>
+        </element>
+      </optional>
+    </interleave>
+  </define>
+  <!-- new point -->
+  <define name="slices-content">
+    <oneOrMore>
+      <element name="slice">
+        <ref name="slice-content"/>
+      </element>
+    </oneOrMore>
+  </define>
+  <!-- new point -->
+  <define name="slice-content">
+    <interleave>
+      <optional>
+        <attribute name="start">
+          <ref name="time-type"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="end">
+          <ref name="time-type"/>
         </attribute>
       </optional>
     </interleave>
   </define>
   <!-- new datatype -->
-  <define name="date-type">
+  <define name="time-type">
     <choice>
       <data type="date"/>
-      <data type="integer"/>
+      <data type="float"/>
     </choice>
   </define>
   <!-- new datatype -->
-  <define name="datetype-type">
+  <define name="timetype-type">
     <choice>
-      <value type="string" datatypeLibrary="" a:defaultValue="date">integer</value>
+      <value type="string" datatypeLibrary="" a:defaultValue="date">float</value>
       <value type="string" datatypeLibrary="">date</value>
     </choice>
   </define>

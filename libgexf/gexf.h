@@ -105,6 +105,20 @@ namespace libgexf {
          */
         libgexf::t_graph getGraphType();
 
+        /*!
+         *  \brief Initialize the graph mode
+         *
+         *  \param mode : Mode of graph (static or dynamic)
+         */
+        void initGraphMode(const std::string& mode);
+
+        /*!
+         *  \brief Get the graph mode
+         *
+         *  \return Mode of graph (static or dynamic)
+         */
+        std::string getGraphMode();
+
 
         /*!
          *  \brief Check the data correctness
@@ -116,6 +130,7 @@ namespace libgexf {
 
         libgexf::Graph _graph;  /*!< Topology structure */
         libgexf::t_graph _type;  /*!< Default edge type */
+        std::string _mode;  /*!< Graph mode */
         libgexf::Data _data;  /*!< Associated data and attributes on nodes and edges */
         libgexf::MetaData _meta;  /*!< Associated meta data */
     private:

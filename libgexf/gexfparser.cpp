@@ -212,15 +212,18 @@ void GexfParser::processGraphNode(xmlTextReaderPtr reader) {
         string mode = "static";
         try {
             mode = this->getStringAttribute(reader, "mode");
+            if(mode.compare("static") != 0 && mode.compare("dynamic") != 0) {
+                throw "Unknown mode";
+            }
         } catch(exception &e) {
+            _gexf->initGraphMode("static");
             cerr << "INFO " << "Unknown mode, static graph created by default." << endl;
         }
-        if( mode.compare("dynamic") == 0 ) {
-            // TODO implement dynamic mode
+        if(mode.compare("dynamic") == 0) {
+            cerr << "WARN " << "Dynamic mode is not actually supported." << endl;
+            mode = "static";
         }
-        else { /* static used by default */
-            // TODO activate the static mode
-        }
+        _gexf->initGraphMode(mode);
 
         try {
             const string defaultedgetype = this->getStringAttribute(reader, "defaultedgetype");
