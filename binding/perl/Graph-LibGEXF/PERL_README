@@ -1,11 +1,11 @@
-This is Perl module Graph::LibGEXF.
+This is Perl5 module Graph::LibGEXF.
 
 
 FOR DEVELOPERS
 --------------
 If you plan to contribute to the libgexf library, you will need to install SWIG (swig-1.3.40)
 to generate a new libgexf_wrap.cpp wrapper each time you will modify the libgexf.i interface file.
-Note that earlier releases like swig 1.3.36 will *not* work since we use a special dependency in
+Note that earlier releases like swig 1.3.40 will *not* work since we use a special dependency in
 the libgexf.i interface, only available on the latest release of swig.
 
 Note: A bug occurs on static methods with arguments on SWIG 1.3.40.
@@ -38,4 +38,8 @@ Graph::LibGEXF documentation is available as in POD. So you can do:
 
 to read the documentation online with your favorite pager.
 
-sebastien heymann
+
+
+SWIG+PERL5 DOCUMENTATION
+----------------------
+http://www.swig.org/Doc1.3/Perl5.html

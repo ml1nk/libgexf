@@ -70,7 +70,7 @@ namespace libgexf {
         static bool isAnyURI(const std::string& str);
         static std::set<std::string> tokenizer(const std::string& delimiter, const std::string& str);
     private:
-        virtual void f() = 0;
+        virtual void iAmAbstract() = 0;
 
         /*static libgexf::t_edge_type strToEdgeType(const std::string& str);*/
         static libgexf::t_attr_type strToAttrType(const std::string& str);

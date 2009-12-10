@@ -1,7 +1,7 @@
 #!/bin/bash
-echo " ---------------------------------"
+echo " -----------------------------"
 echo " |    Java (jdk6) building   |"
-echo " ---------------------------------"
+echo " -----------------------------"
 echo ""
 echo "Generating interface files.."
 swig -c++ -java -fvirtual -package org.gephi.libgexf -outdir org/gephi/libgexf -o libgexf_wrap.cpp libgexf.i
@@ -29,6 +29,7 @@ gcc -fPIC -c libgexf_wrap.cpp \
     ../../libgexf/attributeiter.cpp \
     ../../libgexf/attvalueiter.cpp \
     -I/usr/lib/jvm/java-6-sun-1.6.0.14/include -I/usr/lib/jvm/java-6-sun-1.6.0.14/include/linux -I/usr/include/libxml2
+
 g++ -shared -lxml2 libgexf_wrap.o \
     gexf.o \
     memoryvalidator.o \

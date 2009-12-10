@@ -18,3 +18,7 @@ echo ""
 cd $root/java
 ./build.sh
 
+echo ""
+cd $root/php
+./build.sh
+

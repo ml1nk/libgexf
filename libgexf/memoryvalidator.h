@@ -62,7 +62,7 @@ namespace libgexf {
         static bool checkAttValues(const GEXF& gexf);
         static bool checkAttValueType(const GEXF& gexf, const std::string& value, const libgexf::t_attr_type type, const t_id elem_id, const t_id attr_id="", const bool isNode=true);
 
-        virtual void f() = 0;
+        virtual void iAmAbstract() = 0;
     };
 
 } /* namespace libgexf */

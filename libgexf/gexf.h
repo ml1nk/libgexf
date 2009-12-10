@@ -125,6 +125,8 @@ namespace libgexf {
          *
          *  \li verify if each node has a label
          *  \li verify if each attvalue has a value or a defaultvalue
+         *
+         * \return true if it is ok, false otherwise.
          */
         bool checkIntegrity();
 

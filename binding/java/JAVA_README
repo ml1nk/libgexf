@@ -5,7 +5,7 @@ FOR DEVELOPERS
 --------------
 If you plan to contribute to the libgexf library, you will need to install SWIG (swig-1.3.40)
 to generate a new libgexf_wrap.cpp wrapper each time you will modify the libgexf.i interface file.
-Note that earlier releases like swig 1.3.36 will *not* work since we use a special dependency in
+Note that earlier releases like swig 1.3.40 will *not* work since we use a special dependency in
 the libgexf.i interface, only available on the latest release of swig.
 
 Manual Java binding with swig on Linux:
@@ -26,3 +26,7 @@ TEST
 ----
 $ ./test.sh
 
+
+SWIG+JAVA DOCUMENTATION
+----------------------
+http://www.swig.org/Doc1.3/Java.html
