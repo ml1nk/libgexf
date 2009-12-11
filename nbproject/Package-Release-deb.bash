@@ -181,7 +181,7 @@ makeDirectory  "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/resources/rng" 0755
 
 cd "${TOP}"
 makeDirectory ${TMPDIR}//usr/include/libgexf/resources/rng
-copyFileToTmpDir "resources/rng/1.1draft.rng" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/resources/rng/1.1draft.rng" 0644
+copyFileToTmpDir "resources/rng/gexf.rng" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/resources/rng/gexf.rng" 0644
 
 cd "${TOP}"
 makeDirectory ${TMPDIR}//usr/include/libgexf/resources/rng
@@ -192,11 +192,47 @@ makeDirectory  "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/resources/xsd" 0755
 
 cd "${TOP}"
 makeDirectory ${TMPDIR}//usr/include/libgexf/resources/xsd
-copyFileToTmpDir "resources/xsd/1.1draft.xsd" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/resources/xsd/1.1draft.xsd" 0644
+copyFileToTmpDir "resources/xsd/gexf.xsd" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/resources/xsd/gexf.xsd" 0644
 
 cd "${TOP}"
 makeDirectory ${TMPDIR}//usr/include/libgexf/resources/xsd
 copyFileToTmpDir "resources/xsd/viz.xsd" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/resources/xsd/viz.xsd" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf/resources/xsd
+copyFileToTmpDir "resources/xsd/data.xsd" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/resources/xsd/data.xsd" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf/resources/xsd
+copyFileToTmpDir "resources/xsd/dynamics.xsd" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/resources/xsd/dynamics.xsd" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf/resources/xsd
+copyFileToTmpDir "resources/xsd/hierarchy.xsd" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/resources/xsd/hierarchy.xsd" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf/resources/xsd
+copyFileToTmpDir "resources/xsd/phylogenics.xsd" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/resources/xsd/phylogenics.xsd" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf/resources/rng
+copyFileToTmpDir "resources/rng/data.rng" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/resources/rng/data.rng" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf/resources/rng
+copyFileToTmpDir "resources/rng/dynamics.rng" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/resources/rng/dynamics.rng" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf/resources/rng
+copyFileToTmpDir "resources/rng/hierarchy.rng" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/resources/rng/hierarchy.rng" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf/resources/rng
+copyFileToTmpDir "resources/rng/phylogenics.rng" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/resources/rng/phylogenics.rng" 0644
+
+cd "${TOP}"
+makeDirectory ${TMPDIR}//usr/include/libgexf
+copyFileToTmpDir "libgexf/dynamicgraph.h" "${TMPDIR}/${PACKAGE_TOP_DIR}include/libgexf/dynamicgraph.h" 0644
 
 
 # Create control file
@@ -207,13 +243,13 @@ mkdir -p ${TMPDIR}/DEBIAN
 
 cd "${TOP}"
 echo 'Package: libgexf' >> ${CONTROL_FILE}
-echo 'Version: 0.1.1' >> ${CONTROL_FILE}
+echo 'Version: 0.1.2' >> ${CONTROL_FILE}
 echo 'Architecture: i386' >> ${CONTROL_FILE}
 echo 'Section: libdevel' >> ${CONTROL_FILE}
 echo 'Priority: extra' >> ${CONTROL_FILE}
 echo 'Depends: libxml2, libc6' >> ${CONTROL_FILE}
 echo 'Maintainer: sebastien heymann <sebastien.heymann@gephi.org>' >> ${CONTROL_FILE}
-echo 'Description: Release 0.1 alpha1 of libgexf.' >> ${CONTROL_FILE}
+echo 'Description: Release 0.1 alpha2 of libgexf.' >> ${CONTROL_FILE}
 
 # Create Debian Package
 cd "${TOP}"

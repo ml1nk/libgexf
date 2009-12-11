@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="62">
   <projectmakefile>nbproject/Makefile</projectmakefile>
-  <defaultConf>1</defaultConf>
+  <defaultConf>2</defaultConf>
   <confs>
     <conf name="Debug" type="2">
       <gdbdebugger version="2">

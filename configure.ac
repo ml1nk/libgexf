@@ -90,7 +90,7 @@ dnl -----------------------------------------------
 dnl Generates Makefile's, configuration files and scripts
 dnl -----------------------------------------------
 
-AM_INIT_AUTOMAKE(libgexf, 0.1.0)
+AM_INIT_AUTOMAKE(libgexf, 0.1.2)
 AC_OUTPUT(Makefile \
           libgexf/Makefile
 )

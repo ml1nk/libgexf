@@ -1951,7 +1951,7 @@ PACKAGE=$LIBRARY_NAME
 #                +- increment if interfaces have been added, removed or changed
 
 
-LIBRARY_VERSION=0.1.0
+LIBRARY_VERSION=0.1.1
 
 am__api_version='1.10'
 
@@ -15500,7 +15500,7 @@ fi
 
 # Define the identity of the package.
  PACKAGE=libgexf
- VERSION=0.1.0
+ VERSION=0.1.2
 
 
 # Some tools Automake needs.

@@ -1195,8 +1195,8 @@
                             owner="root"
                             group="bin"/>
           <packFileListElem type="File"
-                            to="${PACKAGE_TOP_DIR}include/libgexf/resources/rng/1.1draft.rng"
-                            from="resources/rng/1.1draft.rng"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/resources/rng/gexf.rng"
+                            from="resources/rng/gexf.rng"
                             perm="644"
                             owner="root"
                             group="bin"/>
@@ -1213,8 +1213,8 @@
                             owner="root"
                             group="bin"/>
           <packFileListElem type="File"
-                            to="${PACKAGE_TOP_DIR}include/libgexf/resources/xsd/1.1draft.xsd"
-                            from="resources/xsd/1.1draft.xsd"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/resources/xsd/gexf.xsd"
+                            from="resources/xsd/gexf.xsd"
                             perm="644"
                             owner="root"
                             group="bin"/>
@@ -1224,10 +1224,64 @@
                             perm="644"
                             owner="root"
                             group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/resources/xsd/data.xsd"
+                            from="resources/xsd/data.xsd"
+                            perm="644"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/resources/xsd/dynamics.xsd"
+                            from="resources/xsd/dynamics.xsd"
+                            perm="644"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/resources/xsd/hierarchy.xsd"
+                            from="resources/xsd/hierarchy.xsd"
+                            perm="644"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/resources/xsd/phylogenics.xsd"
+                            from="resources/xsd/phylogenics.xsd"
+                            perm="644"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/resources/rng/data.rng"
+                            from="resources/rng/data.rng"
+                            perm="644"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/resources/rng/dynamics.rng"
+                            from="resources/rng/dynamics.rng"
+                            perm="644"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/resources/rng/hierarchy.rng"
+                            from="resources/rng/hierarchy.rng"
+                            perm="644"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/resources/rng/phylogenics.rng"
+                            from="resources/rng/phylogenics.rng"
+                            perm="644"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}include/libgexf/dynamicgraph.h"
+                            from="libgexf/dynamicgraph.h"
+                            perm="644"
+                            owner="root"
+                            group="bin"/>
         </packFileList>
         <packInfoList>
           <packInfoListElem name="Package" value="libgexf" mandatory="true"/>
-          <packInfoListElem name="Version" value="0.1.1" mandatory="true"/>
+          <packInfoListElem name="Version" value="0.1.2" mandatory="true"/>
           <packInfoListElem name="Architecture" value="i386" mandatory="false"/>
           <packInfoListElem name="Section" value="libdevel" mandatory="false"/>
           <packInfoListElem name="Priority" value="extra" mandatory="false"/>
@@ -1236,7 +1290,7 @@
                             value="sebastien heymann &lt;sebastien.heymann@gephi.org>"
                             mandatory="false"/>
           <packInfoListElem name="Description"
-                            value="Release 0.1 alpha1 of libgexf."
+                            value="Release 0.1 alpha2 of libgexf."
                             mandatory="false"/>
         </packInfoList>
       </packaging>

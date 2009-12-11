@@ -57,11 +57,11 @@ libLTLIBRARIES_INSTALL = $(INSTALL)
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libgexf_la_LIBADD =
 am__objects_1 =
-am__objects_2 = attributeiter.lo attvalueiter.lo conv.lo data.lo \
-	directedgraph.lo edgeiter.lo filereader.lo filewriter.lo \
-	gexf.lo gexfparser.lo graph.lo legacyparser.lo metadata.lo \
-	nodeiter.lo undirectedgraph.lo rngvalidator.lo \
-	schemavalidator.lo
+am__objects_2 = abstractparser.lo attributeiter.lo attvalueiter.lo \
+	conv.lo data.lo directedgraph.lo dynamicgraph.lo edgeiter.lo \
+	filereader.lo filewriter.lo gexf.lo gexfparser.lo graph.lo \
+	legacyparser.lo metadata.lo nodeiter.lo undirectedgraph.lo \
+	rngvalidator.lo schemavalidator.lo
 am_libgexf_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 libgexf_la_OBJECTS = $(am_libgexf_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(top_builddir)
@@ -129,7 +129,7 @@ LD = /usr/bin/ld
 LDFLAGS = 
 LIBOBJS = 
 LIBRARY_NAME = libgexf
-LIBRARY_VERSION = 0.1.0
+LIBRARY_VERSION = 0.1.1
 LIBS = 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIBXML2_CONFIG = /usr/bin/xml2-config
@@ -155,7 +155,7 @@ SED = /bin/sed
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = strip
-VERSION = 0.1.0
+VERSION = 0.1.2
 XML2_CXXFLAGS = -I/usr/include/libxml2
 XML2_LIBS = -lxml2
 abs_builddir = /home/sebastien/NetBeansProjects/libgexf/libgexf
@@ -210,8 +210,8 @@ sysconfdir = ${prefix}/etc
 target_alias = 
 top_builddir = ..
 top_srcdir = ..
-h_sources = abstractiter.h abstractparser.h attributeiter.h attvalueiter.h conv.h data.h directedgraph.h edgeiter.h exceptions.h filereader.h filewriter.h gexf.h gexfparser.h graph.h legacyparser.h libgexf.h metadata.h nodeiter.h typedefs.h undirectedgraph.h rngvalidator.h schemavalidator.h
-cc_sources = attributeiter.cpp attvalueiter.cpp conv.cpp data.cpp directedgraph.cpp edgeiter.cpp filereader.cpp filewriter.cpp gexf.cpp gexfparser.cpp graph.cpp legacyparser.cpp metadata.cpp nodeiter.cpp undirectedgraph.cpp rngvalidator.cpp schemavalidator.cpp
+h_sources = abstractiter.h abstractparser.h attributeiter.h attvalueiter.h conv.h data.h directedgraph.h dynamicgraph.h edgeiter.h exceptions.h filereader.h filewriter.h gexf.h gexfparser.h graph.h legacyparser.h libgexf.h metadata.h nodeiter.h typedefs.h undirectedgraph.h rngvalidator.h schemavalidator.h
+cc_sources = abstractparser.cpp attributeiter.cpp attvalueiter.cpp conv.cpp data.cpp directedgraph.cpp dynamicgraph.cpp edgeiter.cpp filereader.cpp filewriter.cpp gexf.cpp gexfparser.cpp graph.cpp legacyparser.cpp metadata.cpp nodeiter.cpp undirectedgraph.cpp rngvalidator.cpp schemavalidator.cpp
 library_includedir = $(includedir)/$(LIBRARY_NAME)-$(LIBRARY_VERSION)
 library_include_HEADERS = $(h_sources)
 INCLUDES = $(XML2_CXXFLAGS) -I$(top_srcdir)
@@ -287,11 +287,13 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+include ./$(DEPDIR)/abstractparser.Plo
 include ./$(DEPDIR)/attributeiter.Plo
 include ./$(DEPDIR)/attvalueiter.Plo
 include ./$(DEPDIR)/conv.Plo
 include ./$(DEPDIR)/data.Plo
 include ./$(DEPDIR)/directedgraph.Plo
+include ./$(DEPDIR)/dynamicgraph.Plo
 include ./$(DEPDIR)/edgeiter.Plo
 include ./$(DEPDIR)/filereader.Plo
 include ./$(DEPDIR)/filewriter.Plo

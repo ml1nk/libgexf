@@ -75,7 +75,7 @@ setup (
        version='0.1.2', 
        author="Sebastien Heymann",
        author_email="sebastien.heymann@gephi.org",
-       url="http://gexf.net",
+       url="http://gexf.net/lib/",
        description="""Toolkit library for GEXF file format.""",
        long_description="""""",
        

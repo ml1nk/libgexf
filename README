@@ -17,8 +17,7 @@ Usage:
 Assumptions:
 This library have only been tested on Ubuntu 8.10 and 9.04. 
 It has been compiled with g++ 4.3.2. 
-Bindings to scripting languages are not included inside this package. 
-See libgexf-python2.5 for the Python 2.5 binding.
+Bindings to scripting languages are not included inside this package.
 
 Requirements:
 libxml2, libc6
@@ -31,7 +30,7 @@ API documentation:
 
 Support:
   * https://launchpad.net/libgexf (bug tracking, blueprint submitting and question answering)
-  * http://gephi.org/forum/forum.php?id=8 (anything else)
+  * http://forum.gephi.org/viewforum.php?f=10 (anything else)
 
 Acknowledgements:
 Julian Bilcke for early testing.

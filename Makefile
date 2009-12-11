@@ -106,7 +106,7 @@ LD = /usr/bin/ld
 LDFLAGS = 
 LIBOBJS = 
 LIBRARY_NAME = libgexf
-LIBRARY_VERSION = 0.1.0
+LIBRARY_VERSION = 0.1.1
 LIBS = 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIBXML2_CONFIG = /usr/bin/xml2-config
@@ -132,7 +132,7 @@ SED = /bin/sed
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = strip
-VERSION = 0.1.0
+VERSION = 0.1.2
 XML2_CXXFLAGS = -I/usr/include/libxml2
 XML2_LIBS = -lxml2
 abs_builddir = /home/sebastien/NetBeansProjects/libgexf
@@ -192,7 +192,7 @@ SUBDIRS = $(LIBRARY_NAME)
 DIST_SUBDIRS = $(LIBRARY_NAME) resources
 
 #pkgconfigdir = $(libdir)/pkgconfig
-#pkgconfig_DATA = libgexf-0.1.0.pc
+#pkgconfig_DATA = libgexf-0.1.2.pc
 EXTRA_DIST = autogen.sh
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive

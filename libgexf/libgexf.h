@@ -34,6 +34,7 @@
 #include <libgexf/exceptions.h>
 #include <libgexf/gexf.h>
 #include <libgexf/graph.h>
+#include <libgexf/dynamicgraph.h>
 #include <libgexf/metadata.h>
 #include <libgexf/data.h>
 #include <libgexf/abstractiter.h>

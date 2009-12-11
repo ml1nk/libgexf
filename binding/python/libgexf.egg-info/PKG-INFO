@@ -1,8 +1,8 @@
 Metadata-Version: 1.0
 Name: libgexf
-Version: 0.1.0
+Version: 0.1.2
 Summary: Toolkit library for GEXF file format.
-Home-page: http://gephi.org
+Home-page: http://gexf.net/lib/
 Author: Sebastien Heymann
 Author-email: sebastien.heymann@gephi.org
 License: MIT Licence
