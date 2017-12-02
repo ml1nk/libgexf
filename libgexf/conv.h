@@ -40,7 +40,6 @@ namespace libgexf {
 
     class Data;
     class GexfParser;
-    class LegacyParser;
 
     /*! \class Conv
         \brief Utility static class for transforming data.
@@ -76,7 +75,6 @@ namespace libgexf {
         static libgexf::t_attr_type strToAttrType(const std::string& str);
         friend class Data; /*!< Data */
         friend class GexfParser; /*!< GexfParser */
-        friend class LegacyParser; /*!< LegacyParser */
     };
 
 } /* namespace libgexf */
