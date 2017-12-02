@@ -1,8 +1,10 @@
+<Unofficial>
+
 Name:
 LibGEXF - libgexf
 
 Version:
-0.1.2 (10/12/2009)
+0.1.3 (02/12/2017)
 
 Description:
 A dynamic library for creating, reading and writing efficiently a GEXF file.
@@ -26,7 +28,8 @@ Known Issues:
 No one...for the moment :)
 
 API documentation:
-  * http://gexf.net/lib/api/ (up-to date)
+  * https://ml1nk.github.io/libgexf/annotated.html
+  * http://gexf.net/lib/api/ (0.1.2)
 
 Support:
   * https://launchpad.net/libgexf (bug tracking, blueprint submitting and question answering)
