@@ -44,3 +44,7 @@ Makefile
 compile
 
 configure
+
+libgexf/\.libs/
+
+libgexf/libgexf\.la

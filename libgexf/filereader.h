@@ -43,7 +43,6 @@ public:
     /*! \var enum Version
      *  \brief Possible version number of the GEXF format
      */
-    enum Version { _1_0, _1_1};
 public:
     FileReader();
 
@@ -53,7 +52,7 @@ public:
      *  \param filepath : Path to the written file
      *  \param v : version number of the GEXF format
      */
-    explicit FileReader(const std::string& filepath, const Version v=_1_1);
+    explicit FileReader(const std::string& filepath);
 
     /*!
      *  \brief Copy constructor
@@ -76,7 +75,7 @@ public:
      *  \param filepath : Path to the GEXF file
      *  \param v : version number of the GEXF format
      */
-    void init(const std::string& filepath, const Version v=_1_1);
+    void init(const std::string& filepath);
 
     /*!
      *  \brief Read the given file in one pass
@@ -92,7 +91,6 @@ private:
     GEXF* _gexf;
     AbstractParser* _parser;
     std::string _filepath;
-    Version _v;
 };
 
 } /* namespace libgexf */

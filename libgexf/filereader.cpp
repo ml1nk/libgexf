@@ -28,7 +28,6 @@
 
 #include "filereader.h"
 #include "gexfparser.h"
-#include "legacyparser.h"
 #include "exceptions.h"
 
 #include <cstdio>
@@ -40,14 +39,14 @@ using namespace std;
 
 namespace libgexf {
 
-FileReader::FileReader(): _gexf(0), _parser(), _filepath(""), _v(_1_1) {
+FileReader::FileReader(): _gexf(0), _parser(), _filepath("") {
 }
 
-FileReader::FileReader(const std::string& filepath, const Version v) {
-    this->init(filepath, v);
+FileReader::FileReader(const std::string& filepath) {
+    this->init(filepath);
 }
 
-FileReader::FileReader(const FileReader& orig): _gexf(orig._gexf), _filepath(orig._filepath), _v(orig._v) {
+FileReader::FileReader(const FileReader& orig): _gexf(orig._gexf), _filepath(orig._filepath) {
     this->createParser();
 }
 
@@ -63,10 +62,9 @@ GEXF FileReader::getGEXFCopy() {
 }
 
 //-----------------------------------------
-void FileReader::init(const std::string& filepath, const Version v) {
+void FileReader::init(const std::string& filepath) {
 //-----------------------------------------
     _filepath = filepath;
-    _v = v;
     _gexf = new GEXF();
     this->createParser();
 }
@@ -74,15 +72,8 @@ void FileReader::init(const std::string& filepath, const Version v) {
 //-----------------------------------------
 void FileReader::createParser() {
 //-----------------------------------------
-    if( _v == _1_1 ) {
-        AbstractParser* parser = new GexfParser();
-        _parser = parser;
-        cout << "INFO Parser GEXF 1.1" << endl;
-    } else {
-        AbstractParser* parser = new LegacyParser();
-        _parser = parser;
-        cout << "INFO Parser GEXF 1.0 (legacy)" << endl;
-    }
+    AbstractParser* parser = new GexfParser();
+    _parser = parser;
     _parser->bind(_gexf);
 }
 

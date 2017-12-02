@@ -137,8 +137,8 @@ void GexfParser::processGEXFNode(xmlTextReaderPtr reader) {
         } catch (exception &e) {
             cerr << "WARN " << e.what() << endl;
         }
-        if( version.compare("1.1") != 0 )
-            throw FileReaderException("Wrong GEXF version.");
+        /*if( version.compare("1.1") != 0 )
+            throw FileReaderException("Wrong GEXF version.");*/
     }
     else if(hasAttr  == -1) {
         throw FileReaderException("An error occured in xmlTextReaderHasAttributes() for GEXF node.");
