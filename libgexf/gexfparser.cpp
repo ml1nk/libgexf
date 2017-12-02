@@ -130,13 +130,14 @@ void GexfParser::processGEXFNode(xmlTextReaderPtr reader) {
             cerr << "WARN " << e.what() << endl;
         }*/
 
+        /*
         string version = "1.1";
         try {
             version = this->getStringAttribute(reader, "version");
             //_gexf->getMetaData().setVersion( version );
         } catch (exception &e) {
             cerr << "WARN " << e.what() << endl;
-        }
+        }*/
         /*if( version.compare("1.1") != 0 )
             throw FileReaderException("Wrong GEXF version.");*/
     }
@@ -254,7 +255,12 @@ void GexfParser::processNodeNode(xmlTextReaderPtr reader) {
     const int hasAttr = xmlTextReaderHasAttributes(reader);
     if(hasAttr == 1) {
         const t_id node_id = this->getIdAttribute(reader, "id");
-        const string label = this->getStringAttribute(reader, "label");
+
+        // Optional as of gexf 1.2
+        string label;
+        try {
+           label = this->getStringAttribute(reader, "label");
+        } catch (FileReaderException &e) {}
 
         _gexf->getUndirectedGraph().addNode( node_id );
         _gexf->getData().setNodeLabel( node_id, label );

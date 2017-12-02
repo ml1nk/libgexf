@@ -47,3 +47,5 @@ configure
 libgexf/\.libs/
 
 libgexf/libgexf\.la
+
+\.vscode/

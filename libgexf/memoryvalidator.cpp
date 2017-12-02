@@ -47,25 +47,7 @@ MemoryValidator::~MemoryValidator() {
 //-----------------------------------------
 bool MemoryValidator::run(const GEXF& gexf) {
 //-----------------------------------------
-    return ( checkDefaultOptions(gexf) && checkNodeLabels(gexf) && checkAttValues(gexf) );
-}
-
-//-----------------------------------------
-bool MemoryValidator::checkNodeLabels(const GEXF& gexf) {
-//-----------------------------------------
-bool r = true;
-
-    /* check if each node has a label */
-    NodeIter* it = gexf._graph.getNodes();
-    while(it->hasNext()) {
-        const t_id node_id = it->next();
-        if( !gexf._data.hasNodeLabel(node_id) ) {
-            std::cerr << "No label for the node " << (std::string)node_id << std::endl;
-            r = false;
-        }
-    }
-
-    return r;
+    return ( checkDefaultOptions(gexf) && checkAttValues(gexf) );
 }
 
 //-----------------------------------------
