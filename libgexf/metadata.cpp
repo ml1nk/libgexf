@@ -55,10 +55,10 @@ MetaData::~MetaData() {
 //-----------------------------------------
 void MetaData::init() {
 //-----------------------------------------
-    _version = "1.1";
-    _xmlns = "http://www.gexf.net/1.1draft";
+    _version = "1.3";
+    _xmlns = "http://www.gexf.net/1.3draft";
     _xsi = "http://www.w3.org/2001/XMLSchema-instance";
-    _schema = "http://www.gexf.net/1.1draft http://gexf.net/1.1draft/gexf.xsd";
+    _schema = "http://www.gexf.net/1.3draft http://gexf.net/1.3draft/gexf.xsd";
 
     _variant = _creator = _description = _keywords = _lastmodifieddate = "";
 }

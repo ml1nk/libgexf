@@ -296,10 +296,12 @@ void FileWriter::writeNodeNode(xmlTextWriterPtr writer, const std::string& node_
         throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
     }
 
-    /* Add an attribute with name "label" */
-    rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "label", BAD_CAST label.c_str());
-    if (rc < 0) {
-        throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
+    /* Add an attribute with name "label" if necessary (optional as of gexf 1.2) */
+    if(label.length() > 0) {
+        rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "label", BAD_CAST label.c_str());
+        if (rc < 0) {
+            throw FileWriterException( "Error at xmlTextWriterWriteAttribute");
+        }
     }
 
     AttValueIter* row = _gexf->getData().getNodeAttributeRow(Conv::strToId(node_id));
