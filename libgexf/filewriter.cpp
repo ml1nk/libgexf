@@ -78,8 +78,6 @@ void FileWriter::write() {
     throw FileWriterException( "LIBXML NOT FOUND" );
     #endif
 
-    cout << "INFO Start writing the file (gexf v1.1).." << endl;
-
     /*
      * this initialize the library and check potential ABI mismatches
      * between the version it was compiled for and the actual shared
@@ -115,8 +113,6 @@ void FileWriter::write() {
     /* Close file and free memory buffers */
     xmlFreeTextWriter(writer);
     xmlCleanupParser();
-
-    cout << "INFO File written." << endl;
 }
 
 //-----------------------------------------

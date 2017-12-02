@@ -93,7 +93,6 @@ void FileReader::slurp() {
 
     streamFile();
     xmlCleanupParser();
-    cout << "INFO File parsed." << endl;
 }
 
 //-----------------------------------------
