@@ -39,7 +39,7 @@ AC_SUBST(LIBRARY_NAME)
 #                +- increment if interfaces have been added, removed or changed
 
 
-LIBRARY_VERSION=0.1.1
+LIBRARY_VERSION=0.1.3
 AC_SUBST(LIBRARY_VERSION)
 AM_INIT_AUTOMAKE($PACKAGE, $LIBRARY_VERSION, no-define)
 

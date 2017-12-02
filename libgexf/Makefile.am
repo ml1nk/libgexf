@@ -4,7 +4,7 @@ h_sources = abstractiter.h abstractparser.h attributeiter.h attvalueiter.h conv.
 
 cc_sources = abstractparser.cpp attributeiter.cpp attvalueiter.cpp conv.cpp data.cpp directedgraph.cpp dynamicgraph.cpp edgeiter.cpp filereader.cpp filewriter.cpp gexf.cpp gexfparser.cpp graph.cpp metadata.cpp nodeiter.cpp undirectedgraph.cpp rngvalidator.cpp schemavalidator.cpp memoryvalidator.cpp
 
-library_includedir=$(includedir)/$(LIBRARY_NAME)-$(LIBRARY_VERSION)
+library_includedir=$(includedir)/$(LIBRARY_NAME)
 library_include_HEADERS = $(h_sources)
 
 INCLUDES = $(XML2_CXXFLAGS) -I$(top_srcdir)
